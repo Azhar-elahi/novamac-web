@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+/* ============================================================
+   NOVAMAC — PREMIUM DARK THEME WITH COLORED ACCENTS
+============================================================ */
+
+@theme {
+  --color-background: #030305;
+  --color-foreground: #f0f0f5;
+  --color-muted: #888899;
+  
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Outfit", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  :root {
+    --background: #030305;
+    --foreground: #f0f0f5;
+    --muted: #888899;
+    --border: rgba(255, 255, 255, 0.1);
+  }
+
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* ============================================================
+   UTILITIES & EFFECTS
+============================================================ */
+
+@layer utilities {
+  .hover-trigger {
+    @apply cursor-pointer;
+  }
+  
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+}
+
+/* Base Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
