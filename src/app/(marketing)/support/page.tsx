@@ -12,8 +12,8 @@ export default function SupportPage() {
     <main className="bg-slate-50 text-slate-800 min-h-screen pt-36 pb-20 px-6">
       <div className="max-w-4xl mx-auto space-y-12">
         <div className="text-center">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-4">/ Help Center</p>
-          <h1 className="font-heading font-black text-5xl md:text-7xl tracking-tighter mb-6">How can we help?</h1>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-slate-600 mb-4">/ Help Center</p>
+          <h1 className="font-heading font-extrabold text-5xl md:text-7xl tracking-tighter mb-6">How can we help?</h1>
           <p className="text-xl text-slate-600 font-light max-w-xl mx-auto">
             Whether you need technical support, have a billing question, or want to report an issue, our team is here for you.
           </p>

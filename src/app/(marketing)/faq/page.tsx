@@ -55,8 +55,8 @@ export default function FAQPage() {
     <main className="bg-slate-100 text-slate-800 min-h-screen pt-36 pb-20 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="mb-20 text-center">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-4">/ Common Questions</p>
-          <h1 className="font-heading font-black text-5xl md:text-7xl tracking-tighter mb-6">Everything you need to know.</h1>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-slate-600 mb-4">/ Common Questions</p>
+          <h1 className="font-heading font-extrabold text-5xl md:text-7xl tracking-tighter mb-6">Everything you need to know.</h1>
           <p className="text-xl text-slate-600 font-light max-w-2xl mx-auto">
             Detailed answers to the 20 most frequently asked questions about our engineering, process, and pricing.
           </p>

@@ -74,7 +74,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Business Growth & Scalability</span>
           </motion.div>
 
-          <h1 className="font-heading font-black leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
+          <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(2rem,5vw,4rem)] mb-14">
             {[
               { text: "We Help", delay: 0.3, cls: "block text-slate-800" },
               { text: "Businesses Grow.", delay: 0.5, cls: "block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" },
@@ -146,10 +146,10 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                 <div className="order-1 md:order-2 flex flex-col justify-center">
                   <div className="flex items-center gap-4 mb-6">
                     <span className="font-mono text-[10px] uppercase tracking-widest text-blue-600 bg-blue-100 px-3 py-1 rounded-full">{proj.category}</span>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-gray-500">{proj.year}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-slate-600">{proj.year}</span>
                   </div>
                   
-                  <h2 className="font-heading font-black text-3xl md:text-5xl tracking-tight mb-6 group-hover:text-blue-600 transition-colors">
+                  <h2 className="font-heading font-extrabold text-3xl md:text-5xl tracking-tight mb-6 group-hover:text-blue-600 transition-colors">
                     {proj.title}
                   </h2>
                   
@@ -158,7 +158,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                   </p>
                   
                   <div className="border-t border-slate-200 pt-6 mt-auto">
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-1">Tech Stack</p>
+                    <p className="font-mono text-[10px] uppercase tracking-widest text-slate-600 mb-1">Tech Stack</p>
                     <p className="font-bold text-slate-800">{proj.tech}</p>
                   </div>
                 </div>
@@ -177,7 +177,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                </p>
                <div className="mt-10 pt-10 border-t border-slate-200">
                  <p className="text-slate-800 font-medium mb-3">Want to see our capabilities?</p>
-                 <p className="text-gray-500 text-sm max-w-lg mx-auto">Contact us to schedule a private walkthrough of sanitized case studies and technical architectures relevant to your specific industry.</p>
+                 <p className="text-slate-600 text-sm max-w-lg mx-auto">Contact us to schedule a private walkthrough of sanitized case studies and technical architectures relevant to your specific industry.</p>
                </div>
              </div>
           )}
@@ -192,7 +192,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <BlurReveal>
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-200 mb-8">/ Start Your Project</p>
-            <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
+            <h2 className="font-heading font-extrabold text-[clamp(2.2rem,5vw,4.5rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
               <WordReveal text="Have a project" /><br />
               <WordReveal text="in mind?" delay={0.1} className="text-blue-100" />
             </h2>

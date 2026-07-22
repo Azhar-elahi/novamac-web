@@ -238,10 +238,10 @@ export default function HomePage() {
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Digital Solutions Agency</span>
           </motion.div>
 
-          <h1 className="font-heading font-black leading-[0.95] md:leading-[0.85] tracking-[-0.03em] text-[clamp(2.5rem,8vw,8rem)] mb-12">
+          <h1 className="font-heading font-extrabold leading-[0.95] md:leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,5vw,4rem)] mb-12">
             {[
               { text: "Digital Growth",  delay: 0.35, cls: "block text-slate-800" },
-              { text: "For Modern",   delay: 0.52, cls: "block text-gray-500" },
+              { text: "For Modern",   delay: 0.52, cls: "block text-slate-600" },
               { text: "Brands.", delay: 0.69, cls: "block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" },
             ].map((line, i) => (
               <div key={i} className="overflow-hidden pb-4 md:pb-8 -mb-4 md:-mb-8">
@@ -290,7 +290,7 @@ export default function HomePage() {
         {/* Scroll cue */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.2, duration: 1 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="font-mono text-[9px] tracking-[0.35em] uppercase text-gray-500">Scroll</span>
+          <span className="font-mono text-[9px] tracking-[0.35em] uppercase text-slate-600">Scroll</span>
           <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
             className="w-px h-8 bg-gradient-to-b from-gray-500 to-transparent" />
         </motion.div>
@@ -303,7 +303,7 @@ export default function HomePage() {
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex items-center gap-16 shrink-0">
               {TECH.map((t, j) => (
-                <span key={j} className="font-heading font-black text-2xl md:text-3xl uppercase tracking-tight text-gray-600">
+                <span key={j} className="font-heading font-extrabold text-2xl md:text-3xl uppercase tracking-tight text-gray-600">
                   {t}
                 </span>
               ))}
@@ -319,7 +319,7 @@ export default function HomePage() {
         <div className="max-w-[1400px] mx-auto relative z-10">
           <BlurReveal className="mb-20 text-center">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-600 mb-5">/ What We Do</p>
-            <h2 className="font-heading font-black text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
+            <h2 className="font-heading font-extrabold text-[clamp(2rem,5vw,4rem)] leading-[0.9] tracking-[-0.03em]">
               <WordReveal text="Services designed to" /><br />
               <WordReveal text="help you succeed." delay={0.1} className="text-slate-600" />
             </h2>
@@ -344,7 +344,7 @@ export default function HomePage() {
                   <h3 className="font-heading font-bold text-2xl md:text-3xl tracking-tight mb-4 group-hover:text-blue-600 transition-colors">{s.title}</h3>
                   <p className="text-base text-slate-600 leading-relaxed font-light mb-6">{s.desc}</p>
                   
-                  <div className="mt-auto border-t border-slate-200 pt-6 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-gray-500 group-hover:text-slate-700 transition-colors">
+                  <div className="mt-auto border-t border-slate-200 pt-6 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-slate-600 group-hover:text-slate-700 transition-colors">
                     <span>{activeService === i ? "Hide Details" : "View Details"}</span>
                     <motion.div animate={{ rotate: activeService === i ? 180 : 0 }}>
                       <ChevronDown className="w-4 h-4" />
@@ -391,7 +391,7 @@ export default function HomePage() {
         <div className="max-w-[1400px] mx-auto relative z-10">
           <BlurReveal className="mb-16 text-center">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-purple-600 mb-5">/ Our Approach</p>
-            <h2 className="font-heading font-black text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
+            <h2 className="font-heading font-extrabold text-[clamp(2rem,5vw,4rem)] leading-[0.9] tracking-[-0.03em]">
               <WordReveal text="Why partner" /><br />
               <WordReveal text="with us." delay={0.1} className="text-slate-600" />
             </h2>
@@ -422,7 +422,7 @@ export default function HomePage() {
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
             className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-200 mb-8">/ Let's Connect</motion.p>
 
-          <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
+          <h2 className="font-heading font-extrabold text-[clamp(2.2rem,5vw,4.5rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
             <WordReveal text="Ready to build" /><br />
             <WordReveal text="something real?" delay={0.1} className="text-blue-100" />
           </h2>

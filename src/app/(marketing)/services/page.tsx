@@ -165,10 +165,10 @@ export default function ServicesPage() {
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Services &middot; 6 Disciplines</span>
           </motion.div>
 
-          <h1 className="font-heading font-black leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
+          <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(2rem,5vw,4rem)] mb-14">
             {[
               { text: "Premium", delay: 0.3, cls: "block text-slate-800" },
-              { text: "Services.", delay: 0.5, cls: "block text-gray-500" },
+              { text: "Services.", delay: 0.5, cls: "block text-slate-600" },
             ].map((line, i) => (
               <div key={i} className="overflow-hidden">
                 <motion.div
@@ -204,8 +204,8 @@ export default function ServicesPage() {
       <section className="py-32 px-6 md:px-12 xl:px-20 bg-white border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto">
           <BlurReveal className="mb-20">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-5">/ What We Offer</p>
-            <h2 className="font-heading font-black text-[clamp(2rem,5vw,4.5rem)] leading-[0.88] tracking-[-0.04em]">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-slate-600 mb-5">/ What We Offer</p>
+            <h2 className="font-heading font-extrabold text-[clamp(1.8rem,4vw,3.5rem)] leading-[0.88] tracking-[-0.04em]">
               <WordReveal text="Six disciplines." /><br />
               <WordReveal text="One studio." delay={0.1} />
             </h2>
@@ -235,12 +235,12 @@ export default function ServicesPage() {
                       </div>
                       <div>
                         <span className="font-mono text-[10px] text-gray-600 block mb-1">{s.num}</span>
-                        <h3 className="font-heading font-black text-2xl md:text-3xl tracking-tight text-slate-700 group-hover:text-blue-600 transition-colors duration-300">
+                        <h3 className="font-heading font-extrabold text-2xl md:text-3xl tracking-tight text-slate-700 group-hover:text-blue-600 transition-colors duration-300">
                           {s.title}
                         </h3>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-500 max-w-sm font-light leading-relaxed">{s.short}</p>
+                    <p className="text-sm text-slate-600 max-w-sm font-light leading-relaxed">{s.short}</p>
                     <motion.div
                       animate={{ rotate: activeService === i ? 45 : 0 }}
                       transition={{ duration: 0.3 }}
@@ -283,8 +283,8 @@ export default function ServicesPage() {
       <section className="py-32 px-6 md:px-12 xl:px-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto">
           <BlurReveal className="mb-20 text-center">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-5">/ Engagement Models</p>
-            <h2 className="font-heading font-black text-[clamp(2rem,5vw,4.5rem)] leading-[0.88] tracking-[-0.04em]">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-slate-600 mb-5">/ Engagement Models</p>
+            <h2 className="font-heading font-extrabold text-[clamp(1.8rem,4vw,3.5rem)] leading-[0.88] tracking-[-0.04em]">
               <WordReveal text="How we partner." />
             </h2>
             <p className="text-lg text-slate-600 font-light mt-6 max-w-2xl mx-auto leading-relaxed">
@@ -310,7 +310,7 @@ export default function ServicesPage() {
                     style={{ borderColor: e.highlighted ? "#ffffff" : "#333333", color: e.highlighted ? "#ffffff" : "#888888" }}>
                     {e.tag}
                   </div>
-                  <h3 className="font-heading font-black text-2xl md:text-3xl tracking-tight mb-4">{e.type}</h3>
+                  <h3 className="font-heading font-extrabold text-2xl md:text-3xl tracking-tight mb-4">{e.type}</h3>
                   <p className="text-sm text-slate-600 font-light leading-relaxed">{e.desc}</p>
                 </div>
 
@@ -342,7 +342,7 @@ export default function ServicesPage() {
       <section className="py-24 px-6 md:px-12 xl:px-20 bg-white border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto">
           <BlurReveal className="text-center mb-16">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-3">Powered By</p>
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-slate-600 mb-3">Powered By</p>
           </BlurReveal>
           <div className="overflow-hidden">
             <motion.div
@@ -353,7 +353,7 @@ export default function ServicesPage() {
               {Array.from({ length: 2 }).map((_, i) => (
                 <div key={i} className="flex items-center gap-16 shrink-0">
                   {["Next.js", "—", "React", "—", "OpenAI", "—", "PostgreSQL", "—", "Python", "—", "Figma", "—", "Vercel", "—", "AWS", "—"].map((t, j) => (
-                    <span key={j} className="font-heading font-black text-4xl uppercase tracking-tight"
+                    <span key={j} className="font-heading font-extrabold text-4xl uppercase tracking-tight"
                       style={{ color: t === "—" ? "#cbd5e1" : "#1e293b" }}>{t}</span>
                   ))}
                 </div>
@@ -373,7 +373,7 @@ export default function ServicesPage() {
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <BlurReveal>
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-200 mb-8">/ Ready to Build</p>
-            <h2 className="font-heading font-black text-[clamp(2.8rem,8vw,7.5rem)] leading-[0.85] tracking-[-0.045em] mb-14 text-white">
+            <h2 className="font-heading font-extrabold text-[clamp(2.2rem,5vw,4.5rem)] leading-[0.85] tracking-[-0.045em] mb-14 text-white">
               <WordReveal text="Let's build" /><br />
               <WordReveal text="something" delay={0.1} className="text-blue-100" /><br />
               <WordReveal text="great." delay={0.2} />

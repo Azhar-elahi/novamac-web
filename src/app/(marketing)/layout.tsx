@@ -12,15 +12,15 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
 
         <Link href="/" className="hover-trigger flex items-center gap-3 group">
           <div className="w-8 h-8 flex items-center justify-center shrink-0 border border-slate-300 group-hover:border-blue-600 transition-colors duration-300">
-            <span className="font-heading font-black text-slate-800 text-xs">NM</span>
+            <span className="font-heading font-extrabold text-slate-800 text-xs">NM</span>
           </div>
           <div className="flex flex-col">
             <span className="font-heading font-bold text-base tracking-tight text-slate-800 group-hover:text-slate-700 transition-colors duration-300 leading-none">NovaMac</span>
-            <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest leading-none mt-1 group-hover:text-slate-600 transition-colors">solutions</span>
+            <span className="text-[9px] font-mono text-slate-600 uppercase tracking-widest leading-none mt-1 group-hover:text-slate-600 transition-colors">solutions</span>
           </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-[10px] font-mono uppercase tracking-[0.18em] text-gray-500">
+        <nav className="hidden md:flex items-center gap-8 text-[10px] font-mono uppercase tracking-[0.18em] text-slate-600">
           {[
             { href: "/services", label: "Services" },
             { href: "/work",     label: "Work"     },
@@ -55,11 +55,11 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
             <div className="col-span-2">
               <Link href="/" className="hover-trigger flex items-center gap-3 mb-6 group">
                 <div className="w-9 h-9 flex items-center justify-center border border-slate-300 group-hover:border-blue-600 transition-colors">
-                  <span className="font-heading font-black text-slate-800 text-sm">NM</span>
+                  <span className="font-heading font-extrabold text-slate-800 text-sm">NM</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="font-heading font-bold text-lg tracking-tight group-hover:text-slate-700 transition-colors leading-none">NovaMac</span>
-                  <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest leading-none mt-1 group-hover:text-slate-600 transition-colors">solutions</span>
+                  <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest leading-none mt-1 group-hover:text-slate-600 transition-colors">solutions</span>
                 </div>
               </Link>
               <p className="text-sm text-slate-600 leading-relaxed max-w-xs font-light mb-8">
@@ -86,7 +86,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
               },
             ].map((col, i) => (
               <div key={i}>
-                <h4 className="font-mono text-[9px] tracking-[0.3em] uppercase mb-6 text-gray-500">{col.title}</h4>
+                <h4 className="font-mono text-[9px] tracking-[0.3em] uppercase mb-6 text-slate-600">{col.title}</h4>
                 <ul className="space-y-4 text-sm text-slate-600">
                   {col.links.map((link, j) => (
                     <li key={j}><Link href={link.href} className="hover-trigger hover:text-blue-600 transition-colors">{link.label}</Link></li>

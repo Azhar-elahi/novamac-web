@@ -95,7 +95,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <span>•</span>
             <span>{new Date(post.createdAt).toLocaleDateString()}</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-heading font-black tracking-tight leading-[1.1] mb-6">
+          <h1 className="text-4xl md:text-6xl font-heading font-extrabold tracking-tight leading-[1.1] mb-6">
             {post.title}
           </h1>
           {post.excerpt && (

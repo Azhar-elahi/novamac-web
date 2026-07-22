@@ -93,10 +93,10 @@ export default function AboutPage() {
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Our Story</span>
           </motion.div>
 
-          <h1 className="font-heading font-black leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
+          <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(2rem,5vw,4rem)] mb-14">
             {[
               { text: "Built", delay: 0.3, cls: "block text-slate-800" },
-              { text: "For Scale.", delay: 0.5, cls: "block text-gray-500" },
+              { text: "For Scale.", delay: 0.5, cls: "block text-slate-600" },
             ].map((line, i) => (
               <div key={i} className="overflow-hidden">
                 <motion.div
@@ -120,7 +120,7 @@ export default function AboutPage() {
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.9, ease }}
-              className="text-base text-gray-500 font-light leading-relaxed"
+              className="text-base text-slate-600 font-light leading-relaxed"
             >
               We are a collective of senior developers, award-winning designers, and growth strategists. We do not use templates, we do not offshore to junior devs, and we do not compromise on code quality. When you hire NovaMac, you hire the elite.
             </motion.p>
@@ -139,7 +139,7 @@ export default function AboutPage() {
           ].map((stat, i) => (
             <BlurReveal key={i} delay={i * 0.1} className="group border border-slate-300 bg-white p-10 text-left hover:border-blue-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden rounded-xl">
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 transform origin-left scale-x-100 opacity-80" />
-              <p className="font-heading font-black text-2xl md:text-3xl mb-4 text-slate-900 group-hover:text-blue-700 transition-colors">{stat.n}</p>
+              <p className="font-heading font-extrabold text-2xl md:text-3xl mb-4 text-slate-900 group-hover:text-blue-700 transition-colors">{stat.n}</p>
               <p className="font-sans text-sm md:text-base font-medium text-slate-600 leading-relaxed">{stat.l}</p>
             </BlurReveal>
           ))}
@@ -150,8 +150,8 @@ export default function AboutPage() {
       <section className="py-32 px-6 md:px-12 xl:px-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto">
           <BlurReveal className="mb-20">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-5">/ Core Principles</p>
-            <h2 className="font-heading font-black text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.88] tracking-[-0.04em]">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-slate-600 mb-5">/ Core Principles</p>
+            <h2 className="font-heading font-extrabold text-[clamp(2rem,5vw,4rem)] leading-[0.88] tracking-[-0.04em]">
               <WordReveal text="How we operate." />
             </h2>
           </BlurReveal>
@@ -182,7 +182,7 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <BlurReveal>
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-200 mb-8">/ Join Our Roster</p>
-            <h2 className="font-heading font-black text-[clamp(2.8rem,8vw,7.5rem)] leading-[0.85] tracking-[-0.045em] mb-14 text-white">
+            <h2 className="font-heading font-extrabold text-[clamp(2.2rem,5vw,4.5rem)] leading-[0.85] tracking-[-0.045em] mb-14 text-white">
               <WordReveal text="Hire the team" /><br />
               <WordReveal text="that delivers." delay={0.1} className="text-blue-100" />
             </h2>

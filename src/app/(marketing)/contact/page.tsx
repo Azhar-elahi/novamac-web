@@ -84,10 +84,10 @@ export default function ContactPage() {
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">We reply within 24 hours</span>
           </motion.div>
 
-          <h1 className="font-heading font-black leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
+          <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(2rem,5vw,4rem)] mb-14">
             {[
               { text: "Let's", delay: 0.3, cls: "block text-slate-800" },
-              { text: "Talk.", delay: 0.5, cls: "block text-gray-500" },
+              { text: "Talk.", delay: 0.5, cls: "block text-slate-600" },
             ].map((line, i) => (
               <div key={i} className="overflow-hidden">
                 <motion.div
@@ -120,7 +120,7 @@ export default function ContactPage() {
           {/* Contact Info */}
           <BlurReveal className="space-y-8">
             <div>
-              <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-8">/ Direct Contact</p>
+              <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-slate-600 mb-8">/ Direct Contact</p>
               <div className="space-y-8">
                 {[
                   { icon: Mail, label: "Email", value: "hello@novamacsolutions.com" },
@@ -131,7 +131,7 @@ export default function ContactPage() {
                       <item.icon className="w-4 h-4 text-slate-800" />
                     </div>
                     <div>
-                      <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-1">{item.label}</p>
+                      <p className="font-mono text-[10px] uppercase tracking-widest text-slate-600 mb-1">{item.label}</p>
                       <p className="font-medium text-lg text-slate-800">{item.value}</p>
                     </div>
                   </div>
@@ -140,7 +140,7 @@ export default function ContactPage() {
             </div>
 
             <div className="border border-slate-200 p-8 bg-slate-50 hover:border-slate-300 transition-colors">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-6">Office Hours</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-slate-600 mb-6">Office Hours</p>
               <div className="space-y-3">
                 {[["Mon – Fri", "9:00 AM – 6:00 PM PST"], ["Sat – Sun", "Emergency support only"]].map(([day, hours], i) => (
                   <div key={i} className="flex items-center justify-between text-sm">
@@ -153,7 +153,7 @@ export default function ContactPage() {
 
             {/* Trust signals */}
             <div className="border border-slate-200 p-8 bg-slate-50 hover:border-slate-300 transition-colors">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-6">Our Promise</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-slate-600 mb-6">Our Promise</p>
               <div className="space-y-3">
                 {["Response within 24 hours", "Free 30-min discovery call", "No-pressure, honest assessment", "NDA available upon request"].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-sm text-slate-600 font-light">
@@ -178,7 +178,7 @@ export default function ContactPage() {
                 setTimeout(() => setSubmitted(false), 5000);
               }
             }} className="border border-slate-200 bg-slate-50 p-8 md:p-10 space-y-6 relative">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-8">/ Request a Proposal</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-slate-600 mb-8">/ Request a Proposal</p>
 
               {error && (
                 <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-4 text-sm rounded-md mb-6">
@@ -188,25 +188,25 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-2 gap-5">
                 <div>
-                  <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">First Name</label>
+                  <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-slate-600 mb-2">First Name</label>
                   <input type="text" name="firstName" placeholder="John" required
                     className="w-full px-4 py-3.5 bg-white border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all duration-300" />
                 </div>
                 <div>
-                  <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Last Name</label>
+                  <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-slate-600 mb-2">Last Name</label>
                   <input type="text" name="lastName" placeholder="Doe" required
                     className="w-full px-4 py-3.5 bg-white border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all duration-300" />
                 </div>
               </div>
 
               <div>
-                <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Email Address</label>
+                <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-slate-600 mb-2">Email Address</label>
                 <input type="email" name="email" placeholder="john@company.com" required
                   className="w-full px-4 py-3.5 bg-white border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all duration-300" />
               </div>
 
               <div>
-                <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Service Needed</label>
+                <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-slate-600 mb-2">Service Needed</label>
                 <select name="service" className="w-full px-4 py-3.5 bg-white border border-slate-200 text-sm text-slate-800 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all duration-300">
                   <option value="">Select a service...</option>
                   <option value="Web Development">Web Development</option>
@@ -218,7 +218,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Project Details</label>
+                <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-slate-600 mb-2">Project Details</label>
                 <textarea name="message" rows={5} placeholder="Tell us about your project, timeline, and budget..." required
                   className="w-full px-4 py-3.5 bg-white border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all duration-300 resize-none" />
               </div>
@@ -240,8 +240,8 @@ export default function ContactPage() {
       <section className="py-32 px-6 md:px-12 xl:px-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-[900px] mx-auto">
           <BlurReveal className="mb-20">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-5">/ Common Questions</p>
-            <h2 className="font-heading font-black text-[clamp(2rem,5vw,4.5rem)] leading-[0.88] tracking-[-0.04em]">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-slate-600 mb-5">/ Common Questions</p>
+            <h2 className="font-heading font-extrabold text-[clamp(1.8rem,4vw,3.5rem)] leading-[0.88] tracking-[-0.04em]">
               <WordReveal text="Frequently asked." />
             </h2>
           </BlurReveal>
@@ -265,7 +265,7 @@ export default function ContactPage() {
                     transition={{ duration: 0.35, ease }}
                     className="shrink-0"
                   >
-                    <ChevronDown className="w-5 h-5 text-gray-500 group-hover:text-blue-600 transition-colors" />
+                    <ChevronDown className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
                   </motion.div>
                 </button>
 
