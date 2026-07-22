@@ -81,7 +81,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-[#fafafc] text-[#f0f0f5]">
+    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-slate-100 text-[#f0f0f5]">
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
       <article className="max-w-3xl mx-auto">

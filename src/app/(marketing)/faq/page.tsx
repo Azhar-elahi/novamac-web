@@ -52,7 +52,7 @@ const FAQS = [
 
 export default function FAQPage() {
   return (
-    <main className="bg-[#fafafc] text-slate-900 min-h-screen pt-36 pb-20 px-6">
+    <main className="bg-slate-100 text-slate-800 min-h-screen pt-36 pb-20 px-6">
       <div className="max-w-4xl mx-auto">
         <div className="mb-20 text-center">
           <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-4">/ Common Questions</p>
@@ -65,10 +65,10 @@ export default function FAQPage() {
         <div className="space-y-16">
           {FAQS.map((section, idx) => (
             <div key={idx}>
-              <h2 className="text-3xl font-heading font-bold mb-8 text-slate-900 border-b border-slate-200 pb-4">{section.category}</h2>
+              <h2 className="text-3xl font-heading font-bold mb-8 text-slate-800 border-b border-slate-200 pb-4">{section.category}</h2>
               <div className="space-y-8">
                 {section.questions.map((faq, i) => (
-                  <div key={i} className="bg-white p-6 md:p-8 rounded-2xl border border-slate-100 hover:border-slate-200 transition-colors">
+                  <div key={i} className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 hover:border-slate-200 transition-colors">
                     <h3 className="text-xl font-bold mb-4 text-slate-800">{faq.q}</h3>
                     <p className="text-slate-600 leading-relaxed font-light">{faq.a}</p>
                   </div>
@@ -83,7 +83,7 @@ export default function FAQPage() {
             <h4 className="text-2xl font-bold mb-3">Still have questions?</h4>
             <p className="text-slate-600 font-light max-w-md">We are always happy to answer any specific questions you might have about your unique project.</p>
           </div>
-          <Link href="/contact" className="shrink-0 px-8 py-4 bg-blue-600 text-slate-900 font-bold uppercase tracking-widest text-xs inline-flex items-center gap-2 hover:bg-gray-200 transition-colors rounded-full">
+          <Link href="/contact" className="shrink-0 px-8 py-4 bg-blue-600 text-white font-bold uppercase tracking-widest text-xs inline-flex items-center gap-2 hover:bg-blue-700 transition-colors rounded-full">
             Contact Us <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function SupportPage() {
   return (
-    <main className="bg-white text-slate-900 min-h-screen pt-36 pb-20 px-6">
+    <main className="bg-slate-50 text-slate-800 min-h-screen pt-36 pb-20 px-6">
       <div className="max-w-4xl mx-auto space-y-12">
         <div className="text-center">
           <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-4">/ Help Center</p>
@@ -21,7 +21,7 @@ export default function SupportPage() {
 
         <div className="grid md:grid-cols-2 gap-6 mt-16">
           <div className="p-8 border border-slate-200 bg-[#050505] rounded-2xl hover:border-slate-400 transition-colors">
-            <LifeBuoy className="w-8 h-8 text-slate-900 mb-6" />
+            <LifeBuoy className="w-8 h-8 text-slate-800 mb-6" />
             <h3 className="text-2xl font-bold mb-3">Client Portal</h3>
             <p className="text-slate-600 font-light mb-8">
               If you are an existing client, please log in to your dashboard to submit a high-priority support ticket.
@@ -32,7 +32,7 @@ export default function SupportPage() {
           </div>
 
           <div className="p-8 border border-slate-200 bg-[#050505] rounded-2xl hover:border-slate-400 transition-colors">
-            <MessageSquare className="w-8 h-8 text-slate-900 mb-6" />
+            <MessageSquare className="w-8 h-8 text-slate-800 mb-6" />
             <h3 className="text-2xl font-bold mb-3">General Inquiries</h3>
             <p className="text-slate-600 font-light mb-8">
               For general questions or if you don't have an account, please reach out via our contact form.

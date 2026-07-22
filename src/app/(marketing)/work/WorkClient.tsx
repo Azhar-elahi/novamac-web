@@ -53,10 +53,10 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
   const [hoveredProj, setHoveredProj] = useState<number | null>(null);
 
   return (
-    <main className="bg-[#fafafc] text-slate-900 min-h-screen overflow-x-hidden">
+    <main className="bg-slate-100 text-slate-800 min-h-screen overflow-x-hidden">
 
       {/* ══════════ HERO (Focused on Growth) ══════════ */}
-      <section className="relative min-h-[60vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-[#fafafc]">
+      <section className="relative min-h-[60vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-slate-100">
         <div className="absolute inset-0 pointer-events-none">
           {/* Subtle colored glow */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100 rounded-full blur-[150px] pointer-events-none" />
@@ -76,7 +76,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
 
           <h1 className="font-heading font-black leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
             {[
-              { text: "We Help", delay: 0.3, cls: "block text-slate-900" },
+              { text: "We Help", delay: 0.3, cls: "block text-slate-800" },
               { text: "Businesses Grow.", delay: 0.5, cls: "block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" },
             ].map((line, i) => (
               <div key={i} className="overflow-hidden pb-2">
@@ -138,7 +138,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                     transition={{ duration: 0.3 }}
                     className="absolute top-6 right-6 w-14 h-14 rounded-full flex items-center justify-center bg-blue-600 shadow-lg"
                   >
-                    <ArrowUpRight className="w-6 h-6 text-slate-900" />
+                    <ArrowUpRight className="w-6 h-6 text-slate-800" />
                   </motion.div>
                 </div>
 
@@ -159,7 +159,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                   
                   <div className="border-t border-slate-200 pt-6 mt-auto">
                     <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-1">Tech Stack</p>
-                    <p className="font-bold text-slate-900">{proj.tech}</p>
+                    <p className="font-bold text-slate-800">{proj.tech}</p>
                   </div>
                 </div>
 
@@ -171,12 +171,12 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mb-6 border border-blue-200">
                  <Shield className="w-8 h-8 text-blue-600" />
                </div>
-               <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-slate-900">Our Work is Protected Under NDA</h3>
+               <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-slate-800">Our Work is Protected Under NDA</h3>
                <p className="text-slate-600 font-light max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
                  We engineer premium, proprietary digital solutions for enterprise clients and scaling startups. To respect strict confidentiality agreements (NDAs) and protect our clients' competitive advantage, we do not publicly display our most impactful recent projects.
                </p>
                <div className="mt-10 pt-10 border-t border-slate-200">
-                 <p className="text-slate-900 font-medium mb-3">Want to see our capabilities?</p>
+                 <p className="text-slate-800 font-medium mb-3">Want to see our capabilities?</p>
                  <p className="text-gray-500 text-sm max-w-lg mx-auto">Contact us to schedule a private walkthrough of sanitized case studies and technical architectures relevant to your specific industry.</p>
                </div>
              </div>
@@ -185,20 +185,20 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
       </section>
 
       {/* ══════════ CTA ══════════ */}
-      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-[#f0f2f5] border-t border-slate-200 overflow-hidden">
+      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-slate-200 border-t border-slate-200 overflow-hidden">
         <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.05, 0.08, 0.05] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-purple-500 blur-[150px] pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <BlurReveal>
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-purple-600 mb-8">/ Start Your Project</p>
-            <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-slate-900">
+            <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-slate-800">
               <WordReveal text="Have a project" /><br />
               <WordReveal text="in mind?" delay={0.1} className="text-slate-600" />
             </h2>
             <div className="flex justify-center">
               <Link href="/contact"
-                className="hover-trigger inline-flex items-center gap-3 bg-blue-600 text-slate-900 font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-gray-200 transition-all duration-300 hover:scale-105">
+                className="hover-trigger inline-flex items-center gap-3 bg-blue-600 text-white font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-blue-700 transition-all duration-300 hover:scale-105">
                 Get in Touch
               </Link>
             </div>

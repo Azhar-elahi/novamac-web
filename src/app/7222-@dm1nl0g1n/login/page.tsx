@@ -33,7 +33,7 @@ export default function SecureLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#fafafc] px-4">
+    <div className="min-h-screen flex items-center justify-center bg-slate-100 px-4">
       <div className="w-full max-w-md p-8 rounded-2xl glass-card border border-slate-200 bg-[#eaedf2]">
         <div className="flex items-center gap-2 font-heading font-bold text-2xl text-red-500 mb-8 justify-center">
           <ShieldAlert className="w-6 h-6" />
@@ -50,7 +50,7 @@ export default function SecureLoginPage() {
               required 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-white/70 border border-slate-200 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-all text-slate-900 font-mono"
+              className="w-full px-4 py-3 rounded-lg bg-slate-50/70 border border-slate-200 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-all text-slate-800 font-mono"
             />
           </div>
           <div>
@@ -60,12 +60,12 @@ export default function SecureLoginPage() {
               required 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-white/70 border border-slate-200 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-all text-slate-900 font-mono"
+              className="w-full px-4 py-3 rounded-lg bg-slate-50/70 border border-slate-200 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-all text-slate-800 font-mono"
             />
           </div>
           <button 
             type="submit" 
-            className="w-full py-4 mt-4 bg-red-500/10 text-red-500 border border-red-500/20 rounded-lg font-bold font-mono tracking-widest uppercase hover:bg-red-500 hover:text-slate-900 transition-all"
+            className="w-full py-4 mt-4 bg-red-500/10 text-red-500 border border-red-500/20 rounded-lg font-bold font-mono tracking-widest uppercase hover:bg-red-500 hover:text-slate-800 transition-all"
           >
             Authenticate
           </button>

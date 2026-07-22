@@ -64,13 +64,13 @@ export default function ContactPage() {
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <main className="bg-white text-slate-900 min-h-screen overflow-x-hidden">
+    <main className="bg-slate-50 text-slate-800 min-h-screen overflow-x-hidden">
 
       {/* ══════════ HERO ══════════ */}
-      <section className="relative min-h-[70vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-white">
+      <section className="relative min-h-[70vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-slate-50">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.1]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-white opacity-[0.03] blur-[150px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-slate-50 opacity-[0.03] blur-[150px]" />
         </div>
 
         <div className="max-w-[1400px] mx-auto w-full relative z-10">
@@ -78,15 +78,15 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.2, duration: 0.9, ease }}
-            className="inline-flex items-center gap-3 mb-10 border border-slate-300 px-5 py-3 bg-white/70 backdrop-blur-xl"
+            className="inline-flex items-center gap-3 mb-10 border border-slate-300 px-5 py-3 bg-slate-50/70 backdrop-blur-xl"
           >
-            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-slate-50 animate-pulse" />
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">We reply within 24 hours</span>
           </motion.div>
 
           <h1 className="font-heading font-black leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
             {[
-              { text: "Let's", delay: 0.3, cls: "block text-slate-900" },
+              { text: "Let's", delay: 0.3, cls: "block text-slate-800" },
               { text: "Talk.", delay: 0.5, cls: "block text-gray-500" },
             ].map((line, i) => (
               <div key={i} className="overflow-hidden">
@@ -128,36 +128,36 @@ export default function ContactPage() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-5">
                     <div className="w-11 h-11 border border-slate-300 bg-slate-100/50 flex items-center justify-center shrink-0">
-                      <item.icon className="w-4 h-4 text-slate-900" />
+                      <item.icon className="w-4 h-4 text-slate-800" />
                     </div>
                     <div>
                       <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-1">{item.label}</p>
-                      <p className="font-medium text-lg text-slate-900">{item.value}</p>
+                      <p className="font-medium text-lg text-slate-800">{item.value}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="border border-slate-200 p-8 bg-white hover:border-slate-300 transition-colors">
+            <div className="border border-slate-200 p-8 bg-slate-50 hover:border-slate-300 transition-colors">
               <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-6">Office Hours</p>
               <div className="space-y-3">
                 {[["Mon – Fri", "9:00 AM – 6:00 PM PST"], ["Sat – Sun", "Emergency support only"]].map(([day, hours], i) => (
                   <div key={i} className="flex items-center justify-between text-sm">
                     <span className="text-slate-600 font-light">{day}</span>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-slate-900">{hours}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-slate-800">{hours}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Trust signals */}
-            <div className="border border-slate-200 p-8 bg-white hover:border-slate-300 transition-colors">
+            <div className="border border-slate-200 p-8 bg-slate-50 hover:border-slate-300 transition-colors">
               <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-6">Our Promise</p>
               <div className="space-y-3">
                 {["Response within 24 hours", "Free 30-min discovery call", "No-pressure, honest assessment", "NDA available upon request"].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-sm text-slate-600 font-light">
-                    <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-slate-800 shrink-0" />
                     {item}
                   </div>
                 ))}
@@ -177,7 +177,7 @@ export default function ContactPage() {
                 setSubmitted(true);
                 setTimeout(() => setSubmitted(false), 5000);
               }
-            }} className="border border-slate-200 bg-white p-8 md:p-10 space-y-6 relative">
+            }} className="border border-slate-200 bg-slate-50 p-8 md:p-10 space-y-6 relative">
               <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-8">/ Request a Proposal</p>
 
               {error && (
@@ -190,24 +190,24 @@ export default function ContactPage() {
                 <div>
                   <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">First Name</label>
                   <input type="text" name="firstName" placeholder="John" required
-                    className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-900 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
+                    className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
                 </div>
                 <div>
                   <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Last Name</label>
                   <input type="text" name="lastName" placeholder="Doe" required
-                    className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-900 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
+                    className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
                 </div>
               </div>
 
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Email Address</label>
                 <input type="email" name="email" placeholder="john@company.com" required
-                  className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-900 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
+                  className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
               </div>
 
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Service Needed</label>
-                <select name="service" className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-900 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300">
+                <select name="service" className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-800 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300">
                   <option value="">Select a service...</option>
                   <option value="Web Development">Web Development</option>
                   <option value="E-Commerce">E-Commerce</option>
@@ -220,11 +220,11 @@ export default function ContactPage() {
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Project Details</label>
                 <textarea name="message" rows={5} placeholder="Tell us about your project, timeline, and budget..." required
-                  className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-900 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300 resize-none" />
+                  className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300 resize-none" />
               </div>
 
               <button type="submit" disabled={submitted}
-                className="hover-trigger w-full py-4 bg-blue-600 text-slate-900 font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-gray-200 disabled:opacity-70 transition-all duration-300">
+                className="hover-trigger w-full py-4 bg-blue-600 text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-blue-700 disabled:opacity-70 transition-all duration-300">
                 {submitted ? (
                   <><CheckCircle2 className="w-4 h-4" /> Message Sent!</>
                 ) : (
@@ -237,7 +237,7 @@ export default function ContactPage() {
       </section>
 
       {/* ══════════ FAQ ══════════ */}
-      <section className="py-32 px-6 md:px-12 xl:px-20 bg-white border-t border-slate-200">
+      <section className="py-32 px-6 md:px-12 xl:px-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-[900px] mx-auto">
           <BlurReveal className="mb-20">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-5">/ Common Questions</p>

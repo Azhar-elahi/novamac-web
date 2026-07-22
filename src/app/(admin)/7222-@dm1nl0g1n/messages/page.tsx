@@ -12,7 +12,7 @@ export default async function AdminMessagesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900">Proposal Requests & Messages</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-slate-800">Proposal Requests & Messages</h2>
           <p className="text-muted-foreground mt-1">Manage inquiries from the public website contact form.</p>
         </div>
       </div>
@@ -42,12 +42,12 @@ export default async function AdminMessagesPage() {
                   <td className="px-6 py-4 whitespace-nowrap text-slate-600">
                     {formatDistanceToNow(new Date(msg.createdAt), { addSuffix: true })}
                   </td>
-                  <td className="px-6 py-4 font-medium text-slate-900">{msg.name}</td>
+                  <td className="px-6 py-4 font-medium text-slate-800">{msg.name}</td>
                   <td className="px-6 py-4">
                     <a href={`mailto:${msg.email}`} className="text-blue-600 hover:underline">{msg.email}</a>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="px-2 py-1 bg-white/10 text-slate-900 rounded text-xs">{msg.subject}</span>
+                    <span className="px-2 py-1 bg-slate-50/10 text-slate-800 rounded text-xs">{msg.subject}</span>
                   </td>
                   <td className="px-6 py-4">
                     <p className="line-clamp-2 max-w-xs">{msg.message}</p>

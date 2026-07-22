@@ -22,7 +22,7 @@ export function CookieConsent() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-6 md:right-auto md:w-[400px] p-6 rounded-2xl border border-slate-200 shadow-2xl bg-white z-[100] flex flex-col gap-4 animate-in slide-in-from-bottom-5">
+    <div className="fixed bottom-4 left-4 right-4 md:left-6 md:right-auto md:w-[400px] p-6 rounded-2xl border border-slate-200 shadow-2xl bg-slate-50 z-[100] flex flex-col gap-4 animate-in slide-in-from-bottom-5">
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3 text-brand">
           <Cookie className="w-6 h-6" />
@@ -43,7 +43,7 @@ export function CookieConsent() {
       <div className="flex items-center gap-3 mt-2">
         <button 
           onClick={handleAccept}
-          className="flex-1 py-2 bg-brand text-slate-900 text-sm font-medium rounded-lg hover:bg-brand/90 transition-colors"
+          className="flex-1 py-2 bg-brand text-slate-800 text-sm font-medium rounded-lg hover:bg-brand/90 transition-colors"
         >
           Accept All
         </button>

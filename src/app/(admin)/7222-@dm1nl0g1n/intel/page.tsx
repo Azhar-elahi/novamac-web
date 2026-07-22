@@ -18,22 +18,22 @@ export default async function AdminWebIntelPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold tracking-tight text-slate-900">Web Intel</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-slate-800">Web Intel</h2>
         <p className="text-muted-foreground mt-1">Analytics and traffic insights from the last 30 days.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="border border-slate-200 bg-[#050505] rounded-xl p-6">
           <p className="text-sm font-medium text-slate-600">Total Visits</p>
-          <p className="text-3xl font-bold text-slate-900 mt-2">{totalVisits}</p>
+          <p className="text-3xl font-bold text-slate-800 mt-2">{totalVisits}</p>
         </div>
         <div className="border border-slate-200 bg-[#050505] rounded-xl p-6">
           <p className="text-sm font-medium text-slate-600">Unique Countries</p>
-          <p className="text-3xl font-bold text-slate-900 mt-2">{uniqueCountries}</p>
+          <p className="text-3xl font-bold text-slate-800 mt-2">{uniqueCountries}</p>
         </div>
         <div className="border border-slate-200 bg-[#050505] rounded-xl p-6">
           <p className="text-sm font-medium text-slate-600">Service Page Views</p>
-          <p className="text-3xl font-bold text-slate-900 mt-2">{serviceInterests.length}</p>
+          <p className="text-3xl font-bold text-slate-800 mt-2">{serviceInterests.length}</p>
         </div>
       </div>
 
@@ -60,7 +60,7 @@ export default async function AdminWebIntelPage() {
                   <td className="px-6 py-4 whitespace-nowrap text-slate-600">
                     {formatDistanceToNow(new Date(visit.createdAt), { addSuffix: true })}
                   </td>
-                  <td className="px-6 py-4 font-medium text-slate-900">
+                  <td className="px-6 py-4 font-medium text-slate-800">
                     {visit.city && visit.city !== "Unknown" ? `${visit.city}, ` : ""}{visit.country || "Unknown"}
                   </td>
                   <td className="px-6 py-4">

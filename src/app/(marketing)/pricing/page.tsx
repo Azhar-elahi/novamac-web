@@ -11,7 +11,7 @@ export default function PricingPage() {
       <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
         Transparent pricing for modern businesses. (Tiers pending user decision)
       </p>
-      <Link href="/contact" className="px-6 py-3 bg-brand text-slate-900 rounded-full font-medium">
+      <Link href="/contact" className="px-6 py-3 bg-brand text-slate-800 rounded-full font-medium">
         Contact Sales
       </Link>
     </div>

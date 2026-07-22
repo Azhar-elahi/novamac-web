@@ -3,19 +3,19 @@ import { ChatWidget } from "@/components/chat/ChatWidget";
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col bg-white text-slate-900 relative">
+    <div className="flex min-h-screen flex-col bg-slate-50 text-slate-800 relative">
       {/* Noise Overlay */}
       <div className="noise-bg" />
 
       {/* ── HEADER ───────────────────────────────── */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 xl:px-20 h-[72px] bg-white/70 backdrop-blur-md border-b border-slate-200">
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 xl:px-20 h-[72px] bg-slate-50/70 backdrop-blur-md border-b border-slate-200">
 
         <Link href="/" className="hover-trigger flex items-center gap-3 group">
           <div className="w-8 h-8 flex items-center justify-center shrink-0 border border-slate-300 group-hover:border-white transition-colors duration-300">
-            <span className="font-heading font-black text-slate-900 text-xs">NM</span>
+            <span className="font-heading font-black text-slate-800 text-xs">NM</span>
           </div>
           <div className="flex flex-col">
-            <span className="font-heading font-bold text-base tracking-tight text-slate-900 group-hover:text-slate-700 transition-colors duration-300 leading-none">NovaMac</span>
+            <span className="font-heading font-bold text-base tracking-tight text-slate-800 group-hover:text-slate-700 transition-colors duration-300 leading-none">NovaMac</span>
             <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest leading-none mt-1 group-hover:text-slate-600 transition-colors">solutions</span>
           </div>
         </Link>
@@ -31,7 +31,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
             <Link key={link.href} href={link.href}
               className="hover-trigger hover:text-blue-600 transition-colors duration-300 relative group">
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-slate-50 group-hover:w-full transition-all duration-300" />
             </Link>
           ))}
         </nav>
@@ -39,7 +39,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
         <div className="flex items-center gap-4">
 
           <Link href="/contact"
-            className="hover-trigger inline-flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest px-5 py-2.5 bg-blue-600 text-slate-900 hover:bg-gray-200 transition-all duration-300">
+            className="hover-trigger inline-flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest px-5 py-2.5 bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300">
             Start Project
           </Link>
         </div>
@@ -48,14 +48,14 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
       <main className="flex-1 flex flex-col">{children}</main>
 
       {/* ── FOOTER ───────────────────────────────── */}
-      <footer className="bg-white border-t border-slate-200">
+      <footer className="bg-slate-50 border-t border-slate-200">
         <div className="px-6 md:px-12 xl:px-20 pt-20 pb-10 max-w-[1400px] mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
 
             <div className="col-span-2">
               <Link href="/" className="hover-trigger flex items-center gap-3 mb-6 group">
                 <div className="w-9 h-9 flex items-center justify-center border border-slate-300 group-hover:border-white transition-colors">
-                  <span className="font-heading font-black text-slate-900 text-sm">NM</span>
+                  <span className="font-heading font-black text-slate-800 text-sm">NM</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="font-heading font-bold text-lg tracking-tight group-hover:text-slate-700 transition-colors leading-none">NovaMac</span>
@@ -101,7 +101,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
               © {new Date().getFullYear()} NovaMac Technologies Inc.
             </p>
             <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              <div className="w-1.5 h-1.5 rounded-full bg-slate-50 animate-pulse" />
               <p className="text-[10px] font-mono text-gray-600 uppercase tracking-wider">Accepting new projects</p>
             </div>
           </div>
