@@ -213,7 +213,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="bg-slate-100 text-[#f0f0f5] overflow-x-hidden">
+    <main className="bg-slate-100 text-slate-800 overflow-x-hidden">
       <JsonLd data={localBusinessSchema} />
       <JsonLd data={faqSchema} />
       <JsonLd data={listicleSchema} />

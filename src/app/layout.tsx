@@ -55,15 +55,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased dark`}
+      className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col font-sans">
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem={false}
-          forcedTheme="dark"
+          forcedTheme="light"
           disableTransitionOnChange
         >
           <JsonLd data={orgSchema} />
