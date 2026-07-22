@@ -22,7 +22,7 @@ export function CookieConsent() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-6 md:right-auto md:w-96 p-6 rounded-2xl border border-border shadow-2xl glass-card z-[100] flex flex-col gap-4 animate-in slide-in-from-bottom-5">
+    <div className="fixed bottom-4 left-4 right-4 md:left-6 md:right-auto md:w-[400px] p-6 rounded-2xl border border-white/10 shadow-2xl bg-[#0a0a0c] z-[100] flex flex-col gap-4 animate-in slide-in-from-bottom-5">
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3 text-brand">
           <Cookie className="w-6 h-6" />

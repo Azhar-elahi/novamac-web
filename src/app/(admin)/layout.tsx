@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, Package, LifeBuoy, LogOut, ShieldAlert, Briefcase, FileText } from "lucide-react";
+import { LayoutDashboard, Users, Package, LifeBuoy, LogOut, ShieldAlert, Briefcase, FileText, Mail, BarChart } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { cn } from "@/lib/utils";
 
 const adminNavItems = [
   { name: "Dashboard", href: "/7222-@dm1nl0g1n", icon: LayoutDashboard },
+  { name: "Web Intel", href: "/7222-@dm1nl0g1n/intel", icon: BarChart },
+  { name: "Messages", href: "/7222-@dm1nl0g1n/messages", icon: Mail },
   { name: "Orders", href: "/7222-@dm1nl0g1n/orders", icon: Package },
   { name: "Clients", href: "/7222-@dm1nl0g1n/clients", icon: Users },
   { name: "Tickets", href: "/7222-@dm1nl0g1n/tickets", icon: LifeBuoy },

@@ -47,6 +47,8 @@ function WordReveal({ text, className = "", delay = 0 }: { text: string; classNa
   );
 }
 
+import { submitContactForm } from "@/app/actions/contact";
+
 const FAQS = [
   { q: "Do you build custom websites or use templates?", a: "We only provide custom solutions built from scratch to meet your specific goals. No generic templates." },
   { q: "How long does a typical project take?", a: "A marketing site takes 4–6 weeks. A complex web application or e-commerce platform typically takes 8–16 weeks. We will give you a precise timeline during our discovery call, and we stick to it." },
@@ -58,12 +60,7 @@ const FAQS = [
 export default function ContactPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
   const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-  };
+  const [error, setError] = useState<string | null>(null);
 
   return (
     <main className="bg-black text-white min-h-screen overflow-x-hidden">
@@ -169,40 +166,59 @@ export default function ContactPage() {
 
           {/* Form */}
           <BlurReveal delay={0.15}>
-            <form onSubmit={handleSubmit} className="border border-white/10 bg-black p-8 md:p-10 space-y-6">
+            <form action={async (formData) => {
+              const res = await submitContactForm(formData);
+              if (res.error) {
+                setError(res.error);
+                setSubmitted(false);
+              } else {
+                setError(null);
+                setSubmitted(true);
+                setTimeout(() => setSubmitted(false), 5000);
+              }
+            }} className="border border-white/10 bg-black p-8 md:p-10 space-y-6 relative">
               <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-8">/ Request a Proposal</p>
 
+              {error && (
+                <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-4 text-sm rounded-md mb-6">
+                  {error}
+                </div>
+              )}
+
               <div className="grid grid-cols-2 gap-5">
-                {["First Name", "Last Name"].map((label, i) => (
-                  <div key={i}>
-                    <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">{label}</label>
-                    <input type="text" placeholder={label === "First Name" ? "John" : "Doe"} required
-                      className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
-                  </div>
-                ))}
+                <div>
+                  <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">First Name</label>
+                  <input type="text" name="firstName" placeholder="John" required
+                    className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
+                </div>
+                <div>
+                  <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Last Name</label>
+                  <input type="text" name="lastName" placeholder="Doe" required
+                    className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
+                </div>
               </div>
 
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Email Address</label>
-                <input type="email" placeholder="john@company.com" required
+                <input type="email" name="email" placeholder="john@company.com" required
                   className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
               </div>
 
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Service Needed</label>
-                <select className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300">
+                <select name="service" className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300">
                   <option value="">Select a service...</option>
-                  <option>Web Development</option>
-                  <option>E-Commerce</option>
-                  <option>AI Automation</option>
-                  <option>Performance Marketing</option>
-                  <option>Other</option>
+                  <option value="Web Development">Web Development</option>
+                  <option value="E-Commerce">E-Commerce</option>
+                  <option value="AI Automation">AI Automation</option>
+                  <option value="Performance Marketing">Performance Marketing</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Project Details</label>
-                <textarea rows={5} placeholder="Tell us about your project, timeline, and budget..." required
+                <textarea name="message" rows={5} placeholder="Tell us about your project, timeline, and budget..." required
                   className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300 resize-none" />
               </div>
 

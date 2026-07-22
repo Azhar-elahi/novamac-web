@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/shared/theme-provider";
 import { CookieConsent } from "@/components/compliance/CookieConsent";
 import CustomCursor from "@/components/ui/CustomCursor";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { AnalyticsTracker } from "@/components/seo/AnalyticsTracker";
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
@@ -66,6 +67,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <JsonLd data={orgSchema} />
+          <AnalyticsTracker />
           <CustomCursor />
           {children}
           <CookieConsent />

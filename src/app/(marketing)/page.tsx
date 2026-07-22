@@ -226,13 +226,13 @@ export default function HomePage() {
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-gray-400">Digital Solutions Agency</span>
           </motion.div>
 
-          <h1 className="font-heading font-black leading-[0.82] tracking-[-0.03em] text-[clamp(2.5rem,8vw,8rem)] mb-12">
+          <h1 className="font-heading font-black leading-[0.95] md:leading-[0.85] tracking-[-0.03em] text-[clamp(2.5rem,8vw,8rem)] mb-12">
             {[
               { text: "Digital Growth",  delay: 0.35, cls: "block text-white" },
               { text: "For Modern",   delay: 0.52, cls: "block text-gray-500" },
               { text: "Brands.", delay: 0.69, cls: "block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400" },
             ].map((line, i) => (
-              <div key={i} className="overflow-hidden pb-2">
+              <div key={i} className="overflow-hidden pb-4 md:pb-8 -mb-4 md:-mb-8">
                 <motion.div
                   initial={{ y: "115%", opacity: 0, filter: "blur(22px)" }}
                   animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
