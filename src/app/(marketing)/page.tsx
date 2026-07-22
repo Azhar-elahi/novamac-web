@@ -414,17 +414,17 @@ export default function HomePage() {
       </section>
 
       {/* ══ CTA ══════════════════════════════════ */}
-      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-slate-200 border-t border-slate-200 overflow-hidden">
-        <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.05, 0.08, 0.05] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-blue-600 blur-[150px] pointer-events-none" />
+      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 border-t border-slate-200 overflow-hidden">
+        <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-white blur-[150px] pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-            className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-600 mb-8">/ Let's Connect</motion.p>
+            className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-200 mb-8">/ Let's Connect</motion.p>
 
-          <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-slate-800">
+          <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
             <WordReveal text="Ready to build" /><br />
-            <WordReveal text="something real?" delay={0.1} className="text-slate-600" />
+            <WordReveal text="something real?" delay={0.1} className="text-blue-100" />
           </h2>
 
           <motion.div
@@ -435,12 +435,12 @@ export default function HomePage() {
             className="flex flex-wrap items-center justify-center gap-5 mt-10"
           >
             <MagneticButton>
-              <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-blue-600 text-white font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full transition-all duration-300 hover:scale-105">
+              <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-white text-blue-700 font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full transition-all duration-300 hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)]">
                 Contact Us <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </MagneticButton>
             <MagneticButton>
-              <Link href="/work" className="hover-trigger inline-flex items-center gap-3 border border-slate-300 text-slate-800 font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-slate-50 hover:text-black transition-all duration-300">
+              <Link href="/work" className="hover-trigger inline-flex items-center gap-3 border border-white/30 text-white font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-white/10 transition-all duration-300">
                 View Our Work
               </Link>
             </MagneticButton>

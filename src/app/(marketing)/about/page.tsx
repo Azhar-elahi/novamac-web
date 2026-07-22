@@ -173,20 +173,20 @@ export default function AboutPage() {
 
 
       {/* ══════════ CTA ══════════ */}
-      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-slate-50 border-t border-slate-200 overflow-hidden">
-        <motion.div animate={{ scale: [1, 1.1, 1], opacity: [0.03, 0.06, 0.03] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-purple-400/20 blur-[180px] pointer-events-none" />
+      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 border-t border-slate-200 overflow-hidden">
+        <motion.div animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.4, 0.2] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-white blur-[180px] pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <BlurReveal>
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-8">/ Join Our Roster</p>
-            <h2 className="font-heading font-black text-[clamp(2.8rem,8vw,7.5rem)] leading-[0.85] tracking-[-0.045em] mb-14 text-slate-800">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-200 mb-8">/ Join Our Roster</p>
+            <h2 className="font-heading font-black text-[clamp(2.8rem,8vw,7.5rem)] leading-[0.85] tracking-[-0.045em] mb-14 text-white">
               <WordReveal text="Hire the team" /><br />
-              <WordReveal text="that delivers." delay={0.1} />
+              <WordReveal text="that delivers." delay={0.1} className="text-blue-100" />
             </h2>
             <div className="flex justify-center">
               <Link href="/contact"
-                className="hover-trigger group inline-flex items-center gap-3 bg-blue-600 text-white font-bold text-xs uppercase tracking-widest px-10 py-5 hover:bg-blue-700 transition-all duration-300">
+                className="hover-trigger group inline-flex items-center gap-3 bg-white text-blue-700 font-bold text-xs uppercase tracking-widest px-10 py-5 hover:scale-105 rounded-full transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)]">
                 Contact Us <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

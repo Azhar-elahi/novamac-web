@@ -185,20 +185,20 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
       </section>
 
       {/* ══════════ CTA ══════════ */}
-      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-slate-200 border-t border-slate-200 overflow-hidden">
-        <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.05, 0.08, 0.05] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-purple-500 blur-[150px] pointer-events-none" />
+      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 border-t border-slate-200 overflow-hidden">
+        <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.2, 0.4, 0.2] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-white blur-[150px] pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <BlurReveal>
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-purple-600 mb-8">/ Start Your Project</p>
-            <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-slate-800">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-200 mb-8">/ Start Your Project</p>
+            <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
               <WordReveal text="Have a project" /><br />
-              <WordReveal text="in mind?" delay={0.1} className="text-slate-600" />
+              <WordReveal text="in mind?" delay={0.1} className="text-blue-100" />
             </h2>
             <div className="flex justify-center">
               <Link href="/contact"
-                className="hover-trigger inline-flex items-center gap-3 bg-blue-600 text-white font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-blue-700 transition-all duration-300 hover:scale-105">
+                className="hover-trigger inline-flex items-center gap-3 bg-white text-blue-700 font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full transition-all duration-300 hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)]">
                 Get in Touch
               </Link>
             </div>
