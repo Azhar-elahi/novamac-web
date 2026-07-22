@@ -137,10 +137,10 @@ export default function AboutPage() {
             { n: "UI/UX Design", l: "Premium User Experiences" },
             { n: "Cloud & DevOps", l: "Scalable Infrastructure" },
           ].map((stat, i) => (
-            <BlurReveal key={i} delay={i * 0.1} className="group border border-slate-200 bg-slate-50 p-8 text-left hover:border-blue-400 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-              <p className="font-heading font-bold text-xl md:text-2xl mb-3 text-slate-800">{stat.n}</p>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500">{stat.l}</p>
+            <BlurReveal key={i} delay={i * 0.1} className="group border border-slate-300 bg-white p-10 text-left hover:border-blue-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden rounded-xl">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 transform origin-left scale-x-100 opacity-80" />
+              <p className="font-heading font-black text-2xl md:text-3xl mb-4 text-slate-900 group-hover:text-blue-700 transition-colors">{stat.n}</p>
+              <p className="font-sans text-sm md:text-base font-medium text-slate-600 leading-relaxed">{stat.l}</p>
             </BlurReveal>
           ))}
         </div>
