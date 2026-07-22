@@ -17,7 +17,7 @@ export default async function AdminMessagesPage() {
         </div>
       </div>
 
-      <div className="border border-slate-200 rounded-xl overflow-hidden bg-[#050505]">
+      <div className="border border-slate-200 rounded-xl overflow-hidden bg-white">
         <table className="w-full text-sm text-left">
           <thead className="bg-[#111116] text-slate-600 font-mono text-[10px] uppercase tracking-wider">
             <tr>

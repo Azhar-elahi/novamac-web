@@ -129,7 +129,7 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════ STATS GRID ══════════ */}
-      <section className="py-20 px-6 md:px-12 xl:px-20 bg-[#050505] border-t border-slate-200">
+      <section className="py-20 px-6 md:px-12 xl:px-20 bg-white border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             { n: "2019", l: "Year Founded" },
@@ -157,10 +157,10 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {VALUES.map((val, i) => (
               <ZoomReveal key={i} delay={i * 0.08}
-                className="group border border-slate-200 p-8 md:p-10 bg-[#050505] hover:border-slate-500 transition-all duration-500 overflow-hidden relative"
+                className="group border border-slate-200 p-8 md:p-10 bg-white hover:border-slate-500 transition-all duration-500 overflow-hidden relative"
               >
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-slate-50 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                <div className="w-12 h-12 flex items-center justify-center border border-slate-300 bg-slate-100/50 mb-8 group-hover:bg-slate-50 group-hover:border-white transition-colors duration-300">
+                <div className="w-12 h-12 flex items-center justify-center border border-slate-300 bg-slate-100/50 mb-8 group-hover:bg-slate-50 group-hover:border-blue-600 transition-colors duration-300">
                   <val.icon className="w-5 h-5 text-slate-800 group-hover:text-black transition-colors" />
                 </div>
                 <h3 className="font-heading font-bold text-2xl tracking-tight mb-4 text-slate-800">{val.title}</h3>

@@ -20,7 +20,7 @@ export default function SupportPage() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mt-16">
-          <div className="p-8 border border-slate-200 bg-[#050505] rounded-2xl hover:border-slate-400 transition-colors">
+          <div className="p-8 border border-slate-200 bg-white rounded-2xl hover:border-slate-400 transition-colors">
             <LifeBuoy className="w-8 h-8 text-slate-800 mb-6" />
             <h3 className="text-2xl font-bold mb-3">Client Portal</h3>
             <p className="text-slate-600 font-light mb-8">
@@ -31,7 +31,7 @@ export default function SupportPage() {
             </Link>
           </div>
 
-          <div className="p-8 border border-slate-200 bg-[#050505] rounded-2xl hover:border-slate-400 transition-colors">
+          <div className="p-8 border border-slate-200 bg-white rounded-2xl hover:border-slate-400 transition-colors">
             <MessageSquare className="w-8 h-8 text-slate-800 mb-6" />
             <h3 className="text-2xl font-bold mb-3">General Inquiries</h3>
             <p className="text-slate-600 font-light mb-8">

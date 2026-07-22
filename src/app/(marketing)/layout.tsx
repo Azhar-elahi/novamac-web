@@ -11,7 +11,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 xl:px-20 h-[72px] bg-slate-50/70 backdrop-blur-md border-b border-slate-200">
 
         <Link href="/" className="hover-trigger flex items-center gap-3 group">
-          <div className="w-8 h-8 flex items-center justify-center shrink-0 border border-slate-300 group-hover:border-white transition-colors duration-300">
+          <div className="w-8 h-8 flex items-center justify-center shrink-0 border border-slate-300 group-hover:border-blue-600 transition-colors duration-300">
             <span className="font-heading font-black text-slate-800 text-xs">NM</span>
           </div>
           <div className="flex flex-col">
@@ -54,7 +54,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
 
             <div className="col-span-2">
               <Link href="/" className="hover-trigger flex items-center gap-3 mb-6 group">
-                <div className="w-9 h-9 flex items-center justify-center border border-slate-300 group-hover:border-white transition-colors">
+                <div className="w-9 h-9 flex items-center justify-center border border-slate-300 group-hover:border-blue-600 transition-colors">
                   <span className="font-heading font-black text-slate-800 text-sm">NM</span>
                 </div>
                 <div className="flex flex-col">

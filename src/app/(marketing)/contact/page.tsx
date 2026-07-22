@@ -114,7 +114,7 @@ export default function ContactPage() {
       </section>
 
       {/* ══════════ CONTACT FORM + INFO ══════════ */}
-      <section className="py-24 px-6 md:px-12 xl:px-20 bg-[#050505] border-t border-slate-200">
+      <section className="py-24 px-6 md:px-12 xl:px-20 bg-white border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 items-start">
 
           {/* Contact Info */}
@@ -190,24 +190,24 @@ export default function ContactPage() {
                 <div>
                   <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">First Name</label>
                   <input type="text" name="firstName" placeholder="John" required
-                    className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
+                    className="w-full px-4 py-3.5 bg-white border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all duration-300" />
                 </div>
                 <div>
                   <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Last Name</label>
                   <input type="text" name="lastName" placeholder="Doe" required
-                    className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
+                    className="w-full px-4 py-3.5 bg-white border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all duration-300" />
                 </div>
               </div>
 
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Email Address</label>
                 <input type="email" name="email" placeholder="john@company.com" required
-                  className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
+                  className="w-full px-4 py-3.5 bg-white border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all duration-300" />
               </div>
 
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Service Needed</label>
-                <select name="service" className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-800 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300">
+                <select name="service" className="w-full px-4 py-3.5 bg-white border border-slate-200 text-sm text-slate-800 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all duration-300">
                   <option value="">Select a service...</option>
                   <option value="Web Development">Web Development</option>
                   <option value="E-Commerce">E-Commerce</option>
@@ -220,7 +220,7 @@ export default function ContactPage() {
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Project Details</label>
                 <textarea name="message" rows={5} placeholder="Tell us about your project, timeline, and budget..." required
-                  className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300 resize-none" />
+                  className="w-full px-4 py-3.5 bg-white border border-slate-200 text-sm text-slate-800 placeholder:text-gray-600 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all duration-300 resize-none" />
               </div>
 
               <button type="submit" disabled={submitted}

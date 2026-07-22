@@ -23,21 +23,21 @@ export default async function AdminWebIntelPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="border border-slate-200 bg-[#050505] rounded-xl p-6">
+        <div className="border border-slate-200 bg-white rounded-xl p-6">
           <p className="text-sm font-medium text-slate-600">Total Visits</p>
           <p className="text-3xl font-bold text-slate-800 mt-2">{totalVisits}</p>
         </div>
-        <div className="border border-slate-200 bg-[#050505] rounded-xl p-6">
+        <div className="border border-slate-200 bg-white rounded-xl p-6">
           <p className="text-sm font-medium text-slate-600">Unique Countries</p>
           <p className="text-3xl font-bold text-slate-800 mt-2">{uniqueCountries}</p>
         </div>
-        <div className="border border-slate-200 bg-[#050505] rounded-xl p-6">
+        <div className="border border-slate-200 bg-white rounded-xl p-6">
           <p className="text-sm font-medium text-slate-600">Service Page Views</p>
           <p className="text-3xl font-bold text-slate-800 mt-2">{serviceInterests.length}</p>
         </div>
       </div>
 
-      <div className="border border-slate-200 rounded-xl overflow-hidden bg-[#050505]">
+      <div className="border border-slate-200 rounded-xl overflow-hidden bg-white">
         <table className="w-full text-sm text-left">
           <thead className="bg-[#111116] text-slate-600 font-mono text-[10px] uppercase tracking-wider">
             <tr>

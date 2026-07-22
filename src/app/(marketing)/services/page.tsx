@@ -201,7 +201,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ══════════ SERVICES GRID ══════════ */}
-      <section className="py-32 px-6 md:px-12 xl:px-20 bg-[#050505] border-t border-slate-200">
+      <section className="py-32 px-6 md:px-12 xl:px-20 bg-white border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto">
           <BlurReveal className="mb-20">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-5">/ What We Offer</p>
@@ -230,7 +230,7 @@ export default function ServicesPage() {
                   {/* Header row */}
                   <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-0">
                     <div className="flex items-center gap-6">
-                      <div className="w-12 h-12 flex items-center justify-center border border-slate-300 bg-slate-100/50 shrink-0 group-hover:bg-slate-50 group-hover:border-white transition-colors duration-300">
+                      <div className="w-12 h-12 flex items-center justify-center border border-slate-300 bg-slate-100/50 shrink-0 group-hover:bg-slate-50 group-hover:border-blue-600 transition-colors duration-300">
                         <s.icon className="w-5 h-5 text-slate-800 group-hover:text-black transition-colors duration-300" />
                       </div>
                       <div>
@@ -297,7 +297,7 @@ export default function ServicesPage() {
               <ZoomReveal key={i} delay={i * 0.1}
                 className={`relative flex flex-col border p-8 md:p-10 overflow-hidden transition-all duration-500 ${
                   e.highlighted
-                    ? "border-white bg-[#050505]"
+                    ? "border-white bg-white"
                     : "border-slate-200 bg-slate-50 hover:border-slate-400"
                 }`}
               >
@@ -339,7 +339,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ══════════ TECH STACK ══════════ */}
-      <section className="py-24 px-6 md:px-12 xl:px-20 bg-[#050505] border-t border-slate-200">
+      <section className="py-24 px-6 md:px-12 xl:px-20 bg-white border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto">
           <BlurReveal className="text-center mb-16">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-3">Powered By</p>
