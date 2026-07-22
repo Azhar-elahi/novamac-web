@@ -128,17 +128,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══════════ STATS GRID ══════════ */}
+      {/* ══════════ VALUE PROPOSITION GRID ══════════ */}
       <section className="py-20 px-6 md:px-12 xl:px-20 bg-white border-t border-slate-200">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { n: "2019", l: "Year Founded" },
-            { n: "40+", l: "Global Experts" },
-            { n: "0", l: "Failed Deliveries" },
+            { n: "Digital Marketing", l: "360° Social Media, SEO & Ads" },
+            { n: "Web & Mobile", l: "Custom Apps & Portals" },
+            { n: "UI/UX Design", l: "Premium User Experiences" },
+            { n: "Cloud & DevOps", l: "Scalable Infrastructure" },
           ].map((stat, i) => (
-            <BlurReveal key={i} delay={i * 0.1} className="border border-slate-200 bg-slate-50 p-8 text-center hover:border-blue-400 transition-colors">
-              <p className="font-heading font-black text-4xl md:text-5xl mb-2 text-slate-800">{stat.n}</p>
-              <p className="font-mono text-[9px] uppercase tracking-widest text-gray-500">{stat.l}</p>
+            <BlurReveal key={i} delay={i * 0.1} className="group border border-slate-200 bg-slate-50 p-8 text-left hover:border-blue-400 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+              <p className="font-heading font-bold text-xl md:text-2xl mb-3 text-slate-800">{stat.n}</p>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500">{stat.l}</p>
             </BlurReveal>
           ))}
         </div>
