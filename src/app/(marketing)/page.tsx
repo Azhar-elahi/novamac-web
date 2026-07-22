@@ -201,10 +201,22 @@ export default function HomePage() {
     }))
   };
 
+  const listicleSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": SERVICES.map((service, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": service.title,
+      "description": service.desc
+    }))
+  };
+
   return (
     <main className="bg-[#030305] text-[#f0f0f5] overflow-x-hidden">
       <JsonLd data={localBusinessSchema} />
       <JsonLd data={faqSchema} />
+      <JsonLd data={listicleSchema} />
 
       {/* ══ HERO ════════════════════════════════ */}
       <section ref={heroRef} className="relative min-h-screen flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-[#030305]">
