@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Code2, Bot, Target, Paintbrush, ShoppingCart, Cloud, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Code2, Bot, Target, Paintbrush, ShoppingCart, Cloud, CheckCircle2, Smartphone } from "lucide-react";
 import Link from "next/link";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
