@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { CookieConsent } from "@/components/compliance/CookieConsent";
 import CustomCursor from "@/components/ui/CustomCursor";
-
+import { JsonLd } from "@/components/seo/JsonLd";
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
@@ -32,6 +32,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const orgSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NovaMac Solutions",
+    "url": "https://novamacsolutions.com",
+    "logo": "https://novamacsolutions.com/favicon.ico",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-415-480-4281",
+      "contactType": "customer service",
+      "email": "hello@novamacsolutions.com",
+      "availableLanguage": "English"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/novamac-solutions",
+      "https://twitter.com/novamacsolutions"
+    ]
+  };
+
   return (
     <html
       lang="en"
@@ -46,6 +65,7 @@ export default function RootLayout({
           forcedTheme="dark"
           disableTransitionOnChange
         >
+          <JsonLd data={orgSchema} />
           <CustomCursor />
           {children}
           <CookieConsent />

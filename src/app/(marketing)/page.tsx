@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import { ArrowRight, Globe, Target, Bot, ChevronDown, CheckCircle2, Shield, Zap, Users, Code2, Smartphone } from "lucide-react";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -171,8 +172,39 @@ export default function HomePage() {
 
   const [activeService, setActiveService] = useState<number | null>(null);
 
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "NovaMac Solutions",
+    "image": "https://novamacsolutions.com/favicon.ico",
+    "description": "Digital Growth For Modern Brands. Custom Web Development, SEO, Social Media Management, and AI Business Automation.",
+    "url": "https://novamacsolutions.com",
+    "telephone": "+1-415-480-4281",
+    "email": "hello@novamacsolutions.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    },
+    "priceRange": "$$"
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": SERVICES.map(service => ({
+      "@type": "Question",
+      "name": `Does NovaMac Solutions offer ${service.title}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Yes, we offer ${service.title}. ${service.desc} This includes ${service.details.join(", ")}.`
+      }
+    }))
+  };
+
   return (
     <main className="bg-[#030305] text-[#f0f0f5] overflow-x-hidden">
+      <JsonLd data={localBusinessSchema} />
+      <JsonLd data={faqSchema} />
 
       {/* ══ HERO ════════════════════════════════ */}
       <section ref={heroRef} className="relative min-h-screen flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-[#030305]">
