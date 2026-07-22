@@ -112,7 +112,7 @@ const SERVICES = [
   },
   { 
     num: "02", 
-    title: "Social Media Management", 
+    title: "Social Media Marketing", 
     desc: "Strategic content creation and community management to grow your online presence and engage directly with your target audience.", 
     icon: Smartphone,
     details: [
@@ -125,14 +125,14 @@ const SERVICES = [
   },
   { 
     num: "03", 
-    title: "Digital Marketing & SEO", 
-    desc: "Get found online. We help local and growing businesses increase visibility through search engine optimization and targeted ad campaigns.", 
+    title: "360 Marketing & SEO", 
+    desc: "Get found online with a complete 360 marketing approach. We help businesses increase visibility through comprehensive search engine optimization and targeted ad campaigns.", 
     icon: Target,
     details: [
       "Local & On-page SEO",
       "Google & Facebook Ads",
       "Email Marketing Setup",
-      "Conversion Tracking",
+      "Omnichannel Strategies",
       "Audience Targeting"
     ]
   },

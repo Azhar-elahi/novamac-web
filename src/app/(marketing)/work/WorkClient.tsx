@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Shield } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import type { Project } from "@prisma/client";
@@ -167,8 +167,18 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
             </motion.div>
           ))}
           {projects.length === 0 && (
-             <div className="text-center py-20 text-muted-foreground">
-               No recent projects available at the moment. Check back soon!
+             <div className="text-center py-24 border border-white/5 rounded-3xl bg-[#08080c] px-6">
+               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-500/10 mb-6 border border-blue-500/20">
+                 <Shield className="w-8 h-8 text-blue-400" />
+               </div>
+               <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-white">Our Work is Protected Under NDA</h3>
+               <p className="text-gray-400 font-light max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
+                 We engineer premium, proprietary digital solutions for enterprise clients and scaling startups. To respect strict confidentiality agreements (NDAs) and protect our clients' competitive advantage, we do not publicly display our most impactful recent projects.
+               </p>
+               <div className="mt-10 pt-10 border-t border-white/10">
+                 <p className="text-white font-medium mb-3">Want to see our capabilities?</p>
+                 <p className="text-gray-500 text-sm max-w-lg mx-auto">Contact us to schedule a private walkthrough of sanitized case studies and technical architectures relevant to your specific industry.</p>
+               </div>
              </div>
           )}
         </div>

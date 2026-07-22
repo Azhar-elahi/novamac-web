@@ -74,10 +74,10 @@ const SERVICES_DETAILED = [
   {
     num: "02",
     icon: Target,
-    title: "Performance Marketing",
-    short: "Data-driven growth strategies that scale revenue.",
-    desc: "We create marketing campaigns that deliver measurable ROI. By combining technical SEO, paid acquisition, and CRO, we turn your website into a conversion machine.",
-    features: ["Technical SEO", "Paid Acquisition (PPC)", "Conversion Rate Optimization", "Data Analytics", "Content Strategy", "A/B Testing"],
+    title: "360 Performance Marketing",
+    short: "Data-driven omnichannel growth strategies.",
+    desc: "We create holistic 360 marketing campaigns that deliver measurable ROI. By combining technical SEO, paid acquisition, and CRO across all channels, we turn your website into a conversion machine.",
+    features: ["Technical SEO", "Paid Acquisition (PPC)", "Conversion Rate Optimization", "Omnichannel Strategy", "Content Strategy", "A/B Testing"],
   },
   {
     num: "03",
@@ -97,11 +97,11 @@ const SERVICES_DETAILED = [
   },
   {
     num: "05",
-    icon: Paintbrush,
-    title: "UI/UX Design Systems",
-    short: "Award-winning interfaces that users love and clients trust.",
-    desc: "Our design process is grounded in user research and conversion data. We create visually stunning, intuitive interfaces that are as beautiful as they are functional.",
-    features: ["UX research & strategy", "Wireframing & prototyping", "Figma design systems", "Motion & interaction design", "Accessibility (WCAG 2.1)", "Brand identity"],
+    icon: Smartphone,
+    title: "Social Media Marketing",
+    short: "Strategic content that builds tribes and drives sales.",
+    desc: "Our social media strategies go beyond posting. We build comprehensive brand identities and engage directly with your target audience to foster authentic community growth.",
+    features: ["Content Creation", "Community Management", "Influencer Outreach", "Brand Identity", "Monthly Reporting", "Platform Specific Strategies"],
   },
   {
     num: "06",
