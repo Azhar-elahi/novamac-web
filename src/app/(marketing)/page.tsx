@@ -12,11 +12,11 @@ const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 function BlurReveal({ children, delay = 0, className = "", style = {} }: { children: React.ReactNode; delay?: number; className?: string; style?: React.CSSProperties }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40, filter: "blur(18px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 1.1, delay, ease }}
-      className={className}
+      transition={{ duration: 0.8, delay, ease }}
+      className={className + " will-change-transform"}
       style={style}
     >
       {children}
@@ -45,17 +45,17 @@ function WordReveal({ text, className = "", delay = 0 }: { text: string; classNa
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ staggerChildren: 0.055, delayChildren: delay }}
+      transition={{ staggerChildren: 0.04, delayChildren: delay }}
       className={className}
     >
       {text.split(" ").map((word, i) => (
-        <span key={i} className="overflow-hidden inline-block mr-[0.28em]">
+        <span key={i} className="overflow-hidden inline-block mr-[0.28em] pb-4 -mb-4 pt-4 -mt-4">
           <motion.span
             variants={{
-              hidden: { y: "110%", opacity: 0, filter: "blur(14px)" },
-              visible: { y: "0%", opacity: 1, filter: "blur(0px)", transition: { ease, duration: 1 } },
+              hidden: { y: "110%", opacity: 0 },
+              visible: { y: "0%", opacity: 1, transition: { ease, duration: 0.8 } },
             }}
-            className="inline-block"
+            className="inline-block will-change-transform"
           >
             {word}
           </motion.span>
