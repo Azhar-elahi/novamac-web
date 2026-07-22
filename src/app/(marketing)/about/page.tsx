@@ -79,7 +79,7 @@ export default function AboutPage() {
       <section className="relative min-h-[80vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-slate-50">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.1]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-slate-50 opacity-[0.03] blur-[150px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-blue-400/20 blur-[150px]" />
         </div>
 
         <div className="max-w-[1400px] mx-auto w-full relative z-10">
@@ -136,7 +136,7 @@ export default function AboutPage() {
             { n: "40+", l: "Global Experts" },
             { n: "0", l: "Failed Deliveries" },
           ].map((stat, i) => (
-            <BlurReveal key={i} delay={i * 0.1} className="border border-slate-200 bg-slate-50 p-8 text-center hover:border-slate-400 transition-colors">
+            <BlurReveal key={i} delay={i * 0.1} className="border border-slate-200 bg-slate-50 p-8 text-center hover:border-blue-400 transition-colors">
               <p className="font-heading font-black text-4xl md:text-5xl mb-2 text-slate-800">{stat.n}</p>
               <p className="font-mono text-[9px] uppercase tracking-widest text-gray-500">{stat.l}</p>
             </BlurReveal>
@@ -157,7 +157,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {VALUES.map((val, i) => (
               <ZoomReveal key={i} delay={i * 0.08}
-                className="group border border-slate-200 p-8 md:p-10 bg-white hover:border-slate-500 transition-all duration-500 overflow-hidden relative"
+                className="group border border-slate-200 p-8 md:p-10 bg-white hover:border-purple-400 transition-all duration-500 overflow-hidden relative"
               >
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-slate-50 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 <div className="w-12 h-12 flex items-center justify-center border border-slate-300 bg-slate-100/50 mb-8 group-hover:bg-slate-50 group-hover:border-blue-600 transition-colors duration-300">
@@ -175,7 +175,7 @@ export default function AboutPage() {
       {/* ══════════ CTA ══════════ */}
       <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-slate-50 border-t border-slate-200 overflow-hidden">
         <motion.div animate={{ scale: [1, 1.1, 1], opacity: [0.03, 0.06, 0.03] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-slate-50 blur-[180px] pointer-events-none" />
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-purple-400/20 blur-[180px] pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <BlurReveal>

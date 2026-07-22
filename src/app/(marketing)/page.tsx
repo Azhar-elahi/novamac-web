@@ -222,8 +222,8 @@ export default function HomePage() {
       <section ref={heroRef} className="relative min-h-screen flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-slate-100">
         <motion.div className="absolute inset-0 pointer-events-none" style={{ scale: smoothBS }}>
           {/* Subtle Colored Background Glows */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/25 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/25 rounded-full blur-[120px] pointer-events-none" />
           <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
         </motion.div>
 
@@ -328,7 +328,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-5">
             {SERVICES.map((s, i) => (
               <ZoomReveal key={i} delay={i * 0.08}
-                className="group relative border border-slate-200 bg-[#eaedf2] overflow-hidden transition-all duration-500 hover:border-slate-400 rounded-2xl"
+                className="group relative border border-slate-200 bg-[#eaedf2] overflow-hidden transition-all duration-500 hover:border-blue-400 rounded-2xl"
               >
                 <div 
                   className="relative z-10 p-8 md:p-10 cursor-pointer h-full flex flex-col"
@@ -386,7 +386,7 @@ export default function HomePage() {
       {/* ══ WHY CHOOSE US ════════════════════════ */}
       <section className="py-32 px-6 md:px-12 xl:px-20 border-t border-slate-200 relative overflow-hidden">
         {/* Subtle Background Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-purple-600/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-purple-500/20 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="max-w-[1400px] mx-auto relative z-10">
           <BlurReveal className="mb-16 text-center">
@@ -400,7 +400,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {WHY_US.map((item, i) => (
               <ZoomReveal key={i} delay={i * 0.1}
-                className="group p-8 md:p-10 border border-slate-200 bg-slate-50/60 backdrop-blur-sm rounded-2xl hover:border-slate-400 hover:bg-slate-100/50 transition-colors"
+                className="group p-8 md:p-10 border border-slate-200 bg-slate-50/60 backdrop-blur-sm rounded-2xl hover:border-blue-400 hover:bg-slate-100/50 transition-colors"
               >
                 <div className="w-12 h-12 flex items-center justify-center border border-slate-200 bg-slate-100/50 rounded-xl mb-8 group-hover:bg-purple-500/20 group-hover:text-purple-600 group-hover:border-purple-500/30 transition-colors duration-300">
                   <item.icon className="w-5 h-5 text-slate-600 group-hover:text-purple-600 transition-colors" />

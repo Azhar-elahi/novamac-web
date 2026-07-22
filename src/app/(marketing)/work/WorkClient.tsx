@@ -59,7 +59,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
       <section className="relative min-h-[60vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-slate-100">
         <div className="absolute inset-0 pointer-events-none">
           {/* Subtle colored glow */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100 rounded-full blur-[150px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-400/25 rounded-full blur-[150px] pointer-events-none" />
           <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
         </div>
 

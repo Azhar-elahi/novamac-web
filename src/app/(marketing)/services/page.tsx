@@ -151,7 +151,7 @@ export default function ServicesPage() {
         {/* Background glows */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.1]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-slate-50 opacity-[0.03] blur-[150px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-blue-400/20 blur-[150px]" />
         </div>
 
         <div className="max-w-[1400px] mx-auto w-full relative z-10">
@@ -221,7 +221,7 @@ export default function ServicesPage() {
                 transition={{ delay: i * 0.07, duration: 1, ease }}
                 onMouseEnter={() => setActiveService(i)}
                 onMouseLeave={() => setActiveService(null)}
-                className="hover-trigger group border border-slate-200 hover:border-slate-500 bg-slate-50 overflow-hidden transition-all duration-500 cursor-pointer"
+                className="hover-trigger group border border-slate-200 hover:border-purple-400 bg-slate-50 overflow-hidden transition-all duration-500 cursor-pointer"
               >
                 {/* Top line on hover */}
                 <div className="h-[1px] bg-slate-50 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
@@ -298,7 +298,7 @@ export default function ServicesPage() {
                 className={`relative flex flex-col border p-8 md:p-10 overflow-hidden transition-all duration-500 ${
                   e.highlighted
                     ? "border-white bg-white"
-                    : "border-slate-200 bg-slate-50 hover:border-slate-400"
+                    : "border-slate-200 bg-slate-50 hover:border-blue-400"
                 }`}
               >
                 {e.highlighted && (
@@ -368,7 +368,7 @@ export default function ServicesPage() {
         <motion.div
           animate={{ scale: [1, 1.1, 1], opacity: [0.03, 0.06, 0.03] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-slate-50 blur-[180px] pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-purple-400/20 blur-[180px] pointer-events-none"
         />
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <BlurReveal>
