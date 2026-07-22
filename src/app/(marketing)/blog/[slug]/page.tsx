@@ -81,7 +81,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-[#030305] text-[#f0f0f5]">
+    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-[#fafafc] text-[#f0f0f5]">
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
       <article className="max-w-3xl mx-auto">
@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </header>
 
         {post.coverImage && (
-          <div className="aspect-[16/9] w-full rounded-2xl overflow-hidden bg-secondary/50 mb-14 border border-white/10">
+          <div className="aspect-[16/9] w-full rounded-2xl overflow-hidden bg-secondary/50 mb-14 border border-slate-200">
             <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover" />
           </div>
         )}

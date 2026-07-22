@@ -23,7 +23,7 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
       <button
         onClick={() => setIsOpen(true)}
         className={cn(
-          "fixed bottom-6 right-6 p-4 rounded-full shadow-xl shadow-brand/20 text-white transition-all hover:scale-110 z-50",
+          "fixed bottom-6 right-6 p-4 rounded-full shadow-xl shadow-brand/20 text-slate-900 transition-all hover:scale-110 z-50",
           isOpen ? "scale-0 opacity-0 pointer-events-none" : "scale-100 opacity-100",
           isPortal ? "bg-primary" : "bg-brand"
         )}
@@ -33,11 +33,11 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
 
       <div
         className={cn(
-          "fixed bottom-6 right-6 w-[350px] sm:w-[400px] h-[500px] max-h-[80vh] flex flex-col rounded-2xl border border-white/10 shadow-2xl bg-[#0a0a0c] transition-all origin-bottom-right z-50 overflow-hidden",
+          "fixed bottom-6 right-6 w-[350px] sm:w-[400px] h-[500px] max-h-[80vh] flex flex-col rounded-2xl border border-slate-200 shadow-2xl bg-white transition-all origin-bottom-right z-50 overflow-hidden",
           isOpen ? "scale-100 opacity-100" : "scale-50 opacity-0 pointer-events-none"
         )}
       >
-        <div className="flex items-center justify-between p-4 border-b border-white/10 bg-[#111116]">
+        <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-[#111116]">
           <div>
             <h3 className="font-heading font-semibold">
               {isPortal ? "NovaMac Support Agent" : "NovaMac Guide"}
@@ -61,7 +61,7 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
             <div key={m.id} className={cn("flex w-full", m.role === 'user' ? "justify-end" : "justify-start")}>
               <div className={cn(
                 "max-w-[80%] rounded-2xl px-4 py-2 text-sm",
-                m.role === 'user' ? "bg-brand text-white rounded-br-none" : "bg-secondary text-foreground rounded-bl-none"
+                m.role === 'user' ? "bg-brand text-slate-900 rounded-br-none" : "bg-secondary text-foreground rounded-bl-none"
               )}>
                 {m.content}
               </div>
@@ -89,7 +89,7 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
           <button 
             type="submit" 
             disabled={!input || isLoading}
-            className="p-2 rounded-full bg-brand text-white disabled:opacity-50 transition-colors"
+            className="p-2 rounded-full bg-brand text-slate-900 disabled:opacity-50 transition-colors"
           >
             <Send className="w-4 h-4 ml-0.5" />
           </button>

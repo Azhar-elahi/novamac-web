@@ -64,10 +64,10 @@ export default function ContactPage() {
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <main className="bg-black text-white min-h-screen overflow-x-hidden">
+    <main className="bg-white text-slate-900 min-h-screen overflow-x-hidden">
 
       {/* ══════════ HERO ══════════ */}
-      <section className="relative min-h-[70vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-black">
+      <section className="relative min-h-[70vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-white">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.1]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-white opacity-[0.03] blur-[150px]" />
@@ -78,15 +78,15 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.2, duration: 0.9, ease }}
-            className="inline-flex items-center gap-3 mb-10 border border-white/20 px-5 py-3 bg-black/50 backdrop-blur-xl"
+            className="inline-flex items-center gap-3 mb-10 border border-slate-300 px-5 py-3 bg-white/70 backdrop-blur-xl"
           >
             <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-gray-400">We reply within 24 hours</span>
+            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">We reply within 24 hours</span>
           </motion.div>
 
           <h1 className="font-heading font-black leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
             {[
-              { text: "Let's", delay: 0.3, cls: "block text-white" },
+              { text: "Let's", delay: 0.3, cls: "block text-slate-900" },
               { text: "Talk.", delay: 0.5, cls: "block text-gray-500" },
             ].map((line, i) => (
               <div key={i} className="overflow-hidden">
@@ -106,7 +106,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.9, ease }}
-            className="text-xl text-gray-400 font-light max-w-xl leading-relaxed border-t border-white/10 pt-10"
+            className="text-xl text-slate-600 font-light max-w-xl leading-relaxed border-t border-slate-200 pt-10"
           >
             Tell us about your project. We will respond with a clear, honest assessment and a path forward — no sales fluff.
           </motion.p>
@@ -114,7 +114,7 @@ export default function ContactPage() {
       </section>
 
       {/* ══════════ CONTACT FORM + INFO ══════════ */}
-      <section className="py-24 px-6 md:px-12 xl:px-20 bg-[#050505] border-t border-white/10">
+      <section className="py-24 px-6 md:px-12 xl:px-20 bg-[#050505] border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 items-start">
 
           {/* Contact Info */}
@@ -127,37 +127,37 @@ export default function ContactPage() {
                   { icon: Phone, label: "Phone", value: "415 480 4281" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-5">
-                    <div className="w-11 h-11 border border-white/20 bg-white/5 flex items-center justify-center shrink-0">
-                      <item.icon className="w-4 h-4 text-white" />
+                    <div className="w-11 h-11 border border-slate-300 bg-slate-100/50 flex items-center justify-center shrink-0">
+                      <item.icon className="w-4 h-4 text-slate-900" />
                     </div>
                     <div>
                       <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-1">{item.label}</p>
-                      <p className="font-medium text-lg text-white">{item.value}</p>
+                      <p className="font-medium text-lg text-slate-900">{item.value}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="border border-white/10 p-8 bg-black hover:border-white/20 transition-colors">
+            <div className="border border-slate-200 p-8 bg-white hover:border-slate-300 transition-colors">
               <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-6">Office Hours</p>
               <div className="space-y-3">
                 {[["Mon – Fri", "9:00 AM – 6:00 PM PST"], ["Sat – Sun", "Emergency support only"]].map(([day, hours], i) => (
                   <div key={i} className="flex items-center justify-between text-sm">
-                    <span className="text-gray-400 font-light">{day}</span>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-white">{hours}</span>
+                    <span className="text-slate-600 font-light">{day}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-slate-900">{hours}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Trust signals */}
-            <div className="border border-white/10 p-8 bg-black hover:border-white/20 transition-colors">
+            <div className="border border-slate-200 p-8 bg-white hover:border-slate-300 transition-colors">
               <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-6">Our Promise</p>
               <div className="space-y-3">
                 {["Response within 24 hours", "Free 30-min discovery call", "No-pressure, honest assessment", "NDA available upon request"].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-sm text-gray-400 font-light">
-                    <CheckCircle2 className="w-4 h-4 text-white shrink-0" />
+                  <div key={i} className="flex items-center gap-3 text-sm text-slate-600 font-light">
+                    <CheckCircle2 className="w-4 h-4 text-slate-900 shrink-0" />
                     {item}
                   </div>
                 ))}
@@ -177,7 +177,7 @@ export default function ContactPage() {
                 setSubmitted(true);
                 setTimeout(() => setSubmitted(false), 5000);
               }
-            }} className="border border-white/10 bg-black p-8 md:p-10 space-y-6 relative">
+            }} className="border border-slate-200 bg-white p-8 md:p-10 space-y-6 relative">
               <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-8">/ Request a Proposal</p>
 
               {error && (
@@ -190,24 +190,24 @@ export default function ContactPage() {
                 <div>
                   <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">First Name</label>
                   <input type="text" name="firstName" placeholder="John" required
-                    className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
+                    className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-900 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
                 </div>
                 <div>
                   <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Last Name</label>
                   <input type="text" name="lastName" placeholder="Doe" required
-                    className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
+                    className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-900 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
                 </div>
               </div>
 
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Email Address</label>
                 <input type="email" name="email" placeholder="john@company.com" required
-                  className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
+                  className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-900 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300" />
               </div>
 
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Service Needed</label>
-                <select name="service" className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300">
+                <select name="service" className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-900 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300">
                   <option value="">Select a service...</option>
                   <option value="Web Development">Web Development</option>
                   <option value="E-Commerce">E-Commerce</option>
@@ -220,11 +220,11 @@ export default function ContactPage() {
               <div>
                 <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500 mb-2">Project Details</label>
                 <textarea name="message" rows={5} placeholder="Tell us about your project, timeline, and budget..." required
-                  className="w-full px-4 py-3.5 bg-[#050505] border border-white/10 text-sm text-white placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300 resize-none" />
+                  className="w-full px-4 py-3.5 bg-[#050505] border border-slate-200 text-sm text-slate-900 placeholder:text-gray-600 focus:border-white focus:ring-1 focus:ring-white outline-none transition-all duration-300 resize-none" />
               </div>
 
               <button type="submit" disabled={submitted}
-                className="hover-trigger w-full py-4 bg-white text-black font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-gray-200 disabled:opacity-70 transition-all duration-300">
+                className="hover-trigger w-full py-4 bg-blue-600 text-slate-900 font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-gray-200 disabled:opacity-70 transition-all duration-300">
                 {submitted ? (
                   <><CheckCircle2 className="w-4 h-4" /> Message Sent!</>
                 ) : (
@@ -237,7 +237,7 @@ export default function ContactPage() {
       </section>
 
       {/* ══════════ FAQ ══════════ */}
-      <section className="py-32 px-6 md:px-12 xl:px-20 bg-black border-t border-white/10">
+      <section className="py-32 px-6 md:px-12 xl:px-20 bg-white border-t border-slate-200">
         <div className="max-w-[900px] mx-auto">
           <BlurReveal className="mb-20">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-5">/ Common Questions</p>
@@ -246,7 +246,7 @@ export default function ContactPage() {
             </h2>
           </BlurReveal>
 
-          <div className="divide-y divide-white/10 border-t border-white/10">
+          <div className="divide-y divide-white/10 border-t border-slate-200">
             {FAQS.map((faq, i) => (
               <motion.div
                 key={i}
@@ -259,13 +259,13 @@ export default function ContactPage() {
                   onClick={() => setActiveFaq(activeFaq === i ? null : i)}
                   className="hover-trigger w-full flex items-center justify-between gap-6 py-7 text-left group"
                 >
-                  <span className="font-heading font-bold text-lg md:text-xl tracking-tight text-gray-300 group-hover:text-white transition-colors duration-300">{faq.q}</span>
+                  <span className="font-heading font-bold text-lg md:text-xl tracking-tight text-slate-700 group-hover:text-blue-600 transition-colors duration-300">{faq.q}</span>
                   <motion.div
                     animate={{ rotate: activeFaq === i ? 180 : 0 }}
                     transition={{ duration: 0.35, ease }}
                     className="shrink-0"
                   >
-                    <ChevronDown className="w-5 h-5 text-gray-500 group-hover:text-white transition-colors" />
+                    <ChevronDown className="w-5 h-5 text-gray-500 group-hover:text-blue-600 transition-colors" />
                   </motion.div>
                 </button>
 
@@ -278,7 +278,7 @@ export default function ContactPage() {
                       transition={{ duration: 0.45, ease }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-400 font-light text-base leading-relaxed pb-8">
+                      <p className="text-slate-600 font-light text-base leading-relaxed pb-8">
                         {faq.a}
                       </p>
                     </motion.div>

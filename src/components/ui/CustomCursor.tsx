@@ -53,7 +53,7 @@ export default function CustomCursor() {
   return (
     <>
       <motion.div ref={ringRef}
-        className="fixed top-0 left-0 w-9 h-9 rounded-full border border-white/20 pointer-events-none z-[9999] transition-all duration-300 ease-out hidden md:block"
+        className="fixed top-0 left-0 w-9 h-9 rounded-full border border-slate-300 pointer-events-none z-[9999] transition-all duration-300 ease-out hidden md:block"
         style={{ x: rX, y: rY }} />
       <motion.div
         className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999] hidden md:block bg-white mix-blend-difference"

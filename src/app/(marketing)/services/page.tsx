@@ -144,10 +144,10 @@ export default function ServicesPage() {
   const [activeService, setActiveService] = useState<number | null>(null);
 
   return (
-    <main className="bg-black text-white min-h-screen overflow-x-hidden">
+    <main className="bg-white text-slate-900 min-h-screen overflow-x-hidden">
 
       {/* ══════════ HERO ══════════ */}
-      <section className="relative min-h-[80vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-black">
+      <section className="relative min-h-[80vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-white">
         {/* Background glows */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 opacity-[0.1]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
@@ -159,15 +159,15 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.2, duration: 0.9, ease }}
-            className="inline-flex items-center gap-3 mb-10 border border-white/20 px-5 py-3 bg-black/50 backdrop-blur-xl"
+            className="inline-flex items-center gap-3 mb-10 border border-slate-300 px-5 py-3 bg-white/70 backdrop-blur-xl"
           >
             <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-gray-400">Services &middot; 6 Disciplines</span>
+            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Services &middot; 6 Disciplines</span>
           </motion.div>
 
           <h1 className="font-heading font-black leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
             {[
-              { text: "Premium", delay: 0.3, cls: "block text-white" },
+              { text: "Premium", delay: 0.3, cls: "block text-slate-900" },
               { text: "Services.", delay: 0.5, cls: "block text-gray-500" },
             ].map((line, i) => (
               <div key={i} className="overflow-hidden">
@@ -187,13 +187,13 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.9, ease }}
-            className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 border-t border-white/10 pt-10"
+            className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 border-t border-slate-200 pt-10"
           >
-            <p className="text-lg md:text-xl text-gray-400 font-light max-w-lg leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-600 font-light max-w-lg leading-relaxed">
               From custom web development to automated AI agents — we have the technical skills to bring any vision to life.
             </p>
             <Link href="/contact"
-              className="hover-trigger group shrink-0 inline-flex items-center gap-3 bg-white text-black font-bold text-xs uppercase tracking-widest px-8 py-4 hover:bg-gray-200 transition-all duration-300">
+              className="hover-trigger group shrink-0 inline-flex items-center gap-3 bg-blue-600 text-slate-900 font-bold text-xs uppercase tracking-widest px-8 py-4 hover:bg-gray-200 transition-all duration-300">
               Start a Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -201,7 +201,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ══════════ SERVICES GRID ══════════ */}
-      <section className="py-32 px-6 md:px-12 xl:px-20 bg-[#050505] border-t border-white/10">
+      <section className="py-32 px-6 md:px-12 xl:px-20 bg-[#050505] border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto">
           <BlurReveal className="mb-20">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-5">/ What We Offer</p>
@@ -221,7 +221,7 @@ export default function ServicesPage() {
                 transition={{ delay: i * 0.07, duration: 1, ease }}
                 onMouseEnter={() => setActiveService(i)}
                 onMouseLeave={() => setActiveService(null)}
-                className="hover-trigger group border border-white/10 hover:border-white/40 bg-black overflow-hidden transition-all duration-500 cursor-pointer"
+                className="hover-trigger group border border-slate-200 hover:border-slate-500 bg-white overflow-hidden transition-all duration-500 cursor-pointer"
               >
                 {/* Top line on hover */}
                 <div className="h-[1px] bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
@@ -230,12 +230,12 @@ export default function ServicesPage() {
                   {/* Header row */}
                   <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-0">
                     <div className="flex items-center gap-6">
-                      <div className="w-12 h-12 flex items-center justify-center border border-white/20 bg-white/5 shrink-0 group-hover:bg-white group-hover:border-white transition-colors duration-300">
-                        <s.icon className="w-5 h-5 text-white group-hover:text-black transition-colors duration-300" />
+                      <div className="w-12 h-12 flex items-center justify-center border border-slate-300 bg-slate-100/50 shrink-0 group-hover:bg-white group-hover:border-white transition-colors duration-300">
+                        <s.icon className="w-5 h-5 text-slate-900 group-hover:text-black transition-colors duration-300" />
                       </div>
                       <div>
                         <span className="font-mono text-[10px] text-gray-600 block mb-1">{s.num}</span>
-                        <h3 className="font-heading font-black text-2xl md:text-3xl tracking-tight text-gray-300 group-hover:text-white transition-colors duration-300">
+                        <h3 className="font-heading font-black text-2xl md:text-3xl tracking-tight text-slate-700 group-hover:text-blue-600 transition-colors duration-300">
                           {s.title}
                         </h3>
                       </div>
@@ -246,7 +246,7 @@ export default function ServicesPage() {
                       transition={{ duration: 0.3 }}
                       className="shrink-0 hidden md:block"
                     >
-                      <ArrowRight className="w-5 h-5 text-gray-600 group-hover:text-white transition-colors" />
+                      <ArrowRight className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" />
                     </motion.div>
                   </div>
 
@@ -260,12 +260,12 @@ export default function ServicesPage() {
                     transition={{ duration: 0.5, ease }}
                     className="overflow-hidden"
                   >
-                    <div className="pt-8 mt-8 border-t border-white/10 grid md:grid-cols-2 gap-8">
-                      <p className="text-gray-400 font-light leading-relaxed text-base">{s.desc}</p>
+                    <div className="pt-8 mt-8 border-t border-slate-200 grid md:grid-cols-2 gap-8">
+                      <p className="text-slate-600 font-light leading-relaxed text-base">{s.desc}</p>
                       <div className="grid grid-cols-2 gap-3">
                         {s.features.map((f, j) => (
-                          <div key={j} className="flex items-center gap-2 text-xs font-mono text-gray-300">
-                            <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-white" />
+                          <div key={j} className="flex items-center gap-2 text-xs font-mono text-slate-700">
+                            <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-slate-900" />
                             {f}
                           </div>
                         ))}
@@ -280,14 +280,14 @@ export default function ServicesPage() {
       </section>
 
       {/* ══════════ ENGAGEMENT MODELS ══════════ */}
-      <section className="py-32 px-6 md:px-12 xl:px-20 bg-black border-t border-white/10">
+      <section className="py-32 px-6 md:px-12 xl:px-20 bg-white border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto">
           <BlurReveal className="mb-20 text-center">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-5">/ Engagement Models</p>
             <h2 className="font-heading font-black text-[clamp(2rem,5vw,4.5rem)] leading-[0.88] tracking-[-0.04em]">
               <WordReveal text="How we partner." />
             </h2>
-            <p className="text-lg text-gray-400 font-light mt-6 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-slate-600 font-light mt-6 max-w-2xl mx-auto leading-relaxed">
               Flexible engagement models designed to fit your budget, timeline, and team structure.
             </p>
           </BlurReveal>
@@ -298,7 +298,7 @@ export default function ServicesPage() {
                 className={`relative flex flex-col border p-8 md:p-10 overflow-hidden transition-all duration-500 ${
                   e.highlighted
                     ? "border-white bg-[#050505]"
-                    : "border-white/10 bg-black hover:border-white/30"
+                    : "border-slate-200 bg-white hover:border-slate-400"
                 }`}
               >
                 {e.highlighted && (
@@ -311,7 +311,7 @@ export default function ServicesPage() {
                     {e.tag}
                   </div>
                   <h3 className="font-heading font-black text-2xl md:text-3xl tracking-tight mb-4">{e.type}</h3>
-                  <p className="text-sm text-gray-400 font-light leading-relaxed">{e.desc}</p>
+                  <p className="text-sm text-slate-600 font-light leading-relaxed">{e.desc}</p>
                 </div>
 
                 <ul className="space-y-3 mb-10 flex-1">
@@ -323,7 +323,7 @@ export default function ServicesPage() {
                   ))}
                 </ul>
 
-                <div className="border-t border-white/10 pt-6 flex items-center justify-between">
+                <div className="border-t border-slate-200 pt-6 flex items-center justify-between">
                   <span className="font-mono text-xs uppercase tracking-widest" style={{ color: e.highlighted ? "#ffffff" : "#888888" }}>
                     {e.cta}
                   </span>
@@ -339,7 +339,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ══════════ TECH STACK ══════════ */}
-      <section className="py-24 px-6 md:px-12 xl:px-20 bg-[#050505] border-t border-white/10">
+      <section className="py-24 px-6 md:px-12 xl:px-20 bg-[#050505] border-t border-slate-200">
         <div className="max-w-[1400px] mx-auto">
           <BlurReveal className="text-center mb-16">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 mb-3">Powered By</p>
@@ -364,7 +364,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ══════════ CTA ══════════ */}
-      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-black border-t border-white/10 overflow-hidden">
+      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-white border-t border-slate-200 overflow-hidden">
         <motion.div
           animate={{ scale: [1, 1.1, 1], opacity: [0.03, 0.06, 0.03] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -380,11 +380,11 @@ export default function ServicesPage() {
             </h2>
             <div className="flex flex-wrap items-center justify-center gap-5">
               <Link href="/contact"
-                className="hover-trigger group inline-flex items-center gap-3 bg-white text-black font-bold text-xs uppercase tracking-widest px-10 py-5 hover:bg-gray-200 transition-all duration-300">
+                className="hover-trigger group inline-flex items-center gap-3 bg-blue-600 text-slate-900 font-bold text-xs uppercase tracking-widest px-10 py-5 hover:bg-gray-200 transition-all duration-300">
                 Start a Project <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link href="/work"
-                className="hover-trigger inline-flex items-center gap-3 border border-white/20 text-white font-bold text-xs uppercase tracking-widest px-10 py-5 hover:border-white hover:bg-white/5 transition-all duration-300">
+                className="hover-trigger inline-flex items-center gap-3 border border-slate-300 text-slate-900 font-bold text-xs uppercase tracking-widest px-10 py-5 hover:border-white hover:bg-slate-100/50 transition-all duration-300">
                 See Our Work
               </Link>
             </div>

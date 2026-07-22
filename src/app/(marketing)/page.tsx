@@ -213,13 +213,13 @@ export default function HomePage() {
   };
 
   return (
-    <main className="bg-[#030305] text-[#f0f0f5] overflow-x-hidden">
+    <main className="bg-[#fafafc] text-[#f0f0f5] overflow-x-hidden">
       <JsonLd data={localBusinessSchema} />
       <JsonLd data={faqSchema} />
       <JsonLd data={listicleSchema} />
 
       {/* ══ HERO ════════════════════════════════ */}
-      <section ref={heroRef} className="relative min-h-screen flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-[#030305]">
+      <section ref={heroRef} className="relative min-h-screen flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-[#fafafc]">
         <motion.div className="absolute inset-0 pointer-events-none" style={{ scale: smoothBS }}>
           {/* Subtle Colored Background Glows */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
@@ -232,17 +232,17 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.2, duration: 0.9, ease }}
-            className="inline-flex items-center gap-3 mb-10 px-5 py-3 border border-white/10 bg-white/5 backdrop-blur-xl rounded-full"
+            className="inline-flex items-center gap-3 mb-10 px-5 py-3 border border-slate-200 bg-slate-100/50 backdrop-blur-xl rounded-full"
           >
             <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-gray-400">Digital Solutions Agency</span>
+            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Digital Solutions Agency</span>
           </motion.div>
 
           <h1 className="font-heading font-black leading-[0.95] md:leading-[0.85] tracking-[-0.03em] text-[clamp(2.5rem,8vw,8rem)] mb-12">
             {[
-              { text: "Digital Growth",  delay: 0.35, cls: "block text-white" },
+              { text: "Digital Growth",  delay: 0.35, cls: "block text-slate-900" },
               { text: "For Modern",   delay: 0.52, cls: "block text-gray-500" },
-              { text: "Brands.", delay: 0.69, cls: "block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400" },
+              { text: "Brands.", delay: 0.69, cls: "block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" },
             ].map((line, i) => (
               <div key={i} className="overflow-hidden pb-4 md:pb-8 -mb-4 md:-mb-8">
                 <motion.div
@@ -257,12 +257,12 @@ export default function HomePage() {
             ))}
           </h1>
 
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-10 border-t border-white/10 pt-10 mt-8">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-10 border-t border-slate-200 pt-10 mt-8">
             <motion.p
               initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ delay: 0.95, duration: 1, ease }}
-              className="text-lg md:text-xl text-gray-400 font-light max-w-md leading-relaxed"
+              className="text-lg md:text-xl text-slate-600 font-light max-w-md leading-relaxed"
             >
               From custom web applications and mobile apps to bespoke software, we can build whatever your business needs to thrive online. No matter the requirement, we bring your ideas to life.
             </motion.p>
@@ -274,12 +274,12 @@ export default function HomePage() {
               className="flex flex-wrap gap-4"
             >
               <MagneticButton>
-                <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-white text-black font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
+                <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-blue-600 text-slate-900 font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
                   Let's Talk <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </MagneticButton>
               <MagneticButton>
-                <Link href="/services" className="hover-trigger inline-flex items-center gap-3 border border-white/20 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:border-white hover:bg-white/5 transition-all duration-300">
+                <Link href="/services" className="hover-trigger inline-flex items-center gap-3 border border-slate-300 text-slate-900 font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:border-white hover:bg-slate-100/50 transition-all duration-300">
                   Our Services
                 </Link>
               </MagneticButton>
@@ -297,7 +297,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ MARQUEE ══════════════════════════════ */}
-      <div className="overflow-hidden border-y border-white/10 bg-[#06060a] py-6 relative z-10">
+      <div className="overflow-hidden border-y border-slate-200 bg-[#f0f2f5] py-6 relative z-10">
         <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ repeat: Infinity, ease: "linear", duration: 35 }}
           className="flex whitespace-nowrap gap-16">
           {Array.from({ length: 2 }).map((_, i) => (
@@ -314,37 +314,37 @@ export default function HomePage() {
 
       {/* ══ INTERACTIVE SERVICES ═════════════════ */}
       <section className="py-32 px-6 md:px-12 xl:px-20 relative">
-        <div className="absolute inset-0 bg-[#030305]" />
+        <div className="absolute inset-0 bg-[#fafafc]" />
         
         <div className="max-w-[1400px] mx-auto relative z-10">
           <BlurReveal className="mb-20 text-center">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-400 mb-5">/ What We Do</p>
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-600 mb-5">/ What We Do</p>
             <h2 className="font-heading font-black text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
               <WordReveal text="Services designed to" /><br />
-              <WordReveal text="help you succeed." delay={0.1} className="text-gray-400" />
+              <WordReveal text="help you succeed." delay={0.1} className="text-slate-600" />
             </h2>
           </BlurReveal>
 
           <div className="grid md:grid-cols-2 gap-5">
             {SERVICES.map((s, i) => (
               <ZoomReveal key={i} delay={i * 0.08}
-                className="group relative border border-white/10 bg-[#08080c] overflow-hidden transition-all duration-500 hover:border-white/30 rounded-2xl"
+                className="group relative border border-slate-200 bg-[#eaedf2] overflow-hidden transition-all duration-500 hover:border-slate-400 rounded-2xl"
               >
                 <div 
                   className="relative z-10 p-8 md:p-10 cursor-pointer h-full flex flex-col"
                   onClick={() => setActiveService(activeService === i ? null : i)}
                 >
                   <div className="flex items-start justify-between mb-8">
-                    <div className="w-12 h-12 flex items-center justify-center border border-white/10 bg-white/5 rounded-xl group-hover:bg-blue-500/20 group-hover:text-blue-400 group-hover:border-blue-500/30 transition-colors duration-300">
-                      <s.icon className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors duration-300" />
+                    <div className="w-12 h-12 flex items-center justify-center border border-slate-200 bg-slate-100/50 rounded-xl group-hover:bg-blue-600/20 group-hover:text-blue-600 group-hover:border-blue-500/30 transition-colors duration-300">
+                      <s.icon className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors duration-300" />
                     </div>
-                    <span className="font-mono text-xs text-gray-600 bg-white/5 px-3 py-1 rounded-full">{s.num}</span>
+                    <span className="font-mono text-xs text-gray-600 bg-slate-100/50 px-3 py-1 rounded-full">{s.num}</span>
                   </div>
                   
-                  <h3 className="font-heading font-bold text-2xl md:text-3xl tracking-tight mb-4 group-hover:text-white transition-colors">{s.title}</h3>
-                  <p className="text-base text-gray-400 leading-relaxed font-light mb-6">{s.desc}</p>
+                  <h3 className="font-heading font-bold text-2xl md:text-3xl tracking-tight mb-4 group-hover:text-blue-600 transition-colors">{s.title}</h3>
+                  <p className="text-base text-slate-600 leading-relaxed font-light mb-6">{s.desc}</p>
                   
-                  <div className="mt-auto border-t border-white/10 pt-6 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-gray-500 group-hover:text-gray-300 transition-colors">
+                  <div className="mt-auto border-t border-slate-200 pt-6 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-gray-500 group-hover:text-slate-700 transition-colors">
                     <span>{activeService === i ? "Hide Details" : "View Details"}</span>
                     <motion.div animate={{ rotate: activeService === i ? 180 : 0 }}>
                       <ChevronDown className="w-4 h-4" />
@@ -362,13 +362,13 @@ export default function HomePage() {
                       >
                         <div className="pt-6 mt-4 space-y-3">
                           {s.details.map((detail, j) => (
-                            <div key={j} className="flex items-center gap-3 text-sm font-light text-gray-300">
-                              <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
+                            <div key={j} className="flex items-center gap-3 text-sm font-light text-slate-700">
+                              <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
                               {detail}
                             </div>
                           ))}
                           <div className="pt-6">
-                            <Link href="/services" className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-white hover:text-blue-400 transition-colors">
+                            <Link href="/services" className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-slate-900 hover:text-blue-600 transition-colors">
                               Explore More <ArrowRight className="w-3 h-3" />
                             </Link>
                           </div>
@@ -384,29 +384,29 @@ export default function HomePage() {
       </section>
 
       {/* ══ WHY CHOOSE US ════════════════════════ */}
-      <section className="py-32 px-6 md:px-12 xl:px-20 border-t border-white/10 relative overflow-hidden">
+      <section className="py-32 px-6 md:px-12 xl:px-20 border-t border-slate-200 relative overflow-hidden">
         {/* Subtle Background Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-purple-600/5 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="max-w-[1400px] mx-auto relative z-10">
           <BlurReveal className="mb-16 text-center">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-purple-400 mb-5">/ Our Approach</p>
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-purple-600 mb-5">/ Our Approach</p>
             <h2 className="font-heading font-black text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
               <WordReveal text="Why partner" /><br />
-              <WordReveal text="with us." delay={0.1} className="text-gray-400" />
+              <WordReveal text="with us." delay={0.1} className="text-slate-600" />
             </h2>
           </BlurReveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {WHY_US.map((item, i) => (
               <ZoomReveal key={i} delay={i * 0.1}
-                className="group p-8 md:p-10 border border-white/10 bg-black/40 backdrop-blur-sm rounded-2xl hover:border-white/30 hover:bg-white/5 transition-colors"
+                className="group p-8 md:p-10 border border-slate-200 bg-white/60 backdrop-blur-sm rounded-2xl hover:border-slate-400 hover:bg-slate-100/50 transition-colors"
               >
-                <div className="w-12 h-12 flex items-center justify-center border border-white/10 bg-white/5 rounded-xl mb-8 group-hover:bg-purple-500/20 group-hover:text-purple-400 group-hover:border-purple-500/30 transition-colors duration-300">
-                  <item.icon className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors" />
+                <div className="w-12 h-12 flex items-center justify-center border border-slate-200 bg-slate-100/50 rounded-xl mb-8 group-hover:bg-purple-500/20 group-hover:text-purple-600 group-hover:border-purple-500/30 transition-colors duration-300">
+                  <item.icon className="w-5 h-5 text-slate-600 group-hover:text-purple-600 transition-colors" />
                 </div>
-                <h3 className="font-heading font-bold text-xl tracking-tight mb-4 text-white">{item.title}</h3>
-                <p className="text-sm text-gray-400 font-light leading-relaxed">{item.desc}</p>
+                <h3 className="font-heading font-bold text-xl tracking-tight mb-4 text-slate-900">{item.title}</h3>
+                <p className="text-sm text-slate-600 font-light leading-relaxed">{item.desc}</p>
               </ZoomReveal>
             ))}
           </div>
@@ -414,17 +414,17 @@ export default function HomePage() {
       </section>
 
       {/* ══ CTA ══════════════════════════════════ */}
-      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-[#06060a] border-t border-white/10 overflow-hidden">
+      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-[#f0f2f5] border-t border-slate-200 overflow-hidden">
         <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.05, 0.08, 0.05] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-blue-500 blur-[150px] pointer-events-none" />
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-blue-600 blur-[150px] pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-            className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-400 mb-8">/ Let's Connect</motion.p>
+            className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-600 mb-8">/ Let's Connect</motion.p>
 
-          <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
+          <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-slate-900">
             <WordReveal text="Ready to build" /><br />
-            <WordReveal text="something real?" delay={0.1} className="text-gray-400" />
+            <WordReveal text="something real?" delay={0.1} className="text-slate-600" />
           </h2>
 
           <motion.div
@@ -435,12 +435,12 @@ export default function HomePage() {
             className="flex flex-wrap items-center justify-center gap-5 mt-10"
           >
             <MagneticButton>
-              <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-white text-black font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full transition-all duration-300 hover:scale-105">
+              <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-blue-600 text-slate-900 font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full transition-all duration-300 hover:scale-105">
                 Contact Us <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </MagneticButton>
             <MagneticButton>
-              <Link href="/work" className="hover-trigger inline-flex items-center gap-3 border border-white/20 text-white font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-white hover:text-black transition-all duration-300">
+              <Link href="/work" className="hover-trigger inline-flex items-center gap-3 border border-slate-300 text-slate-900 font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-white hover:text-black transition-all duration-300">
                 View Our Work
               </Link>
             </MagneticButton>

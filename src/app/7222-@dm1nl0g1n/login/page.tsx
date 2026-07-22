@@ -33,8 +33,8 @@ export default function SecureLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#030305] px-4">
-      <div className="w-full max-w-md p-8 rounded-2xl glass-card border border-white/10 bg-[#08080c]">
+    <div className="min-h-screen flex items-center justify-center bg-[#fafafc] px-4">
+      <div className="w-full max-w-md p-8 rounded-2xl glass-card border border-slate-200 bg-[#eaedf2]">
         <div className="flex items-center gap-2 font-heading font-bold text-2xl text-red-500 mb-8 justify-center">
           <ShieldAlert className="w-6 h-6" />
           Restricted Area
@@ -44,28 +44,28 @@ export default function SecureLoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-mono text-gray-400 mb-1 uppercase tracking-widest">Identifier</label>
+            <label className="block text-xs font-mono text-slate-600 mb-1 uppercase tracking-widest">Identifier</label>
             <input 
               type="email" 
               required 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/10 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-all text-white font-mono"
+              className="w-full px-4 py-3 rounded-lg bg-white/70 border border-slate-200 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-all text-slate-900 font-mono"
             />
           </div>
           <div>
-            <label className="block text-xs font-mono text-gray-400 mb-1 uppercase tracking-widest">Passcode</label>
+            <label className="block text-xs font-mono text-slate-600 mb-1 uppercase tracking-widest">Passcode</label>
             <input 
               type="password" 
               required 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-black/50 border border-white/10 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-all text-white font-mono"
+              className="w-full px-4 py-3 rounded-lg bg-white/70 border border-slate-200 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-all text-slate-900 font-mono"
             />
           </div>
           <button 
             type="submit" 
-            className="w-full py-4 mt-4 bg-red-500/10 text-red-500 border border-red-500/20 rounded-lg font-bold font-mono tracking-widest uppercase hover:bg-red-500 hover:text-white transition-all"
+            className="w-full py-4 mt-4 bg-red-500/10 text-red-500 border border-red-500/20 rounded-lg font-bold font-mono tracking-widest uppercase hover:bg-red-500 hover:text-slate-900 transition-all"
           >
             Authenticate
           </button>

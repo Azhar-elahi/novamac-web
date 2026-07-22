@@ -8,7 +8,7 @@ export default function NotFound() {
       <p className="text-muted-foreground mb-8 max-w-md mx-auto">
         We couldn't find the page you were looking for. It might have been moved or doesn't exist.
       </p>
-      <Link href="/" className="px-6 py-3 bg-brand text-white rounded-full font-medium transition-colors hover:bg-brand/90">
+      <Link href="/" className="px-6 py-3 bg-brand text-slate-900 rounded-full font-medium transition-colors hover:bg-brand/90">
         Return Home
       </Link>
     </div>

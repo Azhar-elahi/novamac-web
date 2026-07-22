@@ -53,13 +53,13 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
   const [hoveredProj, setHoveredProj] = useState<number | null>(null);
 
   return (
-    <main className="bg-[#030305] text-white min-h-screen overflow-x-hidden">
+    <main className="bg-[#fafafc] text-slate-900 min-h-screen overflow-x-hidden">
 
       {/* ══════════ HERO (Focused on Growth) ══════════ */}
-      <section className="relative min-h-[60vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-[#030305]">
+      <section className="relative min-h-[60vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-[#fafafc]">
         <div className="absolute inset-0 pointer-events-none">
           {/* Subtle colored glow */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100 rounded-full blur-[150px] pointer-events-none" />
           <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
         </div>
 
@@ -68,16 +68,16 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
             initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.2, duration: 0.9 }}
-            className="inline-flex items-center gap-3 mb-10 border border-white/10 px-5 py-3 bg-white/5 backdrop-blur-xl rounded-full"
+            className="inline-flex items-center gap-3 mb-10 border border-slate-200 px-5 py-3 bg-slate-100/50 backdrop-blur-xl rounded-full"
           >
             <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-gray-400">Business Growth & Scalability</span>
+            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Business Growth & Scalability</span>
           </motion.div>
 
           <h1 className="font-heading font-black leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
             {[
-              { text: "We Help", delay: 0.3, cls: "block text-white" },
-              { text: "Businesses Grow.", delay: 0.5, cls: "block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400" },
+              { text: "We Help", delay: 0.3, cls: "block text-slate-900" },
+              { text: "Businesses Grow.", delay: 0.5, cls: "block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" },
             ].map((line, i) => (
               <div key={i} className="overflow-hidden pb-2">
                 <motion.div
@@ -96,7 +96,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.9 }}
-            className="text-lg text-gray-400 font-light max-w-xl leading-relaxed border-t border-white/10 pt-10"
+            className="text-lg text-slate-600 font-light max-w-xl leading-relaxed border-t border-slate-200 pt-10"
           >
             Our ultimate goal isn't just to build beautiful software—it's to deliver tangible results. Whether it's increasing online sales, generating quality leads, or automating workflows, we engineer digital solutions that scale your business to the next level.
           </motion.p>
@@ -120,7 +120,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
               <div className="grid md:grid-cols-[1fr_400px] lg:grid-cols-[1fr_500px] gap-10 md:gap-20 items-center">
                 
                 {/* Image */}
-                <div className="relative aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-2xl bg-[#08080c] border border-white/10 order-2 md:order-1">
+                <div className="relative aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-2xl bg-[#eaedf2] border border-slate-200 order-2 md:order-1">
                   <motion.img 
                     src={proj.img} 
                     alt={proj.title}
@@ -136,30 +136,30 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                   <motion.div
                     animate={{ opacity: hoveredProj === i ? 1 : 0, scale: hoveredProj === i ? 1 : 0.8 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute top-6 right-6 w-14 h-14 rounded-full flex items-center justify-center bg-blue-500 shadow-lg"
+                    className="absolute top-6 right-6 w-14 h-14 rounded-full flex items-center justify-center bg-blue-600 shadow-lg"
                   >
-                    <ArrowUpRight className="w-6 h-6 text-white" />
+                    <ArrowUpRight className="w-6 h-6 text-slate-900" />
                   </motion.div>
                 </div>
 
                 {/* Content */}
                 <div className="order-1 md:order-2 flex flex-col justify-center">
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full">{proj.category}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-blue-600 bg-blue-100 px-3 py-1 rounded-full">{proj.category}</span>
                     <span className="font-mono text-[10px] uppercase tracking-widest text-gray-500">{proj.year}</span>
                   </div>
                   
-                  <h2 className="font-heading font-black text-3xl md:text-5xl tracking-tight mb-6 group-hover:text-blue-400 transition-colors">
+                  <h2 className="font-heading font-black text-3xl md:text-5xl tracking-tight mb-6 group-hover:text-blue-600 transition-colors">
                     {proj.title}
                   </h2>
                   
-                  <p className="text-gray-400 font-light leading-relaxed text-base md:text-lg mb-8">
+                  <p className="text-slate-600 font-light leading-relaxed text-base md:text-lg mb-8">
                     {proj.desc}
                   </p>
                   
-                  <div className="border-t border-white/10 pt-6 mt-auto">
+                  <div className="border-t border-slate-200 pt-6 mt-auto">
                     <p className="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-1">Tech Stack</p>
-                    <p className="font-bold text-white">{proj.tech}</p>
+                    <p className="font-bold text-slate-900">{proj.tech}</p>
                   </div>
                 </div>
 
@@ -167,16 +167,16 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
             </motion.div>
           ))}
           {projects.length === 0 && (
-             <div className="text-center py-24 border border-white/5 rounded-3xl bg-[#08080c] px-6">
-               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-500/10 mb-6 border border-blue-500/20">
-                 <Shield className="w-8 h-8 text-blue-400" />
+             <div className="text-center py-24 border border-slate-100 rounded-3xl bg-[#eaedf2] px-6">
+               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mb-6 border border-blue-200">
+                 <Shield className="w-8 h-8 text-blue-600" />
                </div>
-               <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-white">Our Work is Protected Under NDA</h3>
-               <p className="text-gray-400 font-light max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
+               <h3 className="text-2xl md:text-3xl font-heading font-bold mb-4 text-slate-900">Our Work is Protected Under NDA</h3>
+               <p className="text-slate-600 font-light max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
                  We engineer premium, proprietary digital solutions for enterprise clients and scaling startups. To respect strict confidentiality agreements (NDAs) and protect our clients' competitive advantage, we do not publicly display our most impactful recent projects.
                </p>
-               <div className="mt-10 pt-10 border-t border-white/10">
-                 <p className="text-white font-medium mb-3">Want to see our capabilities?</p>
+               <div className="mt-10 pt-10 border-t border-slate-200">
+                 <p className="text-slate-900 font-medium mb-3">Want to see our capabilities?</p>
                  <p className="text-gray-500 text-sm max-w-lg mx-auto">Contact us to schedule a private walkthrough of sanitized case studies and technical architectures relevant to your specific industry.</p>
                </div>
              </div>
@@ -185,20 +185,20 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
       </section>
 
       {/* ══════════ CTA ══════════ */}
-      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-[#06060a] border-t border-white/10 overflow-hidden">
+      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-[#f0f2f5] border-t border-slate-200 overflow-hidden">
         <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.05, 0.08, 0.05] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-purple-500 blur-[150px] pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <BlurReveal>
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-purple-400 mb-8">/ Start Your Project</p>
-            <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-purple-600 mb-8">/ Start Your Project</p>
+            <h2 className="font-heading font-black text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-slate-900">
               <WordReveal text="Have a project" /><br />
-              <WordReveal text="in mind?" delay={0.1} className="text-gray-400" />
+              <WordReveal text="in mind?" delay={0.1} className="text-slate-600" />
             </h2>
             <div className="flex justify-center">
               <Link href="/contact"
-                className="hover-trigger inline-flex items-center gap-3 bg-white text-black font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-gray-200 transition-all duration-300 hover:scale-105">
+                className="hover-trigger inline-flex items-center gap-3 bg-blue-600 text-slate-900 font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-gray-200 transition-all duration-300 hover:scale-105">
                 Get in Touch
               </Link>
             </div>

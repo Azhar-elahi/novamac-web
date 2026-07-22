@@ -5,7 +5,7 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-[#030305] text-[#f0f0f5]">
+    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-[#fafafc] text-[#f0f0f5]">
       <div className="max-w-3xl mx-auto prose prose-invert prose-lg font-light leading-relaxed">
         <h1 className="text-4xl md:text-5xl font-heading font-black tracking-tight mb-8">Privacy Policy</h1>
         <p className="text-muted-foreground mb-12">Last updated: {new Date().toLocaleDateString()}</p>
