@@ -26,6 +26,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
             { href: "/work",     label: "Work"     },
             { href: "/about",    label: "About"    },
             { href: "/blog",     label: "Blog"     },
+            { href: "/faq",      label: "FAQ"      },
           ].map((link) => (
             <Link key={link.href} href={link.href}
               className="hover-trigger hover:text-white transition-colors duration-300 relative group">
@@ -73,7 +74,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
             {[
               {
                 title: "Company",
-                links: [{ href: "/about", label: "About Us" }, { href: "/blog", label: "Blog" }, { href: "/contact", label: "Contact" }],
+                links: [{ href: "/about", label: "About Us" }, { href: "/blog", label: "Blog" }, { href: "/faq", label: "FAQ" }, { href: "/contact", label: "Contact" }],
               },
               {
                 title: "Services",
