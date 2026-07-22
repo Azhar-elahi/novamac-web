@@ -25,15 +25,6 @@ files.forEach(file => {
     // Font weights
     content = content.replace(/font-black/g, 'font-extrabold');
 
-    // Font sizes (clamps)
-    content = content.replace(/text-\[clamp\(3rem,10vw,10rem\)\]/g, 'text-[clamp(2.5rem,6vw,5.5rem)]');
-    content = content.replace(/text-\[clamp\(2\.5rem,8vw,8rem\)\]/g, 'text-[clamp(2.5rem,6vw,5.5rem)]');
-    content = content.replace(/text-\[clamp\(2\.8rem,8vw,7\.5rem\)\]/g, 'text-[clamp(2.2rem,5vw,4.5rem)]');
-    content = content.replace(/text-\[clamp\(2\.5rem,7vw,7rem\)\]/g, 'text-[clamp(2.2rem,5vw,4.5rem)]');
-    content = content.replace(/text-\[clamp\(2\.5rem,6vw,5\.5rem\)\]/g, 'text-[clamp(2rem,5vw,4rem)]');
-    content = content.replace(/text-\[clamp\(2\.4rem,6vw,5\.5rem\)\]/g, 'text-[clamp(2rem,5vw,4rem)]');
-    content = content.replace(/text-\[clamp\(2rem,5vw,4\.5rem\)\]/g, 'text-[clamp(1.8rem,4vw,3.5rem)]');
-
     // Text colors (gray to slate)
     content = content.replace(/text-gray-500/g, 'text-slate-600');
     content = content.replace(/text-gray-400/g, 'text-slate-500');

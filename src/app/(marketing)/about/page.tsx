@@ -93,7 +93,7 @@ export default function AboutPage() {
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Our Story</span>
           </motion.div>
 
-          <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(2rem,5vw,4rem)] mb-14">
+          <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
             {[
               { text: "Built", delay: 0.3, cls: "block text-slate-800" },
               { text: "For Scale.", delay: 0.5, cls: "block text-slate-600" },
@@ -151,7 +151,7 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto">
           <BlurReveal className="mb-20">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-slate-600 mb-5">/ Core Principles</p>
-            <h2 className="font-heading font-extrabold text-[clamp(2rem,5vw,4rem)] leading-[0.88] tracking-[-0.04em]">
+            <h2 className="font-heading font-extrabold text-[clamp(2.5rem,6vw,5.5rem)] leading-[0.88] tracking-[-0.04em]">
               <WordReveal text="How we operate." />
             </h2>
           </BlurReveal>
@@ -182,7 +182,7 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <BlurReveal>
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-200 mb-8">/ Join Our Roster</p>
-            <h2 className="font-heading font-extrabold text-[clamp(2.2rem,5vw,4.5rem)] leading-[0.85] tracking-[-0.045em] mb-14 text-white">
+            <h2 className="font-heading font-extrabold text-[clamp(2.8rem,8vw,7.5rem)] leading-[0.85] tracking-[-0.045em] mb-14 text-white">
               <WordReveal text="Hire the team" /><br />
               <WordReveal text="that delivers." delay={0.1} className="text-blue-100" />
             </h2>

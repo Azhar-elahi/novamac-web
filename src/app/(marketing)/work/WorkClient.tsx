@@ -74,7 +74,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Business Growth & Scalability</span>
           </motion.div>
 
-          <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(2rem,5vw,4rem)] mb-14">
+          <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
             {[
               { text: "We Help", delay: 0.3, cls: "block text-slate-800" },
               { text: "Businesses Grow.", delay: 0.5, cls: "block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" },
@@ -192,7 +192,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <BlurReveal>
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-200 mb-8">/ Start Your Project</p>
-            <h2 className="font-heading font-extrabold text-[clamp(2.2rem,5vw,4.5rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
+            <h2 className="font-heading font-extrabold text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
               <WordReveal text="Have a project" /><br />
               <WordReveal text="in mind?" delay={0.1} className="text-blue-100" />
             </h2>

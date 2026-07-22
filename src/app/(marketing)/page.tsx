@@ -238,7 +238,7 @@ export default function HomePage() {
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Digital Solutions Agency</span>
           </motion.div>
 
-          <h1 className="font-heading font-extrabold leading-[0.95] md:leading-[0.85] tracking-[-0.03em] text-[clamp(2rem,5vw,4rem)] mb-12">
+          <h1 className="font-heading font-extrabold leading-[0.95] md:leading-[0.85] tracking-[-0.03em] text-[clamp(2.5rem,8vw,8rem)] mb-12">
             {[
               { text: "Digital Growth",  delay: 0.35, cls: "block text-slate-800" },
               { text: "For Modern",   delay: 0.52, cls: "block text-slate-600" },
@@ -319,7 +319,7 @@ export default function HomePage() {
         <div className="max-w-[1400px] mx-auto relative z-10">
           <BlurReveal className="mb-20 text-center">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-600 mb-5">/ What We Do</p>
-            <h2 className="font-heading font-extrabold text-[clamp(2rem,5vw,4rem)] leading-[0.9] tracking-[-0.03em]">
+            <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
               <WordReveal text="Services designed to" /><br />
               <WordReveal text="help you succeed." delay={0.1} className="text-slate-600" />
             </h2>
@@ -391,7 +391,7 @@ export default function HomePage() {
         <div className="max-w-[1400px] mx-auto relative z-10">
           <BlurReveal className="mb-16 text-center">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-purple-600 mb-5">/ Our Approach</p>
-            <h2 className="font-heading font-extrabold text-[clamp(2rem,5vw,4rem)] leading-[0.9] tracking-[-0.03em]">
+            <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
               <WordReveal text="Why partner" /><br />
               <WordReveal text="with us." delay={0.1} className="text-slate-600" />
             </h2>
@@ -422,7 +422,7 @@ export default function HomePage() {
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
             className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-200 mb-8">/ Let's Connect</motion.p>
 
-          <h2 className="font-heading font-extrabold text-[clamp(2.2rem,5vw,4.5rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
+          <h2 className="font-heading font-extrabold text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
             <WordReveal text="Ready to build" /><br />
             <WordReveal text="something real?" delay={0.1} className="text-blue-100" />
           </h2>

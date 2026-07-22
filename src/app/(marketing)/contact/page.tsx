@@ -84,7 +84,7 @@ export default function ContactPage() {
             <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">We reply within 24 hours</span>
           </motion.div>
 
-          <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(2rem,5vw,4rem)] mb-14">
+          <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
             {[
               { text: "Let's", delay: 0.3, cls: "block text-slate-800" },
               { text: "Talk.", delay: 0.5, cls: "block text-slate-600" },
@@ -241,7 +241,7 @@ export default function ContactPage() {
         <div className="max-w-[900px] mx-auto">
           <BlurReveal className="mb-20">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-slate-600 mb-5">/ Common Questions</p>
-            <h2 className="font-heading font-extrabold text-[clamp(1.8rem,4vw,3.5rem)] leading-[0.88] tracking-[-0.04em]">
+            <h2 className="font-heading font-extrabold text-[clamp(2rem,5vw,4.5rem)] leading-[0.88] tracking-[-0.04em]">
               <WordReveal text="Frequently asked." />
             </h2>
           </BlurReveal>
