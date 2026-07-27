@@ -8,12 +8,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const projects = await prisma.project.findMany({ select: { id: true, updatedAt: true } });
   const posts = await prisma.blogPost.findMany({ where: { published: true }, select: { slug: true, updatedAt: true } });
 
-  const projectUrls = projects.map((project) => ({
-    url: `${baseUrl}/work`,
-    lastModified: project.updatedAt,
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
+  // Note: individual project pages don't exist yet (no /work/[slug] route),
+  // so we don't emit one sitemap entry per project — that would just create
+  // duplicate URLs all pointing at /work, which hurts SEO. If/when individual
+  // case-study pages are built, generate their real URLs here instead.
+  void projects;
 
   const blogUrls = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
@@ -65,7 +64,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
-    ...projectUrls,
     ...blogUrls,
   ];
 }

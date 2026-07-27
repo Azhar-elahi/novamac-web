@@ -22,13 +22,13 @@ export default function SupportPage() {
         <div className="grid md:grid-cols-2 gap-6 mt-16">
           <div className="p-8 border border-slate-200 bg-white rounded-2xl hover:border-blue-400 transition-colors">
             <LifeBuoy className="w-8 h-8 text-slate-800 mb-6" />
-            <h3 className="text-2xl font-bold mb-3">Client Portal</h3>
+            <h3 className="text-2xl font-bold mb-3">Existing Clients</h3>
             <p className="text-slate-600 font-light mb-8">
-              If you are an existing client, please log in to your dashboard to submit a high-priority support ticket.
+              If you are an existing client with an active project, please contact your assigned project manager directly, or reach out via email for a high-priority response.
             </p>
-            <Link href="/7222-@dm1nl0g1n/login" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest hover:text-slate-700">
-              Go to Portal <ArrowRight className="w-4 h-4" />
-            </Link>
+            <a href="mailto:hello@novamacsolutions.com" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest hover:text-slate-700">
+              Email Us <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
 
           <div className="p-8 border border-slate-200 bg-white rounded-2xl hover:border-blue-400 transition-colors">

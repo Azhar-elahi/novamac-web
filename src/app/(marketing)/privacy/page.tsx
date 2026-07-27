@@ -37,7 +37,7 @@ export default function PrivacyPage() {
         <p>Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to request access, correction, erasure, restriction, transfer, to object to processing, to portability of data and (where the lawful ground of processing is consent) to withdraw consent.</p>
 
         <h2>6. Contact Us</h2>
-        <p>If you have any questions about this privacy policy or our privacy practices, please contact us at info@novamac.com.</p>
+        <p>If you have any questions about this privacy policy or our privacy practices, please contact us at hello@novamacsolutions.com.</p>
       </div>
     </main>
   );

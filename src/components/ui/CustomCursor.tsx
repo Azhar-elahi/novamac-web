@@ -23,31 +23,48 @@ export default function CustomCursor() {
       dotX.set(e.clientX - 3);
       dotY.set(e.clientY - 3);
     };
+
     const enter = () => {
       if (!ringRef.current) return;
       ringRef.current.style.transform = "scale(2.4)";
       ringRef.current.style.backgroundColor = "white";
       ringRef.current.style.mixBlendMode = "difference";
     };
+
     const leave = () => {
       if (!ringRef.current) return;
       ringRef.current.style.transform = "scale(1)";
       ringRef.current.style.backgroundColor = "transparent";
       ringRef.current.style.mixBlendMode = "normal";
     };
-    window.addEventListener("mousemove", move);
-    const attach = () => {
-      document.querySelectorAll("a, button, [role='button'], .hover-trigger").forEach((el) => {
-        el.removeEventListener("mouseenter", enter);
-        el.removeEventListener("mouseleave", leave);
-        el.addEventListener("mouseenter", enter);
-        el.addEventListener("mouseleave", leave);
-      });
+
+    // Event delegation: attach ONE listener on the window instead of
+    // re-scanning the whole DOM and re-attaching listeners to every
+    // element on every mutation (which was the previous approach and
+    // caused jank on scroll/animation-heavy pages). We use the
+    // capture-phase "pointerover"/"pointerout" events and check
+    // e.target.closest(...) to detect hover-worthy elements.
+    const HOVER_SELECTOR = "a, button, [role='button'], .hover-trigger";
+
+    const onPointerOver = (e: PointerEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target?.closest(HOVER_SELECTOR)) enter();
     };
-    attach();
-    const obs = new MutationObserver(attach);
-    obs.observe(document.body, { childList: true, subtree: true });
-    return () => { window.removeEventListener("mousemove", move); obs.disconnect(); };
+
+    const onPointerOut = (e: PointerEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target?.closest(HOVER_SELECTOR)) leave();
+    };
+
+    window.addEventListener("mousemove", move);
+    document.addEventListener("pointerover", onPointerOver);
+    document.addEventListener("pointerout", onPointerOut);
+
+    return () => {
+      window.removeEventListener("mousemove", move);
+      document.removeEventListener("pointerover", onPointerOver);
+      document.removeEventListener("pointerout", onPointerOut);
+    };
   }, [ringX, ringY, dotX, dotY]);
 
   return (

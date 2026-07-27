@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Shield } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import type { Project } from "@prisma/client";
+
+const MotionImage = motion(Image);
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -121,10 +124,12 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                 
                 {/* Image */}
                 <div className="relative aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-2xl bg-[#eaedf2] border border-slate-200 order-2 md:order-1">
-                  <motion.img 
-                    src={proj.img} 
+                  <MotionImage
+                    src={proj.img}
                     alt={proj.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 500px"
+                    className="object-cover"
                     animate={{
                       scale: hoveredProj === i ? 1.05 : 1,
                       filter: hoveredProj === i ? "brightness(1)" : "brightness(0.6) grayscale(30%)",

@@ -37,9 +37,9 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
           isOpen ? "scale-100 opacity-100" : "scale-50 opacity-0 pointer-events-none"
         )}
       >
-        <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-[#111116]">
+        <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-slate-50">
           <div>
-            <h3 className="font-heading font-semibold">
+            <h3 className="font-heading font-semibold text-slate-800">
               {isPortal ? "NovaMac Support Agent" : "NovaMac Guide"}
             </h3>
             <p className="text-xs text-muted-foreground">

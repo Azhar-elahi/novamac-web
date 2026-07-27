@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -37,7 +38,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     "@type": "Article",
     "headline": post.seoTitle || post.title,
     "description": post.seoDesc || post.excerpt,
-    "image": post.coverImage || "https://novamacsolutions.com/favicon.ico",
+    "image": post.coverImage || "https://novamacsolutions.com/og-image.png",
     "datePublished": post.createdAt.toISOString(),
     "dateModified": post.updatedAt.toISOString(),
     "author": {
@@ -50,7 +51,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       "name": "NovaMac Solutions",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://novamacsolutions.com/favicon.ico"
+        "url": "https://novamacsolutions.com/apple-touch-icon.png"
       }
     }
   };
@@ -106,8 +107,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </header>
 
         {post.coverImage && (
-          <div className="aspect-[16/9] w-full rounded-2xl overflow-hidden bg-secondary/50 mb-14 border border-slate-200">
-            <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover" />
+          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-secondary/50 mb-14 border border-slate-200">
+            <Image src={post.coverImage} alt={post.title} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" priority />
           </div>
         )}
 

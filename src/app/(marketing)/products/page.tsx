@@ -1,4 +1,10 @@
 import { Sparkles } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "NovaMac Engine | Proprietary CRM & Automation Platform",
+  description: "NovaMac Engine is our proprietary CRM and business automation platform, built to streamline client management, AI workflows, and operations.",
+};
 
 export default function ProductsPage() {
   return (

@@ -19,12 +19,36 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "NovaMac — Elite Software Engineering Studio",
+  metadataBase: new URL("https://novamacsolutions.com"),
+  title: {
+    default: "NovaMac — Elite Software Engineering Studio",
+    template: "%s",
+  },
   description: "We design and engineer premium digital products for ambitious brands. Custom web apps, e-commerce, and software solutions.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "NovaMac — Elite Software Engineering Studio",
     description: "We design and engineer premium digital products for ambitious brands.",
     type: "website",
+    siteName: "NovaMac Solutions",
+    url: "https://novamacsolutions.com",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "NovaMac Solutions — Elite Software Engineering Studio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NovaMac — Elite Software Engineering Studio",
+    description: "We design and engineer premium digital products for ambitious brands.",
+    images: ["/og-image.png"],
   },
 };
 
@@ -38,7 +62,7 @@ export default function RootLayout({
     "@type": "Organization",
     "name": "NovaMac Solutions",
     "url": "https://novamacsolutions.com",
-    "logo": "https://novamacsolutions.com/favicon.ico",
+    "logo": "https://novamacsolutions.com/apple-touch-icon.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+1-415-480-4281",
