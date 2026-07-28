@@ -63,11 +63,11 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
                 </div>
               </Link>
               <p className="text-sm text-slate-600 leading-relaxed max-w-xs font-light mb-8">
-                Elite software engineering studio. Premium digital products for brands that refuse to compromise.
+                A software engineering studio building scalable web platforms, e-commerce experiences, and AI-driven automation for growth-focused brands.
               </p>
               <div className="space-y-1">
-                <p className="text-[10px] font-mono text-gray-600 uppercase tracking-wider">hello@novamacsolutions.com</p>
-                <p className="text-[10px] font-mono text-gray-600 uppercase tracking-wider">415 480 4281</p>
+                <a href="mailto:hello@novamacsolutions.com" className="hover-trigger block text-[10px] font-mono text-gray-600 uppercase tracking-wider hover:text-blue-600 transition-colors">hello@novamacsolutions.com</a>
+                <a href="tel:+14154804281" className="hover-trigger block text-[10px] font-mono text-gray-600 uppercase tracking-wider hover:text-blue-600 transition-colors">415 480 4281</a>
               </div>
             </div>
 
@@ -98,7 +98,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
 
           <div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-[10px] font-mono text-gray-600 uppercase tracking-wider">
-              © {new Date().getFullYear()} NovaMac Technologies Inc.
+              © {new Date().getFullYear()} NovaMac Solutions.
             </p>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-slate-50 animate-pulse" />

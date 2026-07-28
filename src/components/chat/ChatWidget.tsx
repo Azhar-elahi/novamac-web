@@ -1,15 +1,83 @@
 "use client";
 
-import { useChat } from "ai/react";
-import { useState, useRef, useEffect } from "react";
+import { useChat } from "@ai-sdk/react";
+import { useState, useRef, useEffect, Fragment } from "react";
 import { MessageSquare, X, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+const QUICK_SUGGESTIONS = [
+  { label: "View Services", text: "What services do you offer?" },
+  { label: "See Pricing", text: "How much do your services cost?" },
+  { label: "Contact Us", text: "How can I get in touch with your team?" },
+];
+
+// Lightweight inline-markdown renderer: handles **bold**, [label](url) links,
+// and auto-links bare email addresses / phone numbers so they're clickable
+// (mailto: / tel:) without pulling in a full markdown library.
+function MessageContent({ text }: { text: string }) {
+  const linkPattern = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|([\w.+-]+@[\w-]+\.[\w.-]+)|(\+?\d[\d\s()-]{8,}\d)/g;
+
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+
+  while ((match = linkPattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(<Fragment key={key++}>{text.slice(lastIndex, match.index)}</Fragment>);
+    }
+
+    if (match[1] && match[2]) {
+      // [label](url)
+      const label = match[1];
+      const url = match[2];
+      const isInternal = url.startsWith("/");
+      nodes.push(
+        <a
+          key={key++}
+          href={url}
+          target={isInternal ? undefined : "_blank"}
+          rel={isInternal ? undefined : "noopener noreferrer"}
+          className="underline font-medium text-brand hover:opacity-80"
+        >
+          {label}
+        </a>
+      );
+    } else if (match[3]) {
+      // **bold**
+      nodes.push(<strong key={key++} className="font-semibold">{match[3]}</strong>);
+    } else if (match[4]) {
+      // bare email
+      nodes.push(
+        <a key={key++} href={`mailto:${match[4]}`} className="underline font-medium text-brand hover:opacity-80">
+          {match[4]}
+        </a>
+      );
+    } else if (match[5]) {
+      // bare phone number
+      const digits = match[5].replace(/[^\d+]/g, "");
+      nodes.push(
+        <a key={key++} href={`tel:${digits}`} className="underline font-medium text-brand hover:opacity-80">
+          {match[5]}
+        </a>
+      );
+    }
+
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(<Fragment key={key++}>{text.slice(lastIndex)}</Fragment>);
+  }
+
+  return <>{nodes}</>;
+}
+
 export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: '/api/chat'
-  });
+  const [input, setInput] = useState("");
+  const { messages, sendMessage, status } = useChat();
+  const isLoading = status === "submitted" || status === "streaming";
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -17,6 +85,18 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
       bottomRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isOpen]);
+
+  const submitText = (text: string) => {
+    const trimmed = text.trim();
+    if (!trimmed || isLoading) return;
+    sendMessage({ text: trimmed });
+    setInput("");
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    submitText(input);
+  };
 
   return (
     <>
@@ -53,17 +133,32 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
 
         <div className="flex-1 overflow-y-auto p-4 space-y-4">
           {messages.length === 0 && (
-            <div className="text-center text-sm text-muted-foreground mt-10">
-              Send a message to start chatting!
+            <div className="space-y-4 mt-6">
+              <div className="text-center text-sm text-muted-foreground">
+                Send a message to start chatting, or pick a quick option:
+              </div>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {QUICK_SUGGESTIONS.map((s) => (
+                  <button
+                    key={s.label}
+                    onClick={() => submitText(s.text)}
+                    className="text-xs font-medium px-3 py-1.5 rounded-full border border-brand/40 text-slate-700 bg-brand/10 hover:bg-brand/20 transition-colors"
+                  >
+                    {s.label}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
           {messages.map((m) => (
             <div key={m.id} className={cn("flex w-full", m.role === 'user' ? "justify-end" : "justify-start")}>
               <div className={cn(
-                "max-w-[80%] rounded-2xl px-4 py-2 text-sm",
+                "max-w-[80%] rounded-2xl px-4 py-2 text-sm whitespace-pre-wrap break-words",
                 m.role === 'user' ? "bg-brand text-slate-800 rounded-br-none" : "bg-secondary text-foreground rounded-bl-none"
               )}>
-                {m.content}
+                {m.parts.map((part, i) =>
+                  part.type === "text" ? <MessageContent key={`${m.id}-${i}`} text={part.text} /> : null
+                )}
               </div>
             </div>
           ))}
@@ -82,13 +177,13 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
         <form onSubmit={handleSubmit} className="p-3 border-t border-border/50 bg-background/50 flex gap-2">
           <input
             value={input}
-            onChange={handleInputChange}
+            onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
             className="flex-1 bg-secondary border border-border rounded-full px-4 py-2 text-sm focus:outline-none focus:border-brand"
           />
-          <button 
-            type="submit" 
-            disabled={!input || isLoading}
+          <button
+            type="submit"
+            disabled={!input.trim() || isLoading}
             className="p-2 rounded-full bg-brand text-slate-800 disabled:opacity-50 transition-colors"
           >
             <Send className="w-4 h-4 ml-0.5" />

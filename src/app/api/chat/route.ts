@@ -1,5 +1,5 @@
 import { createOpenAI } from '@ai-sdk/openai';
-import { streamText } from 'ai';
+import { streamText, convertToModelMessages, type UIMessage } from 'ai';
 import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
 
@@ -41,11 +41,23 @@ export async function POST(req: Request) {
       return new Response(JSON.stringify({ error: "Too many requests. Please wait a moment and try again." }), { status: 429 });
     }
 
-    const { messages } = await req.json();
+    const { messages }: { messages: UIMessage[] } = await req.json();
 
     // Attempt to authenticate the user to provide context
     const session = await auth();
-    let systemPrompt = `You are the NovaMac AI Support Agent. You help users navigate their CRM needs, developer services, and AI automation requests. Be concise, professional, and friendly.`;
+    let systemPrompt = `You are the NovaMac Guide, the AI support agent on the NovaMac Solutions website (novamacsolutions.com).
+
+GROUND TRUTH FACTS about this site — only use these, never invent URLs, domains, buttons, or features that aren't listed here:
+- The website's real domain is novamacsolutions.com (NOT novamac.com, NOT any other domain).
+- Public navigation pages: Home (/), Services (/services), Work (/work), About (/about), Blog (/blog), FAQ (/faq), Pricing (/pricing), Products (/products), Contact (/contact), Support (/support).
+- Services offered: custom web development, e-commerce, AI automation/agents, 360 performance marketing, social media marketing, and cloud/DevOps.
+- There is currently NO public self-service login or signup button on the marketing site for visitors or prospective clients. Client accounts are set up manually by the NovaMac team after a project begins.
+- To start a project or ask a question, direct people to the Contact page (/contact) or the email hello@novamacsolutions.com — do not tell people to "log in" or "click a login button" since none exists publicly.
+- When mentioning the Contact page, phone number, or email, write them as markdown links so they render as clickable: [Contact page](/contact), [hello@novamacsolutions.com](mailto:hello@novamacsolutions.com), [415 480 4281](tel:+14154804281).
+- Keep responses short (2-4 sentences typically). Use **bold** sparingly for key terms only.
+- If you don't know something specific about pricing, timelines, or a feature, say so honestly and point them to the Contact page rather than guessing.
+
+Be concise, professional, and friendly.`;
 
     if (session?.user?.id) {
       // Fetch user's orders and tickets for context injection
@@ -70,7 +82,7 @@ export async function POST(req: Request) {
         systemPrompt += `Support Tickets:\n${tickets.map(t => `- Ticket ${t.id}: ${t.subject} (${t.status})`).join('\n')}\n`;
       }
     } else {
-      systemPrompt += `\n\nThe user is currently browsing the public site and is not logged in. Guide them to our services, products, or the login page.`;
+      systemPrompt += `\n\nThe current visitor is browsing the public site and is not logged in (and there is no public login for them to use — see ground truth facts above). If they want to start a project or need help, direct them to the Contact page (/contact).`;
     }
 
     const apiKey = process.env.OPENROUTER_API_KEY;
@@ -85,13 +97,18 @@ export async function POST(req: Request) {
       apiKey,
     });
 
-    // Call OpenRouter API with a free model
-    const result = await streamText({
-      model: openrouter('google/gemini-2.0-flash-lite-preview-02-05:free') as any,
+    // Switched to NVIDIA Nemotron 3 Nano Omni (free) — a much smaller,
+    // faster model (30B total, only 3B active parameters) than the
+    // previous Nemotron 3 Ultra (550B), which had unacceptably slow
+    // response times (30-40+ seconds) for a live chat widget. This nano
+    // model trades some raw capability for response speed, which matters
+    // more for a support-chat UX than maximum reasoning power.
+    const result = streamText({
+      model: openrouter('nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free'),
       system: systemPrompt,
-      messages,
+      messages: await convertToModelMessages(messages),
     });
-    return result.toDataStreamResponse();
+    return result.toUIMessageStreamResponse();
   } catch (error) {
     console.error("Chat API Error:", error);
     return new Response(JSON.stringify({ error: "Internal Server Error" }), { status: 500 });
