@@ -1,0 +1,326 @@
+export interface ServiceDetail {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  category: string;
+  tagline: string;
+  startingPrice: string;
+  iconName:
+    | "Code2" | "ShoppingCart" | "ShoppingBag" | "Store" | "Layout" | "Bot"
+    | "Database" | "Target" | "Search" | "Smartphone" | "Palette" | "Cloud"
+    | "LifeBuoy" | "Share2";
+  painPoints: { title: string; desc: string }[];
+  included: string[];
+  techStack?: string[];
+}
+
+export const SERVICES: ServiceDetail[] = [
+  {
+    slug: "custom-web-development",
+    title: "Custom Web Development",
+    shortTitle: "Web Development",
+    category: "Development",
+    tagline: "Fast, secure, and built to scale \u2014 no page builders, no shortcuts.",
+    startingPrice: "From $2,500",
+    iconName: "Code2",
+    painPoints: [
+      { title: "Template sites that all look the same", desc: "Off-the-shelf themes cap what your site can do and make your brand blend in with competitors using the same template." },
+      { title: "Slow, bloated pages", desc: "Plugin-heavy builders load megabytes of unused code, hurting both user experience and Google rankings." },
+      { title: "Nobody owns the codebase", desc: "When an agency uses proprietary builders, you're locked in \u2014 you can't take your site anywhere else." },
+    ],
+    included: [
+      "Custom-coded in Next.js/React \u2014 no page builders",
+      "Full ownership of source code, hosted wherever you choose",
+      "Built-in SEO structure, sitemap, and structured data",
+      "Mobile-first, accessible, and Core Web Vitals optimized",
+      "Admin dashboard for content you need to update yourself",
+    ],
+    techStack: ["Next.js", "React", "TypeScript", "PostgreSQL", "Vercel"],
+  },
+  {
+    slug: "ecommerce-development",
+    title: "Custom E-Commerce Development",
+    shortTitle: "E-Commerce",
+    category: "Development",
+    tagline: "Headless storefronts built to convert, not just to exist.",
+    startingPrice: "From $4,000",
+    iconName: "ShoppingCart",
+    painPoints: [
+      { title: "Generic checkout flows", desc: "Stock checkout templates lose customers at the exact moment they're ready to pay." },
+      { title: "Inventory and catalog limits", desc: "Off-the-shelf platforms box you into their data model, making custom product logic painful to build." },
+      { title: "Slow product pages", desc: "Heavy themes and third-party apps stack up load time, directly hurting conversion rate." },
+    ],
+    included: [
+      "Headless architecture for maximum speed and flexibility",
+      "Custom checkout flow optimized for conversion",
+      "Payment gateway integration (Stripe and others)",
+      "Inventory, order, and customer management dashboard",
+      "Analytics and A/B testing built in from day one",
+    ],
+    techStack: ["Next.js", "Stripe", "PostgreSQL", "Shopify Storefront API"],
+  },
+  {
+    slug: "shopify-development",
+    title: "Shopify Store Development",
+    shortTitle: "Shopify Development",
+    category: "Development",
+    tagline: "Custom Shopify themes and apps that don't look like Shopify.",
+    startingPrice: "From $2,000",
+    iconName: "ShoppingBag",
+    painPoints: [
+      { title: "Every store looks the same", desc: "Popular Shopify themes are used by thousands of stores \u2014 yours ends up looking like everyone else's." },
+      { title: "Apps slowing down your store", desc: "Stacking third-party apps for basic features bloats load time and increases monthly costs." },
+      { title: "Limited by theme code", desc: "Standard themes can't always support the exact product experience or layout you want." },
+    ],
+    included: [
+      "Fully custom Shopify theme built from scratch (Liquid + Online Store 2.0)",
+      "Custom app/feature development where existing apps fall short",
+      "Migration from other platforms with zero data loss",
+      "Speed optimization to protect conversion rate",
+      "Ongoing theme support and updates",
+    ],
+    techStack: ["Shopify Liquid", "Shopify Storefront API", "React"],
+  },
+  {
+    slug: "woocommerce-development",
+    title: "WooCommerce Development",
+    shortTitle: "WooCommerce",
+    category: "Development",
+    tagline: "A fully custom WooCommerce build on your own WordPress stack.",
+    startingPrice: "From $1,800",
+    iconName: "Store",
+    painPoints: [
+      { title: "Plugin conflicts breaking your store", desc: "Stacking WooCommerce extensions from different developers often causes conflicts that break checkout or cart." },
+      { title: "Site feels slow under load", desc: "Unoptimized WooCommerce installs struggle as product catalogs and traffic grow." },
+      { title: "Design stuck inside a theme's limits", desc: "Pre-built WooCommerce themes rarely match a specific brand vision without heavy compromise." },
+    ],
+    included: [
+      "Custom WooCommerce theme and checkout design",
+      "Performance tuning (caching, image optimization, database cleanup)",
+      "Custom plugin development for specific business logic",
+      "Secure payment gateway and shipping integrations",
+      "Ongoing WordPress/WooCommerce maintenance available",
+    ],
+    techStack: ["WordPress", "WooCommerce", "PHP", "MySQL"],
+  },
+  {
+    slug: "wordpress-development",
+    title: "WordPress Website Development",
+    shortTitle: "WordPress Development",
+    category: "Development",
+    tagline: "Custom WordPress builds \u2014 fast, secure, and easy for your team to manage.",
+    startingPrice: "From $1,500",
+    iconName: "Layout",
+    painPoints: [
+      { title: "Bloated page-builder plugins", desc: "Drag-and-drop builders add heavy, unused code to every page, hurting speed and SEO." },
+      { title: "Security left unmanaged", desc: "Outdated plugins and themes are the most common way WordPress sites get hacked." },
+      { title: "Hard for your team to edit safely", desc: "Overly complex builder setups make simple content updates risky without breaking layout." },
+    ],
+    included: [
+      "Custom WordPress theme built for your exact design",
+      "Security hardening and update management",
+      "Editor-friendly content structure (no page-builder bloat)",
+      "Performance optimization for Core Web Vitals",
+      "Managed hosting recommendations and setup",
+    ],
+    techStack: ["WordPress", "PHP", "MySQL", "Advanced Custom Fields"],
+  },
+  {
+    slug: "ai-automation",
+    title: "AI Automation & Autonomous Agents",
+    shortTitle: "AI Automation",
+    category: "AI & Automation",
+    tagline: "Custom LLM-powered agents that handle real business workflows.",
+    startingPrice: "From $3,000",
+    iconName: "Bot",
+    painPoints: [
+      { title: "Manual, repetitive processes", desc: "Support replies, data entry, and follow-ups eat hours your team could spend on higher-value work." },
+      { title: "Generic chatbots that don't know your business", desc: "Off-the-shelf chatbot widgets can't access your actual data, orders, or workflows." },
+      { title: "No integration between tools", desc: "Your CRM, inbox, and internal systems don't talk to each other without manual copy-pasting." },
+    ],
+    included: [
+      "Custom LLM integration connected to your real business data",
+      "Automated workflows (support, data processing, follow-ups)",
+      "RAG systems for AI that actually knows your product/docs",
+      "AI chat agents embedded directly in your website or app",
+      "Ongoing prompt tuning as your business needs evolve",
+    ],
+    techStack: ["OpenAI", "Anthropic", "Vercel AI SDK", "PostgreSQL"],
+  },
+  {
+    slug: "crm-business-automation",
+    title: "CRM & Business Automation Systems",
+    shortTitle: "CRM & Automation",
+    category: "AI & Automation",
+    tagline: "One system that replaces your spreadsheets, sticky notes, and text threads.",
+    startingPrice: "From $3,500",
+    iconName: "Database",
+    painPoints: [
+      { title: "Leads and deals tracked in spreadsheets", desc: "Manual tracking means deals fall through the cracks and nobody has a clear picture of the pipeline." },
+      { title: "Off-the-shelf CRMs don't fit your workflow", desc: "Generic CRM tools force your process to fit their fields, not the other way around." },
+      { title: "No automation between steps", desc: "Follow-ups, reminders, and status updates all have to happen manually." },
+    ],
+    included: [
+      "Custom CRM built around your exact sales or ops process",
+      "Automated lead capture, scoring, and follow-up sequences",
+      "Role-based dashboards for your whole team",
+      "Integrations with email, SMS, and third-party data sources",
+      "Reporting so you always know your pipeline's real state",
+    ],
+    techStack: ["Next.js", "PostgreSQL", "Prisma", "Twilio"],
+  },
+  {
+    slug: "performance-marketing",
+    title: "360 Performance Marketing",
+    shortTitle: "Performance Marketing",
+    category: "Marketing",
+    tagline: "SEO, paid acquisition, and conversion optimization working together.",
+    startingPrice: "From $800/mo",
+    iconName: "Target",
+    painPoints: [
+      { title: "Traffic without conversions", desc: "Ranking or ad spend that doesn't translate to leads or sales is money left on the table." },
+      { title: "Disconnected marketing channels", desc: "SEO, paid ads, and email running independently miss the compounding effect of a unified strategy." },
+      { title: "No clear ROI reporting", desc: "Without proper tracking, it's impossible to know which channel is actually driving revenue." },
+    ],
+    included: [
+      "Technical SEO audit and ongoing optimization",
+      "Paid acquisition management (Google, Meta ads)",
+      "Conversion rate optimization and A/B testing",
+      "Unified reporting across every channel",
+      "Monthly strategy reviews tied to real revenue numbers",
+    ],
+  },
+  {
+    slug: "social-media-marketing",
+    title: "Social Media Marketing",
+    shortTitle: "Social Media Marketing",
+    category: "Marketing",
+    tagline: "Content and community strategy that builds real audiences, not vanity metrics.",
+    startingPrice: "From $600/mo",
+    iconName: "Share2",
+    painPoints: [
+      { title: "Posting without a strategy", desc: "Random content calendars rarely build the consistent brand presence that turns followers into customers." },
+      { title: "No community engagement", desc: "Comments and DMs going unanswered leave potential customers feeling ignored." },
+      { title: "Can't tell what's actually working", desc: "Without proper analytics, it's guesswork which content types drive real business results." },
+    ],
+    included: [
+      "Platform-specific content strategy and calendar",
+      "Content creation (graphics, copy, short-form video planning)",
+      "Community management and engagement",
+      "Influencer and partnership outreach where relevant",
+      "Monthly performance reporting tied to goals",
+    ],
+  },
+  {
+    slug: "mobile-app-development",
+    title: "Mobile App Development",
+    shortTitle: "Mobile App Development",
+    category: "Development",
+    tagline: "Native-quality iOS and Android apps from a single codebase.",
+    startingPrice: "From $6,000",
+    iconName: "Smartphone",
+    painPoints: [
+      { title: "Building two apps doubles the cost", desc: "Separate native iOS and Android teams multiply both budget and long-term maintenance burden." },
+      { title: "Slow, janky cross-platform apps", desc: "Poorly built cross-platform apps feel noticeably worse than native, hurting retention." },
+      { title: "No backend to support the app", desc: "A great app front-end is only half the picture without solid APIs and data behind it." },
+    ],
+    included: [
+      "Cross-platform development (React Native) with native performance",
+      "Full backend/API development to support the app",
+      "App Store and Google Play submission handled for you",
+      "Push notifications, offline support, and analytics",
+      "Post-launch monitoring and update support",
+    ],
+    techStack: ["React Native", "Expo", "Node.js", "PostgreSQL"],
+  },
+  {
+    slug: "ui-ux-design",
+    title: "UI/UX Design & Branding",
+    shortTitle: "UI/UX Design",
+    category: "Design",
+    tagline: "Interfaces designed around how people actually behave, not just how things look.",
+    startingPrice: "From $1,200",
+    iconName: "Palette",
+    painPoints: [
+      { title: "Beautiful but confusing interfaces", desc: "Design that prioritizes aesthetics over usability leads to drop-offs and support tickets." },
+      { title: "Inconsistent branding across touchpoints", desc: "A site, app, and marketing materials that don't feel like the same brand erode trust." },
+      { title: "Design decisions made on opinion, not data", desc: "Without user testing, design changes are guesses rather than informed improvements." },
+    ],
+    included: [
+      "User research and journey mapping before any visual work",
+      "Wireframes and interactive prototypes for validation",
+      "Full brand identity system (logo, color, typography)",
+      "Design systems/component libraries for consistency at scale",
+      "Usability testing to validate decisions with real users",
+    ],
+    techStack: ["Figma", "Design Systems"],
+  },
+  {
+    slug: "cloud-devops",
+    title: "Cloud & DevOps",
+    shortTitle: "Cloud & DevOps",
+    category: "Infrastructure",
+    tagline: "Infrastructure that stays up and deploys without fear.",
+    startingPrice: "From $500/mo",
+    iconName: "Cloud",
+    painPoints: [
+      { title: "Downtime during peak traffic", desc: "Infrastructure that isn't built to scale fails exactly when your business needs it most." },
+      { title: "Manual, risky deployments", desc: "Deploying by hand introduces human error and makes rolling back changes stressful." },
+      { title: "No monitoring until something breaks", desc: "Without proper observability, issues are discovered from angry customers, not dashboards." },
+    ],
+    included: [
+      "Cloud infrastructure setup (AWS, GCP, or Vercel)",
+      "CI/CD pipelines for safe, repeatable deployments",
+      "Containerization (Docker/Kubernetes) where it fits",
+      "Monitoring, alerting, and uptime SLAs",
+      "Security hardening and access control review",
+    ],
+    techStack: ["AWS", "GCP", "Vercel", "Docker", "Kubernetes"],
+  },
+  {
+    slug: "seo-technical-audits",
+    title: "SEO & Technical Audits",
+    shortTitle: "SEO & Technical Audits",
+    category: "Marketing",
+    tagline: "Find out exactly why you're not ranking \u2014 and fix it.",
+    startingPrice: "From $499",
+    iconName: "Search",
+    painPoints: [
+      { title: "Not ranking, no idea why", desc: "Technical SEO issues (crawl errors, slow load times, missing structured data) often go unnoticed without a proper audit." },
+      { title: "Content that Google can't understand", desc: "Missing metadata, poor site structure, and thin content all hold back rankings." },
+      { title: "Security or performance issues hiding in plain sight", desc: "Many sites carry outdated dependencies or misconfigurations that hurt both security and search rankings." },
+    ],
+    included: [
+      "Full technical SEO audit (crawlability, speed, structured data)",
+      "Security review of dependencies and configurations",
+      "Content and keyword gap analysis",
+      "Prioritized, actionable fix list \u2014 not just a report",
+      "Implementation support for the fixes that matter most",
+    ],
+  },
+  {
+    slug: "maintenance-support",
+    title: "Maintenance & Support Retainers",
+    shortTitle: "Maintenance & Support",
+    category: "Infrastructure",
+    tagline: "Your site, monitored and maintained, without hiring a full-time developer.",
+    startingPrice: "From $250/mo",
+    iconName: "LifeBuoy",
+    painPoints: [
+      { title: "No one watching after launch", desc: "Sites left unmonitored accumulate outdated dependencies, broken integrations, and slow performance over time." },
+      { title: "Small fixes take forever to get done", desc: "Without a retainer in place, minor updates get stuck in a queue behind bigger projects." },
+      { title: "Security patches applied late or never", desc: "Unpatched software is one of the most common ways sites get compromised." },
+    ],
+    included: [
+      "Regular dependency and security updates",
+      "Uptime monitoring with fast response to issues",
+      "Monthly hours for small feature requests and fixes",
+      "Performance and Core Web Vitals monitoring",
+      "Direct access to the team that built your site",
+    ],
+  },
+];
+
+export function getServiceBySlug(slug: string) {
+  return SERVICES.find((s) => s.slug === slug);
+}

@@ -3,14 +3,40 @@
 @plugin "tailwindcss-animate";
 
 /* ============================================================
-   NOVAMAC — PREMIUM VIBRANT LIGHT THEME
+   NOVAMAC — TRUST + CAPABILITY COLOR SYSTEM
+   Deep indigo/navy (trust, authority) + electric cyan (tech,
+   innovation) + warm amber (energy, action on CTAs).
 ============================================================ */
 
 @theme {
-  --color-background: #f8fafc;
-  --color-foreground: #1e293b;
-  --color-muted: #64748b;
-  
+  --color-background: #fbfbff;
+  --color-foreground: #16122b;
+  --color-muted: #6b6584;
+  --color-muted-foreground: #6b6584;
+  --color-border: #ece9f7;
+  --color-secondary: #f4f2ff;
+
+  /* Primary brand identity — electric violet, punchier than the old navy */
+  --color-primary: #6d28d9;
+  --color-primary-foreground: #ffffff;
+
+  /* "Brand" accent — vivid sky blue, used for interactive
+     highlights (chat bubbles, links, small UI accents) */
+  --color-brand: #2563eb;
+  --color-brand-foreground: #ffffff;
+
+  /* Warm accent reserved for calls-to-action, to create contrast
+     against the cool violet/blue base and draw the eye to buttons */
+  --color-accent: #fb923c;
+  --color-accent-foreground: #2a1200;
+
+  /* Secondary vibrant accents used across service/pricing cards so the
+     grid doesn't read as monochrome — each category gets its own hue */
+  --color-vibe-pink: #ec4899;
+  --color-vibe-teal: #14b8a6;
+  --color-vibe-amber: #f59e0b;
+  --color-vibe-lime: #84cc16;
+
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-heading: "Outfit", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -19,9 +45,9 @@
 @layer base {
   :root {
     --background: #f8fafc;
-    --foreground: #1e293b;
+    --foreground: #0f172a;
     --muted: #64748b;
-    --border: rgba(0, 0, 0, 0.1);
+    --border: rgba(0, 0, 0, 0.08);
   }
 
   * {
@@ -29,17 +55,33 @@
     scroll-behavior: smooth;
   }
 
+  html {
+    /* Slightly larger base size + text-rendering tuning so type stays
+       crisp and readable at every zoom level instead of looking soft
+       or pixelated on lower-density displays. */
+    font-size: 17px;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    line-height: 1.7;
   }
 }
 
@@ -51,9 +93,32 @@
   .hover-trigger {
     @apply cursor-pointer;
   }
-  
+
   .glass-panel {
     @apply bg-slate-50/70 backdrop-blur-xl border border-slate-200;
+  }
+
+  /* Reusable gradient-mesh background for hero/CTA sections — gives a
+     "colorful, modern SaaS" feel instead of a flat single-tone bg. */
+  .gradient-mesh {
+    background:
+      radial-gradient(ellipse 800px 500px at 15% 10%, rgba(37, 99, 235, 0.16), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 85% 30%, rgba(109, 40, 217, 0.14), transparent 60%),
+      radial-gradient(ellipse 600px 500px at 50% 90%, rgba(251, 146, 60, 0.12), transparent 60%);
+  }
+
+  /* Subtle text gradient for headline accent words */
+  .text-gradient-brand {
+    background: linear-gradient(120deg, #6d28d9 0%, #2563eb 55%, #ec4899 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Vibrant card surface used on pricing/service grids — soft tinted
+     glass instead of flat white, keeps things light but colorful */
+  .card-vibrant {
+    @apply bg-white border border-[--color-border] shadow-[0_2px_20px_rgba(109,40,217,0.06)];
   }
 }
 

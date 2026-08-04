@@ -22,11 +22,12 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
 
         <nav className="hidden md:flex items-center gap-8 text-[10px] font-mono uppercase tracking-[0.18em] text-slate-600">
           {[
-            { href: "/services", label: "Services" },
-            { href: "/work",     label: "Work"     },
-            { href: "/about",    label: "About"    },
-            { href: "/blog",     label: "Blog"     },
-            { href: "/faq",      label: "FAQ"      },
+            { href: "/services",   label: "Services"   },
+            { href: "/industries", label: "Industries" },
+            { href: "/work",       label: "Work"       },
+            { href: "/about",      label: "About"      },
+            { href: "/blog",       label: "Blog"       },
+            { href: "/faq",        label: "FAQ"        },
           ].map((link) => (
             <Link key={link.href} href={link.href}
               className="hover-trigger hover:text-blue-600 transition-colors duration-300 relative group">
@@ -78,7 +79,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
               },
               {
                 title: "Services",
-                links: [{ href: "/services", label: "Web Development" }, { href: "/services", label: "E-Commerce" }, { href: "/services", label: "Custom Software" }, { href: "/work", label: "Case Studies" }],
+                links: [{ href: "/services", label: "Web Development" }, { href: "/services", label: "E-Commerce" }, { href: "/services", label: "Custom Software" }, { href: "/industries", label: "Industries" }, { href: "/work", label: "Case Studies" }],
               },
               {
                 title: "Legal",

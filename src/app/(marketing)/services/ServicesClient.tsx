@@ -2,8 +2,24 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Code2, Bot, Target, Paintbrush, ShoppingCart, Cloud, CheckCircle2, Smartphone } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Code2, Bot, Target, ShoppingCart, Cloud, CheckCircle2, Smartphone, Palette, Layers, Search, PenTool, Wrench } from "lucide-react";
 import Link from "next/link";
+import { SERVICES } from "@/lib/services-data";
+
+const ICONS: Record<string, typeof Code2> = {
+  "custom-web-development": Code2,
+  "ecommerce-architecture": ShoppingCart,
+  "ai-automation-agents": Bot,
+  "performance-marketing": Target,
+  "social-media-marketing": Smartphone,
+  "cloud-devops": Cloud,
+  "mobile-app-development": Layers,
+  "ui-ux-design": Palette,
+  "crm-business-systems": Wrench,
+  "seo-content-strategy": Search,
+  "branding-identity": PenTool,
+  "maintenance-support": Wrench,
+};
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -62,57 +78,6 @@ function WordReveal({ text, className = "", delay = 0 }: { text: string; classNa
   );
 }
 
-const SERVICES_DETAILED = [
-  {
-    num: "01",
-    icon: Code2,
-    title: "Custom Web Development",
-    short: "Scalable web applications built for your business.",
-    desc: "We build responsive, fast, and secure websites tailored to your specific business needs. From landing pages to full e-commerce stores, every line of code is clean, tested, and built to grow with you.",
-    features: ["Next.js & React", "TypeScript first", "REST & GraphQL APIs", "Database design", "Performance optimization", "Comprehensive testing"],
-  },
-  {
-    num: "02",
-    icon: Target,
-    title: "360 Performance Marketing",
-    short: "Data-driven omnichannel growth strategies.",
-    desc: "We create holistic 360 marketing campaigns that deliver measurable ROI. By combining technical SEO, paid acquisition, and CRO across all channels, we turn your website into a conversion machine.",
-    features: ["Technical SEO", "Paid Acquisition (PPC)", "Conversion Rate Optimization", "Omnichannel Strategy", "Content Strategy", "A/B Testing"],
-  },
-  {
-    num: "03",
-    icon: Bot,
-    title: "Autonomous AI Agents",
-    short: "Custom LLM integrations to automate complex workflows.",
-    desc: "We build and deploy intelligent AI agents that integrate directly with your business logic. Automate customer support, internal data processing, and complex multi-step tasks.",
-    features: ["Custom LLM Integration", "RAG Systems", "Workflow Automation", "AI Chatbots", "Data Processing", "Prompt Engineering"],
-  },
-  {
-    num: "04",
-    icon: ShoppingCart,
-    title: "E-Commerce Architecture",
-    short: "Headless storefronts built to obliterate conversion benchmarks.",
-    desc: "We build custom e-commerce experiences that convert. Whether it's a fully custom platform or a headless Shopify build, we optimize every step of the customer journey.",
-    features: ["Headless Shopify", "Custom platforms", "Payment integration", "Inventory management", "Analytics & A/B testing", "Mobile-first checkout"],
-  },
-  {
-    num: "05",
-    icon: Smartphone,
-    title: "Social Media Marketing",
-    short: "Strategic content that builds tribes and drives sales.",
-    desc: "Our social media strategies go beyond posting. We build comprehensive brand identities and engage directly with your target audience to foster authentic community growth.",
-    features: ["Content Creation", "Community Management", "Influencer Outreach", "Brand Identity", "Monthly Reporting", "Platform Specific Strategies"],
-  },
-  {
-    num: "06",
-    icon: Cloud,
-    title: "Cloud & DevOps",
-    short: "Zero-downtime infrastructure built for scale and security.",
-    desc: "We set up and manage your cloud infrastructure end-to-end. CI/CD pipelines, containerization, monitoring, and auto-scaling — we build systems that stay up and deploy without fear.",
-    features: ["AWS / GCP / Vercel", "Docker & Kubernetes", "CI/CD pipelines", "Infrastructure as Code", "99.99% uptime SLA", "Security hardening"],
-  },
-];
-
 const ENGAGEMENT = [
   {
     type: "Project Based",
@@ -162,7 +127,7 @@ export default function ServicesClient() {
             className="inline-flex items-center gap-3 mb-10 border border-slate-300 px-5 py-3 bg-slate-50/70 backdrop-blur-xl"
           >
             <span className="w-2 h-2 rounded-full bg-slate-50 animate-pulse" />
-            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Services &middot; 6 Disciplines</span>
+            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Services &middot; {SERVICES.length} Disciplines</span>
           </motion.div>
 
           <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
@@ -206,47 +171,49 @@ export default function ServicesClient() {
           <BlurReveal className="mb-20">
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-slate-600 mb-5">/ What We Offer</p>
             <h2 className="font-heading font-extrabold text-[clamp(2rem,5vw,4.5rem)] leading-[0.88] tracking-[-0.04em]">
-              <WordReveal text="Six disciplines." /><br />
-              <WordReveal text="One studio." delay={0.1} />
+              <WordReveal text="Full-stack" /><br />
+              <WordReveal text="expertise." delay={0.1} />
             </h2>
           </BlurReveal>
 
           <div className="space-y-4">
-            {SERVICES_DETAILED.map((s, i) => (
+            {SERVICES.map((s, i) => {
+              const Icon = ICONS[s.slug] ?? Code2;
+              return (
               <motion.div
-                key={i}
+                key={s.slug}
                 initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.07, duration: 1, ease }}
+                transition={{ delay: (i % 6) * 0.07, duration: 1, ease }}
                 onMouseEnter={() => setActiveService(i)}
                 onMouseLeave={() => setActiveService(null)}
-                className="hover-trigger group border border-slate-200 hover:border-purple-400 bg-slate-50 overflow-hidden transition-all duration-500 cursor-pointer"
+                className="hover-trigger group border border-slate-200 hover:border-brand bg-slate-50 overflow-hidden transition-all duration-500 cursor-pointer"
               >
                 {/* Top line on hover */}
-                <div className="h-[1px] bg-slate-50 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className="h-[1px] bg-brand scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
                 <div className="p-8 md:p-10">
                   {/* Header row */}
                   <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-0">
                     <div className="flex items-center gap-6">
-                      <div className="w-12 h-12 flex items-center justify-center border border-slate-300 bg-slate-100/50 shrink-0 group-hover:bg-slate-50 group-hover:border-blue-600 transition-colors duration-300">
-                        <s.icon className="w-5 h-5 text-slate-800 group-hover:text-black transition-colors duration-300" />
+                      <div className="w-12 h-12 flex items-center justify-center border border-slate-300 bg-slate-100/50 shrink-0 group-hover:bg-slate-50 group-hover:border-brand transition-colors duration-300">
+                        <Icon className="w-5 h-5 text-slate-800 group-hover:text-brand transition-colors duration-300" />
                       </div>
                       <div>
-                        <span className="font-mono text-[10px] text-gray-600 block mb-1">{s.num}</span>
-                        <h3 className="font-heading font-extrabold text-2xl md:text-3xl tracking-tight text-slate-700 group-hover:text-blue-600 transition-colors duration-300">
+                        <span className="font-mono text-[10px] text-gray-600 block mb-1">{String(i + 1).padStart(2, "0")}</span>
+                        <h3 className="font-heading font-extrabold text-2xl md:text-3xl tracking-tight text-slate-700 group-hover:text-brand transition-colors duration-300">
                           {s.title}
                         </h3>
                       </div>
                     </div>
-                    <p className="text-sm text-slate-600 max-w-sm font-light leading-relaxed">{s.short}</p>
+                    <p className="text-sm text-slate-600 max-w-sm font-light leading-relaxed">{s.tagline}</p>
                     <motion.div
                       animate={{ rotate: activeService === i ? 45 : 0 }}
                       transition={{ duration: 0.3 }}
                       className="shrink-0 hidden md:block"
                     >
-                      <ArrowRight className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" />
+                      <ArrowRight className="w-5 h-5 text-gray-600 group-hover:text-brand transition-colors" />
                     </motion.div>
                   </div>
 
@@ -261,9 +228,9 @@ export default function ServicesClient() {
                     className="overflow-hidden"
                   >
                     <div className="pt-8 mt-8 border-t border-slate-200 grid md:grid-cols-2 gap-8">
-                      <p className="text-slate-600 font-light leading-relaxed text-base">{s.desc}</p>
+                      <p className="text-slate-600 font-light leading-relaxed text-base">{s.overview}</p>
                       <div className="grid grid-cols-2 gap-3">
-                        {s.features.map((f, j) => (
+                        {s.deliverables.slice(0, 6).map((f, j) => (
                           <div key={j} className="flex items-center gap-2 text-xs font-mono text-slate-700">
                             <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-slate-800" />
                             {f}
@@ -271,10 +238,15 @@ export default function ServicesClient() {
                         ))}
                       </div>
                     </div>
+                    <div className="mt-6">
+                      <Link href={`/services/${s.slug}`} className="hover-trigger inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand hover:opacity-80">
+                        Full Details <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
                   </motion.div>
                 </div>
               </motion.div>
-            ))}
+            );})}
           </div>
         </div>
       </section>
