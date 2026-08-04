@@ -228,9 +228,9 @@ export default function ServicesClient() {
                     className="overflow-hidden"
                   >
                     <div className="pt-8 mt-8 border-t border-slate-200 grid md:grid-cols-2 gap-8">
-                      <p className="text-slate-600 font-light leading-relaxed text-base">{s.overview}</p>
+                      <p className="text-slate-600 font-light leading-relaxed text-base">{s.painPoints[0]?.desc}</p>
                       <div className="grid grid-cols-2 gap-3">
-                        {s.deliverables.slice(0, 6).map((f, j) => (
+                        {s.included.slice(0, 6).map((f, j) => (
                           <div key={j} className="flex items-center gap-2 text-xs font-mono text-slate-700">
                             <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-slate-800" />
                             {f}
