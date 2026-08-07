@@ -5,6 +5,11 @@ import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "fra
 import { ArrowRight, Globe, Target, Bot, ChevronDown, CheckCircle2, Shield, Zap, Users, Code2, Smartphone } from "lucide-react";
 import Link from "next/link";
 import { JsonLd } from "@/components/seo/JsonLd";
+import IntroLoader from "@/components/nexora/IntroLoader";
+import AiSystemsGrid from "@/components/nexora/AiSystemsGrid";
+import Pipeline from "@/components/nexora/Pipeline";
+import IndustrySwitcher from "@/components/nexora/IndustrySwitcher";
+import { AI_SYSTEMS } from "@/components/nexora/data";
 
 const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -77,9 +82,7 @@ function MagneticButton({ children, className = "" }: { children: React.ReactNod
     setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
   };
 
-  const reset = () => {
-    setPosition({ x: 0, y: 0 });
-  };
+  const reset = () => setPosition({ x: 0, y: 0 });
 
   return (
     <motion.div
@@ -97,57 +100,37 @@ function MagneticButton({ children, className = "" }: { children: React.ReactNod
 
 /* ── Data ─────────────────────────────────────── */
 const SERVICES = [
-  { 
-    num: "01", 
-    title: "Custom Web Development", 
-    desc: "We build responsive, fast, and secure websites tailored to your specific business needs. From landing pages to full e-commerce stores.", 
+  {
+    num: "05",
+    title: "Custom Web Development",
+    desc: "We build responsive, fast, and secure websites tailored to your specific business needs. From landing pages to full e-commerce stores.",
     icon: Code2,
-    details: [
-      "Modern Web Applications",
-      "E-commerce Stores",
-      "Business Landing Pages",
-      "Mobile-Friendly Design",
-      "Secure Hosting Setup"
-    ]
+    color: { chip: "bg-blue-500/10", text: "text-blue-400", hoverText: "group-hover:text-blue-400", linkHover: "hover:text-blue-400" },
+    details: ["Modern Web Applications", "E-commerce Stores", "Business Landing Pages", "Mobile-Friendly Design", "Secure Hosting Setup"],
   },
-  { 
-    num: "02", 
-    title: "Social Media Marketing", 
-    desc: "Strategic content creation and community management to grow your online presence and engage directly with your target audience.", 
+  {
+    num: "06",
+    title: "Social Media Marketing",
+    desc: "Strategic content creation and community management to grow your online presence and engage directly with your target audience.",
     icon: Smartphone,
-    details: [
-      "Content Creation & Scheduling",
-      "Community Engagement",
-      "Brand Identity Design",
-      "Monthly Performance Reports",
-      "Influencer Outreach"
-    ]
+    color: { chip: "bg-pink-500/10", text: "text-pink-400", hoverText: "group-hover:text-pink-400", linkHover: "hover:text-pink-400" },
+    details: ["Content Creation & Scheduling", "Community Engagement", "Brand Identity Design", "Monthly Performance Reports", "Influencer Outreach"],
   },
-  { 
-    num: "03", 
-    title: "360 Marketing & SEO", 
-    desc: "Get found online with a complete 360 marketing approach. We help businesses increase visibility through comprehensive search engine optimization and targeted ad campaigns.", 
+  {
+    num: "07",
+    title: "360 Marketing & SEO",
+    desc: "Get found online with a complete 360 marketing approach — search visibility plus targeted ad campaigns.",
     icon: Target,
-    details: [
-      "Local & On-page SEO",
-      "Google & Facebook Ads",
-      "Email Marketing Setup",
-      "Omnichannel Strategies",
-      "Audience Targeting"
-    ]
+    color: { chip: "bg-orange-500/10", text: "text-orange-400", hoverText: "group-hover:text-orange-400", linkHover: "hover:text-orange-400" },
+    details: ["Local & On-page SEO", "Google & Facebook Ads", "Email Marketing Setup", "Omnichannel Strategies", "Audience Targeting"],
   },
-  { 
-    num: "04", 
-    title: "AI & Business Automation", 
-    desc: "Save hours of manual work with practical AI integrations. We set up chatbots and automated workflows that run your business smoothly.", 
+  {
+    num: "08",
+    title: "Workflow Automation",
+    desc: "Save hours of manual work with practical automation — beyond AI systems, wired into the rest of your stack.",
     icon: Bot,
-    details: [
-      "Customer Support Chatbots",
-      "Email & CRM Automation",
-      "Data Entry Automation",
-      "Lead Generation Bots",
-      "Custom Zapier Workflows"
-    ]
+    color: { chip: "bg-violet-500/10", text: "text-violet-400", hoverText: "group-hover:text-violet-400", linkHover: "hover:text-violet-400" },
+    details: ["Email & CRM Automation", "Data Entry Automation", "Lead Generation Bots", "Custom Zapier / n8n Workflows", "Internal Ops Tooling"],
   },
 ];
 
@@ -158,10 +141,11 @@ const WHY_US = [
   { icon: Globe, title: "Long-Term Support", desc: "Our relationship doesn't end at launch. We are here to help you maintain and grow your digital presence." },
 ];
 
-const TECH = ["Web Development", "—", "Social Media", "—", "SEO", "—", "Digital Marketing", "—", "Automation", "—", "E-Commerce", "—", "Branding", "—"];
+const TECH = ["Web Development", "—", "WhatsApp AI", "—", "Voice Agents", "—", "SEO", "—", "Digital Marketing", "—", "Automation", "—", "Branding", "—"];
 
 /* ── Main ─────────────────────────────────────── */
 export default function HomePage() {
+  const [loading, setLoading] = useState(true);
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
@@ -177,54 +161,48 @@ export default function HomePage() {
     "@type": "ProfessionalService",
     "name": "NovaMac Solutions",
     "image": "https://novamacsolutions.com/favicon.ico",
-    "description": "Digital Growth For Modern Brands. Custom Web Development, SEO, Social Media Management, and AI Business Automation.",
+    "description": "The AI Control Center for modern brands — WhatsApp AI + CRM, Voice Agents, Custom AI Solutions, Web Development, SEO and Social Media Management.",
     "url": "https://novamacsolutions.com",
     "telephone": "+1-415-480-4281",
     "email": "hello@novamacsolutions.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "US"
-    },
+    "address": { "@type": "PostalAddress", "addressCountry": "US" },
     "priceRange": "$$"
   };
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": SERVICES.map(service => ({
+    "mainEntity": [...AI_SYSTEMS.map((s) => ({
+      "@type": "Question",
+      "name": `Does NovaMac Solutions offer ${s.name}?`,
+      "acceptedAnswer": { "@type": "Answer", "text": `Yes. ${s.description} Starting from ${s.fromPrice}.` },
+    })), ...SERVICES.map((service) => ({
       "@type": "Question",
       "name": `Does NovaMac Solutions offer ${service.title}?`,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": `Yes, we offer ${service.title}. ${service.desc} This includes ${service.details.join(", ")}.`
-      }
-    }))
-  };
-
-  const listicleSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "itemListElement": SERVICES.map((service, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "name": service.title,
-      "description": service.desc
-    }))
+      "acceptedAnswer": { "@type": "Answer", "text": `Yes, we offer ${service.title}. ${service.desc}` },
+    }))]
   };
 
   return (
-    <main className="bg-slate-100 text-slate-800 overflow-x-hidden">
+    <main className="bg-background text-foreground overflow-x-hidden relative">
       <JsonLd data={localBusinessSchema} />
       <JsonLd data={faqSchema} />
-      <JsonLd data={listicleSchema} />
+
+      <AnimatePresence>
+        {loading && <IntroLoader onDone={() => setLoading(false)} />}
+      </AnimatePresence>
 
       {/* ══ HERO ════════════════════════════════ */}
-      <section ref={heroRef} className="relative min-h-screen flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-slate-100">
+      <section ref={heroRef} className="relative min-h-screen flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-background gradient-mesh">
         <motion.div className="absolute inset-0 pointer-events-none" style={{ scale: smoothBS }}>
-          {/* Subtle Colored Background Glows */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/25 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/25 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand/10 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#a78bfa]/10 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
+          {/* Glowing orb centerpiece */}
+          <div
+            aria-hidden
+            className="orb-core animate-orb-float absolute left-1/2 top-[38%] h-[42vh] w-[42vh] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-90 sm:h-[34vw] sm:w-[34vw]"
+          />
         </motion.div>
 
         <motion.div style={{ opacity: heroOpacity, y: smoothY }} className="relative z-10 max-w-[1400px] mx-auto w-full">
@@ -232,17 +210,17 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.2, duration: 0.9, ease }}
-            className="inline-flex items-center gap-3 mb-10 px-5 py-3 border border-slate-200 bg-slate-100/50 backdrop-blur-xl rounded-full"
+            className="inline-flex items-center gap-3 mb-10 px-5 py-3 border border-white/10 bg-white/[0.04] backdrop-blur-xl rounded-full"
           >
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-slate-600">Digital Solutions Agency</span>
+            <span className="w-2 h-2 rounded-full bg-brand animate-pulse" />
+            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-white/50">— NovaMac Lab</span>
           </motion.div>
 
           <h1 className="font-heading font-extrabold leading-[0.95] md:leading-[0.85] tracking-[-0.03em] text-[clamp(2.5rem,8vw,8rem)] mb-12">
             {[
-              { text: "Digital Growth",  delay: 0.35, cls: "block text-slate-800" },
-              { text: "For Modern",   delay: 0.52, cls: "block text-slate-600" },
-              { text: "Brands.", delay: 0.69, cls: "block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600" },
+              { text: "The AI",  delay: 0.35, cls: "block text-foreground" },
+              { text: "Control",   delay: 0.52, cls: "block text-gradient-brand" },
+              { text: "Center.", delay: 0.69, cls: "block text-foreground" },
             ].map((line, i) => (
               <div key={i} className="overflow-hidden pb-4 md:pb-8 -mb-4 md:-mb-8">
                 <motion.div
@@ -257,14 +235,17 @@ export default function HomePage() {
             ))}
           </h1>
 
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-10 border-t border-slate-200 pt-10 mt-8">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-10 border-t border-white/10 pt-10 mt-8">
             <motion.p
               initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ delay: 0.95, duration: 1, ease }}
-              className="text-lg md:text-xl text-slate-600 font-light max-w-md leading-relaxed"
+              className="text-lg md:text-xl text-white/55 font-light max-w-md leading-relaxed"
             >
-              From custom web applications and mobile apps to bespoke software, we can build whatever your business needs to thrive online. No matter the requirement, we bring your ideas to life.
+              Four intelligent AI systems, one cinematic interface — plus the
+              web, marketing and automation work that gets you found. Explore
+              what you&rsquo;re really buying: the experience, not just the
+              price.
             </motion.p>
 
             <motion.div
@@ -274,12 +255,12 @@ export default function HomePage() {
               className="flex flex-wrap gap-4"
             >
               <MagneticButton>
-                <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-blue-600 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
+                <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-primary text-primary-foreground font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-[0_8px_30px_rgba(127,164,255,0.25)]">
                   Let's Talk <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </MagneticButton>
               <MagneticButton>
-                <Link href="/services" className="hover-trigger inline-flex items-center gap-3 border border-slate-300 text-slate-800 font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:border-white hover:bg-slate-100/50 transition-all duration-300">
+                <Link href="/services" className="hover-trigger inline-flex items-center gap-3 border border-white/15 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:border-white/40 hover:bg-white/5 transition-all duration-300">
                   Our Services
                 </Link>
               </MagneticButton>
@@ -290,20 +271,20 @@ export default function HomePage() {
         {/* Scroll cue */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.2, duration: 1 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="font-mono text-[9px] tracking-[0.35em] uppercase text-slate-600">Scroll</span>
+          <span className="font-mono text-[9px] tracking-[0.35em] uppercase text-white/35">Scroll to activate the core</span>
           <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-8 bg-gradient-to-b from-gray-500 to-transparent" />
+            className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent" />
         </motion.div>
       </section>
 
       {/* ══ MARQUEE ══════════════════════════════ */}
-      <div className="overflow-hidden border-y border-slate-200 bg-slate-200 py-6 relative z-10">
+      <div className="overflow-hidden border-y border-white/10 bg-white/[0.02] py-6 relative z-10">
         <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ repeat: Infinity, ease: "linear", duration: 35 }}
           className="flex whitespace-nowrap gap-16">
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex items-center gap-16 shrink-0">
               {TECH.map((t, j) => (
-                <span key={j} className="font-heading font-extrabold text-2xl md:text-3xl uppercase tracking-tight text-gray-600">
+                <span key={j} className="font-heading font-extrabold text-2xl md:text-3xl uppercase tracking-tight text-white/25">
                   {t}
                 </span>
               ))}
@@ -312,39 +293,72 @@ export default function HomePage() {
         </motion.div>
       </div>
 
-      {/* ══ INTERACTIVE SERVICES ═════════════════ */}
-      <section className="py-32 px-6 md:px-12 xl:px-20 relative">
-        <div className="absolute inset-0 bg-slate-100" />
-        
+      {/* ══ AI SYSTEMS (pricing) ═════════════════ */}
+      <section id="systems" className="py-32 px-6 md:px-12 xl:px-20 relative">
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <BlurReveal className="mb-16">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand mb-5">— The Systems</p>
+            <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
+              <WordReveal text="Intelligent systems." />
+            </h2>
+            <p className="mt-5 max-w-md text-white/50">Each one a complete product. Tap any card to step inside.</p>
+          </BlurReveal>
+
+          <ZoomReveal delay={0.1}>
+            <AiSystemsGrid />
+          </ZoomReveal>
+        </div>
+      </section>
+
+      {/* ══ PIPELINE ═════════════════════════════ */}
+      <section id="pipeline" className="py-32 px-6 md:px-12 xl:px-20 relative border-t border-white/10">
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <BlurReveal className="mb-14">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand mb-5">— The Workflow</p>
+            <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
+              <WordReveal text="One continuous AI pipeline." />
+            </h2>
+            <p className="mt-5 max-w-md text-white/50">
+              Every lead flows through the same intelligent path — captured, qualified and booked, hands-free.
+            </p>
+          </BlurReveal>
+          <ZoomReveal delay={0.1}>
+            <Pipeline />
+          </ZoomReveal>
+        </div>
+      </section>
+
+      {/* ══ INTERACTIVE SERVICES (original NovaMac lineup) ══ */}
+      <section id="services" className="py-32 px-6 md:px-12 xl:px-20 relative border-t border-white/10">
         <div className="max-w-[1400px] mx-auto relative z-10">
           <BlurReveal className="mb-20 text-center">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-600 mb-5">/ What We Do</p>
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand mb-5">/ Everything Else We Build</p>
             <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
               <WordReveal text="Services designed to" /><br />
-              <WordReveal text="help you succeed." delay={0.1} className="text-slate-600" />
+              <WordReveal text="help you succeed." delay={0.1} className="text-white/45" />
             </h2>
           </BlurReveal>
 
           <div className="grid md:grid-cols-2 gap-5">
             {SERVICES.map((s, i) => (
               <ZoomReveal key={i} delay={i * 0.08}
-                className="group relative border border-slate-200 bg-[#eaedf2] overflow-hidden transition-all duration-500 hover:border-blue-400 rounded-2xl"
+                className="group relative card-vibrant overflow-hidden rounded-2xl"
               >
-                <div 
+                <div
                   className="relative z-10 p-8 md:p-10 cursor-pointer h-full flex flex-col"
                   onClick={() => setActiveService(activeService === i ? null : i)}
                 >
                   <div className="flex items-start justify-between mb-8">
-                    <div className="w-12 h-12 flex items-center justify-center border border-slate-200 bg-slate-100/50 rounded-xl group-hover:bg-blue-600/20 group-hover:text-blue-600 group-hover:border-blue-500/30 transition-colors duration-300">
-                      <s.icon className="w-5 h-5 text-slate-600 group-hover:text-blue-600 transition-colors duration-300" />
+                    <div className={`w-12 h-12 flex items-center justify-center rounded-xl transition-colors duration-300 ${s.color.chip}`}>
+                      <s.icon className={`w-5 h-5 ${s.color.text}`} />
                     </div>
-                    <span className="font-mono text-xs text-gray-600 bg-slate-100/50 px-3 py-1 rounded-full">{s.num}</span>
+                    <span className="font-mono text-xs text-white/40 bg-white/5 px-3 py-1 rounded-full">{s.num}</span>
                   </div>
-                  
-                  <h3 className="font-heading font-bold text-2xl md:text-3xl tracking-tight mb-4 group-hover:text-blue-600 transition-colors">{s.title}</h3>
-                  <p className="text-base text-slate-600 leading-relaxed font-light mb-6">{s.desc}</p>
-                  
-                  <div className="mt-auto border-t border-slate-200 pt-6 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-slate-600 group-hover:text-slate-700 transition-colors">
+
+                  <h3 className={`font-heading font-bold text-2xl md:text-3xl tracking-tight mb-4 transition-colors text-white ${s.color.hoverText}`}>{s.title}</h3>
+                  <p className="text-base text-white/50 leading-relaxed font-light mb-6">{s.desc}</p>
+
+                  <div className="mt-auto border-t border-white/10 pt-6 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-white/50 transition-colors">
                     <span>{activeService === i ? "Hide Details" : "View Details"}</span>
                     <motion.div animate={{ rotate: activeService === i ? 180 : 0 }}>
                       <ChevronDown className="w-4 h-4" />
@@ -362,13 +376,13 @@ export default function HomePage() {
                       >
                         <div className="pt-6 mt-4 space-y-3">
                           {s.details.map((detail, j) => (
-                            <div key={j} className="flex items-center gap-3 text-sm font-light text-slate-700">
-                              <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                            <div key={j} className="flex items-center gap-3 text-sm font-light text-white/70">
+                              <CheckCircle2 className={`w-4 h-4 shrink-0 ${s.color.text}`} />
                               {detail}
                             </div>
                           ))}
                           <div className="pt-6">
-                            <Link href="/services" className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-slate-800 hover:text-blue-600 transition-colors">
+                            <Link href="/services" className={`inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-white ${s.color.linkHover} transition-colors`}>
                               Explore More <ArrowRight className="w-3 h-3" />
                             </Link>
                           </div>
@@ -383,30 +397,47 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ══ INDUSTRIES ═══════════════════════════ */}
+      <section id="industries" className="py-32 px-6 md:px-12 xl:px-20 relative border-t border-white/10">
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <BlurReveal className="mb-14">
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand mb-5">— Scene 04 · Any Industry</p>
+            <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
+              <WordReveal text="Built for your world." />
+            </h2>
+            <p className="mt-5 max-w-md text-white/50">
+              One system, every playbook. Choose an industry and watch the workflow adapt.
+            </p>
+          </BlurReveal>
+          <ZoomReveal delay={0.1}>
+            <IndustrySwitcher />
+          </ZoomReveal>
+        </div>
+      </section>
+
       {/* ══ WHY CHOOSE US ════════════════════════ */}
-      <section className="py-32 px-6 md:px-12 xl:px-20 border-t border-slate-200 relative overflow-hidden">
-        {/* Subtle Background Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-purple-500/20 rounded-full blur-[100px] pointer-events-none" />
-        
+      <section className="py-32 px-6 md:px-12 xl:px-20 border-t border-white/10 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-brand/10 rounded-full blur-[100px] pointer-events-none" />
+
         <div className="max-w-[1400px] mx-auto relative z-10">
           <BlurReveal className="mb-16 text-center">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-purple-600 mb-5">/ Our Approach</p>
+            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand mb-5">/ Our Approach</p>
             <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
               <WordReveal text="Why partner" /><br />
-              <WordReveal text="with us." delay={0.1} className="text-slate-600" />
+              <WordReveal text="with us." delay={0.1} className="text-white/45" />
             </h2>
           </BlurReveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {WHY_US.map((item, i) => (
               <ZoomReveal key={i} delay={i * 0.1}
-                className="group p-8 md:p-10 border border-slate-200 bg-slate-50/60 backdrop-blur-sm rounded-2xl hover:border-blue-400 hover:bg-slate-100/50 transition-colors"
+                className="group p-8 md:p-10 card-vibrant rounded-2xl"
               >
-                <div className="w-12 h-12 flex items-center justify-center border border-slate-200 bg-slate-100/50 rounded-xl mb-8 group-hover:bg-purple-500/20 group-hover:text-purple-600 group-hover:border-purple-500/30 transition-colors duration-300">
-                  <item.icon className="w-5 h-5 text-slate-600 group-hover:text-purple-600 transition-colors" />
+                <div className="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl mb-8 group-hover:bg-white/10 transition-colors duration-300">
+                  <item.icon className="w-5 h-5 text-brand" />
                 </div>
-                <h3 className="font-heading font-bold text-xl tracking-tight mb-4 text-slate-800">{item.title}</h3>
-                <p className="text-sm text-slate-600 font-light leading-relaxed">{item.desc}</p>
+                <h3 className="font-heading font-bold text-xl tracking-tight mb-4 text-white">{item.title}</h3>
+                <p className="text-sm text-white/50 font-light leading-relaxed">{item.desc}</p>
               </ZoomReveal>
             ))}
           </div>
@@ -414,17 +445,17 @@ export default function HomePage() {
       </section>
 
       {/* ══ CTA ══════════════════════════════════ */}
-      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 border-t border-slate-200 overflow-hidden">
-        <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-white blur-[150px] pointer-events-none" />
+      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-[#05060c] border-t border-white/10 overflow-hidden">
+        <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          className="orb-core absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-            className="font-mono text-[10px] tracking-[0.3em] uppercase text-blue-200 mb-8">/ Let's Connect</motion.p>
+            className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/50 mb-8">/ Let's Connect</motion.p>
 
           <h2 className="font-heading font-extrabold text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
             <WordReveal text="Ready to build" /><br />
-            <WordReveal text="something real?" delay={0.1} className="text-blue-100" />
+            <WordReveal text="your control center?" delay={0.1} className="text-white/60" />
           </h2>
 
           <motion.div
@@ -435,12 +466,12 @@ export default function HomePage() {
             className="flex flex-wrap items-center justify-center gap-5 mt-10"
           >
             <MagneticButton>
-              <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-white text-blue-700 font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full transition-all duration-300 hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)]">
-                Contact Us <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-white text-[#05060c] font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full transition-all duration-300 hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_60px_rgba(255,255,255,0.3)]">
+                Book a Call <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </MagneticButton>
             <MagneticButton>
-              <Link href="/work" className="hover-trigger inline-flex items-center gap-3 border border-white/30 text-white font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-white/10 transition-all duration-300">
+              <Link href="/work" className="hover-trigger inline-flex items-center gap-3 border border-white/20 text-white font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-white/10 transition-all duration-300">
                 View Our Work
               </Link>
             </MagneticButton>

@@ -22,11 +22,11 @@ const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const CATEGORIES = ["All", "Development", "AI & Automation", "Marketing", "Design", "Infrastructure"] as const;
 
 const CATEGORY_STYLE: Record<string, { chip: string; text: string; ring: string; dot: string }> = {
-  "Development":      { chip: "bg-blue-50",   text: "text-blue-600",   ring: "hover:border-blue-300",   dot: "bg-blue-500" },
-  "AI & Automation":   { chip: "bg-violet-50", text: "text-violet-600", ring: "hover:border-violet-300", dot: "bg-violet-500" },
-  "Marketing":         { chip: "bg-orange-50", text: "text-orange-600",ring: "hover:border-orange-300", dot: "bg-orange-500" },
-  "Design":            { chip: "bg-pink-50",   text: "text-pink-600",  ring: "hover:border-pink-300",   dot: "bg-pink-500" },
-  "Infrastructure":    { chip: "bg-teal-50",   text: "text-teal-600",  ring: "hover:border-teal-300",   dot: "bg-teal-500" },
+  "Development":      { chip: "bg-blue-500/10",   text: "text-blue-400",   ring: "hover:border-blue-400/40",   dot: "bg-blue-400" },
+  "AI & Automation":   { chip: "bg-violet-500/10", text: "text-violet-400", ring: "hover:border-violet-400/40", dot: "bg-violet-400" },
+  "Marketing":         { chip: "bg-orange-500/10", text: "text-orange-400",ring: "hover:border-orange-400/40", dot: "bg-orange-400" },
+  "Design":            { chip: "bg-pink-500/10",   text: "text-pink-400",  ring: "hover:border-pink-400/40",   dot: "bg-pink-400" },
+  "Infrastructure":    { chip: "bg-teal-500/10",   text: "text-teal-400",  ring: "hover:border-teal-400/40",   dot: "bg-teal-400" },
 };
 
 const ENGAGEMENT = [
@@ -147,7 +147,7 @@ export default function PricingClient() {
       <section className="relative pt-40 pb-20 px-6 md:px-12 xl:px-20 overflow-hidden gradient-mesh">
         <div className="max-w-[1400px] mx-auto relative z-10">
           <Reveal>
-            <div className="inline-flex items-center gap-2 mb-8 border border-[--color-border] rounded-full px-4 py-2 bg-white/70 backdrop-blur-xl">
+            <div className="inline-flex items-center gap-2 mb-8 border border-[--color-border] rounded-full px-4 py-2 bg-white/[0.04] backdrop-blur-xl">
               <Sparkles className="w-3.5 h-3.5 text-primary" />
               <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-muted-foreground">Pricing &middot; {SERVICES.length} Services</span>
             </div>
@@ -188,7 +188,7 @@ export default function PricingClient() {
                 className={`hover-trigger px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 border ${
                   isActive
                     ? "bg-primary text-primary-foreground border-primary shadow-[0_4px_16px_rgba(109,40,217,0.25)]"
-                    : `bg-white text-muted-foreground border-[--color-border] hover:text-foreground ${style?.ring ?? "hover:border-primary/40"}`
+                    : `bg-white/[0.03] text-muted-foreground border-[--color-border] hover:text-foreground ${style?.ring ?? "hover:border-brand/40"}`
                 }`}
               >
                 {cat}
@@ -225,11 +225,11 @@ export default function PricingClient() {
             {ENGAGEMENT.map((e, i) => (
               <Reveal key={i} delay={i * 0.1}
                 className={`relative flex flex-col card-vibrant rounded-2xl p-8 ${
-                  e.color === "violet" ? "ring-2 ring-primary/30" : ""
+                  e.color === "violet" ? "ring-2 ring-brand/40" : ""
                 }`}
               >
                 <div className={`inline-flex self-start px-3 py-1 mb-6 rounded-full text-[9px] font-mono tracking-[0.2em] uppercase ${
-                  e.color === "blue" ? "bg-blue-50 text-blue-600" : e.color === "violet" ? "bg-violet-50 text-violet-600" : "bg-orange-50 text-orange-600"
+                  e.color === "blue" ? "bg-blue-500/10 text-blue-400" : e.color === "violet" ? "bg-violet-500/10 text-violet-400" : "bg-orange-500/10 text-orange-400"
                 }`}>
                   {e.tag}
                 </div>
@@ -247,7 +247,7 @@ export default function PricingClient() {
 
                 <div className="border-t border-[--color-border] pt-5 flex items-center justify-between">
                   <span className="font-heading font-bold text-lg">{e.cta}</span>
-                  <Link href="/contact" className="hover-trigger inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-primary">
+                  <Link href="/contact" className="hover-trigger inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-brand">
                     Get Started <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -276,11 +276,11 @@ export default function PricingClient() {
       </section>
 
       {/* ══════════ CTA ══════════ */}
-      <section className="relative py-32 px-6 md:px-12 xl:px-20 overflow-hidden bg-gradient-to-br from-violet-600 via-blue-600 to-pink-500">
+      <section className="relative py-32 px-6 md:px-12 xl:px-20 overflow-hidden bg-[#05060c] border-t border-[--color-border]">
         <motion.div
-          animate={{ scale: [1, 1.15, 1], opacity: [0.25, 0.4, 0.25] }}
+          animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-white blur-[180px] pointer-events-none"
+          className="orb-core absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
         />
         <div className="max-w-[1400px] mx-auto relative z-10 text-center">
           <Reveal>
@@ -290,7 +290,7 @@ export default function PricingClient() {
             </h2>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link href="/contact"
-                className="hover-trigger group inline-flex items-center gap-3 bg-white text-primary font-bold text-xs uppercase tracking-widest px-9 py-4 rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.3)]">
+                className="hover-trigger group inline-flex items-center gap-3 bg-white text-[#05060c] font-bold text-xs uppercase tracking-widest px-9 py-4 rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.15)]">
                 Get a Custom Quote <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link href="/services"

@@ -9,8 +9,8 @@ const customEase: any = [0.16, 1, 0.3, 1];
 
 export default function BlogClient({ posts }: { posts: BlogPost[] }) {
   return (
-    <div className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-slate-100 text-slate-800">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+    <div className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-[#05060c] text-white gradient-mesh">
+      <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(#ffffff_1px,transparent_1px),linear-gradient(90deg,#ffffff_1px,transparent_1px)] bg-[size:100px_100px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div 
@@ -43,7 +43,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                   <span>•</span>
                   <span>{new Date(post.createdAt).toLocaleDateString()}</span>
                 </div>
-                <h2 className="text-3xl font-bold font-heading mb-4 tracking-tight group-hover:text-blue-600 transition-colors">
+                <h2 className="text-3xl font-bold font-heading mb-4 tracking-tight text-white group-hover:text-brand transition-colors">
                   {post.title}
                 </h2>
                 <p className="text-muted-foreground text-base font-light leading-relaxed mb-6">

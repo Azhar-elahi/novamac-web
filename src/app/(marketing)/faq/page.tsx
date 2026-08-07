@@ -52,12 +52,12 @@ const FAQS = [
 
 export default function FAQPage() {
   return (
-    <main className="bg-slate-100 text-slate-800 min-h-screen pt-36 pb-20 px-6">
+    <main className="bg-[#05060c] text-white min-h-screen pt-36 pb-20 px-6 gradient-mesh">
       <div className="max-w-4xl mx-auto">
         <div className="mb-20 text-center">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-slate-600 mb-4">/ Common Questions</p>
-          <h1 className="font-heading font-extrabold text-5xl md:text-7xl tracking-tighter mb-6">Everything you need to know.</h1>
-          <p className="text-xl text-slate-600 font-light max-w-2xl mx-auto">
+          <p className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-4">/ Common Questions</p>
+          <h1 className="font-heading font-extrabold text-5xl md:text-7xl tracking-tighter mb-6 text-white">Everything you need to know.</h1>
+          <p className="text-xl text-white/55 font-light max-w-2xl mx-auto">
             Detailed answers to the 20 most frequently asked questions about our engineering, process, and pricing.
           </p>
         </div>
@@ -65,12 +65,12 @@ export default function FAQPage() {
         <div className="space-y-16">
           {FAQS.map((section, idx) => (
             <div key={idx}>
-              <h2 className="text-3xl font-heading font-bold mb-8 text-slate-800 border-b border-slate-200 pb-4">{section.category}</h2>
+              <h2 className="text-3xl font-heading font-bold mb-8 text-white border-b border-white/10 pb-4">{section.category}</h2>
               <div className="space-y-8">
                 {section.questions.map((faq, i) => (
-                  <div key={i} className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 hover:border-slate-200 transition-colors">
-                    <h3 className="text-xl font-bold mb-4 text-slate-800">{faq.q}</h3>
-                    <p className="text-slate-600 leading-relaxed font-light">{faq.a}</p>
+                  <div key={i} className="card-vibrant p-6 md:p-8 rounded-2xl">
+                    <h3 className="text-xl font-bold mb-4 text-white">{faq.q}</h3>
+                    <p className="text-white/55 leading-relaxed font-light">{faq.a}</p>
                   </div>
                 ))}
               </div>
@@ -78,12 +78,12 @@ export default function FAQPage() {
           ))}
         </div>
 
-        <div className="mt-24 p-8 md:p-12 bg-slate-100/50 border border-slate-200 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+        <div className="mt-24 p-8 md:p-12 card-vibrant rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div>
-            <h4 className="text-2xl font-bold mb-3">Still have questions?</h4>
-            <p className="text-slate-600 font-light max-w-md">We are always happy to answer any specific questions you might have about your unique project.</p>
+            <h4 className="text-2xl font-bold mb-3 text-white">Still have questions?</h4>
+            <p className="text-white/55 font-light max-w-md">We are always happy to answer any specific questions you might have about your unique project.</p>
           </div>
-          <Link href="/contact" className="shrink-0 px-8 py-4 bg-blue-600 text-white font-bold uppercase tracking-widest text-xs inline-flex items-center gap-2 hover:bg-blue-700 transition-colors rounded-full">
+          <Link href="/contact" className="shrink-0 px-8 py-4 bg-white text-[#05060c] font-bold uppercase tracking-widest text-xs inline-flex items-center gap-2 hover:bg-white/90 transition-colors rounded-full">
             Contact Us <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

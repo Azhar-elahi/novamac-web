@@ -85,9 +85,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem={false}
-          forcedTheme="light"
+          forcedTheme="dark"
           disableTransitionOnChange
         >
           <JsonLd data={orgSchema} />

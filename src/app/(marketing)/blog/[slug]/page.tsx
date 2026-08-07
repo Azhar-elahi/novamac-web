@@ -82,7 +82,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-slate-100 text-slate-800">
+    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-[#05060c] text-white gradient-mesh">
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
       <article className="max-w-3xl mx-auto">
@@ -107,12 +107,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </header>
 
         {post.coverImage && (
-          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-secondary/50 mb-14 border border-slate-200">
+          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-white/[0.03] mb-14 border border-white/10">
             <Image src={post.coverImage} alt={post.title} fill sizes="(max-width: 768px) 100vw, 768px" className="object-cover" priority />
           </div>
         )}
 
-        <div className="prose prose-invert prose-lg max-w-none font-light leading-relaxed whitespace-pre-wrap">
+        <div className="prose prose-invert prose-lg max-w-none font-light leading-relaxed whitespace-pre-wrap prose-headings:font-heading prose-headings:text-white prose-a:text-brand">
           {post.content}
         </div>
       </article>
