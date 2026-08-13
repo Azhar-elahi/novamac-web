@@ -34,13 +34,13 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0" />
       
       {/* ── SINGLE UNIFIED STICKY HEADER ── */}
-      <header className={`sticky top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 xl:px-20 h-[76px] bg-[#F0EDE6]/95 backdrop-blur-md border-b border-[#D6D1C8] transition-opacity duration-500 ${showNav ? "opacity-100" : "opacity-0 pointer-events-none hidden"}`}>
+      <header className={`sticky top-0 left-0 right-0 ${mobileMenuOpen ? "z-[99999]" : "z-50"} flex items-center justify-between px-4 sm:px-8 md:px-12 xl:px-20 h-[76px] bg-[#F0EDE6] border-b border-[#D6D1C8] transition-opacity duration-500 ${showNav ? "opacity-100" : "opacity-0 pointer-events-none hidden"}`}>
         
         {/* LOGO LINK: / if on /home, otherwise /home */}
-        <Link href={logoHref} className="hover-trigger flex items-center gap-3 group relative z-10">
-          <img src="/logo.png" alt="NovaMac Logo" className="w-10 h-10 object-contain rounded-xl shadow-sm group-hover:scale-105 transition-transform" />
-          <span className="font-heading font-bold text-xl tracking-tight text-[#1C1917]">
-            NovaMac<br/><span className="text-[10px] font-mono tracking-widest text-[#78716C] leading-none block">SOLUTIONS</span>
+        <Link href={logoHref} onClick={() => setMobileMenuOpen(false)} className="hover-trigger flex items-center gap-3 group relative z-[100000]">
+          <img src="/logo.png" alt="NovaMac Logo" className="w-9 h-9 sm:w-10 sm:h-10 object-contain rounded-xl shadow-sm group-hover:scale-105 transition-transform" />
+          <span className="font-heading font-bold text-lg sm:text-xl tracking-tight text-[#1C1917]">
+            NovaMac<br/><span className="text-[9px] sm:text-[10px] font-mono tracking-widest text-[#78716C] leading-none block">SOLUTIONS</span>
           </span>
         </Link>
 
@@ -68,18 +68,18 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
         {/* MOBILE MENU TOGGLE BUTTON */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden px-3.5 py-2 rounded-2xl bg-[#1C1917] text-white hover:bg-[#0F52BA] transition-all relative z-[10000] flex items-center justify-center gap-2 shadow-md active:scale-95"
+          className="lg:hidden px-3.5 py-2 rounded-2xl bg-[#1C1917] text-white hover:bg-[#0F52BA] transition-all relative z-[100000] flex items-center justify-center gap-2 shadow-lg active:scale-95 border border-black/10"
           aria-label="Toggle Navigation Menu"
         >
-          <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-white/90">
+          <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-white">
             {mobileMenuOpen ? "CLOSE" : "MENU"}
           </span>
           {mobileMenuOpen ? <X className="w-4 h-4 text-white" /> : <Menu className="w-4 h-4 text-white" />}
         </button>
 
-        {/* MOBILE MENU DRAWER OVERLAY (100% SOLID OPAQUE) */}
+        {/* MOBILE MENU DRAWER OVERLAY (100% SOLID OPAQUE FULLSCREEN) */}
         {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-[76px] bottom-0 bg-[#F0EDE6] z-[9999] opacity-100 p-6 flex flex-col justify-between border-t-2 border-[#D6D1C8] shadow-2xl overflow-y-auto">
+          <div className="lg:hidden fixed inset-0 top-0 left-0 w-full h-full bg-[#F0EDE6] z-[99998] p-6 pt-24 flex flex-col justify-between border-t-2 border-[#D6D1C8] shadow-2xl overflow-y-auto min-h-screen">
             <nav className="flex flex-col gap-3 pt-2">
               {NAV_LINKS.map((link) => (
                 <Link
@@ -94,7 +94,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
               ))}
             </nav>
 
-            <div className="pt-6 border-t border-[#D6D1C8] space-y-4">
+            <div className="pt-6 mt-6 border-t border-[#D6D1C8] space-y-4">
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
@@ -103,7 +103,7 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
                 BOOK A STRATEGY CALL
               </Link>
               <div className="text-center font-mono text-[10px] text-[#78716C] tracking-widest uppercase">
-                NOVAMAC SOLUTIONS // SUB-50MS EDGE
+                NOVAMAC SOLUTIONS // SUB-50MS EDGE SYSTEM
               </div>
             </div>
           </div>
