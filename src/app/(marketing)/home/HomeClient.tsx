@@ -267,34 +267,34 @@ export default function HomeClient() {
       <TechMarqueeBelt />
 
       {/* ── 3. REALISTIC VALUE STATS BAR ── */}
-      <section className="px-6 md:px-12 xl:px-20 py-12 bg-white/90 backdrop-blur-xl border-b border-[#D6D1C8] relative overflow-hidden z-10 shadow-sm">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
+      <section className="px-4 sm:px-6 md:px-12 xl:px-20 py-8 sm:py-12 bg-white/90 backdrop-blur-xl border-b border-[#D6D1C8] relative overflow-hidden z-10 shadow-sm">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 relative z-10">
           {[
-            { label: "100% Custom Code", val: "ZERO", desc: "No Page Builders / Templates" },
+            { label: "100% Custom Code", val: "ZERO", desc: "No Page Builders" },
             { label: "Sub-Second Loading", val: "<50ms", desc: "Global Edge Response" },
-            { label: "Direct Technical Access", val: "SENIOR", desc: "No Junior Middlemen" },
-            { label: "On-Time Guarantee", val: "99.4%", desc: "Agile Production Cycle" },
+            { label: "Direct Technical Access", val: "SENIOR", desc: "Senior Dev Team" },
+            { label: "On-Time Guarantee", val: "99.4%", desc: "Agile Production" },
           ].map((stat) => (
-            <div key={stat.label} className="border-l-3 border-[#0F52BA] pl-6">
-              <div className="text-3xl md:text-5xl font-black text-[#1C1917] tracking-tight">{stat.val}</div>
-              <div className="text-xs font-mono font-bold text-[#0F52BA] uppercase mt-1 tracking-wider">{stat.label}</div>
-              <div className="text-xs text-[#78716C] mt-0.5 font-light">{stat.desc}</div>
+            <div key={stat.label} className="border-l-2 sm:border-l-3 border-[#0F52BA] pl-3 sm:pl-6">
+              <div className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1C1917] tracking-tight">{stat.val}</div>
+              <div className="text-[10px] sm:text-xs font-mono font-bold text-[#0F52BA] uppercase mt-1 tracking-wider">{stat.label}</div>
+              <div className="text-[10px] sm:text-xs text-[#78716C] mt-0.5 font-light">{stat.desc}</div>
             </div>
           ))}
         </div>
       </section>
 
       {/* ── 4. EXPERTISE & CAPABILITIES GRID ── */}
-      <section className="px-6 md:px-12 xl:px-20 py-24 max-w-[1400px] mx-auto relative z-10 overflow-hidden border-b border-[#D6D1C8]">
+      <section className="px-4 sm:px-6 md:px-12 xl:px-20 py-12 sm:py-24 max-w-[1400px] mx-auto relative z-10 overflow-hidden border-b border-[#D6D1C8]">
         <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-90" />
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 mb-10 sm:mb-16 relative z-10">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#0F52BA]/30 rounded-full text-[10px] font-mono font-bold text-[#0F52BA] uppercase tracking-widest mb-3 shadow-sm">
               <Sparkles className="w-3 h-3 text-[#0F52BA]" />
               SYSTEM CAPABILITIES
             </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[#1C1917]">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-[#1C1917]">
               Deep Technical Expertise.
             </h2>
           </div>

@@ -186,7 +186,7 @@ const DataPulse = ({ top, left, delay = 0, color = "#0F52BA" }: { top: string, l
 );
 
 const FloatingShapes = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+  <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 hidden lg:block">
     <motion.div 
       animate={{ rotate: 360, y: [0, -50, 0] }} 
       transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
