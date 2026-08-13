@@ -473,80 +473,79 @@ export default function MarketingPage() {
         <div className="scroll-content flex flex-col lg:flex-row w-full lg:w-[500vw] h-auto lg:h-full transform-gpu">
           
           {/* Panel 2.1: THE PROBLEM */}
-          <div className="w-full lg:w-[100vw] min-h-[80vh] lg:h-full flex flex-col justify-center px-6 md:px-20 py-16 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden">
-            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">01 // THE PROBLEM</div>
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500">01 // THE PROBLEM</div>
             <DoodleArrowHorizontal />
             <FloatingTerminal className="right-[10%] top-[25%]" />
             <div className="absolute right-[-10vw] top-[30vh] w-[40vw] h-[40vw] bg-[#FF007F]/10 blur-[140px] rounded-full pointer-events-none mix-blend-multiply" />
             <div className="max-w-4xl z-10 relative">
-              <div className="absolute -left-12 top-4 w-6 h-[2px] bg-[#00F0FF]" />
-              <h2 className="text-6xl md:text-9xl font-black text-zinc-900 tracking-tighter mb-10 leading-[0.85] drop-shadow-sm">
-                <span className="relative inline-block">Boring Design<DoodleCircle /></span><br/>
+              <h2 className="text-3xl sm:text-6xl md:text-9xl font-black text-zinc-900 tracking-tight mb-6 sm:mb-10 leading-[0.95] drop-shadow-sm">
+                <span className="relative inline-block">Boring Design</span><br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#0F52BA] to-[#0a3a85]">is Dead.</span>
               </h2>
-              <p className="text-2xl md:text-3xl text-zinc-600 font-light leading-relaxed mb-8 max-w-2xl border-l-4 border-zinc-300 pl-6">
+              <p className="text-sm sm:text-2xl md:text-3xl text-zinc-600 font-light leading-relaxed mb-6 sm:mb-8 max-w-2xl border-l-2 sm:border-l-4 border-zinc-300 pl-4 sm:pl-6">
                 The future belongs to dynamic, colorful, and relentlessly engaging digital experiences. We turn standard websites into captivating brand journeys.
               </p>
             </div>
           </div>
 
           {/* Panel 2.2: THE SOLUTION */}
-          <div className="w-full lg:w-[100vw] min-h-[80vh] lg:h-full flex items-center justify-center p-6 md:p-10 lg:px-20 relative border-b lg:border-b-0 lg:border-r border-black/5">
-            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">02 // THE SOLUTION</div>
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center p-4 sm:p-8 md:p-10 lg:px-20 relative border-b lg:border-b-0 lg:border-r border-black/5 py-12 lg:py-0">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500">02 // THE SOLUTION</div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-white rounded-full blur-[40px] lg:blur-[100px] pointer-events-none opacity-50" />
             
-            <div className={glassCard + " w-full max-w-6xl flex flex-col md:flex-row gap-8 lg:gap-16 items-center border-t-white/80 border-l-white/80 !bg-white/40 shadow-[0_20px_60px_rgba(0,0,0,0.05)]"}>
-              <div className="flex-1 space-y-8 relative z-10">
-                <div className="p-8 rounded-3xl bg-white/60 border border-white/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group/item">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 bg-[#FF007F]/10 rounded-2xl group-hover/item:bg-[#FF007F]/20 transition-colors">
-                      <Layout className="h-8 w-8 text-[#FF007F]" />
+            <div className={glassCard + " w-full max-w-6xl flex flex-col md:flex-row gap-6 lg:gap-16 items-center border-t-white/80 border-l-white/80 !bg-white/40 shadow-sm p-4 sm:p-8"}>
+              <div className="flex-1 space-y-4 sm:space-y-8 relative z-10 w-full">
+                <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/60 border border-white/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group/item">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-4">
+                    <div className="p-2.5 sm:p-3 bg-[#FF007F]/10 rounded-xl sm:rounded-2xl group-hover/item:bg-[#FF007F]/20 transition-colors">
+                      <Layout className="h-6 w-6 sm:h-8 sm:w-8 text-[#FF007F]" />
                     </div>
-                    <div className="text-3xl font-black text-zinc-900 tracking-tight">UI/UX Excellence</div>
+                    <div className="text-xl sm:text-3xl font-black text-zinc-900 tracking-tight">UI/UX Excellence</div>
                   </div>
-                  <p className="text-zinc-600 font-medium text-lg leading-relaxed">Pixel-perfect aesthetics and seamless user journeys that drive massive engagement.</p>
+                  <p className="text-zinc-600 font-medium text-xs sm:text-lg leading-relaxed">Pixel-perfect aesthetics and seamless user journeys that drive massive engagement.</p>
                 </div>
-                <div className="p-8 rounded-3xl bg-white/60 border border-white/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group/item">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 bg-zinc-900 rounded-2xl group-hover/item:bg-[#00F0FF] transition-colors">
-                      <Code className="h-8 w-8 text-white group-hover/item:text-zinc-900" />
+                <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/60 border border-white/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group/item">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-4">
+                    <div className="p-2.5 sm:p-3 bg-zinc-900 rounded-xl sm:rounded-2xl group-hover/item:bg-[#00F0FF] transition-colors">
+                      <Code className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover/item:text-zinc-900" />
                     </div>
-                    <div className="text-3xl font-black text-zinc-900 tracking-tight">Custom Web Dev</div>
+                    <div className="text-xl sm:text-3xl font-black text-zinc-900 tracking-tight">Custom Web Dev</div>
                   </div>
-                  <p className="text-zinc-600 font-medium text-lg leading-relaxed">Robust web applications built from scratch to perfectly align with your brand's unique needs.</p>
+                  <p className="text-zinc-600 font-medium text-xs sm:text-lg leading-relaxed">Robust web applications built from scratch to perfectly align with your brand's unique needs.</p>
                 </div>
               </div>
               
-              <div className="flex-1 h-[350px] lg:h-[600px] w-full rounded-[2.5rem] overflow-hidden border-4 lg:border-8 border-white shadow-2xl relative group">
+              <div className="flex-1 h-[220px] sm:h-[350px] lg:h-[600px] w-full rounded-2xl sm:rounded-[2.5rem] overflow-hidden border-2 sm:border-4 lg:border-8 border-white shadow-xl relative group">
                 <div className="w-[110%] h-[110%] -left-[5%] -top-[5%] relative transition-transform duration-1000 group-hover:scale-105 group-hover:-translate-x-4">
                   <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80" alt="Design workflow" className="object-cover w-full h-full" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-8 left-8 right-8">
-                  <div className="font-mono text-xs text-white/70 tracking-widest mb-2 border-b border-white/20 pb-2 inline-block">DESIGN & ENG.</div>
-                  <div className="text-white text-2xl font-light">Crafting immersive digital products.</div>
+                <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8">
+                  <div className="font-mono text-[10px] text-white/70 tracking-widest mb-1 border-b border-white/20 pb-1 inline-block">DESIGN & ENG.</div>
+                  <div className="text-white text-base sm:text-2xl font-light">Crafting immersive digital products.</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Panel 2.3: ARCHITECTURE */}
-          <div className="w-full lg:w-[100vw] min-h-[80vh] lg:h-full flex items-center justify-center px-6 md:px-20 py-16 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden">
-            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">03 // ECOSYSTEM</div>
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500">03 // ECOSYSTEM</div>
             
             <DataPulse top="top-[30%]" left="left-[20%]" delay={0.1} color="#FF007F" />
             <DataPulse top="top-[70%]" left="left-[80%]" delay={1.2} color="#00F0FF" />
             
             <div className="w-full max-w-7xl flex flex-col items-center relative z-10">
-              <h2 className="text-4xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-12 lg:mb-16 text-center">Comprehensive<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF007F] to-[#00F0FF]">Digital Growth.</span></h2>
+              <h2 className="text-3xl sm:text-6xl md:text-8xl font-black text-zinc-900 tracking-tight mb-8 sm:mb-16 text-center">Comprehensive<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF007F] to-[#00F0FF]">Digital Growth.</span></h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-                <Link href="/services/custom-web-development" className="p-8 rounded-3xl bg-white border border-black/5 shadow-lg group hover:-translate-y-2 transition-transform block">
-                  <Database className="w-12 h-12 text-[#FF007F] mb-6 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold mb-4 text-zinc-900">CRM & Software</h3>
-                  <p className="text-zinc-600 leading-relaxed">Tailored customer relationship management tools and internal software that scales with your business.</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 w-full">
+                <Link href="/services/custom-web-development" className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-black/5 shadow-md group hover:-translate-y-2 transition-transform block">
+                  <Database className="w-8 h-8 sm:w-12 sm:h-12 text-[#FF007F] mb-4 sm:mb-6 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-4 text-zinc-900">CRM & Software</h3>
+                  <p className="text-zinc-600 text-xs sm:text-base leading-relaxed">Tailored customer relationship management tools and internal software that scales with your business.</p>
                 </Link>
-                <Link href="/services" className="p-8 rounded-3xl bg-white border border-black/5 shadow-lg group hover:-translate-y-2 transition-transform block">
+                <Link href="/services" className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-black/5 shadow-md group hover:-translate-y-2 transition-transform block">
                   <PenTool className="w-12 h-12 text-[#7000FF] mb-6 group-hover:scale-110 transition-transform" />
                   <h3 className="text-2xl font-bold mb-4 text-zinc-900">Graphic Design</h3>
                   <p className="text-zinc-600 leading-relaxed">Iconic logos, brand identities, and stunning visual assets that leave a lasting mark on the industry.</p>

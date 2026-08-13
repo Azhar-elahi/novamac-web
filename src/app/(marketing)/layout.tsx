@@ -68,10 +68,13 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
         {/* MOBILE MENU TOGGLE BUTTON */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2 rounded-xl bg-white border border-[#D6D1C8] text-[#1C1917] hover:text-[#0F52BA] transition-all relative z-50"
+          className="lg:hidden px-3.5 py-2 rounded-2xl bg-[#1C1917] text-white hover:bg-[#0F52BA] transition-all relative z-[10000] flex items-center justify-center gap-2 shadow-md active:scale-95"
           aria-label="Toggle Navigation Menu"
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-white/90">
+            {mobileMenuOpen ? "CLOSE" : "MENU"}
+          </span>
+          {mobileMenuOpen ? <X className="w-4 h-4 text-white" /> : <Menu className="w-4 h-4 text-white" />}
         </button>
 
         {/* MOBILE MENU DRAWER OVERLAY (100% SOLID OPAQUE) */}
