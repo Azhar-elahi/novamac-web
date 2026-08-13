@@ -34,28 +34,28 @@ export default function ServicesClient() {
       <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} />
 
       {/* ── HERO ── */}
-      <section className="px-6 md:px-12 xl:px-20 pt-10 pb-16 max-w-[1400px] mx-auto relative z-10 border-b border-[#D6D1C8]">
+      <section className="px-4 sm:px-8 md:px-12 xl:px-20 pt-6 sm:pt-10 pb-10 sm:pb-16 max-w-[1400px] mx-auto relative z-10 border-b border-[#D6D1C8]">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white border border-[#0F52BA]/30 rounded-full text-xs font-mono text-[#0F52BA] font-bold uppercase tracking-widest mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#0F52BA]/30 rounded-full text-[10px] sm:text-xs font-mono text-[#0F52BA] font-bold uppercase tracking-widest mb-4 sm:mb-6 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-[#0F52BA]" />
             CAPABILITIES & SYSTEMS
           </div>
 
-          <h1 className="text-[clamp(3.5rem,7.5vw,6.5rem)] font-black tracking-tighter leading-[0.9] text-[#1C1917] mb-6 relative">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-[1.05] sm:leading-[0.9] text-[#1C1917] mb-4 sm:mb-6 relative">
             Engineered<br />
             <span className="relative inline-block text-[#0F52BA]">
-              For Scale.
+              For High Stakes.
               <DoodleUnderline />
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-[#57534E] max-w-2xl leading-relaxed mb-8 font-normal bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-white/90 shadow-sm">
-            We don't build standard template sites. We architect high-performance digital platforms, cinematic interfaces, and autonomous AI systems.
+          <p className="text-xs sm:text-base md:text-xl text-[#57534E] max-w-2xl leading-relaxed font-normal bg-white/80 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-white/90 shadow-sm">
+            We don't build generic websites. We design and engineer web platforms, high-conversion e-commerce stores, custom CRMs, and complex web apps tailored for ambitious businesses.
           </p>
         </motion.div>
       </section>

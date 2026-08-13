@@ -39,8 +39,8 @@ export default function ServicePageClient({ service }: { service: ServiceDetail 
       <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} />
 
       {/* ── HERO WITH SERVICE IMAGE CARD ── */}
-      <section className="px-6 md:px-12 xl:px-20 pt-10 pb-16 max-w-[1400px] mx-auto relative z-10 border-b border-[#D6D1C8]">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+      <section className="px-4 sm:px-8 md:px-12 xl:px-20 pt-6 sm:pt-10 pb-10 sm:pb-16 max-w-[1400px] mx-auto relative z-10 border-b border-[#D6D1C8]">
+        <div className="grid lg:grid-cols-12 gap-8 sm:gap-12 items-center">
           
           {/* LEFT: TITLE & TAGLINE */}
           <motion.div 
@@ -49,27 +49,27 @@ export default function ServicePageClient({ service }: { service: ServiceDetail 
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-7"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white border border-[#0F52BA]/30 rounded-full text-xs font-mono text-[#0F52BA] font-bold uppercase tracking-widest mb-6 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#0F52BA]/30 rounded-full text-[10px] sm:text-xs font-mono text-[#0F52BA] font-bold uppercase tracking-widest mb-4 sm:mb-6 shadow-sm">
               <Icon className="w-4 h-4 text-[#0F52BA]" />
               Services / {service.category} / {service.shortTitle}
             </div>
 
-            <h1 className="text-[clamp(3.2rem,7vw,6rem)] font-black tracking-tighter leading-[0.9] text-[#1C1917] mb-6 relative">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-[1.05] sm:leading-[0.9] text-[#1C1917] mb-4 sm:mb-6 relative">
               <span className="relative inline-block text-[#1C1917]">
                 {service.title}
                 <DoodleUnderline />
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-[#57534E] max-w-2xl leading-relaxed mb-8 font-normal bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-white/90 shadow-sm">
+            <p className="text-xs sm:text-base md:text-xl text-[#57534E] max-w-2xl leading-relaxed mb-6 sm:mb-8 font-normal bg-white/80 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-white/90 shadow-sm">
               {service.tagline}
             </p>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <Link href="/contact" className="inline-flex items-center gap-3 bg-[#0F52BA] text-white px-8 py-4 font-bold text-xs tracking-widest uppercase hover:bg-[#1C1917] transition-all rounded-full shadow-lg hover:scale-[1.02]">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+              <Link href="/contact" className="inline-flex items-center justify-center gap-3 bg-[#0F52BA] text-white px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-xs tracking-widest uppercase hover:bg-[#1C1917] transition-all rounded-full shadow-lg text-center">
                 Get a {service.shortTitle} Quote <ArrowRight className="w-4 h-4" />
               </Link>
-              <span className="text-xs font-mono font-bold text-[#0F52BA] bg-white px-4 py-2 rounded-full border border-[#D6D1C8] shadow-sm">
+              <span className="text-xs font-mono font-bold text-[#0F52BA] bg-white px-4 py-3 rounded-full border border-[#D6D1C8] shadow-sm text-center">
                 {service.startingPrice}
               </span>
             </div>
