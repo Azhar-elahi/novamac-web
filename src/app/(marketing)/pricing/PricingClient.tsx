@@ -1,17 +1,20 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { DoodleUnderline } from "@/components/immersive/Doodles";
 import { RichBackgroundArt } from "@/components/immersive/RichBackgroundArt";
+import { getPricingPlans, PricingPlanItem } from "@/app/actions/pricing";
 
 export default function PricingClient() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const [plans, setPlans] = useState<PricingPlanItem[]>([]);
 
   useEffect(() => {
+    getPricingPlans().then(setPlans);
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set((e.clientX / window.innerWidth) - 0.5);
       mouseY.set((e.clientY / window.innerHeight) - 0.5);
@@ -19,6 +22,39 @@ export default function PricingClient() {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [mouseX, mouseY]);
+
+  const mainTiers = plans.filter(p => ["starter", "growth", "enterprise"].includes(p.slug));
+  const addons = plans.filter(p => !["starter", "growth", "enterprise"].includes(p.slug));
+
+  const displayTiers = mainTiers.length > 0 ? mainTiers : [
+    {
+      id: "starter",
+      slug: "starter",
+      title: "STARTER PLATFORM",
+      price: "$999",
+      subtitle: "Perfect for high-growth startups requiring a fast Next.js web presence.",
+      features: ["Up to 5 Custom Pages", "Next.js / React Stack", "Technical SEO Setup", "Sub-second Load Times", "2 Revision Rounds", "2-Week Delivery"],
+      popular: false
+    },
+    {
+      id: "growth",
+      slug: "growth",
+      title: "GROWTH STUDIO",
+      price: "$2,999",
+      subtitle: "Complete web platform with custom CMS and full digital design system.",
+      features: ["Up to 15 Custom Pages", "Custom Figma UI/UX Design", "Headless CMS Integration", "Advanced SEO & Analytics", "WebGL/GSAP Animations", "3-Week Delivery"],
+      popular: true
+    },
+    {
+      id: "enterprise",
+      slug: "enterprise",
+      title: "ENTERPRISE SAAS",
+      price: "Custom",
+      subtitle: "Full-scale custom web application, bespoke CRM, and dedicated SLA support.",
+      features: ["Unlimited Custom Routes", "Custom SaaS Architecture", "OpenAI / Claude AI Integration", "PostgreSQL / Prisma Database", "Dedicated PM & 24/7 SLA", "Ongoing Maintenance"],
+      popular: false
+    }
+  ];
 
   return (
     <div className="bg-[#F0EDE6] text-[#1C1917] min-h-screen pt-4 pb-32 overflow-hidden relative font-sans">
@@ -54,31 +90,9 @@ export default function PricingClient() {
       {/* ── PRICING TIERS ── */}
       <section className="px-4 sm:px-8 md:px-12 xl:px-20 py-10 sm:py-20 max-w-[1400px] mx-auto relative z-10">
         <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              name: "STARTER PLATFORM",
-              price: "$999",
-              desc: "Perfect for high-growth startups requiring a fast, conversion-focused Next.js web presence.",
-              features: ["Up to 5 Custom Pages", "Next.js / React Stack", "Technical SEO Setup", "Sub-second Load Times", "2 Revision Rounds", "2-Week Delivery"],
-              popular: false
-            },
-            {
-              name: "GROWTH STUDIO",
-              price: "$2,999",
-              desc: "Complete web platform with custom CMS, interactive UI animations, and full digital design system.",
-              features: ["Up to 15 Custom Pages", "Custom Figma UI/UX Design", "Headless CMS Integration", "Advanced SEO & Analytics", "WebGL/GSAP Animations", "3-Week Delivery"],
-              popular: true
-            },
-            {
-              name: "ENTERPRISE SAAS",
-              price: "Custom",
-              desc: "Full-scale custom web application, AI workflow bots, bespoke CRM, and dedicated SLA support.",
-              features: ["Unlimited Custom Routes", "Custom SaaS Architecture", "OpenAI / Claude AI Integration", "PostgreSQL / Prisma Database", "Dedicated PM & 24/7 SLA", "Ongoing Maintenance"],
-              popular: false
-            }
-          ].map((tier, i) => (
+          {displayTiers.map((tier, i) => (
             <motion.div
-              key={tier.name}
+              key={tier.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -92,9 +106,9 @@ export default function PricingClient() {
                 </span>
               )}
               <div>
-                <div className="text-xs font-mono font-bold text-[#0F52BA] uppercase tracking-widest mb-2">{tier.name}</div>
+                <div className="text-xs font-mono font-bold text-[#0F52BA] uppercase tracking-widest mb-2">{tier.title}</div>
                 <div className="text-4xl font-black text-[#1C1917] mb-4">{tier.price}</div>
-                <p className="text-xs text-[#78716C] leading-relaxed mb-6 border-b border-[#D6D1C8] pb-6">{tier.desc}</p>
+                <p className="text-xs text-[#78716C] leading-relaxed mb-6 border-b border-[#D6D1C8] pb-6">{tier.subtitle}</p>
                 <div className="space-y-3 mb-8">
                   {tier.features.map((f) => (
                     <div key={f} className="flex items-center gap-2.5 text-xs text-[#57534E]">

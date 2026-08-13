@@ -158,3 +158,14 @@ model Review {
   approved       Boolean  @default(true)
   createdAt      DateTime @default(now())
 }
+
+model PricingPlan {
+  id        String   @id @default(cuid())
+  slug      String   @unique // e.g. "starter", "growth", "enterprise", "logo-design", etc.
+  title     String
+  price     String
+  subtitle  String?
+  features  String   // JSON string or newline-separated features list
+  popular   Boolean  @default(false)
+  updatedAt DateTime @updatedAt
+}

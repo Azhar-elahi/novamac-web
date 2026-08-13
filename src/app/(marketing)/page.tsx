@@ -265,13 +265,7 @@ export default function MarketingPage() {
               scrollTrigger: {
                 trigger: h2,
                 pin: true,
-                scrub: 1.2,
-                snap: {
-                  snapTo: 1 / 4,
-                  duration: { min: 0.2, max: 0.5 },
-                  delay: 0.1,
-                  ease: "power1.inOut"
-                },
+                scrub: 1.8,
                 invalidateOnRefresh: true,
                 start: "top top",
                 end: () => "+=" + (window.innerWidth * 4)
@@ -294,13 +288,7 @@ export default function MarketingPage() {
               scrollTrigger: {
                 trigger: h4,
                 pin: true,
-                scrub: 1.2,
-                snap: {
-                  snapTo: 1,
-                  duration: { min: 0.2, max: 0.5 },
-                  delay: 0.1,
-                  ease: "power1.inOut"
-                },
+                scrub: 1.8,
                 invalidateOnRefresh: true,
                 start: "top top",
                 end: () => "+=" + window.innerWidth
@@ -323,13 +311,7 @@ export default function MarketingPage() {
               scrollTrigger: {
                 trigger: h6,
                 pin: true,
-                scrub: 1.2,
-                snap: {
-                  snapTo: 1,
-                  duration: { min: 0.2, max: 0.5 },
-                  delay: 0.1,
-                  ease: "power1.inOut"
-                },
+                scrub: 1.8,
                 invalidateOnRefresh: true,
                 start: "top top",
                 end: () => "+=" + window.innerWidth

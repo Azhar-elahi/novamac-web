@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, Package, LifeBuoy, LogOut, ShieldAlert, Briefcase, FileText, Mail, BarChart } from "lucide-react";
+import { LayoutDashboard, Users, Package, LifeBuoy, LogOut, ShieldAlert, Briefcase, FileText, Mail, BarChart, DollarSign } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { cn } from "@/lib/utils";
 
 const adminNavItems = [
   { name: "Dashboard", href: "/7222-@dm1nl0g1n", icon: LayoutDashboard },
+  { name: "Price Management", href: "/7222-@dm1nl0g1n/pricing", icon: DollarSign },
   { name: "Web Intel", href: "/7222-@dm1nl0g1n/intel", icon: BarChart },
   { name: "Messages", href: "/7222-@dm1nl0g1n/messages", icon: Mail },
   { name: "Orders", href: "/7222-@dm1nl0g1n/orders", icon: Package },
