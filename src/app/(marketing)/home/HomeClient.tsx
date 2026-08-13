@@ -128,12 +128,12 @@ export default function HomeClient() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-6"
           >
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-white/90 backdrop-blur-md border border-[#0F52BA]/30 rounded-full text-xs font-mono tracking-widest text-[#0F52BA] uppercase font-bold shadow-md mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 backdrop-blur-md border border-[#0F52BA]/30 rounded-full text-[10px] sm:text-xs font-mono tracking-widest text-[#0F52BA] uppercase font-bold shadow-sm mb-4 sm:mb-6">
               <Zap className="w-3.5 h-3.5 text-[#0F52BA] animate-pulse" />
               NOVAMAC DIGITAL STUDIO
             </div>
             
-            <h1 className="text-[clamp(3rem,7vw,6rem)] font-black tracking-tighter leading-[0.9] text-[#1C1917] mb-6 relative">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-[1.05] sm:leading-[0.9] text-[#1C1917] mb-4 sm:mb-6 relative">
               The AI<br />
               Control<br />
               <span className="relative inline-block text-[#0F52BA]">
@@ -142,18 +142,18 @@ export default function HomeClient() {
               </span>
             </h1>
             
-            <p className="text-base md:text-lg text-[#57534E] leading-relaxed mb-8 font-normal max-w-xl bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-white/90 shadow-md">
+            <p className="text-xs sm:text-base md:text-lg text-[#57534E] leading-relaxed mb-6 sm:mb-8 font-normal max-w-xl bg-white/80 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-white/90 shadow-sm">
               Four intelligent AI systems, one cinematic interface — plus the custom web development, UI/UX design, and workflow automation that gets you chosen.
             </p>
             
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <Link href="/work"
-                className="inline-flex items-center justify-center gap-3 bg-[#1C1917] text-white px-8 py-4 font-bold text-xs tracking-widest uppercase hover:bg-[#0F52BA] transition-all duration-300 rounded-full group shadow-xl hover:scale-[1.02] transform-gpu">
+                className="inline-flex items-center justify-center gap-3 bg-[#1C1917] text-white px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-xs tracking-widest uppercase hover:bg-[#0F52BA] transition-all duration-300 rounded-full group shadow-lg text-center">
                 Explore Platform
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </Link>
               <Link href="/contact"
-                className="inline-flex items-center justify-center gap-3 bg-white text-[#1C1917] border border-[#D6D1C8] px-8 py-4 font-bold text-xs tracking-widest uppercase hover:border-[#0F52BA] hover:text-[#0F52BA] transition-all duration-300 rounded-full shadow-sm hover:scale-[1.02] transform-gpu">
+                className="inline-flex items-center justify-center gap-3 bg-white text-[#1C1917] border border-[#D6D1C8] px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-xs tracking-widest uppercase hover:border-[#0F52BA] hover:text-[#0F52BA] transition-all duration-300 rounded-full shadow-sm text-center">
                 Book Strategy Call
               </Link>
             </div>

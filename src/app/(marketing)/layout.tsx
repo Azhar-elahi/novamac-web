@@ -74,19 +74,19 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
 
-        {/* MOBILE MENU DRAWER OVERLAY */}
+        {/* MOBILE MENU DRAWER OVERLAY (100% SOLID OPAQUE) */}
         {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-0 top-[76px] bg-[#F0EDE6] z-40 p-6 flex flex-col justify-between border-t border-[#D6D1C8] shadow-2xl animate-in slide-in-from-top duration-300">
-            <nav className="flex flex-col gap-5 pt-4">
+          <div className="lg:hidden fixed inset-x-0 top-[76px] bottom-0 bg-[#F0EDE6] z-[9999] opacity-100 p-6 flex flex-col justify-between border-t-2 border-[#D6D1C8] shadow-2xl overflow-y-auto">
+            <nav className="flex flex-col gap-3 pt-2">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-2xl font-black tracking-tight border-b border-[#D6D1C8]/60 pb-3 flex items-center justify-between ${pathname === link.href ? "text-[#0F52BA]" : "text-[#1C1917]"}`}
+                  className={`text-base font-extrabold tracking-tight p-4 rounded-2xl border transition-all flex items-center justify-between shadow-sm ${pathname === link.href ? "bg-[#0F52BA] text-white border-[#0F52BA]" : "bg-white text-[#1C1917] border-[#D6D1C8] hover:border-[#0F52BA]"}`}
                 >
                   <span>{link.label}</span>
-                  <ArrowRight className="w-5 h-5 text-[#0F52BA]" />
+                  <ArrowRight className={`w-4 h-4 ${pathname === link.href ? "text-white" : "text-[#0F52BA]"}`} />
                 </Link>
               ))}
             </nav>
@@ -95,12 +95,12 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-4 bg-[#0F52BA] text-white font-bold text-xs tracking-widest uppercase rounded-full text-center block shadow-lg"
+                className="w-full py-4 bg-[#1C1917] text-white font-bold text-xs tracking-widest uppercase rounded-full text-center block shadow-lg hover:bg-[#0F52BA] transition-all"
               >
                 BOOK A STRATEGY CALL
               </Link>
-              <div className="text-center font-mono text-[10px] text-[#78716C] tracking-widest">
-                NOVAMAC SOLUTIONS // SUB-50MS GLOBAL EDGE
+              <div className="text-center font-mono text-[10px] text-[#78716C] tracking-widest uppercase">
+                NOVAMAC SOLUTIONS // SUB-50MS EDGE
               </div>
             </div>
           </div>
