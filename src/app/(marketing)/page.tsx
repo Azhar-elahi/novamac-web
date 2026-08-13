@@ -560,58 +560,58 @@ export default function MarketingPage() {
           </div>
 
           {/* Panel 2.4: VALIDATION */}
-          <div className="w-full lg:w-[100vw] min-h-[80vh] lg:h-full flex flex-col justify-center px-6 md:px-20 py-16 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden bg-[#F0EDE6]">
-            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">04 // VALIDATION</div>
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden bg-[#F0EDE6]">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500">04 // VALIDATION</div>
             <div className="absolute right-[-20%] bottom-[-20%] text-[40vw] font-black text-black/[0.02] parallax-bg pointer-events-none">PROVEN</div>
             
-            <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-20 items-center mx-auto relative z-10">
-              <div>
-                <h2 className="text-6xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-8 leading-[0.9]">
+            <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-20 items-center mx-auto relative z-10">
+              <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/60 border border-black/5 shadow-sm">
+                <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-zinc-900 tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">
                   Numbers<br/>Don't Lie.
                 </h2>
-                <p className="text-xl text-zinc-600 leading-relaxed mb-8">
+                <p className="text-xs sm:text-lg text-zinc-600 leading-relaxed mb-6">
                   We measure success strictly by the value we deliver. High-performance teams demand high-performance outputs.
                 </p>
-                <Link href="/work" className="flex items-center gap-2 text-[#0F52BA] font-bold uppercase tracking-widest hover:gap-4 transition-all">
-                  View Case Studies <ArrowRight className="h-5 w-5" />
+                <Link href="/work" className="inline-flex items-center gap-2 text-[#0F52BA] font-bold text-xs uppercase tracking-widest hover:gap-4 transition-all">
+                  View Case Studies <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
               
-              <div>
-                <h2 className="text-6xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-8 leading-[0.9]">
+              <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/60 border border-black/5 shadow-sm">
+                <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-zinc-900 tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">
                   Impenetrable.<br/><span className="text-[#0F52BA]">Period.</span>
                 </h2>
-                <p className="text-xl text-zinc-600 leading-relaxed mb-8">
+                <p className="text-xs sm:text-lg text-zinc-600 leading-relaxed mb-6">
                   Security isn't a plugin. It's the foundation. We build zero-trust networks, biometric authentication layers, and real-time AI threat mitigation systems.
                 </p>
-                <ul className="space-y-4">
-                  <li className="flex items-center gap-4 text-zinc-800 font-medium"><Shield className="text-[#0F52BA] w-6 h-6" /> Biometric & Hardware Auth</li>
-                  <li className="flex items-center gap-4 text-zinc-800 font-medium"><Shield className="text-[#0F52BA] w-6 h-6" /> Enterprise Grade WAF</li>
-                  <li className="flex items-center gap-4 text-zinc-800 font-medium"><Shield className="text-[#0F52BA] w-6 h-6" /> SOC2 Compliance Ready</li>
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-3 text-zinc-800 font-medium text-xs sm:text-base"><Shield className="text-[#0F52BA] w-5 h-5" /> Biometric & Hardware Auth</li>
+                  <li className="flex items-center gap-3 text-zinc-800 font-medium text-xs sm:text-base"><Shield className="text-[#0F52BA] w-5 h-5" /> Enterprise Grade WAF</li>
+                  <li className="flex items-center gap-3 text-zinc-800 font-medium text-xs sm:text-base"><Shield className="text-[#0F52BA] w-5 h-5" /> SOC2 Compliance Ready</li>
                 </ul>
               </div>
             </div>
           </div>
 
           {/* Panel 2.5: PIPELINE */}
-          <div className="w-full lg:w-[100vw] min-h-[80vh] lg:h-full flex flex-col justify-center items-center px-6 md:px-20 py-16 lg:py-0 relative overflow-hidden bg-[#F0EDE6]">
-            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">05 // PIPELINE</div>
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center items-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative overflow-hidden bg-[#F0EDE6]">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500">05 // PIPELINE</div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] border border-[#0F52BA]/10 rounded-full animate-spin-slow pointer-events-none" style={{animationDuration: '40s'}} />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] border border-[#FF007F]/10 rounded-full animate-spin-slow pointer-events-none" style={{animationDuration: '30s', animationDirection: 'reverse'}} />
             
             <div className="max-w-4xl z-10 relative text-center">
-              <div className="w-16 h-16 lg:w-20 lg:h-20 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-8 lg:mb-10 shadow-xl">
-                <Hexagon className="w-8 h-8 lg:w-10 lg:h-10" />
+              <div className="w-14 h-14 lg:w-20 lg:h-20 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-6 lg:mb-10 shadow-xl">
+                <Hexagon className="w-7 h-7 lg:w-10 lg:h-10" />
               </div>
-              <h2 className="text-4xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-6 lg:mb-8">Rapid Iteration.<br/>Zero Downtime.</h2>
-              <p className="text-lg md:text-2xl text-zinc-600 font-light leading-relaxed mb-8 lg:mb-12">
+              <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-zinc-900 tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">Rapid Iteration.<br/>Zero Downtime.</h2>
+              <p className="text-xs sm:text-lg md:text-2xl text-zinc-600 font-light leading-relaxed mb-6 sm:mb-12">
                 Our CI/CD pipelines automate everything from unit testing to container orchestration. We ship updates 50x a day without dropping a single user connection.
               </p>
-              <div className="flex flex-wrap justify-center gap-3 lg:gap-4">
-                <span className="px-4 py-2 bg-white text-zinc-800 rounded-full font-mono text-xs md:text-sm border border-zinc-200">GitHub Actions</span>
-                <span className="px-4 py-2 bg-white text-zinc-800 rounded-full font-mono text-xs md:text-sm border border-zinc-200">Terraform</span>
-                <span className="px-4 py-2 bg-white text-zinc-800 rounded-full font-mono text-xs md:text-sm border border-zinc-200">ArgoCD</span>
-                <span className="px-4 py-2 bg-white text-zinc-800 rounded-full font-mono text-xs md:text-sm border border-zinc-200">Vercel</span>
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white text-zinc-800 rounded-full font-mono text-[10px] sm:text-sm border border-zinc-200">GitHub Actions</span>
+                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white text-zinc-800 rounded-full font-mono text-[10px] sm:text-sm border border-zinc-200">Terraform</span>
+                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white text-zinc-800 rounded-full font-mono text-[10px] sm:text-sm border border-zinc-200">ArgoCD</span>
+                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white text-zinc-800 rounded-full font-mono text-[10px] sm:text-sm border border-zinc-200">Vercel</span>
               </div>
             </div>
           </div>
@@ -622,30 +622,26 @@ export default function MarketingPage() {
       {/* ========================================= */}
       {/* PAGE 3: ABOUT US (Vertical Down) */}
       {/* ========================================= */}
-      <section className="min-h-screen w-full flex items-center justify-center bg-[#F0EDE6] text-zinc-900 relative overflow-hidden py-16 lg:py-32">
+      <section className="min-h-[70vh] w-full flex items-center justify-center bg-[#F0EDE6] text-zinc-900 relative overflow-hidden py-12 lg:py-32 px-4 sm:px-8">
         {/* Intricate Micro-grid Dark */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] pointer-events-none" />
-        <div className="absolute top-10 left-10 w-8 h-8 border-l border-t border-zinc-300 opacity-50" />
-        <div className="absolute bottom-10 right-10 w-8 h-8 border-r border-b border-zinc-300 opacity-50" />
-        <div className="absolute top-12 left-12 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">03 // VISION_STATEMENT</div>
+        <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">03 // VISION_STATEMENT</div>
         
         <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
         
-        <div className="absolute top-[30%] left-[-20%] text-[20vw] font-black text-black/[0.02] parallax-bg pointer-events-none whitespace-nowrap">BEYOND</div>
-        
         <div className="container px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center border border-black/10 bg-white/[0.4] backdrop-blur-md p-8 md:p-20 rounded-[3rem] shadow-2xl relative">
+          <div className="max-w-4xl mx-auto text-center border border-black/10 bg-white/[0.4] backdrop-blur-md p-6 sm:p-12 md:p-20 rounded-2xl sm:rounded-[3rem] shadow-xl relative">
             {/* Corner Accents on Card */}
-            <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-[#0F52BA] rounded-tl-[3rem]" />
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-[#0F52BA] rounded-br-[3rem]" />
+            <div className="absolute top-0 left-0 w-6 sm:w-8 h-6 sm:h-8 border-l-2 border-t-2 border-[#0F52BA] rounded-tl-2xl sm:rounded-tl-[3rem]" />
+            <div className="absolute bottom-0 right-0 w-6 sm:w-8 h-6 sm:h-8 border-r-2 border-b-2 border-[#0F52BA] rounded-br-2xl sm:rounded-br-[3rem]" />
             
             {/* Floating Metric Badge */}
-            <motion.div animate={{ y: [-5, 5] }} transition={{ repeat: Infinity, duration: 3, repeatType: "mirror", ease: "easeInOut" }} className="absolute -right-4 -bottom-6 lg:-right-10 lg:-bottom-10 -rotate-12 bg-[#0F52BA] text-white px-4 py-2 lg:px-6 lg:py-3 font-mono text-xs lg:text-sm font-bold tracking-widest shadow-2xl border border-white/20 z-20 whitespace-nowrap group hover:rotate-0 transition-transform cursor-crosshair">
+            <motion.div animate={{ y: [-5, 5] }} transition={{ repeat: Infinity, duration: 3, repeatType: "mirror", ease: "easeInOut" }} className="absolute -right-2 -bottom-4 lg:-right-10 lg:-bottom-10 -rotate-6 lg:-rotate-12 bg-[#0F52BA] text-white px-3 py-1.5 lg:px-6 lg:py-3 font-mono text-[10px] lg:text-sm font-bold tracking-widest shadow-xl border border-white/20 z-20 whitespace-nowrap">
               INCIDENT_RATE: 0.00%
             </motion.div>
             
-            <h2 className="text-3xl md:text-6xl font-black mb-6 lg:mb-8">We are not a digital agency.</h2>
-            <p className="text-lg md:text-2xl text-zinc-600 font-light leading-relaxed">
+            <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-zinc-900 tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">We are not a digital agency.</h2>
+            <p className="text-xs sm:text-lg md:text-2xl text-zinc-600 font-light leading-relaxed">
               We are an engineering strike team. We build the infrastructure that agencies can't, and scale the ideas that others abandon. 
               If it requires complex logic, massive concurrency, or bulletproof security—we are the people you call.
             </p>
@@ -658,48 +654,39 @@ export default function MarketingPage() {
       {/* ========================================= */}
       <section ref={horizontal4Ref} className="h-auto lg:h-screen w-full relative bg-[#F0EDE6] text-zinc-900 overflow-hidden">
         <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
-        {/* Subtle dot pattern */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiMwMDAwMDAxYSIvPjwvc3ZnPg==')] opacity-50 pointer-events-none" />
-        
         <FloatingShapes />
         <DataPulse top="top-[15%]" left="left-[85%]" delay={0.5} color="#0F52BA" />
         
         <div className="scroll-content flex flex-col lg:flex-row w-full lg:w-[200vw] h-auto lg:h-full transform-gpu">
           
           {/* Panel 4.1 */}
-          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center relative border-b lg:border-b-0 lg:border-r border-black/5 py-16 lg:py-0">
-            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">04 // ADVANTAGE</div>
-            <div className="absolute left-[10vw] top-[20vh] w-[30vw] h-[30vw] bg-[#0F52BA]/5 blur-[40px] lg:blur-[100px] rounded-full pointer-events-none" />
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center relative border-b lg:border-b-0 lg:border-r border-black/5 py-12 lg:py-0 px-4 sm:px-8">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">04 // ADVANTAGE</div>
             
-            <div className="container px-6 md:px-10 text-center relative z-10">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] lg:w-[400px] h-[300px] lg:h-[400px] opacity-10 pointer-events-none flex items-center justify-center z-0">
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 40, ease: "linear" }} className="w-full h-full border-[20px] lg:border-[30px] border-dashed border-[#0F52BA] rounded-full" />
-                <motion.div animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 30, ease: "linear" }} className="absolute w-[80%] h-[80%] border-[4px] border-[#0F52BA] rounded-full" />
-              </div>
-              <h2 className="text-5xl md:text-9xl font-black tracking-tighter mb-6 lg:mb-8 drop-shadow-sm relative z-10">
+            <div className="container px-4 md:px-10 text-center relative z-10">
+              <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-zinc-900 tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">
                 <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-900 to-zinc-500">Unfair</span>
                 <br />Advantage.
               </h2>
-              <div className="h-1 w-20 lg:w-24 bg-[#0F52BA] mx-auto mt-8 lg:mt-12 shadow-[0_0_15px_rgba(15,82,186,0.5)]" />
+              <div className="h-1 w-16 lg:w-24 bg-[#0F52BA] mx-auto mt-6 lg:mt-12 shadow-md" />
             </div>
           </div>
 
           {/* Panel 4.2 */}
-          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center p-6 md:p-20 relative py-16 lg:py-0">
-            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">04.1 // METRICS</div>
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center p-4 sm:p-8 md:p-20 relative py-12 lg:py-0">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">04.1 // METRICS</div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 w-full max-w-6xl relative z-10">
               {[
                 { title: "99.999% Uptime", desc: "Redundant edge deployments guaranteeing constant availability." },
                 { title: "<50ms Latency", desc: "Hyper-optimized payloads and intelligent caching strategies." },
                 { title: "Zero Data Loss", desc: "Continuous replication and point-in-time recovery out of the box." },
                 { title: "Infinite Scale", desc: "Serverless and clustered architectures that grow seamlessly." }
               ].map((item, i) => (
-                <div key={i} className="group p-10 rounded-[2rem] bg-white border border-black/10 hover:bg-zinc-50 transition-all duration-300 relative overflow-hidden shadow-sm">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-[#0F52BA]/10 rounded-bl-full blur-2xl group-hover:bg-[#0F52BA]/20 transition-colors" />
-                  <div className="font-mono text-[10px] text-zinc-500 mb-6 tracking-widest">METRIC_0{i+1}</div>
-                  <h3 className="text-3xl font-bold mb-4 text-zinc-900 group-hover:text-[#0F52BA] transition-colors">{item.title}</h3>
-                  <p className="text-zinc-600 font-light text-lg">{item.desc}</p>
+                <div key={i} className="group p-5 sm:p-8 rounded-2xl bg-white border border-black/10 transition-all duration-300 relative overflow-hidden shadow-sm">
+                  <div className="font-mono text-[10px] text-zinc-500 mb-2 tracking-widest">METRIC_0{i+1}</div>
+                  <h3 className="text-lg sm:text-2xl font-black mb-2 text-zinc-900">{item.title}</h3>
+                  <p className="text-xs sm:text-base text-zinc-600 font-normal leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
