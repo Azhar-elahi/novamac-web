@@ -134,16 +134,16 @@ export default function HomeClient() {
             </div>
             
             <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-[1.05] sm:leading-[0.9] text-[#1C1917] mb-4 sm:mb-6 relative">
-              The AI<br />
-              Control<br />
+              Next-Gen<br />
+              Digital<br />
               <span className="relative inline-block text-[#0F52BA]">
-                Center.
+                Studio.
                 <DoodleUnderline />
               </span>
             </h1>
             
             <p className="text-xs sm:text-base md:text-lg text-[#57534E] leading-relaxed mb-6 sm:mb-8 font-normal max-w-xl bg-white/80 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-white/90 shadow-sm">
-              Four intelligent AI systems, one cinematic interface — plus the custom web development, UI/UX design, and workflow automation that gets you chosen.
+              We engineer pixel-perfect websites, custom web applications, and intelligent business automations built for speed, conversion, and global scale.
             </p>
             
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">

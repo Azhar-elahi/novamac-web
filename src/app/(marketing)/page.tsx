@@ -431,16 +431,16 @@ export default function MarketingPage() {
           </motion.div>
           
           <h1 className="text-4xl sm:text-7xl lg:text-[10rem] font-black tracking-tighter leading-[0.9] sm:leading-[0.8] mb-6 sm:mb-8 relative drop-shadow-xl">
-            <span className="block text-zinc-900 transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">ENGINEER.</span>
-            <span className="block text-zinc-400 transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">SCALE.</span>
+            <span className="block text-zinc-900 transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">DESIGN.</span>
+            <span className="block text-zinc-400 transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">BUILD.</span>
             <span className="block text-[#0F52BA] relative inline-block transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default drop-shadow-[0_0_30px_rgba(15,82,186,0.4)]">
-              DOMINATE.
+              ACCELERATE.
               <DoodleUnderline />
             </span>
           </h1>
 
-          <p className="max-w-[700px] text-zinc-600 text-sm sm:text-xl lg:text-2xl font-light mt-4 sm:mt-8 relative leading-relaxed">
-            We build production-grade architectures for companies that can't afford to fail. Performance, security, and immense scale.
+          <p className="max-w-[750px] text-zinc-600 text-sm sm:text-xl lg:text-2xl font-light mt-4 sm:mt-8 relative leading-relaxed">
+            We craft high-performance digital products, custom web applications, and scalable software solutions designed to transform your business and outpace the competition.
           </p>
 
           {/* Quick Mobile Action Button for Web App Feel */}
