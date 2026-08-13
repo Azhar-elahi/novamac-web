@@ -232,115 +232,126 @@ export default function MarketingPage() {
   const mouseY = useMotionValue(0);
 
   useEffect(() => {
-    // Mouse movement tracker for immersive depth
+    const isMobile = window.innerWidth < 1024 || 'ontouchstart' in window;
+    
+    // Mouse movement tracker for immersive depth (Desktop Only)
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set((e.clientX / window.innerWidth) - 0.5);
-      mouseY.set((e.clientY / window.innerHeight) - 0.5);
+      if (!isMobile) {
+        mouseX.set((e.clientX / window.innerWidth) - 0.5);
+        mouseY.set((e.clientY / window.innerHeight) - 0.5);
+      }
     };
-    window.addEventListener("mousemove", handleMouseMove);
+
+    if (!isMobile) {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
+    
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // =====================================
-      // PAGE 2: Camera moves RIGHT (Content moves LEFT)
-      // =====================================
-      const h2 = horizontal2Ref.current;
-      if (h2) {
-        gsap.fromTo(
-          h2.querySelector(".scroll-content"),
-          { x: "0vw" },
-          {
-            x: "-400vw", // 5 slides total = move 400vw
+      // ONLY RUN GSAP HORIZONTAL PINNING ON DESKTOP SCREENS FOR 60FPS MOBILE PERFORMANCE
+      if (!isMobile) {
+        // =====================================
+        // PAGE 2: Camera moves RIGHT (Content moves LEFT)
+        // =====================================
+        const h2 = horizontal2Ref.current;
+        if (h2) {
+          gsap.fromTo(
+            h2.querySelector(".scroll-content"),
+            { x: "0vw" },
+            {
+              x: "-400vw", // 5 slides total = move 400vw
+              ease: "none",
+              scrollTrigger: {
+                trigger: h2,
+                pin: true,
+                scrub: 1.2,
+                snap: {
+                  snapTo: 1 / 4,
+                  duration: { min: 0.2, max: 0.5 },
+                  delay: 0.1,
+                  ease: "power1.inOut"
+                },
+                invalidateOnRefresh: true,
+                start: "top top",
+                end: () => "+=" + (window.innerWidth * 4)
+              }
+            }
+          );
+        }
+
+        // =====================================
+        // PAGE 4: Camera moves RIGHT (Content moves LEFT)
+        // =====================================
+        const h4 = horizontal4Ref.current;
+        if (h4) {
+          gsap.fromTo(
+            h4.querySelector(".scroll-content"),
+            { x: "0vw" },
+            {
+              x: "-100vw",
+              ease: "none",
+              scrollTrigger: {
+                trigger: h4,
+                pin: true,
+                scrub: 1.2,
+                snap: {
+                  snapTo: 1,
+                  duration: { min: 0.2, max: 0.5 },
+                  delay: 0.1,
+                  ease: "power1.inOut"
+                },
+                invalidateOnRefresh: true,
+                start: "top top",
+                end: () => "+=" + window.innerWidth
+              }
+            }
+          );
+        }
+
+        // =====================================
+        // PAGE 6: Camera moves RIGHT (Content moves LEFT)
+        // =====================================
+        const h6 = horizontal6Ref.current;
+        if (h6) {
+          gsap.fromTo(
+            h6.querySelector(".scroll-content"),
+            { x: "0vw" },
+            {
+              x: "-100vw",
+              ease: "none",
+              scrollTrigger: {
+                trigger: h6,
+                pin: true,
+                scrub: 1.2,
+                snap: {
+                  snapTo: 1,
+                  duration: { min: 0.2, max: 0.5 },
+                  delay: 0.1,
+                  ease: "power1.inOut"
+                },
+                invalidateOnRefresh: true,
+                start: "top top",
+                end: () => "+=" + window.innerWidth
+              }
+            }
+          );
+        }
+
+        // Ambient Parallax Backgrounds
+        gsap.utils.toArray('.parallax-bg').forEach((bg: any) => {
+          gsap.to(bg, {
+            yPercent: 30,
             ease: "none",
             scrollTrigger: {
-              trigger: h2,
-              pin: true,
-              scrub: 1.2,
-              snap: {
-                snapTo: 1 / 4,
-                duration: { min: 0.2, max: 0.5 },
-                delay: 0.1,
-                ease: "power1.inOut"
-              },
-              invalidateOnRefresh: true,
-              start: "top top",
-              end: () => "+=" + (window.innerWidth * 4) // 4 screen widths of scrolling distance
+              trigger: bg,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true
             }
-          }
-        );
-      }
-
-      // =====================================
-      // PAGE 4: Camera moves RIGHT (Content moves LEFT)
-      // =====================================
-      const h4 = horizontal4Ref.current;
-      if (h4) {
-        gsap.fromTo(
-          h4.querySelector(".scroll-content"),
-          { x: "0vw" },
-          {
-            x: "-100vw", // 2 slides total = move 100vw
-            ease: "none",
-            scrollTrigger: {
-              trigger: h4,
-              pin: true,
-              scrub: 1.2,
-              snap: {
-                snapTo: 1,
-                duration: { min: 0.2, max: 0.5 },
-                delay: 0.1,
-                ease: "power1.inOut"
-              },
-              invalidateOnRefresh: true,
-              start: "top top",
-              end: () => "+=" + window.innerWidth
-            }
-          }
-        );
-      }
-
-      // =====================================
-      // PAGE 6: Camera moves RIGHT (Content moves LEFT)
-      // =====================================
-      const h6 = horizontal6Ref.current;
-      if (h6) {
-        gsap.fromTo(
-          h6.querySelector(".scroll-content"),
-          { x: "0vw" },
-          {
-            x: "-100vw",
-            ease: "none",
-            scrollTrigger: {
-              trigger: h6,
-              pin: true,
-              scrub: 1.2,
-              snap: {
-                snapTo: 1,
-                duration: { min: 0.2, max: 0.5 },
-                delay: 0.1,
-                ease: "power1.inOut"
-              },
-              invalidateOnRefresh: true,
-              start: "top top",
-              end: () => "+=" + window.innerWidth
-            }
-          }
-        );
-      }
-
-      // Ambient Parallax Backgrounds
-      gsap.utils.toArray('.parallax-bg').forEach((bg: any) => {
-        gsap.to(bg, {
-          yPercent: 30,
-          ease: "none",
-          scrollTrigger: {
-            trigger: bg,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true
-          }
+          });
         });
-      });
+      }
 
       // Auto-Scroll to Top at the very bottom
       ScrollTrigger.create({
@@ -358,7 +369,10 @@ export default function MarketingPage() {
       });
     });
 
-    return () => ctx.revert();
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -437,18 +451,18 @@ export default function MarketingPage() {
       </section>
 
       {/* ========================================= */}
-      {/* PAGE 2: SERVICE OVERVIEW (Pinned - Camera Right) */}
+      {/* PAGE 2: SERVICE OVERVIEW (Pinned Desktop / Vertical Mobile) */}
       {/* ========================================= */}
-      <section ref={horizontal2Ref} className="h-screen w-full relative bg-[#F0EDE6] overflow-hidden">
+      <section ref={horizontal2Ref} className="h-auto lg:h-screen w-full relative bg-[#F0EDE6] overflow-hidden">
         <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
         {/* Detailed Grid Overlay */}
         <div className="absolute inset-0 bg-grid-black/[0.02] pointer-events-none" />
         
-        {/* Now 500vw wide for 5 slides */}
-        <div className="scroll-content flex w-[500vw] h-full will-change-transform">
+        {/* Responsive layout: Vertical on mobile, 500vw horizontal on desktop */}
+        <div className="scroll-content flex flex-col lg:flex-row w-full lg:w-[500vw] h-auto lg:h-full transform-gpu">
           
           {/* Panel 2.1: THE PROBLEM */}
-          <div className="w-[100vw] h-full flex flex-col justify-center px-10 md:px-20 relative border-r border-black/5 overflow-hidden">
+          <div className="w-full lg:w-[100vw] min-h-[80vh] lg:h-full flex flex-col justify-center px-6 md:px-20 py-16 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden">
             <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">01 // THE PROBLEM</div>
             <DoodleArrowHorizontal />
             <FloatingTerminal className="right-[10%] top-[25%]" />
@@ -466,11 +480,11 @@ export default function MarketingPage() {
           </div>
 
           {/* Panel 2.2: THE SOLUTION */}
-          <div className="w-[100vw] h-full flex items-center justify-center p-10 md:px-20 relative border-r border-black/5">
+          <div className="w-full lg:w-[100vw] min-h-[80vh] lg:h-full flex items-center justify-center p-6 md:p-10 lg:px-20 relative border-b lg:border-b-0 lg:border-r border-black/5">
             <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">02 // THE SOLUTION</div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-white rounded-full blur-[100px] pointer-events-none opacity-50" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-white rounded-full blur-[40px] lg:blur-[100px] pointer-events-none opacity-50" />
             
-            <div className={glassCard + " w-full max-w-6xl flex flex-col md:flex-row gap-16 items-center border-t-white/80 border-l-white/80 !bg-white/40 shadow-[0_20px_60px_rgba(0,0,0,0.05)]"}>
+            <div className={glassCard + " w-full max-w-6xl flex flex-col md:flex-row gap-8 lg:gap-16 items-center border-t-white/80 border-l-white/80 !bg-white/40 shadow-[0_20px_60px_rgba(0,0,0,0.05)]"}>
               <div className="flex-1 space-y-8 relative z-10">
                 <div className="p-8 rounded-3xl bg-white/60 border border-white/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group/item">
                   <div className="flex items-center gap-4 mb-4">
@@ -492,7 +506,7 @@ export default function MarketingPage() {
                 </div>
               </div>
               
-              <div className="flex-1 h-[600px] w-full rounded-[2.5rem] overflow-hidden border-8 border-white shadow-2xl relative group">
+              <div className="flex-1 h-[350px] lg:h-[600px] w-full rounded-[2.5rem] overflow-hidden border-4 lg:border-8 border-white shadow-2xl relative group">
                 <div className="w-[110%] h-[110%] -left-[5%] -top-[5%] relative transition-transform duration-1000 group-hover:scale-105 group-hover:-translate-x-4">
                   <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80" alt="Design workflow" className="object-cover w-full h-full" />
                 </div>
@@ -506,14 +520,14 @@ export default function MarketingPage() {
           </div>
 
           {/* Panel 2.3: ARCHITECTURE */}
-          <div className="w-[100vw] h-full flex items-center justify-center px-10 md:px-20 relative border-r border-black/5 overflow-hidden">
+          <div className="w-full lg:w-[100vw] min-h-[80vh] lg:h-full flex items-center justify-center px-6 md:px-20 py-16 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden">
             <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">03 // ECOSYSTEM</div>
             
             <DataPulse top="top-[30%]" left="left-[20%]" delay={0.1} color="#FF007F" />
             <DataPulse top="top-[70%]" left="left-[80%]" delay={1.2} color="#00F0FF" />
             
             <div className="w-full max-w-7xl flex flex-col items-center relative z-10">
-              <h2 className="text-6xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-16 text-center">Comprehensive<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF007F] to-[#00F0FF]">Digital Growth.</span></h2>
+              <h2 className="text-4xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-12 lg:mb-16 text-center">Comprehensive<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF007F] to-[#00F0FF]">Digital Growth.</span></h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
                 <Link href="/services/custom-web-development" className="p-8 rounded-3xl bg-white border border-black/5 shadow-lg group hover:-translate-y-2 transition-transform block">
@@ -536,7 +550,7 @@ export default function MarketingPage() {
           </div>
 
           {/* Panel 2.4: VALIDATION */}
-          <div className="w-[100vw] h-full flex flex-col justify-center px-10 md:px-20 relative border-r border-black/5 overflow-hidden bg-[#F0EDE6]">
+          <div className="w-full lg:w-[100vw] min-h-[80vh] lg:h-full flex flex-col justify-center px-6 md:px-20 py-16 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden bg-[#F0EDE6]">
             <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">04 // VALIDATION</div>
             <div className="absolute right-[-20%] bottom-[-20%] text-[40vw] font-black text-black/[0.02] parallax-bg pointer-events-none">PROVEN</div>
             
@@ -570,24 +584,24 @@ export default function MarketingPage() {
           </div>
 
           {/* Panel 2.5: PIPELINE */}
-          <div className="w-[100vw] h-full flex flex-col justify-center items-center px-10 md:px-20 relative overflow-hidden bg-[#F0EDE6]">
+          <div className="w-full lg:w-[100vw] min-h-[80vh] lg:h-full flex flex-col justify-center items-center px-6 md:px-20 py-16 lg:py-0 relative overflow-hidden bg-[#F0EDE6]">
             <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">05 // PIPELINE</div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] border border-[#0F52BA]/10 rounded-full animate-spin-slow pointer-events-none" style={{animationDuration: '40s'}} />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] border border-[#FF007F]/10 rounded-full animate-spin-slow pointer-events-none" style={{animationDuration: '30s', animationDirection: 'reverse'}} />
             
             <div className="max-w-4xl z-10 relative text-center">
-              <div className="w-20 h-20 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-10 shadow-xl">
-                <Hexagon className="w-10 h-10" />
+              <div className="w-16 h-16 lg:w-20 lg:h-20 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-8 lg:mb-10 shadow-xl">
+                <Hexagon className="w-8 h-8 lg:w-10 lg:h-10" />
               </div>
-              <h2 className="text-6xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-8">Rapid Iteration.<br/>Zero Downtime.</h2>
-              <p className="text-2xl text-zinc-600 font-light leading-relaxed mb-12">
+              <h2 className="text-4xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-6 lg:mb-8">Rapid Iteration.<br/>Zero Downtime.</h2>
+              <p className="text-lg md:text-2xl text-zinc-600 font-light leading-relaxed mb-8 lg:mb-12">
                 Our CI/CD pipelines automate everything from unit testing to container orchestration. We ship updates 50x a day without dropping a single user connection.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <span className="px-6 py-2 bg-white text-zinc-800 rounded-full font-mono text-sm border border-zinc-200">GitHub Actions</span>
-                <span className="px-6 py-2 bg-white text-zinc-800 rounded-full font-mono text-sm border border-zinc-200">Terraform</span>
-                <span className="px-6 py-2 bg-white text-zinc-800 rounded-full font-mono text-sm border border-zinc-200">ArgoCD</span>
-                <span className="px-6 py-2 bg-white text-zinc-800 rounded-full font-mono text-sm border border-zinc-200">Vercel</span>
+              <div className="flex flex-wrap justify-center gap-3 lg:gap-4">
+                <span className="px-4 py-2 bg-white text-zinc-800 rounded-full font-mono text-xs md:text-sm border border-zinc-200">GitHub Actions</span>
+                <span className="px-4 py-2 bg-white text-zinc-800 rounded-full font-mono text-xs md:text-sm border border-zinc-200">Terraform</span>
+                <span className="px-4 py-2 bg-white text-zinc-800 rounded-full font-mono text-xs md:text-sm border border-zinc-200">ArgoCD</span>
+                <span className="px-4 py-2 bg-white text-zinc-800 rounded-full font-mono text-xs md:text-sm border border-zinc-200">Vercel</span>
               </div>
             </div>
           </div>
@@ -598,7 +612,7 @@ export default function MarketingPage() {
       {/* ========================================= */}
       {/* PAGE 3: ABOUT US (Vertical Down) */}
       {/* ========================================= */}
-      <section className="min-h-screen w-full flex items-center justify-center bg-[#F0EDE6] text-zinc-900 relative overflow-hidden py-32">
+      <section className="min-h-screen w-full flex items-center justify-center bg-[#F0EDE6] text-zinc-900 relative overflow-hidden py-16 lg:py-32">
         {/* Intricate Micro-grid Dark */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] pointer-events-none" />
         <div className="absolute top-10 left-10 w-8 h-8 border-l border-t border-zinc-300 opacity-50" />
@@ -610,18 +624,18 @@ export default function MarketingPage() {
         <div className="absolute top-[30%] left-[-20%] text-[20vw] font-black text-black/[0.02] parallax-bg pointer-events-none whitespace-nowrap">BEYOND</div>
         
         <div className="container px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center border border-black/10 bg-white/[0.4] backdrop-blur-md p-12 md:p-20 rounded-[3rem] shadow-2xl relative">
+          <div className="max-w-4xl mx-auto text-center border border-black/10 bg-white/[0.4] backdrop-blur-md p-8 md:p-20 rounded-[3rem] shadow-2xl relative">
             {/* Corner Accents on Card */}
             <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-[#0F52BA] rounded-tl-[3rem]" />
             <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-[#0F52BA] rounded-br-[3rem]" />
             
             {/* Floating Metric Badge */}
-            <motion.div animate={{ y: [-5, 5] }} transition={{ repeat: Infinity, duration: 3, repeatType: "mirror", ease: "easeInOut" }} className="absolute -right-10 -bottom-10 -rotate-12 bg-[#0F52BA] text-white px-6 py-3 font-mono text-sm font-bold tracking-widest shadow-2xl border border-white/20 z-20 whitespace-nowrap group hover:rotate-0 transition-transform cursor-crosshair">
+            <motion.div animate={{ y: [-5, 5] }} transition={{ repeat: Infinity, duration: 3, repeatType: "mirror", ease: "easeInOut" }} className="absolute -right-4 -bottom-6 lg:-right-10 lg:-bottom-10 -rotate-12 bg-[#0F52BA] text-white px-4 py-2 lg:px-6 lg:py-3 font-mono text-xs lg:text-sm font-bold tracking-widest shadow-2xl border border-white/20 z-20 whitespace-nowrap group hover:rotate-0 transition-transform cursor-crosshair">
               INCIDENT_RATE: 0.00%
             </motion.div>
             
-            <h2 className="text-4xl md:text-6xl font-black mb-8">We are not a digital agency.</h2>
-            <p className="text-xl md:text-2xl text-zinc-600 font-light leading-relaxed">
+            <h2 className="text-3xl md:text-6xl font-black mb-6 lg:mb-8">We are not a digital agency.</h2>
+            <p className="text-lg md:text-2xl text-zinc-600 font-light leading-relaxed">
               We are an engineering strike team. We build the infrastructure that agencies can't, and scale the ideas that others abandon. 
               If it requires complex logic, massive concurrency, or bulletproof security—we are the people you call.
             </p>
@@ -630,9 +644,9 @@ export default function MarketingPage() {
       </section>
 
       {/* ========================================= */}
-      {/* PAGE 4: WHY CHOOSE US (Pinned - Camera Right) */}
+      {/* PAGE 4: WHY CHOOSE US (Pinned Desktop / Vertical Mobile) */}
       {/* ========================================= */}
-      <section ref={horizontal4Ref} className="h-screen w-full relative bg-[#F0EDE6] text-zinc-900 overflow-hidden">
+      <section ref={horizontal4Ref} className="h-auto lg:h-screen w-full relative bg-[#F0EDE6] text-zinc-900 overflow-hidden">
         <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
         {/* Subtle dot pattern */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiMwMDAwMDAxYSIvPjwvc3ZnPg==')] opacity-50 pointer-events-none" />
@@ -640,28 +654,28 @@ export default function MarketingPage() {
         <FloatingShapes />
         <DataPulse top="top-[15%]" left="left-[85%]" delay={0.5} color="#0F52BA" />
         
-        <div className="scroll-content flex w-[200vw] h-full will-change-transform">
+        <div className="scroll-content flex flex-col lg:flex-row w-full lg:w-[200vw] h-auto lg:h-full transform-gpu">
           
           {/* Panel 4.1 */}
-          <div className="w-[100vw] h-full flex items-center justify-center relative border-r border-black/5">
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center relative border-b lg:border-b-0 lg:border-r border-black/5 py-16 lg:py-0">
             <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">04 // ADVANTAGE</div>
-            <div className="absolute left-[10vw] top-[20vh] w-[30vw] h-[30vw] bg-[#0F52BA]/5 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute left-[10vw] top-[20vh] w-[30vw] h-[30vw] bg-[#0F52BA]/5 blur-[40px] lg:blur-[100px] rounded-full pointer-events-none" />
             
-            <div className="container px-10 text-center relative z-10">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-10 pointer-events-none flex items-center justify-center z-0">
-                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 40, ease: "linear" }} className="w-full h-full border-[30px] border-dashed border-[#0F52BA] rounded-full" />
+            <div className="container px-6 md:px-10 text-center relative z-10">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] lg:w-[400px] h-[300px] lg:h-[400px] opacity-10 pointer-events-none flex items-center justify-center z-0">
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 40, ease: "linear" }} className="w-full h-full border-[20px] lg:border-[30px] border-dashed border-[#0F52BA] rounded-full" />
                 <motion.div animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 30, ease: "linear" }} className="absolute w-[80%] h-[80%] border-[4px] border-[#0F52BA] rounded-full" />
               </div>
-              <h2 className="text-6xl md:text-9xl font-black tracking-tighter mb-8 drop-shadow-sm relative z-10">
+              <h2 className="text-5xl md:text-9xl font-black tracking-tighter mb-6 lg:mb-8 drop-shadow-sm relative z-10">
                 <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-900 to-zinc-500">Unfair</span>
                 <br />Advantage.
               </h2>
-              <div className="h-1 w-24 bg-[#0F52BA] mx-auto mt-12 shadow-[0_0_15px_rgba(15,82,186,0.5)]" />
+              <div className="h-1 w-20 lg:w-24 bg-[#0F52BA] mx-auto mt-8 lg:mt-12 shadow-[0_0_15px_rgba(15,82,186,0.5)]" />
             </div>
           </div>
 
           {/* Panel 4.2 */}
-          <div className="w-[100vw] h-full flex items-center justify-center p-10 md:p-20 relative">
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center p-6 md:p-20 relative py-16 lg:py-0">
             <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">04.1 // METRICS</div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl relative z-10">
@@ -808,43 +822,43 @@ export default function MarketingPage() {
       </section>
 
       {/* ========================================= */}
-      {/* PAGE 6: YOU CHOOSE (Pinned - Camera Right) */}
+      {/* PAGE 6: YOU CHOOSE (Pinned Desktop / Vertical Mobile) */}
       {/* ========================================= */}
-      <section ref={horizontal6Ref} className="h-screen w-full relative bg-[#F0EDE6] text-zinc-900 overflow-hidden">
+      <section ref={horizontal6Ref} className="h-auto lg:h-screen w-full relative bg-[#F0EDE6] text-zinc-900 overflow-hidden">
         <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(15,82,186,0.15)_0%,rgba(0,0,0,0)_70%)] pointer-events-none mix-blend-multiply" />
         <FloatingShapes />
         
-        <div className="scroll-content flex w-[200vw] h-full will-change-transform">
+        <div className="scroll-content flex flex-col lg:flex-row w-full lg:w-[200vw] h-auto lg:h-full transform-gpu">
           
           {/* Panel 6.1 */}
-          <div className="w-[100vw] h-full flex flex-col justify-center px-10 md:px-20 relative border-r border-black/5 overflow-hidden">
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center px-6 md:px-20 py-16 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden">
             <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">06 // DECISION</div>
             <FloatingTerminal className="right-[5%] top-[15%] scale-90" />
             <div className="absolute bottom-10 right-10 text-[30vw] font-black text-black/5 pointer-events-none leading-none -mb-12 tracking-tighter">CHOOSE</div>
             
             <div className="max-w-4xl relative z-10">
-              <h2 className="text-6xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
+              <h2 className="text-4xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
                 The choice is <br /><span className="text-[#0F52BA]">yours.</span>
               </h2>
-              <p className="text-2xl md:text-3xl text-zinc-600 font-light max-w-2xl border-l-2 border-[#0F52BA] pl-6 leading-relaxed">
+              <p className="text-xl md:text-3xl text-zinc-600 font-light max-w-2xl border-l-2 border-[#0F52BA] pl-6 leading-relaxed">
                 Stay comfortable with mediocrity, or partner with us to engineer a system that dominates your industry.
               </p>
             </div>
           </div>
 
           {/* Panel 6.2 (CTA Button) */}
-          <div className="w-[100vw] h-full flex items-center justify-center p-10 relative">
+          <div className="w-full lg:w-[100vw] min-h-[60vh] lg:h-full flex items-center justify-center p-6 md:p-10 relative py-16 lg:py-0">
             <div className="absolute inset-0 bg-gradient-to-r from-[#0F52BA]/10 to-transparent opacity-50" />
             <div className="z-10 text-center relative">
               {/* Target lock micro-ui around button */}
-              <div className="absolute -top-12 -left-12 w-6 h-6 border-t-2 border-l-2 border-[#0F52BA] opacity-50" />
-              <div className="absolute -bottom-12 -right-12 w-6 h-6 border-b-2 border-r-2 border-[#0F52BA] opacity-50" />
+              <div className="absolute -top-6 -left-6 lg:-top-12 lg:-left-12 w-6 h-6 border-t-2 border-l-2 border-[#0F52BA] opacity-50" />
+              <div className="absolute -bottom-6 -right-6 lg:-bottom-12 lg:-right-12 w-6 h-6 border-b-2 border-r-2 border-[#0F52BA] opacity-50" />
               
-              <Hexagon className="h-24 w-24 text-[#0F52BA] mx-auto mb-12 opacity-80" />
-              <Link href="/contact" className="px-16 py-8 bg-zinc-900 text-white rounded-full font-black text-3xl hover:scale-105 hover:bg-[#0F52BA] hover:text-white transition-all shadow-[0_0_50px_rgba(0,0,0,0.1)] hover:shadow-[0_0_80px_rgba(15,82,186,0.8)] flex items-center mx-auto gap-6 group relative overflow-hidden">
+              <Hexagon className="h-16 w-16 lg:h-24 lg:w-24 text-[#0F52BA] mx-auto mb-8 lg:mb-12 opacity-80" />
+              <Link href="/contact" className="px-10 py-5 lg:px-16 lg:py-8 bg-zinc-900 text-white rounded-full font-black text-xl lg:text-3xl hover:scale-105 hover:bg-[#0F52BA] hover:text-white transition-all shadow-[0_0_50px_rgba(0,0,0,0.1)] hover:shadow-[0_0_80px_rgba(15,82,186,0.8)] flex items-center mx-auto gap-4 lg:gap-6 group relative overflow-hidden">
                 <span className="relative z-10">Initiate Project</span>
-                <ArrowRight className="h-8 w-8 group-hover:translate-x-2 transition-transform relative z-10" />
+                <ArrowRight className="h-6 w-6 lg:h-8 lg:w-8 group-hover:translate-x-2 transition-transform relative z-10" />
               </Link>
             </div>
           </div>
