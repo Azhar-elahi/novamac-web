@@ -866,57 +866,57 @@ export default function MarketingPage() {
       {/* ========================================= */}
       {/* PAGE 7: HOME PAGE & FOOTER (Vertical Down) */}
       {/* ========================================= */}
-      <section className="min-h-screen w-full flex flex-col bg-[#F0EDE6] text-zinc-900 relative overflow-hidden">
+      <section className="min-h-[70vh] lg:min-h-screen w-full flex flex-col bg-[#F0EDE6] text-zinc-900 relative overflow-hidden">
         <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
-        <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase z-10">07 // TERMINAL</div>
+        <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase z-10">07 // TERMINAL</div>
         
         {/* Summary Section */}
-        <div className="flex-1 flex items-center justify-center p-8 md:p-20 relative">
+        <div className="flex-1 flex items-center justify-center p-6 sm:p-12 md:p-20 relative py-12 lg:py-20">
           <div className="absolute inset-0">
             <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80" alt="Abstract tech" className="w-full h-full object-cover opacity-10 mix-blend-multiply" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#F0EDE6] via-[#F0EDE6]/80 to-transparent" />
           </div>
-          <div className="relative z-10 text-center max-w-5xl">
-            <div className="w-32 h-32 mx-auto mb-12 bg-white rounded-full flex items-center justify-center border border-black/10 shadow-xl backdrop-blur-md">
-              <Zap className="h-16 w-16 text-[#0F52BA]" />
+          <div className="relative z-10 text-center max-w-5xl px-4">
+            <div className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-6 sm:mb-10 bg-white rounded-full flex items-center justify-center border border-black/10 shadow-lg backdrop-blur-md">
+              <Zap className="h-8 w-8 sm:h-12 sm:w-12 text-[#0F52BA]" />
             </div>
-            <h1 className="text-[clamp(4rem,15vw,12rem)] font-black mb-6 tracking-tighter drop-shadow-sm text-zinc-900 leading-none">NOVAMAC</h1>
-            <p className="text-3xl md:text-5xl font-light text-zinc-600">Welcome to the new standard.</p>
+            <h1 className="text-4xl sm:text-7xl lg:text-[12rem] font-black mb-3 sm:mb-6 tracking-tight drop-shadow-sm text-zinc-900 leading-none">NOVAMAC</h1>
+            <p className="text-sm sm:text-2xl md:text-5xl font-light text-zinc-600">Welcome to the new standard.</p>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="w-full bg-zinc-900 text-white flex flex-col justify-between p-8 md:p-20 border-t border-black/10 relative z-10 footer-trigger">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-16 w-full max-w-7xl mx-auto relative">
+        <div className="w-full bg-zinc-900 text-white flex flex-col justify-between p-5 sm:p-12 md:p-20 border-t border-black/10 relative z-10 footer-trigger">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-16 w-full max-w-7xl mx-auto relative">
             {/* Scanline effect on footer */}
             <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[size:100%_4px] pointer-events-none opacity-20" />
             
-            <div className="col-span-1 md:col-span-2">
-              <div className="text-5xl font-black mb-6 tracking-tighter text-[#0F52BA]">NOVAMAC.</div>
-              <p className="text-zinc-500 max-w-md text-lg font-light leading-relaxed">
+            <div className="col-span-1 sm:col-span-2">
+              <div className="text-3xl sm:text-5xl font-black mb-3 sm:mb-6 tracking-tight text-[#0F52BA]">NOVAMAC.</div>
+              <p className="text-zinc-400 max-w-md text-xs sm:text-base font-normal leading-relaxed">
                 Engineering hyper-scalable, zero-trust architectures for the modern web. We build what others say is impossible.
               </p>
             </div>
             <div>
-              <div className="font-bold mb-8 text-xl tracking-tight">Explore</div>
-              <ul className="space-y-4 text-zinc-400 font-light">
-                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-3 group"><ArrowRight className="h-4 w-4 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Services</li>
-                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-3 group"><ArrowRight className="h-4 w-4 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Case Studies</li>
-                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-3 group"><ArrowRight className="h-4 w-4 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Company</li>
+              <div className="font-bold mb-4 sm:mb-8 text-base sm:text-xl tracking-tight">Explore</div>
+              <ul className="space-y-3 text-zinc-400 font-light text-xs sm:text-sm">
+                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-2 group"><ArrowRight className="h-3.5 w-3.5 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Services</li>
+                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-2 group"><ArrowRight className="h-3.5 w-3.5 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Case Studies</li>
+                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-2 group"><ArrowRight className="h-3.5 w-3.5 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Company</li>
               </ul>
             </div>
             <div>
-              <div className="font-bold mb-8 text-xl tracking-tight">Connect</div>
-              <ul className="space-y-4 text-zinc-400 font-light font-mono text-sm uppercase">
+              <div className="font-bold mb-4 sm:mb-8 text-base sm:text-xl tracking-tight">Connect</div>
+              <ul className="space-y-3 text-zinc-400 font-light font-mono text-xs uppercase">
                 <li className="hover:text-[#0F52BA] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-zinc-600 inline-block" /> Twitter_X</li>
                 <li className="hover:text-[#0F52BA] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-zinc-600 inline-block" /> LinkedIn</li>
                 <li className="hover:text-[#0F52BA] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-zinc-600 inline-block" /> GitHub</li>
               </ul>
             </div>
           </div>
-          <div className="w-full max-w-7xl mx-auto border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between text-zinc-600 font-mono text-[10px] uppercase tracking-widest mt-24">
+          <div className="w-full max-w-7xl mx-auto border-t border-white/10 pt-6 sm:pt-10 flex flex-col sm:flex-row justify-between text-zinc-500 font-mono text-[10px] uppercase tracking-widest mt-10 sm:mt-20 gap-3">
             <div>© 2026 NovaMac Systems. All rights reserved.</div>
-            <div className="flex gap-10 mt-6 md:mt-0">
+            <div className="flex gap-6 sm:gap-10">
               <span className="hover:text-white cursor-pointer transition-colors">Privacy_Policy</span>
               <span className="hover:text-white cursor-pointer transition-colors">Terms_of_Service</span>
             </div>
