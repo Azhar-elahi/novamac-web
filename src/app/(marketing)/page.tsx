@@ -419,17 +419,18 @@ export default function MarketingPage() {
         {/* Parallax typography */}
         <div className="absolute top-[20%] left-[-10%] text-[25vw] font-black text-black/[0.02] parallax-bg pointer-events-none whitespace-nowrap tracking-tighter">SCALE</div>
         
-        <div className="container px-4 md:px-6 relative z-10 text-center flex flex-col items-center">
+        <div className="container px-4 md:px-6 relative z-10 text-center flex flex-col items-center pt-10 sm:pt-0">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="inline-flex items-center rounded-full border border-[#0F52BA]/30 bg-[#0F52BA]/5 px-4 py-1.5 text-xs font-bold text-[#0F52BA] mb-10 shadow-[0_0_20px_rgba(15,82,186,0.15)] backdrop-blur-md"
+            className="inline-flex items-center rounded-full border border-[#0F52BA]/30 bg-[#0F52BA]/5 px-4 py-1.5 text-xs font-bold text-[#0F52BA] mb-6 sm:mb-10 shadow-[0_0_20px_rgba(15,82,186,0.15)] backdrop-blur-md"
           >
             <Zap className="mr-2 h-4 w-4" />
             NovaMac Systems V3
           </motion.div>
-          <h1 className="text-[clamp(4rem,12vw,10rem)] font-black tracking-tighter leading-[0.8] mb-8 relative drop-shadow-xl">
+          
+          <h1 className="text-4xl sm:text-7xl lg:text-[10rem] font-black tracking-tighter leading-[0.9] sm:leading-[0.8] mb-6 sm:mb-8 relative drop-shadow-xl">
             <span className="block text-zinc-900 transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">ENGINEER.</span>
             <span className="block text-zinc-400 transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">SCALE.</span>
             <span className="block text-[#0F52BA] relative inline-block transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default drop-shadow-[0_0_30px_rgba(15,82,186,0.4)]">
@@ -437,10 +438,20 @@ export default function MarketingPage() {
               <DoodleUnderline />
             </span>
           </h1>
-          <p className="max-w-[700px] text-zinc-600 md:text-xl/relaxed lg:text-2xl/relaxed font-light mt-8 relative">
-            <span className="absolute -left-6 top-2 w-4 h-[1px] bg-zinc-300" />
+
+          <p className="max-w-[700px] text-zinc-600 text-sm sm:text-xl lg:text-2xl font-light mt-4 sm:mt-8 relative leading-relaxed">
             We build production-grade architectures for companies that can't afford to fail. Performance, security, and immense scale.
           </p>
+
+          {/* Quick Mobile Action Button for Web App Feel */}
+          <div className="mt-8 flex items-center gap-3 lg:hidden">
+            <Link 
+              href="/home" 
+              className="px-6 py-3 bg-[#0F52BA] text-white text-xs font-bold font-mono tracking-wider uppercase rounded-full shadow-lg flex items-center gap-2"
+            >
+              Enter Web App <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
         
         {/* Scroll Indicator Detail */}

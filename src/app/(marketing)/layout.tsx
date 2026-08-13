@@ -25,6 +25,9 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
     { href: "/contact",    label: "Contact"    },
   ];
 
+  // Dynamic logo link: if already on /home, go to / (landing page); otherwise go to /home
+  const logoHref = pathname === "/home" ? "/" : "/home";
+
   return (
     <div className="min-h-screen flex flex-col font-sans bg-[#F0EDE6] text-[#1C1917] selection:bg-[#0F52BA] selection:text-white relative overflow-x-hidden">
       {/* Background Grid */}
@@ -33,8 +36,8 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
       {/* ── SINGLE UNIFIED STICKY HEADER ── */}
       <header className={`sticky top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 xl:px-20 h-[76px] bg-[#F0EDE6]/95 backdrop-blur-md border-b border-[#D6D1C8] transition-opacity duration-500 ${showNav ? "opacity-100" : "opacity-0 pointer-events-none hidden"}`}>
         
-        {/* LOGO LINKS DIRECTLY TO ROOT LANDING INTRO PAGE (/) */}
-        <Link href="/" className="hover-trigger flex items-center gap-3 group relative z-10">
+        {/* LOGO LINK: / if on /home, otherwise /home */}
+        <Link href={logoHref} className="hover-trigger flex items-center gap-3 group relative z-10">
           <img src="/logo.png" alt="NovaMac Logo" className="w-10 h-10 object-contain rounded-xl shadow-sm group-hover:scale-105 transition-transform" />
           <span className="font-heading font-bold text-xl tracking-tight text-[#1C1917]">
             NovaMac<br/><span className="text-[10px] font-mono tracking-widest text-[#78716C] leading-none block">SOLUTIONS</span>
