@@ -5,15 +5,13 @@ import { SERVICES } from '@/lib/services-data';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://novamacsolutions.com';
 
-  // Fetch dynamic content
-  const projects = await prisma.project.findMany({ select: { id: true, updatedAt: true } });
-  const posts = await prisma.blogPost.findMany({ where: { published: true }, select: { slug: true, updatedAt: true } });
-
-  // Note: individual project pages don't exist yet (no /work/[slug] route),
-  // so we don't emit one sitemap entry per project — that would just create
-  // duplicate URLs all pointing at /work, which hurts SEO. If/when individual
-  // case-study pages are built, generate their real URLs here instead.
-  void projects;
+  // Fetch dynamic content safely
+  let posts: Array<{ slug: string; updatedAt: Date }> = [];
+  try {
+    posts = await prisma.blogPost.findMany({ where: { published: true }, select: { slug: true, updatedAt: true } });
+  } catch (e) {
+    console.warn('Prisma DB query failed during sitemap build, using static fallback:', e);
+  }
 
   const blogUrls = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,

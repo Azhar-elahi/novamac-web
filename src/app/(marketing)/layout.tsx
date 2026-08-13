@@ -1,118 +1,173 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { ChatWidget } from "@/components/chat/ChatWidget";
-import Starfield from "@/components/nexora/Starfield";
+import { useUIStore } from "@/store/useUIStore";
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
+  const { isLandingMode } = useUIStore();
+  const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  // Header & Footer are ALWAYS visible on /home and all inner pages!
+  const isIntroPage = pathname === "/";
+  const showNav = !isIntroPage || !isLandingMode;
+
+  const NAV_LINKS = [
+    { href: "/home",       label: "Home"       },
+    { href: "/services",   label: "Services"   },
+    { href: "/pricing",    label: "Pricing"     },
+    { href: "/work",       label: "Work"       },
+    { href: "/about",      label: "About"      },
+    { href: "/contact",    label: "Contact"    },
+  ];
+
   return (
-    <div className="flex min-h-screen flex-col bg-[#05060c] text-white relative">
-      {/* Ambient starfield behind every marketing page */}
-      <Starfield />
-
-      {/* Noise Overlay */}
-      <div className="noise-bg" />
-
-      {/* ── HEADER ───────────────────────────────── */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 xl:px-20 h-[72px] bg-[#05060c]/70 backdrop-blur-md border-b border-white/10">
-
-        <Link href="/" className="hover-trigger flex items-center gap-3 group">
-          <div className="w-8 h-8 flex items-center justify-center shrink-0 rounded-lg border border-white/15 group-hover:border-[#7fa4ff] transition-colors duration-300">
-            <span className="font-heading font-extrabold text-white text-xs">NM</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="font-heading font-bold text-base tracking-tight text-white leading-none">NovaMac</span>
-            <span className="text-[9px] font-mono text-white/40 uppercase tracking-widest leading-none mt-1 group-hover:text-[#7fa4ff] transition-colors">AI control center</span>
-          </div>
+    <div className="min-h-screen flex flex-col font-sans bg-[#F0EDE6] text-[#1C1917] selection:bg-[#0F52BA] selection:text-white relative overflow-x-hidden">
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0" />
+      
+      {/* ── SINGLE UNIFIED STICKY HEADER ── */}
+      <header className={`sticky top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 xl:px-20 h-[76px] bg-[#F0EDE6]/95 backdrop-blur-md border-b border-[#D6D1C8] transition-opacity duration-500 ${showNav ? "opacity-100" : "opacity-0 pointer-events-none hidden"}`}>
+        
+        {/* LOGO LINKS DIRECTLY TO ROOT LANDING INTRO PAGE (/) */}
+        <Link href="/" className="hover-trigger flex items-center gap-3 group relative z-10">
+          <img src="/logo.png" alt="NovaMac Logo" className="w-10 h-10 object-contain rounded-xl shadow-sm group-hover:scale-105 transition-transform" />
+          <span className="font-heading font-bold text-xl tracking-tight text-[#1C1917]">
+            NovaMac<br/><span className="text-[10px] font-mono tracking-widest text-[#78716C] leading-none block">SOLUTIONS</span>
+          </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-[10px] font-mono uppercase tracking-[0.18em] text-white/50">
-          {[
-            { href: "/services",   label: "Services"   },
-            { href: "/pricing",    label: "Pricing"     },
-            { href: "/industries", label: "Industries" },
-            { href: "/work",       label: "Work"       },
-            { href: "/about",      label: "About"      },
-            { href: "/blog",       label: "Blog"       },
-          ].map((link) => (
-            <Link key={link.href} href={link.href}
-              className="hover-trigger hover:text-[#7fa4ff] transition-colors duration-300 relative group">
+        {/* DESKTOP NAVIGATION */}
+        <nav className="hidden lg:flex items-center gap-8 relative z-10 text-sm font-semibold text-[#57534E]">
+          {NAV_LINKS.map((link) => (
+            <Link 
+              key={link.href} 
+              href={link.href}
+              className={`hover-trigger transition-colors duration-300 ${pathname === link.href ? "text-[#0F52BA] font-bold" : "hover:text-[#0F52BA]"}`}
+            >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
-          <Link href="/contact"
-            className="hover-trigger inline-flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest px-5 py-2.5 rounded-full bg-white text-[#05060c] hover:bg-white/90 transition-all duration-300">
-            Book a Call
-          </Link>
-        </div>
-      </header>
+        {/* DESKTOP CTA BUTTON */}
+        <Link 
+          href="/contact"
+          className="hover-trigger hidden lg:flex items-center justify-center px-6 py-2.5 bg-[#1C1917] text-white font-bold text-xs tracking-widest uppercase rounded-full hover:bg-[#0F52BA] transition-all duration-300 relative z-10 shadow-md hover:scale-105"
+        >
+          BOOK A CALL
+        </Link>
 
-      <main className="flex-1 flex flex-col relative z-10">{children}</main>
+        {/* MOBILE MENU TOGGLE BUTTON */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="lg:hidden p-2 rounded-xl bg-white border border-[#D6D1C8] text-[#1C1917] hover:text-[#0F52BA] transition-all relative z-50"
+          aria-label="Toggle Navigation Menu"
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
 
-      {/* ── FOOTER ───────────────────────────────── */}
-      <footer className="bg-[#05060c] border-t border-white/10 relative z-10">
-        <div className="px-6 md:px-12 xl:px-20 pt-20 pb-10 max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
+        {/* MOBILE MENU DRAWER OVERLAY */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden fixed inset-0 top-[76px] bg-[#F0EDE6] z-40 p-6 flex flex-col justify-between border-t border-[#D6D1C8] shadow-2xl animate-in slide-in-from-top duration-300">
+            <nav className="flex flex-col gap-5 pt-4">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`text-2xl font-black tracking-tight border-b border-[#D6D1C8]/60 pb-3 flex items-center justify-between ${pathname === link.href ? "text-[#0F52BA]" : "text-[#1C1917]"}`}
+                >
+                  <span>{link.label}</span>
+                  <ArrowRight className="w-5 h-5 text-[#0F52BA]" />
+                </Link>
+              ))}
+            </nav>
 
-            <div className="col-span-2">
-              <Link href="/" className="hover-trigger flex items-center gap-3 mb-6 group">
-                <div className="w-9 h-9 flex items-center justify-center rounded-lg border border-white/15 group-hover:border-[#7fa4ff] transition-colors">
-                  <span className="font-heading font-extrabold text-white text-sm">NM</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-heading font-bold text-lg tracking-tight leading-none">NovaMac</span>
-                  <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest leading-none mt-1">AI control center</span>
-                </div>
+            <div className="pt-6 border-t border-[#D6D1C8] space-y-4">
+              <Link
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-4 bg-[#0F52BA] text-white font-bold text-xs tracking-widest uppercase rounded-full text-center block shadow-lg"
+              >
+                BOOK A STRATEGY CALL
               </Link>
-              <p className="text-sm text-white/50 leading-relaxed max-w-xs font-light mb-8">
-                An AI-first software studio building web platforms, WhatsApp
-                &amp; voice AI systems, and automation pipelines for
-                growth-focused brands.
-              </p>
-              <div className="space-y-1">
-                <a href="mailto:hello@novamacsolutions.com" className="hover-trigger block text-[10px] font-mono text-white/40 uppercase tracking-wider hover:text-[#7fa4ff] transition-colors">hello@novamacsolutions.com</a>
-                <a href="tel:+14154804281" className="hover-trigger block text-[10px] font-mono text-white/40 uppercase tracking-wider hover:text-[#7fa4ff] transition-colors">415 480 4281</a>
+              <div className="text-center font-mono text-[10px] text-[#78716C] tracking-widest">
+                NOVAMAC SOLUTIONS // SUB-50MS GLOBAL EDGE
               </div>
             </div>
+          </div>
+        )}
 
-            {[
-              {
-                title: "Company",
-                links: [{ href: "/about", label: "About Us" }, { href: "/blog", label: "Blog" }, { href: "/faq", label: "FAQ" }, { href: "/contact", label: "Contact" }],
-              },
-              {
-                title: "Services",
-                links: [{ href: "/services", label: "Web Development" }, { href: "/pricing", label: "AI Systems & Pricing" }, { href: "/industries", label: "Industries" }, { href: "/work", label: "Case Studies" }],
-              },
-              {
-                title: "Legal",
-                links: [{ href: "/terms", label: "Terms of Service" }, { href: "/privacy", label: "Privacy Policy" }],
-              },
-            ].map((col, i) => (
-              <div key={i}>
-                <h4 className="font-mono text-[9px] tracking-[0.3em] uppercase mb-6 text-white/40">{col.title}</h4>
-                <ul className="space-y-4 text-sm text-white/60">
-                  {col.links.map((link, j) => (
-                    <li key={j}><Link href={link.href} className="hover-trigger hover:text-[#7fa4ff] transition-colors">{link.label}</Link></li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      </header>
+
+      {/* ── MAIN CONTENT ── */}
+      <main className="flex-1 relative z-10">{children}</main>
+
+      {/* ── FOOTER ── */}
+      <footer className={`bg-[#1C1917] text-white border-t border-[#D6D1C8] pt-20 pb-10 transition-opacity duration-500 relative z-10 ${showNav ? "opacity-100" : "opacity-0 pointer-events-none hidden"}`}>
+        <div className="px-6 md:px-12 xl:px-20 max-w-[1400px] mx-auto relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
+            <div className="col-span-2 space-y-4">
+              <Link href="/" className="flex items-center gap-3">
+                <img src="/logo.png" alt="NovaMac Logo" className="w-10 h-10 object-contain rounded-xl" />
+                <span className="font-heading font-bold text-2xl tracking-tight text-white">
+                  NovaMac<br/><span className="text-[10px] font-mono tracking-widest text-[#0F52BA] leading-none block">SOLUTIONS</span>
+                </span>
+              </Link>
+              <p className="text-xs text-[#78716C] leading-relaxed max-w-sm font-normal">
+                NovaMac Solutions is a remote-first software engineering collective building sub-second Next.js web platforms, UI/UX design systems, and AI automation.
+              </p>
+            </div>
+
+            <div>
+              <div className="text-xs font-mono font-bold text-[#0F52BA] uppercase tracking-widest mb-4">NAVIGATION</div>
+              <ul className="space-y-2.5 text-xs text-[#78716C]">
+                <li><Link href="/home" className="hover:text-white transition-colors">Home</Link></li>
+                <li><Link href="/services" className="hover:text-white transition-colors">Services</Link></li>
+                <li><Link href="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
+                <li><Link href="/work" className="hover:text-white transition-colors">Work</Link></li>
+                <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
+                <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <div className="text-xs font-mono font-bold text-[#0F52BA] uppercase tracking-widest mb-4">CAPABILITIES</div>
+              <ul className="space-y-2.5 text-xs text-[#78716C]">
+                <li><Link href="/services/custom-web-development" className="hover:text-white transition-colors">Web Engineering</Link></li>
+                <li><Link href="/services" className="hover:text-white transition-colors">UI/UX Studio</Link></li>
+                <li><Link href="/services" className="hover:text-white transition-colors">SaaS Applications</Link></li>
+                <li><Link href="/services" className="hover:text-white transition-colors">AI & CRM Automation</Link></li>
+                <li><Link href="/services/ecommerce-development" className="hover:text-white transition-colors">Headless E-Commerce</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <div className="text-xs font-mono font-bold text-[#0F52BA] uppercase tracking-widest mb-4">LEGAL</div>
+              <ul className="space-y-2.5 text-xs text-[#78716C]">
+                <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
+                <li><Link href="/faq" className="hover:text-white transition-colors">Support & FAQ</Link></li>
+              </ul>
+            </div>
           </div>
 
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-[10px] font-mono text-white/35 uppercase tracking-wider">
-              © {new Date().getFullYear()} NovaMac Solutions.
-            </p>
+          <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#78716C]">
+            <div>© {new Date().getFullYear()} NovaMac Solutions. All rights reserved.</div>
             <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#7fa4ff] animate-pulse" />
-              <p className="text-[10px] font-mono text-white/35 uppercase tracking-wider">Accepting new projects</p>
+              <span className="w-2 h-2 rounded-full bg-[#0F52BA] animate-pulse" />
+              <span>SUB-50MS GLOBAL EDGE CDN</span>
             </div>
           </div>
         </div>
       </footer>
 
+      {/* Floating AI Chat Widget */}
       <ChatWidget />
     </div>
   );

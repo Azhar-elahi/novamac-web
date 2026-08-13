@@ -5,10 +5,11 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-[#05060c] text-white gradient-mesh">
-      <div className="max-w-3xl mx-auto prose prose-invert prose-lg font-light leading-relaxed prose-headings:font-heading prose-headings:text-white prose-a:text-brand">
-        <h1 className="text-4xl md:text-5xl font-heading font-extrabold tracking-tight mb-8">Privacy Policy</h1>
-        <p className="text-muted-foreground mb-12">Last updated: {new Date().toLocaleDateString()}</p>
+    <main className="min-h-screen pt-40 pb-24 px-6 md:px-12 xl:px-20 bg-[#f6f1e7] text-[#211f1a] ">
+      <div className="max-w-3xl mx-auto prose prose-lg font-light leading-relaxed prose-headings:font-heading text-[#211f1a]/80 prose-a:text-[#2f6b45]">
+        <span className="annotation-label -rotate-2 inline-block mb-4">— legal</span>
+        <h1 className="font-heading font-medium text-[clamp(2.2rem,5vw,3.6rem)] tracking-[-0.01em] mb-4">Privacy Policy</h1>
+        <p className="text-[#211f1a]/50 mb-12">Last updated: {new Date().toLocaleDateString()}</p>
         
         <h2>1. Introduction</h2>
         <p>At NovaMac, we respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.</p>

@@ -113,13 +113,13 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
 
       <div
         className={cn(
-          "fixed bottom-6 right-6 w-[350px] sm:w-[400px] h-[500px] max-h-[80vh] flex flex-col rounded-2xl border border-white/10 shadow-2xl bg-[#0a0c16] backdrop-blur-xl transition-all origin-bottom-right z-50 overflow-hidden",
+          "fixed bottom-6 right-6 w-[350px] sm:w-[400px] h-[500px] max-h-[80vh] flex flex-col rounded-2xl border border-black/10 shadow-2xl bg-[#f6f1e7] backdrop-blur-xl transition-all origin-bottom-right z-50 overflow-hidden",
           isOpen ? "scale-100 opacity-100" : "scale-50 opacity-0 pointer-events-none"
         )}
       >
-        <div className="flex items-center justify-between p-4 border-b border-white/10 bg-white/[0.02]">
+        <div className="flex items-center justify-between p-4 border-b border-black/10 bg-white/60">
           <div>
-            <h3 className="font-heading font-semibold text-white">
+            <h3 className="font-heading font-medium text-[#211f1a]">
               {isPortal ? "NovaMac Support Agent" : "NovaMac Guide"}
             </h3>
             <p className="text-xs text-muted-foreground">

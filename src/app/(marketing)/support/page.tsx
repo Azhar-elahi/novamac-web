@@ -9,35 +9,41 @@ export const metadata: Metadata = {
 
 export default function SupportPage() {
   return (
-    <main className="bg-[#05060c] text-white min-h-screen pt-36 pb-20 px-6 gradient-mesh">
-      <div className="max-w-4xl mx-auto space-y-12">
+    <main className="bg-[#f6f1e7] text-[#211f1a] min-h-screen pt-40 pb-24 px-6 ">
+      <div className="max-w-4xl mx-auto space-y-16">
         <div className="text-center">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-4">/ Help Center</p>
-          <h1 className="font-heading font-extrabold text-5xl md:text-7xl tracking-tighter mb-6 text-white">How can we help?</h1>
-          <p className="text-xl text-white/55 font-light max-w-xl mx-auto">
+          <span className="annotation-label -rotate-2 inline-block mb-4">— help center</span>
+          <h1 className="font-heading font-medium text-[clamp(2.4rem,6vw,4.4rem)] tracking-[-0.01em] leading-[1.05] mb-6">
+            How can we <span className="text-script">help?</span>
+          </h1>
+          <p className="text-lg text-[#211f1a]/55 font-light max-w-xl mx-auto leading-relaxed">
             Whether you need technical support, have a billing question, or want to report an issue, our team is here for you.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-16">
-          <div className="card-vibrant p-8 rounded-2xl">
-            <LifeBuoy className="w-8 h-8 text-brand mb-6" />
-            <h3 className="text-2xl font-bold mb-3 text-white">Existing Clients</h3>
-            <p className="text-white/55 font-light mb-8">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-white border border-black/5 shadow-sm p-8 rounded-2xl">
+            <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#2f6b45]/10 mb-6">
+              <LifeBuoy className="w-5 h-5 text-[#2f6b45]" />
+            </div>
+            <h3 className="font-heading text-2xl font-medium mb-3">Existing Clients</h3>
+            <p className="text-[#211f1a]/55 font-light mb-8 leading-relaxed">
               If you are an existing client with an active project, please contact your assigned project manager directly, or reach out via email for a high-priority response.
             </p>
-            <a href="mailto:hello@novamacsolutions.com" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/70 hover:text-white transition-colors">
+            <a href="mailto:hello@novamacsolutions.com" className="hover-trigger inline-flex items-center gap-2 text-sm font-medium text-[#2f6b45] hover:opacity-80 transition-colors">
               Email Us <ArrowRight className="w-4 h-4" />
             </a>
           </div>
 
-          <div className="card-vibrant p-8 rounded-2xl">
-            <MessageSquare className="w-8 h-8 text-brand mb-6" />
-            <h3 className="text-2xl font-bold mb-3 text-white">General Inquiries</h3>
-            <p className="text-white/55 font-light mb-8">
-              For general questions or if you don't have an account, please reach out via our contact form.
+          <div className="bg-white border border-black/5 shadow-sm p-8 rounded-2xl">
+            <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#2f6b45]/10 mb-6">
+              <MessageSquare className="w-5 h-5 text-[#2f6b45]" />
+            </div>
+            <h3 className="font-heading text-2xl font-medium mb-3">General Inquiries</h3>
+            <p className="text-[#211f1a]/55 font-light mb-8 leading-relaxed">
+              For general questions or if you don&apos;t have an account, please reach out via our contact form.
             </p>
-            <Link href="/contact" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-white/70 hover:text-white transition-colors">
+            <Link href="/contact" className="hover-trigger inline-flex items-center gap-2 text-sm font-medium text-[#2f6b45] hover:opacity-80 transition-colors">
               Contact Us <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

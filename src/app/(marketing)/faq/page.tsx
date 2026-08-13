@@ -52,25 +52,27 @@ const FAQS = [
 
 export default function FAQPage() {
   return (
-    <main className="bg-[#05060c] text-white min-h-screen pt-36 pb-20 px-6 gradient-mesh">
+    <main className="bg-[#f6f1e7] text-[#211f1a] min-h-screen pt-40 pb-24 px-6 md:px-12 ">
       <div className="max-w-4xl mx-auto">
         <div className="mb-20 text-center">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-4">/ Common Questions</p>
-          <h1 className="font-heading font-extrabold text-5xl md:text-7xl tracking-tighter mb-6 text-white">Everything you need to know.</h1>
-          <p className="text-xl text-white/55 font-light max-w-2xl mx-auto">
-            Detailed answers to the 20 most frequently asked questions about our engineering, process, and pricing.
+          <span className="annotation-label -rotate-2 inline-block mb-4">— common questions</span>
+          <h1 className="font-heading font-medium text-[clamp(2.4rem,6vw,4.4rem)] tracking-[-0.01em] leading-[1.05] mb-6">
+            Everything you need<br />to <span className="text-script">know.</span>
+          </h1>
+          <p className="text-lg text-[#211f1a]/55 font-light max-w-2xl mx-auto leading-relaxed">
+            Detailed answers to the questions we get asked most about our engineering, process, and pricing.
           </p>
         </div>
 
         <div className="space-y-16">
           {FAQS.map((section, idx) => (
             <div key={idx}>
-              <h2 className="text-3xl font-heading font-bold mb-8 text-white border-b border-white/10 pb-4">{section.category}</h2>
-              <div className="space-y-8">
+              <h2 className="text-2xl md:text-3xl font-heading font-medium mb-8 border-b border-black/10 pb-4">{section.category}</h2>
+              <div className="space-y-5">
                 {section.questions.map((faq, i) => (
-                  <div key={i} className="card-vibrant p-6 md:p-8 rounded-2xl">
-                    <h3 className="text-xl font-bold mb-4 text-white">{faq.q}</h3>
-                    <p className="text-white/55 leading-relaxed font-light">{faq.a}</p>
+                  <div key={i} className="bg-white border border-black/5 shadow-sm p-6 md:p-8 rounded-2xl">
+                    <h3 className="text-lg md:text-xl font-heading font-medium mb-3">{faq.q}</h3>
+                    <p className="text-[#211f1a]/60 leading-relaxed font-light">{faq.a}</p>
                   </div>
                 ))}
               </div>
@@ -78,12 +80,12 @@ export default function FAQPage() {
           ))}
         </div>
 
-        <div className="mt-24 p-8 md:p-12 card-vibrant rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+        <div className="mt-24 paper-sheet rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div>
-            <h4 className="text-2xl font-bold mb-3 text-white">Still have questions?</h4>
-            <p className="text-white/55 font-light max-w-md">We are always happy to answer any specific questions you might have about your unique project.</p>
+            <h4 className="text-2xl font-heading font-medium mb-3">Still have questions?</h4>
+            <p className="text-[#211f1a]/55 font-light max-w-md">We are always happy to answer any specific questions you might have about your unique project.</p>
           </div>
-          <Link href="/contact" className="shrink-0 px-8 py-4 bg-white text-[#05060c] font-bold uppercase tracking-widest text-xs inline-flex items-center gap-2 hover:bg-white/90 transition-colors rounded-full">
+          <Link href="/contact" className="hover-trigger shrink-0 px-8 py-4 bg-[#211f1a] text-[#f6f1e7] font-medium text-sm rounded-full inline-flex items-center gap-2 hover:bg-[#2f6b45] transition-all duration-300">
             Contact Us <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

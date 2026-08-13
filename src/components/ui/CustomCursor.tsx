@@ -4,46 +4,32 @@ import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
-  const ringX = useMotionValue(-100);
-  const ringY = useMotionValue(-100);
-  const dotX  = useMotionValue(-100);
-  const dotY  = useMotionValue(-100);
-
-  const rX = useSpring(ringX, { stiffness: 260, damping: 28 });
-  const rY = useSpring(ringY, { stiffness: 260, damping: 28 });
-  const dX = useSpring(dotX,  { stiffness: 900, damping: 40 });
-  const dY = useSpring(dotY,  { stiffness: 900, damping: 40 });
-
-  const ringRef = useRef<HTMLDivElement>(null);
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  
+  const springX = useSpring(cursorX, { stiffness: 500, damping: 30 });
+  const springY = useSpring(cursorY, { stiffness: 500, damping: 30 });
+  
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
-      ringX.set(e.clientX - 18);
-      ringY.set(e.clientY - 18);
-      dotX.set(e.clientX - 3);
-      dotY.set(e.clientY - 3);
+      cursorX.set(e.clientX - 10);
+      cursorY.set(e.clientY - 10);
     };
 
     const enter = () => {
-      if (!ringRef.current) return;
-      ringRef.current.style.transform = "scale(2.4)";
-      ringRef.current.style.backgroundColor = "white";
-      ringRef.current.style.mixBlendMode = "difference";
+      if (!cursorRef.current) return;
+      cursorRef.current.style.transform = "scale(3)";
+      cursorRef.current.style.backgroundColor = "white";
     };
 
     const leave = () => {
-      if (!ringRef.current) return;
-      ringRef.current.style.transform = "scale(1)";
-      ringRef.current.style.backgroundColor = "transparent";
-      ringRef.current.style.mixBlendMode = "normal";
+      if (!cursorRef.current) return;
+      cursorRef.current.style.transform = "scale(1)";
+      cursorRef.current.style.backgroundColor = "white";
     };
 
-    // Event delegation: attach ONE listener on the window instead of
-    // re-scanning the whole DOM and re-attaching listeners to every
-    // element on every mutation (which was the previous approach and
-    // caused jank on scroll/animation-heavy pages). We use the
-    // capture-phase "pointerover"/"pointerout" events and check
-    // e.target.closest(...) to detect hover-worthy elements.
     const HOVER_SELECTOR = "a, button, [role='button'], .hover-trigger";
 
     const onPointerOver = (e: PointerEvent) => {
@@ -65,16 +51,13 @@ export default function CustomCursor() {
       document.removeEventListener("pointerover", onPointerOver);
       document.removeEventListener("pointerout", onPointerOut);
     };
-  }, [ringX, ringY, dotX, dotY]);
+  }, [cursorX, cursorY]);
 
   return (
-    <>
-      <motion.div ref={ringRef}
-        className="fixed top-0 left-0 w-9 h-9 rounded-full border border-slate-300 pointer-events-none z-[9999] transition-all duration-300 ease-out hidden md:block"
-        style={{ x: rX, y: rY }} />
-      <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[9999] hidden md:block bg-slate-50 mix-blend-difference"
-        style={{ x: dX, y: dY }} />
-    </>
+    <motion.div 
+      ref={cursorRef}
+      className="fixed top-0 left-0 w-5 h-5 bg-white rounded-full pointer-events-none z-[10000] hidden md:block mix-blend-difference transition-transform duration-200 ease-out"
+      style={{ x: springX, y: springY }} 
+    />
   );
 }

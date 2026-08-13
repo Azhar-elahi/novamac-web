@@ -2,197 +2,118 @@
 
 @plugin "tailwindcss-animate";
 
-/* ============================================================
-   NOVAMAC — THE AI CONTROL CENTER
-   Dark cosmic AI-agency theme: deep space navy background,
-   soft blue-white "orb" glow as the core brand motif, plus
-   warm amber and vibrant per-category accents (pink / teal /
-   cyan / violet) so service & industry cards don't read flat.
-============================================================ */
-
 @theme {
-  --color-background: #05060c;
-  --color-foreground: #f4f6ff;
-  --color-muted: #8992ab;
-  --color-muted-foreground: #8992ab;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-secondary: rgba(255, 255, 255, 0.04);
-
-  /* Primary CTA — solid white pill on dark, matches the reference's
-     "Book a call" buttons. */
-  --color-primary: #ffffff;
-  --color-primary-foreground: #05060c;
-
-  /* Card surface token (shadcn-style) — used by admin dashboard
-     components (glass-card, bg-card). */
-  --color-card: #0a0c16;
-  --color-card-foreground: #f4f6ff;
-
-  /* Destructive / danger state — used for delete actions, error
-     badges, and admin "danger zone" UI. */
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: #fef2f2;
-
-  /* "Brand" accent — soft orb blue, used for links, badges, small
-     interactive highlights. */
-  --color-brand: #7fa4ff;
-  --color-brand-foreground: #05060c;
-
-  /* Warm accent reserved for glows / secondary CTAs. */
-  --color-accent: #f59e0b;
-  --color-accent-foreground: #2a1200;
-
-  /* Per-category accents used across service/industry/pricing cards. */
-  --color-vibe-pink: #ec4899;
-  --color-vibe-teal: #14b8a6;
-  --color-vibe-amber: #f59e0b;
-  --color-vibe-lime: #06b6d4;
-  --color-vibe-green: #22c55e;
-  --color-vibe-violet: #a78bfa;
-
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: "Space Grotesk", "Outfit", "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-heading: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  
+  /* Warm Cream-Grey Light Palette */
+  --color-background: #F0EDE6; /* Warm Cream Grey */
+  --color-foreground: #1C1917; /* Warm Charcoal */
+  
+  --color-card: #FAF8F4;
+  --color-card-foreground: #1C1917;
+  
+  --color-popover: #FAF8F4;
+  --color-popover-foreground: #1C1917;
+  
+  --color-primary: #1C1917;
+  --color-primary-foreground: #F0EDE6;
+  
+  --color-secondary: #E8E4DC;
+  --color-secondary-foreground: #1C1917;
+  
+  --color-muted: #E8E4DC;
+  --color-muted-foreground: #78716C;
+  
+  --color-accent: #0F52BA; /* Sapphire Blue Brand */
+  --color-accent-foreground: #FFFFFF;
+  
+  --color-brand: #0F52BA;
+  --color-brand-foreground: #FFFFFF;
+  
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: #FFFFFF;
+  
+  --color-border: #D6D1C8;
+  --color-input: #E8E4DC;
+  --color-ring: #0F52BA;
+  
+  --radius-lg: 0px; /* Swiss Style: sharp corners */
+  --radius-md: 0px;
+  --radius-sm: 0px;
 }
 
+/* Base styles for a smooth, app-like feel */
 @layer base {
-  :root {
-    --background: #05060c;
-    --foreground: #f4f6ff;
-    --muted: #8992ab;
-    --border: rgba(255, 255, 255, 0.1);
-  }
-
   * {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
+    border-color: var(--color-border);
+    outline-color: var(--color-ring);
   }
-
-  html {
-    font-size: 17px;
-    text-rendering: optimizeLegibility;
+  
+  html, body {
+    /* Prevent layout shifts from scrollbar */
+    scrollbar-gutter: stable;
+    /* Hide default cursor for custom cursor */
+    cursor: none;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    overscroll-behavior: none; /* prevent bounce */
   }
-
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-sans);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-  }
-
-  p {
-    line-height: 1.7;
+  
+  a, button {
+    cursor: none;
   }
 }
 
-/* ============================================================
-   UTILITIES & EFFECTS
-============================================================ */
-
-@layer utilities {
-  .hover-trigger {
-    @apply cursor-pointer;
-  }
-
-  .glass-panel {
-    @apply bg-white/[0.04] backdrop-blur-xl border border-white/10;
-  }
-
-  /* Admin dashboard card surface — slightly more opaque than
-     glass-panel so tables/forms stay readable over the starfield. */
-  .glass-card {
-    @apply bg-card backdrop-blur-xl;
-  }
-
-  /* Ambient nebula/glow mesh for hero & CTA sections on the dark bg. */
-  .gradient-mesh {
-    background:
-      radial-gradient(ellipse 900px 600px at 15% 10%, rgba(127, 164, 255, 0.16), transparent 60%),
-      radial-gradient(ellipse 800px 600px at 85% 25%, rgba(167, 139, 250, 0.14), transparent 60%),
-      radial-gradient(ellipse 700px 550px at 50% 95%, rgba(245, 158, 11, 0.10), transparent 60%);
-  }
-
-  /* Headline accent gradient — cool white-to-blue, matches the
-     reference's "AI Control" hero treatment. */
-  .text-gradient-brand {
-    background: linear-gradient(120deg, #eaf2ff 0%, #bcd2ff 45%, #6f9cff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* Card surface for service / pricing / industry grids — soft
-     tinted glass instead of flat white. */
-  .card-vibrant {
-    @apply bg-white/[0.03] border border-white/10 backdrop-blur-sm shadow-[0_0_0_rgba(0,0,0,0)];
-    transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
-  }
-  .card-vibrant:hover {
-    @apply border-white/25 -translate-y-1;
-    box-shadow: 0 0 40px -10px rgba(127, 164, 255, 0.35);
-  }
-
-  /* The glowing orb — reused as the core brand motif across hero,
-     loaders, and section dividers. */
-  .orb-core {
-    background: radial-gradient(
-      circle at 38% 35%,
-      #eaf3ff 0%,
-      #bcd8ff 22%,
-      #6f9cff 46%,
-      rgba(120, 80, 60, 0.35) 70%,
-      rgba(0, 0, 0, 0) 78%
-    );
-    box-shadow:
-      0 0 120px 40px rgba(255, 150, 90, 0.15),
-      0 0 220px 100px rgba(90, 130, 255, 0.12);
-  }
-
-  .animate-orb-float {
-    animation: orb-float 8s ease-in-out infinite;
-  }
-
-  .animate-fadein {
-    animation: fadein 0.4s ease;
-  }
+/* Custom Selection */
+::selection {
+  background-color: #0F52BA;
+  color: #FFFFFF;
 }
 
-@keyframes orb-float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-2%) scale(1.03); }
-}
-
-@keyframes fadein {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .animate-orb-float, .animate-fadein { animation: none; }
-}
-
-/* Base Scrollbar */
+/* Hide scrollbar for a cleaner Awwwards look */
 ::-webkit-scrollbar {
-  width: 10px;
+  display: none;
 }
-::-webkit-scrollbar-track {
-  background: #05060c;
+
+/* Custom utilities for glassmorphism in light mode */
+@layer utilities {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-black/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.04)];
+  }
+  
+  .glass-panel {
+    @apply bg-white/50 backdrop-blur-2xl border border-white/80 shadow-[0_4px_24px_rgba(0,0,0,0.02)];
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-marquee {
+    animation: marquee 32s linear infinite;
+  }
 }
-::-webkit-scrollbar-thumb {
-  background: #2a3040;
-  border-radius: 5px;
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #3d4560;
+
+/* Lenis Scroll Overrides to ensure it doesn't break R3F */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

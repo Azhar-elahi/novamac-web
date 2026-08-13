@@ -2,16 +2,21 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    // Admin panel currently accepts any external image URL for
-    // project/blog cover images. This wildcard keeps that working while
-    // still routing images through Next's image optimizer (resizing,
-    // lazy-loading, modern formats). Once you settle on a fixed set of
-    // trusted image hosts (e.g. your own CDN, Cloudinary, Unsplash),
-    // replace this with an explicit list of hostnames for tighter security.
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       { protocol: "https", hostname: "**" },
     ],
   },
+  // Optimize heavy packages for sub-second Vercel serverless cold starts
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'date-fns', 'gsap'],
+  },
+  // Compression & performance
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
+  // Allowed origins
+  allowedDevOrigins: ['192.168.189.1'],
   async headers() {
     return [
       {
@@ -23,6 +28,18 @@ const nextConfig: NextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
           { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
           { key: "X-DNS-Prefetch-Control", value: "on" },
+        ],
+      },
+      {
+        source: "/images/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+      {
+        source: "/logo.png",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
         ],
       },
     ];

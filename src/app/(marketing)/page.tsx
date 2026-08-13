@@ -1,481 +1,921 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
-import { ArrowRight, Globe, Target, Bot, ChevronDown, CheckCircle2, Shield, Zap, Users, Code2, Smartphone } from "lucide-react";
+import React, { useEffect, useRef } from "react"; import { useRouter } from "next/navigation";
+import { motion, useMotionValue, useSpring, useTransform, MotionValue } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowRight, Zap, Code, Shield, Cloud, Brain, Network, Hexagon, Layout, Database, PenTool, TrendingUp, Smartphone } from "lucide-react";
 import Link from "next/link";
-import { JsonLd } from "@/components/seo/JsonLd";
-import IntroLoader from "@/components/nexora/IntroLoader";
-import AiSystemsGrid from "@/components/nexora/AiSystemsGrid";
-import Pipeline from "@/components/nexora/Pipeline";
-import IndustrySwitcher from "@/components/nexora/IndustrySwitcher";
-import { AI_SYSTEMS } from "@/components/nexora/data";
 
-const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
+const glassCard = "bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.05)] rounded-3xl p-8 hover:bg-white/60 transition-all duration-500 relative overflow-hidden group";
 
-/* ── Helpers ──────────────────────────────────── */
-function BlurReveal({ children, delay = 0, className = "", style = {} }: { children: React.ReactNode; delay?: number; className?: string; style?: React.CSSProperties }) {
+// =========================================
+// DOODLE ART COMPONENTS (Immersive & Parallax)
+// =========================================
+const DoodleUnderline = () => (
+  <svg className="absolute -bottom-2 md:-bottom-6 left-0 w-full h-8 md:h-12 pointer-events-none z-10" viewBox="0 0 300 30" preserveAspectRatio="none">
+    <motion.path 
+      d="M 5 25 Q 75 5 150 20 T 295 15" 
+      fill="transparent" 
+      stroke="#0F52BA" 
+      strokeWidth="6"
+      strokeLinecap="round"
+      initial={{ pathLength: 0, opacity: 0 }}
+      whileInView={{ pathLength: 1, opacity: 1 }}
+      viewport={{ once: false, margin: "-100px" }}
+      transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
+    />
+  </svg>
+);
+
+const DoodleCircle = () => (
+  <svg className="absolute -inset-6 w-[calc(100%+3rem)] h-[calc(100%+3rem)] pointer-events-none z-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+     <motion.ellipse 
+        cx="50" cy="50" rx="45" ry="40"
+        fill="transparent" 
+        stroke="#0F52BA" 
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeDasharray="6 8"
+        initial={{ pathLength: 0, rotate: -10, opacity: 0 }}
+        whileInView={{ pathLength: 1, rotate: 0, opacity: 1 }}
+        viewport={{ once: false }}
+        transition={{ duration: 2, ease: "easeOut" }}
+     />
+  </svg>
+);
+
+const DoodleArrowHorizontal = () => (
+  <svg className="absolute right-10 top-1/2 -translate-y-1/2 w-32 h-32 pointer-events-none opacity-40 hidden md:block" viewBox="0 0 100 100">
+    <motion.path
+       d="M 10 50 Q 50 30 80 50 M 60 30 L 80 50 L 60 70"
+       fill="transparent"
+       stroke="#0F52BA"
+       strokeWidth="4"
+       strokeLinecap="round"
+       strokeLinejoin="round"
+       initial={{ pathLength: 0, x: -20, opacity: 0 }}
+       whileInView={{ pathLength: 1, x: 0, opacity: 1 }}
+       viewport={{ once: false }}
+       transition={{ duration: 1.2, ease: "easeOut" }}
+    />
+  </svg>
+);
+
+const DoodleSquiggle = () => (
+  <svg className="absolute left-[-10%] top-[20%] w-64 h-64 pointer-events-none opacity-30 z-0" viewBox="0 0 200 200">
+    <motion.path
+      d="M 20 20 Q 50 80 100 50 T 180 150"
+      fill="transparent"
+      stroke="#0F52BA"
+      strokeWidth="5"
+      strokeLinecap="round"
+      initial={{ pathLength: 0, opacity: 0 }}
+      whileInView={{ pathLength: 1, opacity: 1 }}
+      viewport={{ once: false }}
+      transition={{ duration: 2, ease: "easeInOut" }}
+    />
+  </svg>
+);
+
+const BackgroundDoodles = ({ 
+  opacity = "opacity-[0.3]",
+  mouseX,
+  mouseY
+}: { 
+  opacity?: string,
+  mouseX: MotionValue<number>,
+  mouseY: MotionValue<number>
+}) => {
+  // Create smooth physics-based springs for mouse movement
+  const smoothX = useSpring(mouseX, { stiffness: 40, damping: 20 });
+  const smoothY = useSpring(mouseY, { stiffness: 40, damping: 20 });
+
+  // Different depth layers move at different speeds/directions
+  const layer1X = useTransform(smoothX, [-0.5, 0.5], [-80, 80]);
+  const layer1Y = useTransform(smoothY, [-0.5, 0.5], [-80, 80]);
+  
+  const layer2X = useTransform(smoothX, [-0.5, 0.5], [40, -40]);
+  const layer2Y = useTransform(smoothY, [-0.5, 0.5], [40, -40]);
+  
+  const layer3X = useTransform(smoothX, [-0.5, 0.5], [-20, 20]);
+  const layer3Y = useTransform(smoothY, [-0.5, 0.5], [-20, 20]);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.8, delay, ease }}
-      className={className + " will-change-transform"}
-      style={style}
-    >
-      {children}
-    </motion.div>
+    <div className={`absolute inset-0 pointer-events-none overflow-hidden z-0 ${opacity}`}>
+      
+      {/* MASSIVE VIBRANT FLOATING TEXT */}
+      <motion.div style={{ x: layer2X, y: layer2Y }} className="absolute top-[20%] right-[10%] opacity-20 rotate-[-10deg]">
+        <h1 className="text-6xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#FF007F] via-[#00F0FF] to-[#7000FF] tracking-tighter drop-shadow-2xl">
+          NovaMac<br/>Solutions
+        </h1>
+      </motion.div>
+
+      {/* LAYER 1: Deep Background (Out of focus, moves opposite, rotates slowly) */}
+      <motion.div style={{ x: layer2X, y: layer2Y }} className="absolute inset-0 blur-md">
+        <motion.svg animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 40, ease: "linear" }} className="absolute top-[10%] right-[5%] w-32 h-32" viewBox="0 0 50 50">
+          <motion.path d="M 10 10 L 40 40 M 40 10 L 10 40" stroke="#FF007F" strokeWidth="4" strokeLinecap="round" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 2 }} />
+        </motion.svg>
+        <motion.svg animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 50, ease: "linear" }} className="absolute bottom-[20%] left-[5%] w-48 h-24" viewBox="0 0 100 50">
+          <motion.path d="M 0 25 L 25 0 L 50 25 L 75 0 L 100 25" stroke="#00F0FF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 2.5 }} />
+        </motion.svg>
+      </motion.div>
+
+      {/* LAYER 2: Mid-ground (Sharp, draws in) */}
+      <motion.div style={{ x: layer3X, y: layer3Y }} className="absolute inset-0">
+        <motion.svg animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 25, ease: "linear" }} className="absolute top-[30%] left-[10%] w-16 h-16 hidden md:block" viewBox="0 0 60 60">
+          <motion.path d="M 10 30 C 10 10 50 10 50 30 C 50 50 10 50 10 30 C 10 20 30 20 30 30" stroke="#7000FF" strokeWidth="6" strokeLinecap="round" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 2, delay: 0.2 }} />
+        </motion.svg>
+        <motion.svg animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 35, ease: "linear" }} className="absolute bottom-[25%] right-[15%] w-12 h-12" viewBox="0 0 50 50">
+          <motion.path d="M 25 5 L 45 40 L 5 40 Z" stroke="#FFDD00" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 1.5, delay: 0.4 }} />
+        </motion.svg>
+      </motion.div>
+
+      {/* LAYER 3: Foreground (High blur, moves fast with mouse, floating) */}
+      <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute inset-0 blur-xl opacity-80">
+        <motion.svg animate={{ rotate: 180, scale: [1, 1.2, 1] }} transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }} className="absolute top-[60%] left-[60%] w-40 h-20 hidden md:block" viewBox="0 0 80 40">
+          <motion.path d="M 0 20 Q 20 0 40 20 T 80 20" stroke="#00F0FF" strokeWidth="8" strokeLinecap="round" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 2, delay: 0.6 }} />
+        </motion.svg>
+        <motion.svg animate={{ rotate: -180, scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }} className="absolute top-[40%] right-[20%] w-24 h-24" viewBox="0 0 40 40">
+          <motion.path d="M 20 0 L 20 40 M 0 20 L 40 20 M 10 10 L 30 30 M 10 30 L 30 10" stroke="#FF007F" strokeWidth="8" strokeLinecap="round" fill="none" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: false }} transition={{ duration: 1, delay: 0.8 }} />
+        </motion.svg>
+      </motion.div>
+
+    </div>
   );
-}
+};
 
-function ZoomReveal({ children, delay = 0, className = "", style = {} }: { children: React.ReactNode; delay?: number; className?: string; style?: React.CSSProperties }) {
+// =========================================
+// IMMERSIVE TECH COMPONENTS
+// =========================================
+const FloatingTerminal = ({ className = "" }: { className?: string }) => (
+  <div className={`absolute w-80 md:w-96 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 shadow-2xl overflow-hidden font-mono text-xs z-0 opacity-80 hidden md:block group hover:scale-105 transition-transform duration-500 ${className}`}>
+    <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/5">
+      <div className="w-3 h-3 rounded-full bg-red-500/80" />
+      <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+      <div className="w-3 h-3 rounded-full bg-green-500/80" />
+      <span className="ml-2 text-zinc-500">sys_deploy.sh</span>
+    </div>
+    <div className="p-4 space-y-2 text-green-400/80">
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }} transition={{ delay: 0.2 }}>$ init cluster --region global</motion.div>
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }} transition={{ delay: 0.5 }}>&gt; Provisioning edge nodes...</motion.div>
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }} transition={{ delay: 0.8 }}>&gt; Establishing zero-trust mesh...</motion.div>
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }} transition={{ delay: 1.1 }}>&gt; Routing optimized.</motion.div>
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }} transition={{ delay: 1.4 }} className="text-white">System online. Latency: 4ms.</motion.div>
+      <motion.div animate={{ opacity: [1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} className="inline-block w-2 h-4 bg-white align-middle" />
+    </div>
+  </div>
+);
+
+const DataPulse = ({ top, left, delay = 0, color = "#0F52BA" }: { top: string, left: string, delay?: number, color?: string }) => (
+  <div className={`absolute ${top} ${left} flex items-center justify-center pointer-events-none opacity-50 z-0`}>
+    <div className="w-2 h-2 rounded-full absolute" style={{ backgroundColor: color }} />
+    <motion.div 
+      className="w-16 h-16 border rounded-full absolute"
+      style={{ borderColor: color }}
+      animate={{ scale: [1, 3], opacity: [0.8, 0] }}
+      transition={{ repeat: Infinity, duration: 2, delay }}
+    />
+    <motion.div 
+      className="w-32 h-32 border rounded-full absolute"
+      style={{ borderColor: color, opacity: 0.5 }}
+      animate={{ scale: [1, 2], opacity: [0.5, 0] }}
+      transition={{ repeat: Infinity, duration: 2, delay: delay + 0.5 }}
+    />
+  </div>
+);
+
+const FloatingShapes = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <motion.div 
+      animate={{ rotate: 360, y: [0, -50, 0] }} 
+      transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+      className="absolute top-[20%] left-[10%] w-64 h-64 border border-zinc-500/20 rounded-3xl"
+    />
+    <motion.div 
+      animate={{ rotate: -360, y: [0, 50, 0] }} 
+      transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+      className="absolute bottom-[20%] right-[10%] w-80 h-80 border-2 border-[#0F52BA]/20 rounded-full"
+    />
+    <motion.div 
+      animate={{ rotate: 180, x: [0, 40, 0] }} 
+      transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+      className="absolute top-[60%] left-[40%] w-32 h-32 border border-zinc-500/30 rotate-45"
+    />
+  </div>
+);
+
+export default function MarketingPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          // Add a tiny delay so they see the end screen for a second before jumping to the actual site
+          setTimeout(() => router.push('/home'), 1500);
+        }
+      },
+      { threshold: 0.8 }
+    );
+    const target = document.querySelector(".footer-trigger");
+    if (target) observer.observe(target);
+    return () => observer.disconnect();
+  }, [router]);
+
+  const horizontal2Ref = useRef<HTMLDivElement>(null);
+  const horizontal4Ref = useRef<HTMLDivElement>(null);
+  const horizontal6Ref = useRef<HTMLDivElement>(null);
+
+  // Mouse Parallax Trackers
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    // Mouse movement tracker for immersive depth
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set((e.clientX / window.innerWidth) - 0.5);
+      mouseY.set((e.clientY / window.innerHeight) - 0.5);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      // =====================================
+      // PAGE 2: Camera moves RIGHT (Content moves LEFT)
+      // =====================================
+      const h2 = horizontal2Ref.current;
+      if (h2) {
+        gsap.fromTo(
+          h2.querySelector(".scroll-content"),
+          { x: "0vw" },
+          {
+            x: "-400vw", // 5 slides total = move 400vw
+            ease: "none",
+            scrollTrigger: {
+              trigger: h2,
+              pin: true,
+              scrub: 1.2,
+              snap: {
+                snapTo: 1 / 4,
+                duration: { min: 0.2, max: 0.5 },
+                delay: 0.1,
+                ease: "power1.inOut"
+              },
+              invalidateOnRefresh: true,
+              start: "top top",
+              end: () => "+=" + (window.innerWidth * 4) // 4 screen widths of scrolling distance
+            }
+          }
+        );
+      }
+
+      // =====================================
+      // PAGE 4: Camera moves RIGHT (Content moves LEFT)
+      // =====================================
+      const h4 = horizontal4Ref.current;
+      if (h4) {
+        gsap.fromTo(
+          h4.querySelector(".scroll-content"),
+          { x: "0vw" },
+          {
+            x: "-100vw", // 2 slides total = move 100vw
+            ease: "none",
+            scrollTrigger: {
+              trigger: h4,
+              pin: true,
+              scrub: 1.2,
+              snap: {
+                snapTo: 1,
+                duration: { min: 0.2, max: 0.5 },
+                delay: 0.1,
+                ease: "power1.inOut"
+              },
+              invalidateOnRefresh: true,
+              start: "top top",
+              end: () => "+=" + window.innerWidth
+            }
+          }
+        );
+      }
+
+      // =====================================
+      // PAGE 6: Camera moves RIGHT (Content moves LEFT)
+      // =====================================
+      const h6 = horizontal6Ref.current;
+      if (h6) {
+        gsap.fromTo(
+          h6.querySelector(".scroll-content"),
+          { x: "0vw" },
+          {
+            x: "-100vw",
+            ease: "none",
+            scrollTrigger: {
+              trigger: h6,
+              pin: true,
+              scrub: 1.2,
+              snap: {
+                snapTo: 1,
+                duration: { min: 0.2, max: 0.5 },
+                delay: 0.1,
+                ease: "power1.inOut"
+              },
+              invalidateOnRefresh: true,
+              start: "top top",
+              end: () => "+=" + window.innerWidth
+            }
+          }
+        );
+      }
+
+      // Ambient Parallax Backgrounds
+      gsap.utils.toArray('.parallax-bg').forEach((bg: any) => {
+        gsap.to(bg, {
+          yPercent: 30,
+          ease: "none",
+          scrollTrigger: {
+            trigger: bg,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        });
+      });
+
+      // Auto-Scroll to Top at the very bottom
+      ScrollTrigger.create({
+        trigger: ".footer-trigger",
+        start: "bottom bottom",
+        onEnter: () => {
+          setTimeout(() => {
+            if ((window as any).lenis) {
+              (window as any).lenis.scrollTo(0, { duration: 2 });
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }, 800);
+        }
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.88, filter: "blur(16px)" }}
-      whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 1.1, delay, ease }}
-      className={className}
-      style={style}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function WordReveal({ text, className = "", delay = 0 }: { text: string; className?: string; delay?: number }) {
-  return (
-    <motion.span
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ staggerChildren: 0.04, delayChildren: delay }}
-      className={className}
-    >
-      {text.split(" ").map((word, i) => (
-        <span key={i} className="overflow-hidden inline-block mr-[0.28em] pb-4 -mb-4 pt-4 -mt-4">
-          <motion.span
-            variants={{
-              hidden: { y: "110%", opacity: 0 },
-              visible: { y: "0%", opacity: 1, transition: { ease, duration: 0.8 } },
-            }}
-            className="inline-block will-change-transform"
-          >
-            {word}
-          </motion.span>
-        </span>
-      ))}
-    </motion.span>
-  );
-}
-
-function MagneticButton({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { clientX, clientY } = e;
-    const { height, width, left, top } = ref.current!.getBoundingClientRect();
-    const middleX = clientX - (left + width / 2);
-    const middleY = clientY - (top + height / 2);
-    setPosition({ x: middleX * 0.2, y: middleY * 0.2 });
-  };
-
-  const reset = () => setPosition({ x: 0, y: 0 });
-
-  return (
-    <motion.div
-      ref={ref}
-      onMouseMove={handleMouse}
-      onMouseLeave={reset}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-/* ── Data ─────────────────────────────────────── */
-const SERVICES = [
-  {
-    num: "05",
-    title: "Custom Web Development",
-    desc: "We build responsive, fast, and secure websites tailored to your specific business needs. From landing pages to full e-commerce stores.",
-    icon: Code2,
-    color: { chip: "bg-blue-500/10", text: "text-blue-400", hoverText: "group-hover:text-blue-400", linkHover: "hover:text-blue-400" },
-    details: ["Modern Web Applications", "E-commerce Stores", "Business Landing Pages", "Mobile-Friendly Design", "Secure Hosting Setup"],
-  },
-  {
-    num: "06",
-    title: "Social Media Marketing",
-    desc: "Strategic content creation and community management to grow your online presence and engage directly with your target audience.",
-    icon: Smartphone,
-    color: { chip: "bg-pink-500/10", text: "text-pink-400", hoverText: "group-hover:text-pink-400", linkHover: "hover:text-pink-400" },
-    details: ["Content Creation & Scheduling", "Community Engagement", "Brand Identity Design", "Monthly Performance Reports", "Influencer Outreach"],
-  },
-  {
-    num: "07",
-    title: "360 Marketing & SEO",
-    desc: "Get found online with a complete 360 marketing approach — search visibility plus targeted ad campaigns.",
-    icon: Target,
-    color: { chip: "bg-orange-500/10", text: "text-orange-400", hoverText: "group-hover:text-orange-400", linkHover: "hover:text-orange-400" },
-    details: ["Local & On-page SEO", "Google & Facebook Ads", "Email Marketing Setup", "Omnichannel Strategies", "Audience Targeting"],
-  },
-  {
-    num: "08",
-    title: "Workflow Automation",
-    desc: "Save hours of manual work with practical automation — beyond AI systems, wired into the rest of your stack.",
-    icon: Bot,
-    color: { chip: "bg-violet-500/10", text: "text-violet-400", hoverText: "group-hover:text-violet-400", linkHover: "hover:text-violet-400" },
-    details: ["Email & CRM Automation", "Data Entry Automation", "Lead Generation Bots", "Custom Zapier / n8n Workflows", "Internal Ops Tooling"],
-  },
-];
-
-const WHY_US = [
-  { icon: Shield, title: "Honest & Reliable", desc: "No false promises. We deliver exactly what we agree on, within your budget, and on time." },
-  { icon: Zap, title: "Modern Quality", desc: "We use the latest technologies so your website is fast, secure, and looks great on all devices." },
-  { icon: Users, title: "Clear Communication", desc: "We keep things simple. You'll always know how your project is doing without confusing technical jargon." },
-  { icon: Globe, title: "Long-Term Support", desc: "Our relationship doesn't end at launch. We are here to help you maintain and grow your digital presence." },
-];
-
-const TECH = ["Web Development", "—", "WhatsApp AI", "—", "Voice Agents", "—", "SEO", "—", "Digital Marketing", "—", "Automation", "—", "Branding", "—"];
-
-/* ── Main ─────────────────────────────────────── */
-export default function HomePage() {
-  const [loading, setLoading] = useState(true);
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
-  const heroBgScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const heroY       = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const smoothBS    = useSpring(heroBgScale, { stiffness: 50, damping: 18 });
-  const smoothY     = useSpring(heroY,       { stiffness: 50, damping: 18 });
-
-  const [activeService, setActiveService] = useState<number | null>(null);
-
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "NovaMac Solutions",
-    "image": "https://novamacsolutions.com/favicon.ico",
-    "description": "The AI Control Center for modern brands — WhatsApp AI + CRM, Voice Agents, Custom AI Solutions, Web Development, SEO and Social Media Management.",
-    "url": "https://novamacsolutions.com",
-    "telephone": "+1-415-480-4281",
-    "email": "hello@novamacsolutions.com",
-    "address": { "@type": "PostalAddress", "addressCountry": "US" },
-    "priceRange": "$$"
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [...AI_SYSTEMS.map((s) => ({
-      "@type": "Question",
-      "name": `Does NovaMac Solutions offer ${s.name}?`,
-      "acceptedAnswer": { "@type": "Answer", "text": `Yes. ${s.description} Starting from ${s.fromPrice}.` },
-    })), ...SERVICES.map((service) => ({
-      "@type": "Question",
-      "name": `Does NovaMac Solutions offer ${service.title}?`,
-      "acceptedAnswer": { "@type": "Answer", "text": `Yes, we offer ${service.title}. ${service.desc}` },
-    }))]
-  };
-
-  return (
-    <main className="bg-background text-foreground overflow-x-hidden relative">
-      <JsonLd data={localBusinessSchema} />
-      <JsonLd data={faqSchema} />
-
-      <AnimatePresence>
-        {loading && <IntroLoader onDone={() => setLoading(false)} />}
-      </AnimatePresence>
-
-      {/* ══ HERO ════════════════════════════════ */}
-      <section ref={heroRef} className="relative min-h-screen flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-background gradient-mesh">
-        <motion.div className="absolute inset-0 pointer-events-none" style={{ scale: smoothBS }}>
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand/10 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#a78bfa]/10 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
-          {/* Glowing orb centerpiece */}
-          <div
-            aria-hidden
-            className="orb-core animate-orb-float absolute left-1/2 top-[38%] h-[42vh] w-[42vh] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-90 sm:h-[34vw] sm:w-[34vw]"
-          />
-        </motion.div>
-
-        <motion.div style={{ opacity: heroOpacity, y: smoothY }} className="relative z-10 max-w-[1400px] mx-auto w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ delay: 0.2, duration: 0.9, ease }}
-            className="inline-flex items-center gap-3 mb-10 px-5 py-3 border border-white/10 bg-white/[0.04] backdrop-blur-xl rounded-full"
-          >
-            <span className="w-2 h-2 rounded-full bg-brand animate-pulse" />
-            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-white/50">— NovaMac Lab</span>
-          </motion.div>
-
-          <h1 className="font-heading font-extrabold leading-[0.95] md:leading-[0.85] tracking-[-0.03em] text-[clamp(2.5rem,8vw,8rem)] mb-12">
-            {[
-              { text: "The AI",  delay: 0.35, cls: "block text-foreground" },
-              { text: "Control",   delay: 0.52, cls: "block text-gradient-brand" },
-              { text: "Center.", delay: 0.69, cls: "block text-foreground" },
-            ].map((line, i) => (
-              <div key={i} className="overflow-hidden pb-4 md:pb-8 -mb-4 md:-mb-8">
-                <motion.div
-                  initial={{ y: "115%", opacity: 0, filter: "blur(22px)" }}
-                  animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
-                  transition={{ delay: line.delay, duration: 1.2, ease }}
-                  className={line.cls}
-                >
-                  {line.text}
-                </motion.div>
-              </div>
-            ))}
-          </h1>
-
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-10 border-t border-white/10 pt-10 mt-8">
-            <motion.p
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ delay: 0.95, duration: 1, ease }}
-              className="text-lg md:text-xl text-white/55 font-light max-w-md leading-relaxed"
-            >
-              Four intelligent AI systems, one cinematic interface — plus the
-              web, marketing and automation work that gets you found. Explore
-              what you&rsquo;re really buying: the experience, not just the
-              price.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ delay: 1.1, duration: 1, ease }}
-              className="flex flex-wrap gap-4"
-            >
-              <MagneticButton>
-                <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-primary text-primary-foreground font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-[0_8px_30px_rgba(127,164,255,0.25)]">
-                  Let's Talk <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </MagneticButton>
-              <MagneticButton>
-                <Link href="/services" className="hover-trigger inline-flex items-center gap-3 border border-white/15 text-white font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:border-white/40 hover:bg-white/5 transition-all duration-300">
-                  Our Services
-                </Link>
-              </MagneticButton>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Scroll cue */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="font-mono text-[9px] tracking-[0.35em] uppercase text-white/35">Scroll to activate the core</span>
-          <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent" />
-        </motion.div>
-      </section>
-
-      {/* ══ MARQUEE ══════════════════════════════ */}
-      <div className="overflow-hidden border-y border-white/10 bg-white/[0.02] py-6 relative z-10">
-        <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ repeat: Infinity, ease: "linear", duration: 35 }}
-          className="flex whitespace-nowrap gap-16">
-          {Array.from({ length: 2 }).map((_, i) => (
-            <div key={i} className="flex items-center gap-16 shrink-0">
-              {TECH.map((t, j) => (
-                <span key={j} className="font-heading font-extrabold text-2xl md:text-3xl uppercase tracking-tight text-white/25">
-                  {t}
-                </span>
-              ))}
-            </div>
-          ))}
-        </motion.div>
+    <main className="w-full bg-[#F4F7FA] overflow-hidden relative">
+      
+      {/* ========================================= */}
+      {/* GLOBAL DETAILS: Noise Texture & Scroll Bar */}
+      {/* ========================================= */}
+      <div className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.25] mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+      <motion.div className="fixed left-0 top-0 bottom-0 w-1 bg-[#0F52BA] z-50 origin-top" style={{ scaleY: 0 /* to be wired to scrollYProgress if needed */ }} />
+      <div className="fixed top-6 right-8 z-50 flex items-center gap-4 mix-blend-difference text-white">
+        <div className="font-mono text-[10px] tracking-widest uppercase flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+          SYS_ONLINE // V3.0
+        </div>
       </div>
 
-      {/* ══ AI SYSTEMS (pricing) ═════════════════ */}
-      <section id="systems" className="py-32 px-6 md:px-12 xl:px-20 relative">
-        <div className="max-w-[1400px] mx-auto relative z-10">
-          <BlurReveal className="mb-16">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand mb-5">— The Systems</p>
-            <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
-              <WordReveal text="Intelligent systems." />
-            </h2>
-            <p className="mt-5 max-w-md text-white/50">Each one a complete product. Tap any card to step inside.</p>
-          </BlurReveal>
-
-          <ZoomReveal delay={0.1}>
-            <AiSystemsGrid />
-          </ZoomReveal>
+      {/* ========================================= */}
+      {/* PAGE 1: OVERVIEW HERO (Vertical Down) */}
+      {/* ========================================= */}
+      <section className="min-h-screen w-full flex items-center justify-center p-4 relative overflow-hidden bg-[#F0EDE6]">
+        {/* Animated Background Mesh */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPPHBhdGggZD0iTTAgNDBoNDBNNDAgMHY0MCIgc3Ryb2tlPSIjMDAwMDAwMDUiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg==')] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#F0EDE6]/50 to-[#F0EDE6] pointer-events-none z-0" />
+        
+        <BackgroundDoodles opacity="opacity-[0.2]" mouseX={mouseX} mouseY={mouseY} />
+        <FloatingShapes />
+        
+        <div className="absolute top-[10%] left-[5%]">
+          <DataPulse top="top-0" left="left-0" delay={0.2} color="#000000" />
         </div>
-      </section>
-
-      {/* ══ PIPELINE ═════════════════════════════ */}
-      <section id="pipeline" className="py-32 px-6 md:px-12 xl:px-20 relative border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto relative z-10">
-          <BlurReveal className="mb-14">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand mb-5">— The Workflow</p>
-            <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
-              <WordReveal text="One continuous AI pipeline." />
-            </h2>
-            <p className="mt-5 max-w-md text-white/50">
-              Every lead flows through the same intelligent path — captured, qualified and booked, hands-free.
-            </p>
-          </BlurReveal>
-          <ZoomReveal delay={0.1}>
-            <Pipeline />
-          </ZoomReveal>
+        <div className="absolute bottom-[20%] right-[10%]">
+          <DataPulse top="top-0" left="left-0" delay={1.5} color="#0F52BA" />
         </div>
-      </section>
-
-      {/* ══ INTERACTIVE SERVICES (original NovaMac lineup) ══ */}
-      <section id="services" className="py-32 px-6 md:px-12 xl:px-20 relative border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto relative z-10">
-          <BlurReveal className="mb-20 text-center">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand mb-5">/ Everything Else We Build</p>
-            <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
-              <WordReveal text="Services designed to" /><br />
-              <WordReveal text="help you succeed." delay={0.1} className="text-white/45" />
-            </h2>
-          </BlurReveal>
-
-          <div className="grid md:grid-cols-2 gap-5">
-            {SERVICES.map((s, i) => (
-              <ZoomReveal key={i} delay={i * 0.08}
-                className="group relative card-vibrant overflow-hidden rounded-2xl"
-              >
-                <div
-                  className="relative z-10 p-8 md:p-10 cursor-pointer h-full flex flex-col"
-                  onClick={() => setActiveService(activeService === i ? null : i)}
-                >
-                  <div className="flex items-start justify-between mb-8">
-                    <div className={`w-12 h-12 flex items-center justify-center rounded-xl transition-colors duration-300 ${s.color.chip}`}>
-                      <s.icon className={`w-5 h-5 ${s.color.text}`} />
-                    </div>
-                    <span className="font-mono text-xs text-white/40 bg-white/5 px-3 py-1 rounded-full">{s.num}</span>
-                  </div>
-
-                  <h3 className={`font-heading font-bold text-2xl md:text-3xl tracking-tight mb-4 transition-colors text-white ${s.color.hoverText}`}>{s.title}</h3>
-                  <p className="text-base text-white/50 leading-relaxed font-light mb-6">{s.desc}</p>
-
-                  <div className="mt-auto border-t border-white/10 pt-6 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-white/50 transition-colors">
-                    <span>{activeService === i ? "Hide Details" : "View Details"}</span>
-                    <motion.div animate={{ rotate: activeService === i ? 180 : 0 }}>
-                      <ChevronDown className="w-4 h-4" />
-                    </motion.div>
-                  </div>
-
-                  <AnimatePresence>
-                    {activeService === i && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.35, ease }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pt-6 mt-4 space-y-3">
-                          {s.details.map((detail, j) => (
-                            <div key={j} className="flex items-center gap-3 text-sm font-light text-white/70">
-                              <CheckCircle2 className={`w-4 h-4 shrink-0 ${s.color.text}`} />
-                              {detail}
-                            </div>
-                          ))}
-                          <div className="pt-6">
-                            <Link href="/services" className={`inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-white ${s.color.linkHover} transition-colors`}>
-                              Explore More <ArrowRight className="w-3 h-3" />
-                            </Link>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </ZoomReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ INDUSTRIES ═══════════════════════════ */}
-      <section id="industries" className="py-32 px-6 md:px-12 xl:px-20 relative border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto relative z-10">
-          <BlurReveal className="mb-14">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand mb-5">— Scene 04 · Any Industry</p>
-            <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
-              <WordReveal text="Built for your world." />
-            </h2>
-            <p className="mt-5 max-w-md text-white/50">
-              One system, every playbook. Choose an industry and watch the workflow adapt.
-            </p>
-          </BlurReveal>
-          <ZoomReveal delay={0.1}>
-            <IndustrySwitcher />
-          </ZoomReveal>
-        </div>
-      </section>
-
-      {/* ══ WHY CHOOSE US ════════════════════════ */}
-      <section className="py-32 px-6 md:px-12 xl:px-20 border-t border-white/10 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-brand/10 rounded-full blur-[100px] pointer-events-none" />
-
-        <div className="max-w-[1400px] mx-auto relative z-10">
-          <BlurReveal className="mb-16 text-center">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-brand mb-5">/ Our Approach</p>
-            <h2 className="font-heading font-extrabold text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.9] tracking-[-0.03em]">
-              <WordReveal text="Why partner" /><br />
-              <WordReveal text="with us." delay={0.1} className="text-white/45" />
-            </h2>
-          </BlurReveal>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {WHY_US.map((item, i) => (
-              <ZoomReveal key={i} delay={i * 0.1}
-                className="group p-8 md:p-10 card-vibrant rounded-2xl"
-              >
-                <div className="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl mb-8 group-hover:bg-white/10 transition-colors duration-300">
-                  <item.icon className="w-5 h-5 text-brand" />
-                </div>
-                <h3 className="font-heading font-bold text-xl tracking-tight mb-4 text-white">{item.title}</h3>
-                <p className="text-sm text-white/50 font-light leading-relaxed">{item.desc}</p>
-              </ZoomReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ CTA ══════════════════════════════════ */}
-      <section className="relative py-40 px-6 md:px-12 xl:px-20 bg-[#05060c] border-t border-white/10 overflow-hidden">
-        <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="orb-core absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none" />
-
-        <div className="max-w-[1400px] mx-auto relative z-10 text-center">
-          <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-            className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/50 mb-8">/ Let's Connect</motion.p>
-
-          <h2 className="font-heading font-extrabold text-[clamp(2.5rem,7vw,7rem)] leading-[0.9] tracking-[-0.03em] mb-12 text-white">
-            <WordReveal text="Ready to build" /><br />
-            <WordReveal text="your control center?" delay={0.1} className="text-white/60" />
-          </h2>
-
-          <motion.div
-            initial={{ opacity: 0, y: 24, scale: 0.94 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease }}
-            className="flex flex-wrap items-center justify-center gap-5 mt-10"
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
+        <div className="absolute top-10 left-10 w-4 h-4 border-l border-t border-zinc-400" />
+        <div className="absolute top-10 right-10 w-4 h-4 border-r border-t border-zinc-400" />
+        <div className="absolute bottom-10 left-10 w-4 h-4 border-l border-b border-zinc-400" />
+        <div className="absolute bottom-10 right-10 w-4 h-4 border-r border-b border-zinc-400" />
+        
+        <BackgroundDoodles opacity="opacity-[0.2]" mouseX={mouseX} mouseY={mouseY} />
+        <DoodleSquiggle />
+        
+        {/* Parallax typography */}
+        <div className="absolute top-[20%] left-[-10%] text-[25vw] font-black text-black/[0.02] parallax-bg pointer-events-none whitespace-nowrap tracking-tighter">SCALE</div>
+        
+        <div className="container px-4 md:px-6 relative z-10 text-center flex flex-col items-center">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="inline-flex items-center rounded-full border border-[#0F52BA]/30 bg-[#0F52BA]/5 px-4 py-1.5 text-xs font-bold text-[#0F52BA] mb-10 shadow-[0_0_20px_rgba(15,82,186,0.15)] backdrop-blur-md"
           >
-            <MagneticButton>
-              <Link href="/contact" className="hover-trigger group inline-flex items-center gap-3 bg-white text-[#05060c] font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full transition-all duration-300 hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_60px_rgba(255,255,255,0.3)]">
-                Book a Call <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </MagneticButton>
-            <MagneticButton>
-              <Link href="/work" className="hover-trigger inline-flex items-center gap-3 border border-white/20 text-white font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full hover:bg-white/10 transition-all duration-300">
-                View Our Work
-              </Link>
-            </MagneticButton>
+            <Zap className="mr-2 h-4 w-4" />
+            NovaMac Systems V3
           </motion.div>
+          <h1 className="text-[clamp(4rem,12vw,10rem)] font-black tracking-tighter leading-[0.8] mb-8 relative drop-shadow-xl">
+            <span className="block text-zinc-900 transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">ENGINEER.</span>
+            <span className="block text-zinc-400 transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">SCALE.</span>
+            <span className="block text-[#0F52BA] relative inline-block transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default drop-shadow-[0_0_30px_rgba(15,82,186,0.4)]">
+              DOMINATE.
+              <DoodleUnderline />
+            </span>
+          </h1>
+          <p className="max-w-[700px] text-zinc-600 md:text-xl/relaxed lg:text-2xl/relaxed font-light mt-8 relative">
+            <span className="absolute -left-6 top-2 w-4 h-[1px] bg-zinc-300" />
+            We build production-grade architectures for companies that can't afford to fail. Performance, security, and immense scale.
+          </p>
+        </div>
+        
+        {/* Scroll Indicator Detail */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-60">
+          <span className="font-mono text-[10px] tracking-widest text-zinc-500 uppercase">Scroll</span>
+          <ArrowRight className="h-4 w-4 text-zinc-500 rotate-90" />
+        </div>
+      </section>
+
+      {/* ========================================= */}
+      {/* PAGE 2: SERVICE OVERVIEW (Pinned - Camera Right) */}
+      {/* ========================================= */}
+      <section ref={horizontal2Ref} className="h-screen w-full relative bg-[#F0EDE6] overflow-hidden">
+        <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
+        {/* Detailed Grid Overlay */}
+        <div className="absolute inset-0 bg-grid-black/[0.02] pointer-events-none" />
+        
+        {/* Now 500vw wide for 5 slides */}
+        <div className="scroll-content flex w-[500vw] h-full will-change-transform">
+          
+          {/* Panel 2.1: THE PROBLEM */}
+          <div className="w-[100vw] h-full flex flex-col justify-center px-10 md:px-20 relative border-r border-black/5 overflow-hidden">
+            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">01 // THE PROBLEM</div>
+            <DoodleArrowHorizontal />
+            <FloatingTerminal className="right-[10%] top-[25%]" />
+            <div className="absolute right-[-10vw] top-[30vh] w-[40vw] h-[40vw] bg-[#FF007F]/10 blur-[140px] rounded-full pointer-events-none mix-blend-multiply" />
+            <div className="max-w-4xl z-10 relative">
+              <div className="absolute -left-12 top-4 w-6 h-[2px] bg-[#00F0FF]" />
+              <h2 className="text-6xl md:text-9xl font-black text-zinc-900 tracking-tighter mb-10 leading-[0.85] drop-shadow-sm">
+                <span className="relative inline-block">Boring Design<DoodleCircle /></span><br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#0F52BA] to-[#0a3a85]">is Dead.</span>
+              </h2>
+              <p className="text-2xl md:text-3xl text-zinc-600 font-light leading-relaxed mb-8 max-w-2xl border-l-4 border-zinc-300 pl-6">
+                The future belongs to dynamic, colorful, and relentlessly engaging digital experiences. We turn standard websites into captivating brand journeys.
+              </p>
+            </div>
+          </div>
+
+          {/* Panel 2.2: THE SOLUTION */}
+          <div className="w-[100vw] h-full flex items-center justify-center p-10 md:px-20 relative border-r border-black/5">
+            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">02 // THE SOLUTION</div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-white rounded-full blur-[100px] pointer-events-none opacity-50" />
+            
+            <div className={glassCard + " w-full max-w-6xl flex flex-col md:flex-row gap-16 items-center border-t-white/80 border-l-white/80 !bg-white/40 shadow-[0_20px_60px_rgba(0,0,0,0.05)]"}>
+              <div className="flex-1 space-y-8 relative z-10">
+                <div className="p-8 rounded-3xl bg-white/60 border border-white/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group/item">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-[#FF007F]/10 rounded-2xl group-hover/item:bg-[#FF007F]/20 transition-colors">
+                      <Layout className="h-8 w-8 text-[#FF007F]" />
+                    </div>
+                    <div className="text-3xl font-black text-zinc-900 tracking-tight">UI/UX Excellence</div>
+                  </div>
+                  <p className="text-zinc-600 font-medium text-lg leading-relaxed">Pixel-perfect aesthetics and seamless user journeys that drive massive engagement.</p>
+                </div>
+                <div className="p-8 rounded-3xl bg-white/60 border border-white/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group/item">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 bg-zinc-900 rounded-2xl group-hover/item:bg-[#00F0FF] transition-colors">
+                      <Code className="h-8 w-8 text-white group-hover/item:text-zinc-900" />
+                    </div>
+                    <div className="text-3xl font-black text-zinc-900 tracking-tight">Custom Web Dev</div>
+                  </div>
+                  <p className="text-zinc-600 font-medium text-lg leading-relaxed">Robust web applications built from scratch to perfectly align with your brand's unique needs.</p>
+                </div>
+              </div>
+              
+              <div className="flex-1 h-[600px] w-full rounded-[2.5rem] overflow-hidden border-8 border-white shadow-2xl relative group">
+                <div className="w-[110%] h-[110%] -left-[5%] -top-[5%] relative transition-transform duration-1000 group-hover:scale-105 group-hover:-translate-x-4">
+                  <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80" alt="Design workflow" className="object-cover w-full h-full" />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="font-mono text-xs text-white/70 tracking-widest mb-2 border-b border-white/20 pb-2 inline-block">DESIGN & ENG.</div>
+                  <div className="text-white text-2xl font-light">Crafting immersive digital products.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Panel 2.3: ARCHITECTURE */}
+          <div className="w-[100vw] h-full flex items-center justify-center px-10 md:px-20 relative border-r border-black/5 overflow-hidden">
+            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">03 // ECOSYSTEM</div>
+            
+            <DataPulse top="top-[30%]" left="left-[20%]" delay={0.1} color="#FF007F" />
+            <DataPulse top="top-[70%]" left="left-[80%]" delay={1.2} color="#00F0FF" />
+            
+            <div className="w-full max-w-7xl flex flex-col items-center relative z-10">
+              <h2 className="text-6xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-16 text-center">Comprehensive<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF007F] to-[#00F0FF]">Digital Growth.</span></h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+                <Link href="/services/custom-web-development" className="p-8 rounded-3xl bg-white border border-black/5 shadow-lg group hover:-translate-y-2 transition-transform block">
+                  <Database className="w-12 h-12 text-[#FF007F] mb-6 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-2xl font-bold mb-4 text-zinc-900">CRM & Software</h3>
+                  <p className="text-zinc-600 leading-relaxed">Tailored customer relationship management tools and internal software that scales with your business.</p>
+                </Link>
+                <Link href="/services" className="p-8 rounded-3xl bg-white border border-black/5 shadow-lg group hover:-translate-y-2 transition-transform block">
+                  <PenTool className="w-12 h-12 text-[#7000FF] mb-6 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-2xl font-bold mb-4 text-zinc-900">Graphic Design</h3>
+                  <p className="text-zinc-600 leading-relaxed">Iconic logos, brand identities, and stunning visual assets that leave a lasting mark on the industry.</p>
+                </Link>
+                <Link href="/services" className="p-8 rounded-3xl bg-white border border-black/5 shadow-lg group hover:-translate-y-2 transition-transform block">
+                  <TrendingUp className="w-12 h-12 text-[#00F0FF] mb-6 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-2xl font-bold mb-4 text-zinc-900">SEO Mastery</h3>
+                  <p className="text-zinc-600 leading-relaxed">Data-driven search engine optimization to ensure your brand always claims the top spot.</p>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Panel 2.4: VALIDATION */}
+          <div className="w-[100vw] h-full flex flex-col justify-center px-10 md:px-20 relative border-r border-black/5 overflow-hidden bg-[#F0EDE6]">
+            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">04 // VALIDATION</div>
+            <div className="absolute right-[-20%] bottom-[-20%] text-[40vw] font-black text-black/[0.02] parallax-bg pointer-events-none">PROVEN</div>
+            
+            <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-20 items-center mx-auto relative z-10">
+              <div>
+                <h2 className="text-6xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-8 leading-[0.9]">
+                  Numbers<br/>Don't Lie.
+                </h2>
+                <p className="text-xl text-zinc-600 leading-relaxed mb-8">
+                  We measure success strictly by the value we deliver. High-performance teams demand high-performance outputs.
+                </p>
+                <Link href="/work" className="flex items-center gap-2 text-[#0F52BA] font-bold uppercase tracking-widest hover:gap-4 transition-all">
+                  View Case Studies <ArrowRight className="h-5 w-5" />
+                </Link>
+              </div>
+              
+              <div>
+                <h2 className="text-6xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-8 leading-[0.9]">
+                  Impenetrable.<br/><span className="text-[#0F52BA]">Period.</span>
+                </h2>
+                <p className="text-xl text-zinc-600 leading-relaxed mb-8">
+                  Security isn't a plugin. It's the foundation. We build zero-trust networks, biometric authentication layers, and real-time AI threat mitigation systems.
+                </p>
+                <ul className="space-y-4">
+                  <li className="flex items-center gap-4 text-zinc-800 font-medium"><Shield className="text-[#0F52BA] w-6 h-6" /> Biometric & Hardware Auth</li>
+                  <li className="flex items-center gap-4 text-zinc-800 font-medium"><Shield className="text-[#0F52BA] w-6 h-6" /> Enterprise Grade WAF</li>
+                  <li className="flex items-center gap-4 text-zinc-800 font-medium"><Shield className="text-[#0F52BA] w-6 h-6" /> SOC2 Compliance Ready</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Panel 2.5: PIPELINE */}
+          <div className="w-[100vw] h-full flex flex-col justify-center items-center px-10 md:px-20 relative overflow-hidden bg-[#F0EDE6]">
+            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500">05 // PIPELINE</div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] border border-[#0F52BA]/10 rounded-full animate-spin-slow pointer-events-none" style={{animationDuration: '40s'}} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] border border-[#FF007F]/10 rounded-full animate-spin-slow pointer-events-none" style={{animationDuration: '30s', animationDirection: 'reverse'}} />
+            
+            <div className="max-w-4xl z-10 relative text-center">
+              <div className="w-20 h-20 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-10 shadow-xl">
+                <Hexagon className="w-10 h-10" />
+              </div>
+              <h2 className="text-6xl md:text-8xl font-black text-zinc-900 tracking-tighter mb-8">Rapid Iteration.<br/>Zero Downtime.</h2>
+              <p className="text-2xl text-zinc-600 font-light leading-relaxed mb-12">
+                Our CI/CD pipelines automate everything from unit testing to container orchestration. We ship updates 50x a day without dropping a single user connection.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <span className="px-6 py-2 bg-white text-zinc-800 rounded-full font-mono text-sm border border-zinc-200">GitHub Actions</span>
+                <span className="px-6 py-2 bg-white text-zinc-800 rounded-full font-mono text-sm border border-zinc-200">Terraform</span>
+                <span className="px-6 py-2 bg-white text-zinc-800 rounded-full font-mono text-sm border border-zinc-200">ArgoCD</span>
+                <span className="px-6 py-2 bg-white text-zinc-800 rounded-full font-mono text-sm border border-zinc-200">Vercel</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================= */}
+      {/* PAGE 3: ABOUT US (Vertical Down) */}
+      {/* ========================================= */}
+      <section className="min-h-screen w-full flex items-center justify-center bg-[#F0EDE6] text-zinc-900 relative overflow-hidden py-32">
+        {/* Intricate Micro-grid Dark */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] pointer-events-none" />
+        <div className="absolute top-10 left-10 w-8 h-8 border-l border-t border-zinc-300 opacity-50" />
+        <div className="absolute bottom-10 right-10 w-8 h-8 border-r border-b border-zinc-300 opacity-50" />
+        <div className="absolute top-12 left-12 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">03 // VISION_STATEMENT</div>
+        
+        <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
+        
+        <div className="absolute top-[30%] left-[-20%] text-[20vw] font-black text-black/[0.02] parallax-bg pointer-events-none whitespace-nowrap">BEYOND</div>
+        
+        <div className="container px-4 md:px-6 relative z-10">
+          <div className="max-w-4xl mx-auto text-center border border-black/10 bg-white/[0.4] backdrop-blur-md p-12 md:p-20 rounded-[3rem] shadow-2xl relative">
+            {/* Corner Accents on Card */}
+            <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-[#0F52BA] rounded-tl-[3rem]" />
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-[#0F52BA] rounded-br-[3rem]" />
+            
+            {/* Floating Metric Badge */}
+            <motion.div animate={{ y: [-5, 5] }} transition={{ repeat: Infinity, duration: 3, repeatType: "mirror", ease: "easeInOut" }} className="absolute -right-10 -bottom-10 -rotate-12 bg-[#0F52BA] text-white px-6 py-3 font-mono text-sm font-bold tracking-widest shadow-2xl border border-white/20 z-20 whitespace-nowrap group hover:rotate-0 transition-transform cursor-crosshair">
+              INCIDENT_RATE: 0.00%
+            </motion.div>
+            
+            <h2 className="text-4xl md:text-6xl font-black mb-8">We are not a digital agency.</h2>
+            <p className="text-xl md:text-2xl text-zinc-600 font-light leading-relaxed">
+              We are an engineering strike team. We build the infrastructure that agencies can't, and scale the ideas that others abandon. 
+              If it requires complex logic, massive concurrency, or bulletproof security—we are the people you call.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================= */}
+      {/* PAGE 4: WHY CHOOSE US (Pinned - Camera Right) */}
+      {/* ========================================= */}
+      <section ref={horizontal4Ref} className="h-screen w-full relative bg-[#F0EDE6] text-zinc-900 overflow-hidden">
+        <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
+        {/* Subtle dot pattern */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiMwMDAwMDAxYSIvPjwvc3ZnPg==')] opacity-50 pointer-events-none" />
+        
+        <FloatingShapes />
+        <DataPulse top="top-[15%]" left="left-[85%]" delay={0.5} color="#0F52BA" />
+        
+        <div className="scroll-content flex w-[200vw] h-full will-change-transform">
+          
+          {/* Panel 4.1 */}
+          <div className="w-[100vw] h-full flex items-center justify-center relative border-r border-black/5">
+            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">04 // ADVANTAGE</div>
+            <div className="absolute left-[10vw] top-[20vh] w-[30vw] h-[30vw] bg-[#0F52BA]/5 blur-[100px] rounded-full pointer-events-none" />
+            
+            <div className="container px-10 text-center relative z-10">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] opacity-10 pointer-events-none flex items-center justify-center z-0">
+                <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 40, ease: "linear" }} className="w-full h-full border-[30px] border-dashed border-[#0F52BA] rounded-full" />
+                <motion.div animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 30, ease: "linear" }} className="absolute w-[80%] h-[80%] border-[4px] border-[#0F52BA] rounded-full" />
+              </div>
+              <h2 className="text-6xl md:text-9xl font-black tracking-tighter mb-8 drop-shadow-sm relative z-10">
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-900 to-zinc-500">Unfair</span>
+                <br />Advantage.
+              </h2>
+              <div className="h-1 w-24 bg-[#0F52BA] mx-auto mt-12 shadow-[0_0_15px_rgba(15,82,186,0.5)]" />
+            </div>
+          </div>
+
+          {/* Panel 4.2 */}
+          <div className="w-[100vw] h-full flex items-center justify-center p-10 md:p-20 relative">
+            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">04.1 // METRICS</div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl relative z-10">
+              {[
+                { title: "99.999% Uptime", desc: "Redundant edge deployments guaranteeing constant availability." },
+                { title: "<50ms Latency", desc: "Hyper-optimized payloads and intelligent caching strategies." },
+                { title: "Zero Data Loss", desc: "Continuous replication and point-in-time recovery out of the box." },
+                { title: "Infinite Scale", desc: "Serverless and clustered architectures that grow seamlessly." }
+              ].map((item, i) => (
+                <div key={i} className="group p-10 rounded-[2rem] bg-white border border-black/10 hover:bg-zinc-50 transition-all duration-300 relative overflow-hidden shadow-sm">
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-[#0F52BA]/10 rounded-bl-full blur-2xl group-hover:bg-[#0F52BA]/20 transition-colors" />
+                  <div className="font-mono text-[10px] text-zinc-500 mb-6 tracking-widest">METRIC_0{i+1}</div>
+                  <h3 className="text-3xl font-bold mb-4 text-zinc-900 group-hover:text-[#0F52BA] transition-colors">{item.title}</h3>
+                  <p className="text-zinc-600 font-light text-lg">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================= */}
+      {/* PAGE 5: DETAILED SERVICES (Vertical Down) */}
+      {/* ========================================= */}
+      <section className="min-h-screen w-full flex items-center justify-center p-8 md:p-20 bg-[#F0EDE6] relative overflow-hidden py-32">
+        <div className="absolute inset-0 bg-grid-black/[0.02] pointer-events-none" />
+        <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">05 // EXPERTISE</div>
+        
+        <BackgroundDoodles opacity="opacity-[0.1]" mouseX={mouseX} mouseY={mouseY} />
+        <FloatingTerminal className="left-[2%] top-[20%] scale-[0.65] opacity-20 hover:opacity-100 z-0 drop-shadow-xl" />
+        <div className="absolute right-[-10%] top-[40%] text-[20vw] font-black text-black/[0.02] parallax-bg pointer-events-none whitespace-nowrap tracking-tighter z-0">CAPABILITIES</div>
+        
+        {/* Massive Background Glows to fill empty space */}
+        <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-[#0F52BA]/10 blur-[120px] rounded-full pointer-events-none mix-blend-multiply" />
+        <div className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] bg-[#FF007F]/5 blur-[150px] rounded-full pointer-events-none mix-blend-multiply" />
+        
+        <div className="w-full max-w-7xl relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { 
+                icon: <Code />, 
+                title: "Web Dev & Apps", 
+                desc: "High-performance, scalable web applications and enterprise platforms built with modern frameworks for maximum velocity.", 
+                tag: "WEB_ENG",
+                techs: ["React", "Next.js", "Node.js", "TypeScript", "Tailwind"],
+                status: "DEPLOY: ACTIVE",
+                metric: "PERF: 99/100"
+              },
+              { 
+                icon: <Layout />, 
+                title: "UI/UX & Web Design", 
+                desc: "Pixel-perfect, user-centric interfaces designed to maximize engagement, conversion, and digital aesthetic.", 
+                tag: "UI_UX",
+                techs: ["Figma", "Framer", "Prototyping", "Wireframing"],
+                status: "PIXELS: PERFECT",
+                metric: "CONVERSION: +40%"
+              },
+              { 
+                icon: <Database />, 
+                title: "Custom CRM & Software", 
+                desc: "Tailor-made enterprise software, CRMs, and internal tools engineered to streamline your unique business operations.", 
+                tag: "SYS_ARCH",
+                techs: ["Architecture", "Databases", "API Integration", "Automation"],
+                status: "SYSTEM: SCALING",
+                metric: "EFFICIENCY: 10x"
+              },
+              { 
+                icon: <PenTool />, 
+                title: "Graphic & Logo Design", 
+                desc: "Striking brand identities, vector graphics, and visual assets that forge an unforgettable market presence.", 
+                tag: "BRANDING",
+                techs: ["Illustrator", "Photoshop", "Vector", "Identity"],
+                status: "VECTORS: CRISP",
+                metric: "BRAND_EQ: HIGH"
+              },
+              { 
+                icon: <TrendingUp />, 
+                title: "SEO & Digital Growth", 
+                desc: "Data-driven search engine optimization and growth strategies to dominate search rankings and drive organic traffic.", 
+                tag: "GROWTH",
+                techs: ["Analytics", "On-Page", "Technical SEO", "Rankings"],
+                status: "TRAFFIC: SURGING",
+                metric: "RANKING: #1"
+              },
+              { 
+                icon: <Smartphone />, 
+                title: "Application Development", 
+                desc: "Cross-platform mobile and desktop applications delivering flawless native experiences across all devices.", 
+                tag: "APP_DEV",
+                techs: ["React Native", "Flutter", "Electron", "Swift"],
+                status: "CROSS_PLATFORM: OK",
+                metric: "CRASH_RATE: 0.0%"
+              },
+            ].map((srv, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 120 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, delay: i * 0.15, ease: "easeOut" }}
+              >
+                <Link 
+                  href={i === 0 ? "/services/custom-web-development" : i === 1 ? "/services" : i === 2 ? "/services" : "/services"}
+                  className="group p-10 rounded-[2.5rem] bg-white/80 backdrop-blur-md border border-black/5 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col justify-between min-h-[420px] block"
+                >
+                  {/* Tech Grid Background Pattern inside each card */}
+                  <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute -right-4 -top-4 text-black/5 opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-150 group-hover:rotate-12 pointer-events-none">
+                    {srv.icon}
+                  </div>
+                  
+                  <div>
+                    <div className="flex items-center justify-between w-full border-b border-black/5 pb-4 mb-6">
+                      <div className="font-mono text-[10px] tracking-widest text-zinc-500">{srv.tag}</div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                    </div>
+                    <div className="text-[#0F52BA] mb-4 [&>svg]:w-9 [&>svg]:h-9 relative z-10 group-hover:scale-110 group-hover:-rotate-6 transition-transform">{srv.icon}</div>
+                    <h3 className="text-2xl font-black mb-3 relative z-10 text-zinc-900 transition-colors">{srv.title}</h3>
+                    <p className="text-zinc-600 font-normal text-sm leading-relaxed relative z-10">{srv.desc}</p>
+                  </div>
+                  
+                  <div>
+                    {/* Tech stack badges */}
+                    <div className="flex flex-wrap gap-1.5 mt-6 relative z-10">
+                      {srv.techs.map((tech, idx) => (
+                        <span key={idx} className="text-[9px] font-mono px-2 py-0.5 bg-white/50 border border-black/10 rounded text-zinc-600 shadow-sm group-hover:border-[#0F52BA]/40 group-hover:text-zinc-900 transition-all">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* Metric Status Bar */}
+                    <div className="mt-6 pt-4 border-t border-black/5 flex items-center justify-between font-mono text-[9px] text-zinc-500 relative z-10">
+                      <span className="text-[9px] tracking-tighter uppercase font-semibold text-[#00F0FF]/90">{srv.status}</span>
+                      <span className="font-bold text-zinc-600 bg-white/80 px-2 py-0.5 rounded border border-black/5">{srv.metric}</span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================= */}
+      {/* PAGE 6: YOU CHOOSE (Pinned - Camera Right) */}
+      {/* ========================================= */}
+      <section ref={horizontal6Ref} className="h-screen w-full relative bg-[#F0EDE6] text-zinc-900 overflow-hidden">
+        <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(15,82,186,0.15)_0%,rgba(0,0,0,0)_70%)] pointer-events-none mix-blend-multiply" />
+        <FloatingShapes />
+        
+        <div className="scroll-content flex w-[200vw] h-full will-change-transform">
+          
+          {/* Panel 6.1 */}
+          <div className="w-[100vw] h-full flex flex-col justify-center px-10 md:px-20 relative border-r border-black/5 overflow-hidden">
+            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">06 // DECISION</div>
+            <FloatingTerminal className="right-[5%] top-[15%] scale-90" />
+            <div className="absolute bottom-10 right-10 text-[30vw] font-black text-black/5 pointer-events-none leading-none -mb-12 tracking-tighter">CHOOSE</div>
+            
+            <div className="max-w-4xl relative z-10">
+              <h2 className="text-6xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
+                The choice is <br /><span className="text-[#0F52BA]">yours.</span>
+              </h2>
+              <p className="text-2xl md:text-3xl text-zinc-600 font-light max-w-2xl border-l-2 border-[#0F52BA] pl-6 leading-relaxed">
+                Stay comfortable with mediocrity, or partner with us to engineer a system that dominates your industry.
+              </p>
+            </div>
+          </div>
+
+          {/* Panel 6.2 (CTA Button) */}
+          <div className="w-[100vw] h-full flex items-center justify-center p-10 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0F52BA]/10 to-transparent opacity-50" />
+            <div className="z-10 text-center relative">
+              {/* Target lock micro-ui around button */}
+              <div className="absolute -top-12 -left-12 w-6 h-6 border-t-2 border-l-2 border-[#0F52BA] opacity-50" />
+              <div className="absolute -bottom-12 -right-12 w-6 h-6 border-b-2 border-r-2 border-[#0F52BA] opacity-50" />
+              
+              <Hexagon className="h-24 w-24 text-[#0F52BA] mx-auto mb-12 opacity-80" />
+              <Link href="/contact" className="px-16 py-8 bg-zinc-900 text-white rounded-full font-black text-3xl hover:scale-105 hover:bg-[#0F52BA] hover:text-white transition-all shadow-[0_0_50px_rgba(0,0,0,0.1)] hover:shadow-[0_0_80px_rgba(15,82,186,0.8)] flex items-center mx-auto gap-6 group relative overflow-hidden">
+                <span className="relative z-10">Initiate Project</span>
+                <ArrowRight className="h-8 w-8 group-hover:translate-x-2 transition-transform relative z-10" />
+              </Link>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================= */}
+      {/* PAGE 7: HOME PAGE & FOOTER (Vertical Down) */}
+      {/* ========================================= */}
+      <section className="min-h-screen w-full flex flex-col bg-[#F0EDE6] text-zinc-900 relative overflow-hidden">
+        <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
+        <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase z-10">07 // TERMINAL</div>
+        
+        {/* Summary Section */}
+        <div className="flex-1 flex items-center justify-center p-8 md:p-20 relative">
+          <div className="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80" alt="Abstract tech" className="w-full h-full object-cover opacity-10 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#F0EDE6] via-[#F0EDE6]/80 to-transparent" />
+          </div>
+          <div className="relative z-10 text-center max-w-5xl">
+            <div className="w-32 h-32 mx-auto mb-12 bg-white rounded-full flex items-center justify-center border border-black/10 shadow-xl backdrop-blur-md">
+              <Zap className="h-16 w-16 text-[#0F52BA]" />
+            </div>
+            <h1 className="text-[clamp(4rem,15vw,12rem)] font-black mb-6 tracking-tighter drop-shadow-sm text-zinc-900 leading-none">NOVAMAC</h1>
+            <p className="text-3xl md:text-5xl font-light text-zinc-600">Welcome to the new standard.</p>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="w-full bg-zinc-900 text-white flex flex-col justify-between p-8 md:p-20 border-t border-black/10 relative z-10 footer-trigger">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-16 w-full max-w-7xl mx-auto relative">
+            {/* Scanline effect on footer */}
+            <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[size:100%_4px] pointer-events-none opacity-20" />
+            
+            <div className="col-span-1 md:col-span-2">
+              <div className="text-5xl font-black mb-6 tracking-tighter text-[#0F52BA]">NOVAMAC.</div>
+              <p className="text-zinc-500 max-w-md text-lg font-light leading-relaxed">
+                Engineering hyper-scalable, zero-trust architectures for the modern web. We build what others say is impossible.
+              </p>
+            </div>
+            <div>
+              <div className="font-bold mb-8 text-xl tracking-tight">Explore</div>
+              <ul className="space-y-4 text-zinc-400 font-light">
+                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-3 group"><ArrowRight className="h-4 w-4 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Services</li>
+                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-3 group"><ArrowRight className="h-4 w-4 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Case Studies</li>
+                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-3 group"><ArrowRight className="h-4 w-4 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Company</li>
+              </ul>
+            </div>
+            <div>
+              <div className="font-bold mb-8 text-xl tracking-tight">Connect</div>
+              <ul className="space-y-4 text-zinc-400 font-light font-mono text-sm uppercase">
+                <li className="hover:text-[#0F52BA] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-zinc-600 inline-block" /> Twitter_X</li>
+                <li className="hover:text-[#0F52BA] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-zinc-600 inline-block" /> LinkedIn</li>
+                <li className="hover:text-[#0F52BA] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-zinc-600 inline-block" /> GitHub</li>
+              </ul>
+            </div>
+          </div>
+          <div className="w-full max-w-7xl mx-auto border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between text-zinc-600 font-mono text-[10px] uppercase tracking-widest mt-24">
+            <div>© 2026 NovaMac Systems. All rights reserved.</div>
+            <div className="flex gap-10 mt-6 md:mt-0">
+              <span className="hover:text-white cursor-pointer transition-colors">Privacy_Policy</span>
+              <span className="hover:text-white cursor-pointer transition-colors">Terms_of_Service</span>
+            </div>
+          </div>
+          
+          {/* Animated Console Dump */}
+          <div className="absolute bottom-8 right-8 text-[10px] font-mono text-green-500 opacity-40 pointer-events-none hidden md:block text-right leading-relaxed tracking-widest mix-blend-screen">
+            <motion.div animate={{ y: [0, -5], opacity: [0.2, 0.8, 0.2] }} transition={{ repeat: Infinity, duration: 2 }}>0x0F52BA: SYSTEM KERNEL ONLINE</motion.div>
+            <motion.div animate={{ y: [0, -5], opacity: [0.2, 0.8, 0.2] }} transition={{ repeat: Infinity, duration: 2, delay: 0.5 }}>0x0F52BB: AWAITING COMMAND_</motion.div>
+          </div>
         </div>
       </section>
 

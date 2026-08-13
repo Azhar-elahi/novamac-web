@@ -1,295 +1,181 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Mail, Phone, MapPin, Send, ChevronDown, CheckCircle2 } from "lucide-react";
-import Link from "next/link";
-
-const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-function BlurReveal({ children, delay = 0, className = "", style = {} }: { children: React.ReactNode; delay?: number; className?: string; style?: React.CSSProperties }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.8, delay, ease }}
-      className={className + " will-change-transform"}
-      style={style}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function WordReveal({ text, className = "", delay = 0 }: { text: string; className?: string; delay?: number }) {
-  return (
-    <motion.span
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ staggerChildren: 0.04, delayChildren: delay }}
-      className={className}
-    >
-      {text.split(" ").map((word, i) => (
-        <span key={i} className="overflow-hidden inline-block mr-[0.28em] pb-4 -mb-4 pt-4 -mt-4">
-          <motion.span
-            variants={{
-              hidden: { y: "110%", opacity: 0 },
-              visible: { y: "0%", opacity: 1, transition: { ease, duration: 0.8 } },
-            }}
-            className="inline-block will-change-transform"
-          >
-            {word}
-          </motion.span>
-        </span>
-      ))}
-    </motion.span>
-  );
-}
-
+import React, { useEffect, useState, useTransition } from "react";
+import { motion, useMotionValue } from "framer-motion";
 import { submitContactForm } from "@/app/actions/contact";
-
-const FAQS = [
-  { q: "Do you build custom websites or use templates?", a: "We only provide custom solutions built from scratch to meet your specific goals. No generic templates." },
-  { q: "How long does a typical project take?", a: "A marketing site takes 4–6 weeks. A complex web application or e-commerce platform typically takes 8–16 weeks. We will give you a precise timeline during our discovery call, and we stick to it." },
-  { q: "Do you offer post-launch support and maintenance?", a: "Yes. We offer managed hosting, monitoring, security patches, and ongoing development retainers. Most of our clients stay with us long-term — we become their permanent development team." },
-  { q: "How do you handle project communication?", a: "You get a dedicated project manager, access to our private Slack channel, weekly video syncs, and a live project dashboard. You will always know exactly where things stand." },
-  { q: "What is your pricing model?", a: "Every project is unique. Our custom web development projects generally start at $1,500, while smaller tasks or consultations start around $299. Reach out for a tailored quote." },
-];
+import { ArrowRight, CheckCircle2, Mail, Phone, Clock, Send, Sparkles } from "lucide-react";
+import { DoodleUnderline } from "@/components/immersive/Doodles";
+import { RichBackgroundArt } from "@/components/immersive/RichBackgroundArt";
 
 export default function ContactClient() {
-  const [activeFaq, setActiveFaq] = useState<number | null>(0);
+  const [isPending, startTransition] = useTransition();
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set((e.clientX / window.innerWidth) - 0.5);
+      mouseY.set((e.clientY / window.innerHeight) - 0.5);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    startTransition(async () => {
+      try {
+        const res = await submitContactForm(formData);
+        if (res.success) {
+          setSubmitted(true);
+        } else {
+          setErrorMsg(res.error || "Something went wrong.");
+        }
+      } catch (err) {
+        setSubmitted(true);
+      }
+    });
+  };
 
   return (
-    <main className="bg-[#05060c] text-white min-h-screen overflow-x-hidden">
+    <div className="bg-[#F0EDE6] text-[#1C1917] min-h-screen pt-4 pb-32 overflow-hidden relative font-sans">
+      <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} />
 
-      {/* ══════════ HERO ══════════ */}
-      <section className="relative min-h-[70vh] flex flex-col justify-end pb-16 pt-36 px-6 md:px-12 xl:px-20 overflow-hidden bg-[#05060c] gradient-mesh">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(#ffffff 1px,transparent 1px),linear-gradient(90deg,#ffffff 1px,transparent 1px)", backgroundSize: "100px 100px" }} />
-          <div className="orb-core animate-orb-float absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34vh] h-[34vh] rounded-full opacity-70" />
-        </div>
+      {/* ── HERO ── */}
+      <section className="px-6 md:px-12 xl:px-20 pt-10 pb-16 max-w-[1400px] mx-auto relative z-10 border-b border-[#D6D1C8]">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl"
+        >
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white border border-[#0F52BA]/30 rounded-full text-xs font-mono text-[#0F52BA] font-bold uppercase tracking-widest mb-6 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#0F52BA]" />
+            INITIATE SEQUENCE
+          </div>
 
-        <div className="max-w-[1400px] mx-auto w-full relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ delay: 0.2, duration: 0.9, ease }}
-            className="inline-flex items-center gap-3 mb-10 border border-white/10 px-5 py-3 bg-white/[0.04] backdrop-blur-xl rounded-full"
-          >
-            <span className="w-2 h-2 rounded-full bg-brand animate-pulse" />
-            <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-white/50">We reply within 24 hours</span>
-          </motion.div>
-
-          <h1 className="font-heading font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(3rem,10vw,10rem)] mb-14">
-            {[
-              { text: "Let's", delay: 0.3, cls: "block text-white" },
-              { text: "Talk.", delay: 0.5, cls: "block text-gradient-brand" },
-            ].map((line, i) => (
-              <div key={i} className="overflow-hidden">
-                <motion.div
-                  initial={{ y: "115%", opacity: 0, filter: "blur(22px)" }}
-                  animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
-                  transition={{ delay: line.delay, duration: 1.2, ease }}
-                  className={line.cls}
-                >
-                  {line.text}
-                </motion.div>
-              </div>
-            ))}
+          <h1 className="text-[clamp(3.5rem,7.5vw,6.5rem)] font-black tracking-tighter leading-[0.9] text-[#1C1917] mb-6 relative">
+            Let's Build<br />
+            <span className="relative inline-block text-[#0F52BA]">
+              Together.
+              <DoodleUnderline />
+            </span>
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.9, ease }}
-            className="text-xl text-white/55 font-light max-w-xl leading-relaxed border-t border-white/10 pt-10"
-          >
-            Tell us about your project. We will respond with a clear, honest assessment and a path forward — no sales fluff.
-          </motion.p>
-        </div>
+          <p className="text-lg md:text-xl text-[#57534E] max-w-2xl leading-relaxed mb-8 font-normal bg-white/80 backdrop-blur-md p-6 rounded-2xl border border-white/90 shadow-sm">
+            Tell us about your project — we reply within 24 hours with a clear, honest architectural assessment.
+          </p>
+        </motion.div>
       </section>
 
-      {/* ══════════ CONTACT FORM + INFO ══════════ */}
-      <section className="py-24 px-6 md:px-12 xl:px-20 bg-[#05060c] border-t border-white/10">
-        <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16 items-start">
-
-          {/* Contact Info */}
-          <BlurReveal className="space-y-8">
-            <div>
-              <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/50 mb-8">/ Direct Contact</p>
-              <div className="space-y-8">
-                {[
-                  { icon: Mail, label: "Email", value: "hello@novamacsolutions.com" },
-                  { icon: Phone, label: "Phone", value: "415 480 4281" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-5">
-                    <div className="w-11 h-11 border border-white/10 bg-white/[0.04] flex items-center justify-center shrink-0 rounded-lg">
-                      <item.icon className="w-4 h-4 text-brand" />
-                    </div>
-                    <div>
-                      <p className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-1">{item.label}</p>
-                      <p className="font-medium text-lg text-white">{item.value}</p>
-                    </div>
-                  </div>
-                ))}
+      {/* ── FORM & DETAILS ── */}
+      <section className="px-6 md:px-12 xl:px-20 py-20 max-w-[1400px] mx-auto relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          
+          {/* LEFT: FORM */}
+          <div className="lg:col-span-7 bg-white/95 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-[#D6D1C8] shadow-lg">
+            {submitted ? (
+              <div className="text-center py-12">
+                <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                <h3 className="text-2xl font-black text-[#1C1917] mb-2">Message Received</h3>
+                <p className="text-sm text-[#78716C]">Our team will review your requirements and get back to you within 24 hours.</p>
               </div>
-            </div>
-
-            <div className="card-vibrant p-8 rounded-2xl">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-6">Office Hours</p>
-              <div className="space-y-3">
-                {[["Mon – Fri", "9:00 AM – 6:00 PM PST"], ["Sat – Sun", "Emergency support only"]].map(([day, hours], i) => (
-                  <div key={i} className="flex items-center justify-between text-sm">
-                    <span className="text-white/55 font-light">{day}</span>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-white">{hours}</span>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-[#1C1917] uppercase mb-2">Full Name *</label>
+                    <input required name="name" type="text" placeholder="John Doe" className="w-full px-4 py-3.5 bg-[#FAF8F4] border border-[#D6D1C8] rounded-xl text-sm focus:outline-none focus:border-[#0F52BA]" />
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Trust signals */}
-            <div className="card-vibrant p-8 rounded-2xl">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-6">Our Promise</p>
-              <div className="space-y-3">
-                {["Response within 24 hours", "Free 30-min discovery call", "No-pressure, honest assessment", "NDA available upon request"].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-sm text-white/55 font-light">
-                    <CheckCircle2 className="w-4 h-4 text-brand shrink-0" />
-                    {item}
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-[#1C1917] uppercase mb-2">Email Address *</label>
+                    <input required name="email" type="email" placeholder="john@company.com" className="w-full px-4 py-3.5 bg-[#FAF8F4] border border-[#D6D1C8] rounded-xl text-sm focus:outline-none focus:border-[#0F52BA]" />
                   </div>
-                ))}
-              </div>
-            </div>
-          </BlurReveal>
-
-          {/* Form */}
-          <BlurReveal delay={0.15}>
-            <form action={async (formData) => {
-              const res = await submitContactForm(formData);
-              if (res.error) {
-                setError(res.error);
-                setSubmitted(false);
-              } else {
-                setError(null);
-                setSubmitted(true);
-                setTimeout(() => setSubmitted(false), 5000);
-              }
-            }} className="card-vibrant p-8 md:p-10 space-y-6 relative rounded-2xl">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-8">/ Request a Proposal</p>
-
-              {error && (
-                <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-4 text-sm rounded-md mb-6">
-                  {error}
                 </div>
-              )}
 
-              <div className="grid grid-cols-2 gap-5">
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-[#1C1917] uppercase mb-2">Service Needed</label>
+                    <select name="service" className="w-full px-4 py-3.5 bg-[#FAF8F4] border border-[#D6D1C8] rounded-xl text-sm focus:outline-none focus:border-[#0F52BA]">
+                      <option>Custom Web Development</option>
+                      <option>UI/UX Design Studio</option>
+                      <option>Web Applications & SaaS</option>
+                      <option>AI & CRM Automation</option>
+                      <option>Headless E-Commerce</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-[#1C1917] uppercase mb-2">Project Budget</label>
+                    <select name="budget" className="w-full px-4 py-3.5 bg-[#FAF8F4] border border-[#D6D1C8] rounded-xl text-sm focus:outline-none focus:border-[#0F52BA]">
+                      <option>$1,000 - $3,000</option>
+                      <option>$3,000 - $10,000</option>
+                      <option>$10,000 - $25,000</option>
+                      <option>$25,000+</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div>
-                  <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-2">First Name</label>
-                  <input type="text" name="firstName" placeholder="John" required
-                    className="w-full px-4 py-3.5 bg-white/[0.03] border border-white/10 text-sm text-white placeholder:text-white/30 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-all duration-300 rounded-lg" />
+                  <label className="block text-xs font-mono font-bold text-[#1C1917] uppercase mb-2">Project Overview *</label>
+                  <textarea required name="message" rows={5} placeholder="Describe your project goals, timeline, and requirements..." className="w-full px-4 py-3.5 bg-[#FAF8F4] border border-[#D6D1C8] rounded-xl text-sm focus:outline-none focus:border-[#0F52BA]" />
                 </div>
-                <div>
-                  <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-2">Last Name</label>
-                  <input type="text" name="lastName" placeholder="Doe" required
-                    className="w-full px-4 py-3.5 bg-white/[0.03] border border-white/10 text-sm text-white placeholder:text-white/30 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-all duration-300 rounded-lg" />
-                </div>
-              </div>
 
-              <div>
-                <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-2">Email Address</label>
-                <input type="email" name="email" placeholder="john@company.com" required
-                  className="w-full px-4 py-3.5 bg-white/[0.03] border border-white/10 text-sm text-white placeholder:text-white/30 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-all duration-300 rounded-lg" />
-              </div>
-
-              <div>
-                <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-2">Service Needed</label>
-                <select name="service" className="w-full px-4 py-3.5 bg-white/[0.03] border border-white/10 text-sm text-white focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-all duration-300 rounded-lg">
-                  <option value="" className="bg-[#05060c]">Select a service...</option>
-                  <option value="Web Development" className="bg-[#05060c]">Web Development</option>
-                  <option value="E-Commerce" className="bg-[#05060c]">E-Commerce</option>
-                  <option value="AI Automation" className="bg-[#05060c]">AI Automation</option>
-                  <option value="Performance Marketing" className="bg-[#05060c]">Performance Marketing</option>
-                  <option value="Other" className="bg-[#05060c]">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mb-2">Project Details</label>
-                <textarea name="message" rows={5} placeholder="Tell us about your project, timeline, and budget..." required
-                  className="w-full px-4 py-3.5 bg-white/[0.03] border border-white/10 text-sm text-white placeholder:text-white/30 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition-all duration-300 resize-none rounded-lg" />
-              </div>
-
-              <button type="submit" disabled={submitted}
-                className="hover-trigger w-full py-4 bg-white text-[#05060c] font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-white/90 disabled:opacity-70 transition-all duration-300 rounded-full">
-                {submitted ? (
-                  <><CheckCircle2 className="w-4 h-4" /> Message Sent!</>
-                ) : (
-                  <>Submit Request <Send className="w-4 h-4" /></>
-                )}
-              </button>
-            </form>
-          </BlurReveal>
-        </div>
-      </section>
-
-      {/* ══════════ FAQ ══════════ */}
-      <section className="py-32 px-6 md:px-12 xl:px-20 bg-[#05060c] border-t border-white/10">
-        <div className="max-w-[900px] mx-auto">
-          <BlurReveal className="mb-20">
-            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-white/50 mb-5">/ Common Questions</p>
-            <h2 className="font-heading font-extrabold text-[clamp(2rem,5vw,4.5rem)] leading-[0.88] tracking-[-0.04em] text-white">
-              <WordReveal text="Frequently asked." />
-            </h2>
-          </BlurReveal>
-
-          <div className="divide-y divide-white/10 border-t border-white/10">
-            {FAQS.map((faq, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.8, ease }}
-              >
-                <button
-                  onClick={() => setActiveFaq(activeFaq === i ? null : i)}
-                  className="hover-trigger w-full flex items-center justify-between gap-6 py-7 text-left group"
+                <button 
+                  type="submit" 
+                  disabled={isPending}
+                  className="w-full py-4 bg-[#0F52BA] text-white font-bold text-xs tracking-widest uppercase rounded-full hover:bg-[#1C1917] transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
                 >
-                  <span className="font-heading font-bold text-lg md:text-xl tracking-tight text-white/80 group-hover:text-brand transition-colors duration-300">{faq.q}</span>
-                  <motion.div
-                    animate={{ rotate: activeFaq === i ? 180 : 0 }}
-                    transition={{ duration: 0.35, ease }}
-                    className="shrink-0"
-                  >
-                    <ChevronDown className="w-5 h-5 text-white/40 group-hover:text-brand transition-colors" />
-                  </motion.div>
+                  {isPending ? "Sending..." : "Submit Inquiry"}
+                  <Send className="w-4 h-4" />
                 </button>
-
-                <AnimatePresence>
-                  {activeFaq === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0, filter: "blur(8px)" }}
-                      animate={{ height: "auto", opacity: 1, filter: "blur(0px)" }}
-                      exit={{ height: 0, opacity: 0, filter: "blur(4px)" }}
-                      transition={{ duration: 0.45, ease }}
-                      className="overflow-hidden"
-                    >
-                      <p className="text-white/55 font-light text-base leading-relaxed pb-8">
-                        {faq.a}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
+              </form>
+            )}
           </div>
+
+          {/* RIGHT: INFO CARDS */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="bg-white/95 backdrop-blur-md p-8 rounded-3xl border border-[#D6D1C8] shadow-sm space-y-6">
+              <h3 className="font-bold text-xl text-[#1C1917] border-b border-[#D6D1C8] pb-4">Direct Contacts</h3>
+              
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-[#0F52BA]/10 text-[#0F52BA] flex items-center justify-center shrink-0">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-[10px] font-mono text-[#78716C] uppercase">EMAIL INQUIRIES</div>
+                  <a href="mailto:hello@novamacsolutions.com" className="font-bold text-sm text-[#1C1917] hover:text-[#0F52BA]">hello@novamacsolutions.com</a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-[#0F52BA]/10 text-[#0F52BA] flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-[10px] font-mono text-[#78716C] uppercase">DIRECT PHONE</div>
+                  <a href="tel:+14154804281" className="font-bold text-sm text-[#1C1917] hover:text-[#0F52BA]">415 480 4281</a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-[#0F52BA]/10 text-[#0F52BA] flex items-center justify-center shrink-0">
+                  <Clock className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-[10px] font-mono text-[#78716C] uppercase">RESPONSE SLA</div>
+                  <div className="font-bold text-sm text-[#1C1917]">Within 24 Hours (Mon - Fri)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
-    </main>
+    </div>
   );
 }

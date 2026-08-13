@@ -22,6 +22,7 @@ model User {
   payments      Payment[]
   sessions      Session[]
   tickets       Ticket[]
+  reviews       Review[]
 }
 
 model Order {
@@ -140,4 +141,20 @@ model AnalyticsVisit {
   service   String?   // Extracted if they visited a specific service page
   userAgent String?
   createdAt DateTime @default(now())
+}
+
+model Review {
+  id             String   @id @default(cuid())
+  userId         String?
+  user           User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  name           String
+  email          String
+  userImage      String?
+  role           String?  // e.g. CEO, Founder, Business Owner
+  company        String?
+  rating         Int      @default(5) // 1-5 Stars
+  comment        String
+  verifiedGoogle Boolean  @default(true)
+  approved       Boolean  @default(true)
+  createdAt      DateTime @default(now())
 }
