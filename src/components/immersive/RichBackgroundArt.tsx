@@ -43,31 +43,31 @@ export function RichBackgroundArt({
     <div className={`absolute inset-0 pointer-events-none overflow-hidden z-0 ${opacity} transform-gpu`}>
       
       {/* ── 1. TECHNICAL RADIAL GRID & BLUEPRINT MESH ── */}
-      <div className="absolute inset-0 bg-[radial-gradient(#0F52BA_1.2px,transparent_1.2px)] [background-size:28px_28px] opacity-[0.14]" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute inset-0 bg-[radial-gradient(#3B82F6_1.2px,transparent_1.2px)] [background-size:28px_28px] opacity-[0.12]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-      {/* ── 2. LIGHTWEIGHT GLOW MESHES (OPTIMIZED FOR MOBILE GPU) ── */}
+      {/* ── 2. LIGHTWEIGHT GLOW MESHES (ELECTRIC BLUE BRAND ACCENT) ── */}
       <motion.div 
-        animate={isMobile ? {} : { scale: [1, 1.15, 1], opacity: [0.15, 0.22, 0.15] }}
+        animate={isMobile ? {} : { scale: [1, 1.15, 1], opacity: [0.15, 0.28, 0.15] }}
         transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
-        className="absolute top-[5%] left-[8%] w-[45vw] h-[45vw] bg-[#0F52BA]/10 blur-[40px] md:blur-[120px] rounded-full transform-gpu" 
+        className="absolute top-[5%] left-[8%] w-[45vw] h-[45vw] bg-[#3B82F6]/20 blur-[40px] md:blur-[120px] rounded-full transform-gpu" 
       />
       <motion.div 
-        animate={isMobile ? {} : { scale: [1, 1.2, 1], opacity: [0.12, 0.2, 0.12] }}
+        animate={isMobile ? {} : { scale: [1, 1.2, 1], opacity: [0.12, 0.25, 0.12] }}
         transition={{ repeat: Infinity, duration: 15, ease: "easeInOut", delay: 2 }}
-        className="absolute top-[45%] right-[5%] w-[40vw] h-[40vw] bg-[#FF007F]/10 blur-[40px] md:blur-[130px] rounded-full transform-gpu" 
+        className="absolute top-[45%] right-[5%] w-[40vw] h-[40vw] bg-[#1D4ED8]/25 blur-[40px] md:blur-[130px] rounded-full transform-gpu" 
       />
 
       {/* ── 3. PARALLAX LAYER 1: DEEP EDITORIAL WATERMARKS ── */}
       <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute inset-0">
         <div className="absolute top-[8%] right-[2%] opacity-[0.06] select-none rotate-[-6deg]">
-          <h1 className="text-6xl md:text-[14rem] font-black text-[#0F52BA] tracking-tighter leading-none">
+          <h1 className="text-6xl md:text-[14rem] font-black text-[#3B82F6] tracking-tighter leading-none">
             NovaMac
           </h1>
         </div>
         
-        <div className="absolute top-[55%] left-[-2%] opacity-[0.05] select-none rotate-[4deg]">
-          <h1 className="text-6xl md:text-[12rem] font-black text-[#1C1917] tracking-tighter leading-none">
+        <div className="absolute top-[55%] left-[-2%] opacity-[0.04] select-none rotate-[4deg]">
+          <h1 className="text-6xl md:text-[12rem] font-black text-[#F8FAFC] tracking-tighter leading-none">
             ENGINEERING
           </h1>
         </div>
@@ -76,13 +76,13 @@ export function RichBackgroundArt({
       {/* ── 4. PARALLAX LAYER 2: INTERACTIVE CODE BRACKETS ── */}
       {!isMobile && (
         <motion.div style={{ x: layer2X, y: layer2Y }} className="absolute inset-0 hidden lg:block">
-          <div className="absolute top-[20%] left-[8%] px-3.5 py-1.5 bg-white/90 backdrop-blur-md border border-[#0F52BA]/30 rounded-full font-mono text-xs font-bold text-[#0F52BA] shadow-md flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#0F52BA] animate-ping" />
+          <div className="absolute top-[20%] left-[8%] px-3.5 py-1.5 bg-[#0F172A]/90 backdrop-blur-md border border-[#3B82F6]/40 rounded-full font-mono text-xs font-bold text-[#3B82F6] shadow-md flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-ping" />
             <span>&lt;Next.js 15 /&gt;</span>
           </div>
 
-          <div className="absolute top-[68%] right-[10%] px-3.5 py-1.5 bg-white/90 backdrop-blur-md border border-[#FF007F]/30 rounded-full font-mono text-xs font-bold text-[#FF007F] shadow-md flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#FF007F]" />
+          <div className="absolute top-[68%] right-[10%] px-3.5 py-1.5 bg-[#0F172A]/90 backdrop-blur-md border border-[#3B82F6]/40 rounded-full font-mono text-xs font-bold text-[#3B82F6] shadow-md flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#3B82F6]" />
             <span>&lt;UI/UX Studio /&gt;</span>
           </div>
         </motion.div>
@@ -91,11 +91,11 @@ export function RichBackgroundArt({
       {/* ── 5. PARALLAX LAYER 3: LATENCY BADGES ── */}
       {!isMobile && (
         <motion.div style={{ x: layer3X, y: layer3Y }} className="absolute inset-0 hidden md:block">
-          <div className="absolute top-[38%] right-[14%] p-3 bg-white/95 backdrop-blur-md border border-[#D6D1C8] rounded-2xl shadow-lg flex items-center gap-3">
-            <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="absolute top-[38%] right-[14%] p-3 bg-[#0F172A]/95 backdrop-blur-md border border-[#1E2E4A] rounded-2xl shadow-lg flex items-center gap-3">
+            <div className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
             <div>
-              <div className="text-[9px] font-mono text-[#78716C] uppercase font-bold">LATENCY</div>
-              <div className="text-xs font-bold text-[#1C1917] font-mono">&lt; 42ms EDGE</div>
+              <div className="text-[9px] font-mono text-[#94A3B8] uppercase font-bold">LATENCY</div>
+              <div className="text-xs font-bold text-[#F8FAFC] font-mono">&lt; 42ms EDGE</div>
             </div>
           </div>
         </motion.div>

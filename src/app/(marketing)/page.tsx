@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Zap, Code, Shield, Cloud, Brain, Network, Hexagon, Layout, Database, PenTool, TrendingUp, Smartphone } from "lucide-react";
 import Link from "next/link";
 
-const glassCard = "bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.05)] rounded-3xl p-8 hover:bg-white/60 transition-all duration-500 relative overflow-hidden group";
+const glassCard = "bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.65)] rounded-3xl p-8 hover:border-[#3B82F6]/80 hover:shadow-[0_25px_65px_rgba(0,0,0,0.85)] transition-all duration-500 relative overflow-hidden group";
 
 // =========================================
 // DOODLE ART COMPONENTS (Immersive & Parallax)
@@ -17,7 +17,7 @@ const DoodleUnderline = () => (
     <motion.path 
       d="M 5 25 Q 75 5 150 20 T 295 15" 
       fill="transparent" 
-      stroke="#0F52BA" 
+      stroke="#3B82F6" 
       strokeWidth="6"
       strokeLinecap="round"
       initial={{ pathLength: 0, opacity: 0 }}
@@ -33,7 +33,7 @@ const DoodleCircle = () => (
      <motion.ellipse 
         cx="50" cy="50" rx="45" ry="40"
         fill="transparent" 
-        stroke="#0F52BA" 
+        stroke="#3B82F6" 
         strokeWidth="2"
         strokeLinecap="round"
         strokeDasharray="6 8"
@@ -50,7 +50,7 @@ const DoodleArrowHorizontal = () => (
     <motion.path
        d="M 10 50 Q 50 30 80 50 M 60 30 L 80 50 L 60 70"
        fill="transparent"
-       stroke="#0F52BA"
+       stroke="#3B82F6"
        strokeWidth="4"
        strokeLinecap="round"
        strokeLinejoin="round"
@@ -67,7 +67,7 @@ const DoodleSquiggle = () => (
     <motion.path
       d="M 20 20 Q 50 80 100 50 T 180 150"
       fill="transparent"
-      stroke="#0F52BA"
+      stroke="#3B82F6"
       strokeWidth="5"
       strokeLinecap="round"
       initial={{ pathLength: 0, opacity: 0 }}
@@ -358,70 +358,69 @@ export default function MarketingPage() {
   }, []);
 
   return (
-    <main className="w-full bg-[#F4F7FA] overflow-hidden relative">
+    <main className="w-full bg-[#0B1220] overflow-hidden relative">
       
       {/* ========================================= */}
       {/* GLOBAL DETAILS: Noise Texture & Scroll Bar */}
       {/* ========================================= */}
       <div className="pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.25] mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
-      <motion.div className="fixed left-0 top-0 bottom-0 w-1 bg-[#0F52BA] z-50 origin-top" style={{ scaleY: 0 /* to be wired to scrollYProgress if needed */ }} />
+      <motion.div className="fixed left-0 top-0 bottom-0 w-1 bg-[#3B82F6] z-50 origin-top" style={{ scaleY: 0 /* to be wired to scrollYProgress if needed */ }} />
       <div className="fixed top-6 right-8 z-50 flex items-center gap-4 mix-blend-difference text-white">
         <div className="font-mono text-[10px] tracking-widest uppercase flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
           SYS_ONLINE // V3.0
         </div>
       </div>
 
+      {/* PAGE 1: HERO (VERTICAL) */}
       {/* ========================================= */}
-      {/* PAGE 1: OVERVIEW HERO (Vertical Down) */}
-      {/* ========================================= */}
-      <section className="min-h-screen w-full flex items-center justify-center p-4 relative overflow-hidden bg-[#F0EDE6]">
-        {/* Animated Background Mesh */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPPHBhdGggZD0iTTAgNDBoNDBNNDAgMHY0MCIgc3Ryb2tlPSIjMDAwMDAwMDUiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg==')] pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#F0EDE6]/50 to-[#F0EDE6] pointer-events-none z-0" />
+      <section className="min-h-screen w-full flex items-center justify-center relative bg-[#0B1220] text-[#F8FAFC] overflow-hidden">
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1220]/50 to-[#0B1220] pointer-events-none z-0" />
         
         <BackgroundDoodles opacity="opacity-[0.2]" mouseX={mouseX} mouseY={mouseY} />
         <FloatingShapes />
         
         <div className="absolute top-[10%] left-[5%]">
-          <DataPulse top="top-0" left="left-0" delay={0.2} color="#000000" />
+          <DataPulse top="top-0" left="left-0" delay={0.2} color="#3B82F6" />
         </div>
         <div className="absolute bottom-[20%] right-[10%]">
-          <DataPulse top="top-0" left="left-0" delay={1.5} color="#0F52BA" />
+          <DataPulse top="top-0" left="left-0" delay={1.5} color="#3B82F6" />
         </div>
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
-        <div className="absolute top-10 left-10 w-4 h-4 border-l border-t border-zinc-400" />
-        <div className="absolute top-10 right-10 w-4 h-4 border-r border-t border-zinc-400" />
-        <div className="absolute bottom-10 left-10 w-4 h-4 border-l border-b border-zinc-400" />
-        <div className="absolute bottom-10 right-10 w-4 h-4 border-r border-b border-zinc-400" />
+        <div className="absolute top-10 left-10 w-4 h-4 border-l border-t border-[#3B82F6]/40" />
+        <div className="absolute top-10 right-10 w-4 h-4 border-r border-t border-[#3B82F6]/40" />
+        <div className="absolute bottom-10 left-10 w-4 h-4 border-l border-b border-[#3B82F6]/40" />
+        <div className="absolute bottom-10 right-10 w-4 h-4 border-r border-b border-[#3B82F6]/40" />
         
         <BackgroundDoodles opacity="opacity-[0.2]" mouseX={mouseX} mouseY={mouseY} />
         <DoodleSquiggle />
         
         {/* Parallax typography */}
-        <div className="absolute top-[20%] left-[-10%] text-[25vw] font-black text-black/[0.02] parallax-bg pointer-events-none whitespace-nowrap tracking-tighter">SCALE</div>
+        <div className="absolute top-[20%] left-[-10%] text-[25vw] font-black text-white/[0.02] parallax-bg pointer-events-none whitespace-nowrap tracking-tighter">SCALE</div>
         
         <div className="container px-4 md:px-6 relative z-10 text-center flex flex-col items-center pt-10 sm:pt-0">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="inline-flex items-center rounded-full border border-[#0F52BA]/30 bg-[#0F52BA]/5 px-4 py-1.5 text-xs font-bold text-[#0F52BA] mb-6 sm:mb-10 shadow-[0_0_20px_rgba(15,82,186,0.15)] backdrop-blur-md"
+            className="inline-flex items-center rounded-full border border-[#3B82F6]/40 bg-[#3B82F6]/10 px-4 py-1.5 text-xs font-bold text-[#3B82F6] mb-6 sm:mb-10 shadow-[0_0_20px_rgba(59,130,246,0.2)] backdrop-blur-md"
           >
-            <Zap className="mr-2 h-4 w-4" />
+            <Zap className="mr-2 h-4 w-4 text-[#3B82F6]" />
             NovaMac Systems V3
           </motion.div>
           
           <h1 className="text-4xl sm:text-7xl lg:text-[10rem] font-black tracking-tighter leading-[0.9] sm:leading-[0.8] mb-6 sm:mb-8 relative drop-shadow-xl">
-            <span className="block text-zinc-900 transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">DESIGN.</span>
-            <span className="block text-zinc-400 transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">BUILD.</span>
-            <span className="block text-[#0F52BA] relative inline-block transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default drop-shadow-[0_0_30px_rgba(15,82,186,0.4)]">
+            <span className="block text-[#F8FAFC] transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">DESIGN.</span>
+            <span className="block text-[#94A3B8] transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default">BUILD.</span>
+            <span className="block text-[#3B82F6] relative inline-block transition-transform hover:-translate-y-2 hover:scale-[1.02] duration-500 cursor-default drop-shadow-[0_0_30px_rgba(59,130,246,0.4)]">
               ACCELERATE.
               <DoodleUnderline />
             </span>
           </h1>
 
-          <p className="max-w-[750px] text-zinc-600 text-sm sm:text-xl lg:text-2xl font-light mt-4 sm:mt-8 relative leading-relaxed">
+          <p className="max-w-[750px] text-[#94A3B8] text-sm sm:text-xl lg:text-2xl font-light mt-4 sm:mt-8 relative leading-relaxed">
             We craft high-performance digital products, custom web applications, and scalable software solutions designed to transform your business and outpace the competition.
           </p>
 
@@ -429,7 +428,7 @@ export default function MarketingPage() {
           <div className="mt-8 flex items-center gap-3 lg:hidden">
             <Link 
               href="/home" 
-              className="px-6 py-3 bg-[#0F52BA] text-white text-xs font-bold font-mono tracking-wider uppercase rounded-full shadow-lg flex items-center gap-2"
+              className="px-6 py-3 bg-[#3B82F6] text-white text-xs font-extrabold font-mono tracking-wider uppercase rounded-full shadow-lg flex items-center gap-2 hover:bg-white hover:text-[#0B1220] transition-all"
             >
               Enter Web App <ArrowRight className="w-4 h-4" />
             </Link>
@@ -438,162 +437,155 @@ export default function MarketingPage() {
         
         {/* Scroll Indicator Detail */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-60">
-          <span className="font-mono text-[10px] tracking-widest text-zinc-500 uppercase">Scroll</span>
-          <ArrowRight className="h-4 w-4 text-zinc-500 rotate-90" />
+          <span className="font-mono text-[10px] tracking-widest text-[#94A3B8] uppercase">Scroll</span>
+          <ArrowRight className="h-4 w-4 text-[#3B82F6] rotate-90" />
         </div>
       </section>
 
       {/* ========================================= */}
       {/* PAGE 2: SERVICE OVERVIEW (Pinned Desktop / Vertical Mobile) */}
       {/* ========================================= */}
-      <section ref={horizontal2Ref} className="h-auto lg:h-screen w-full relative bg-[#F0EDE6] overflow-hidden">
+      <section ref={horizontal2Ref} className="h-auto lg:h-screen w-full relative bg-[#0B1220] text-[#F8FAFC] overflow-hidden">
         <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
-        {/* Detailed Grid Overlay */}
-        <div className="absolute inset-0 bg-grid-black/[0.02] pointer-events-none" />
         
         {/* Responsive layout: Vertical on mobile, 500vw horizontal on desktop */}
         <div className="scroll-content flex flex-col lg:flex-row w-full lg:w-[500vw] h-auto lg:h-full transform-gpu">
           
           {/* Panel 2.1: THE PROBLEM */}
-          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden">
-            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500">01 // THE PROBLEM</div>
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-[#1E2E4A] overflow-hidden">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-[#94A3B8]">01 // THE PROBLEM</div>
             <DoodleArrowHorizontal />
             <FloatingTerminal className="right-[10%] top-[25%]" />
-            <div className="absolute right-[-10vw] top-[30vh] w-[40vw] h-[40vw] bg-[#FF007F]/10 blur-[140px] rounded-full pointer-events-none mix-blend-multiply" />
+            <div className="absolute right-[-10vw] top-[30vh] w-[40vw] h-[40vw] bg-[#3B82F6]/10 blur-[140px] rounded-full pointer-events-none" />
             <div className="max-w-4xl z-10 relative">
-              <h2 className="text-3xl sm:text-6xl md:text-9xl font-black text-zinc-900 tracking-tight mb-6 sm:mb-10 leading-[0.95] drop-shadow-sm">
+              <h2 className="text-3xl sm:text-6xl md:text-9xl font-black text-[#F8FAFC] tracking-tight mb-6 sm:mb-10 leading-[0.95]">
                 <span className="relative inline-block">Boring Design</span><br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#0F52BA] to-[#0a3a85]">is Dead.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#3B82F6] to-cyan-400">is Dead.</span>
               </h2>
-              <p className="text-sm sm:text-2xl md:text-3xl text-zinc-600 font-light leading-relaxed mb-6 sm:mb-8 max-w-2xl border-l-2 sm:border-l-4 border-zinc-300 pl-4 sm:pl-6">
-                The future belongs to dynamic, colorful, and relentlessly engaging digital experiences. We turn standard websites into captivating brand journeys.
+              <p className="text-sm sm:text-2xl md:text-3xl text-[#94A3B8] font-light leading-relaxed mb-6 sm:mb-8 max-w-2xl border-l-2 sm:border-l-4 border-[#3B82F6] pl-4 sm:pl-6">
+                The future belongs to dynamic, high-converting digital experiences. We turn standard websites into captivating brand journeys.
               </p>
             </div>
           </div>
 
           {/* Panel 2.2: THE SOLUTION */}
-          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center p-4 sm:p-8 md:p-10 lg:px-20 relative border-b lg:border-b-0 lg:border-r border-black/5 py-12 lg:py-0">
-            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500">02 // THE SOLUTION</div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-white rounded-full blur-[40px] lg:blur-[100px] pointer-events-none opacity-50" />
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center p-4 sm:p-8 md:p-10 lg:px-20 relative border-b lg:border-b-0 lg:border-r border-[#1E2E4A] py-12 lg:py-0">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-[#94A3B8]">02 // THE SOLUTION</div>
             
-            <div className={glassCard + " w-full max-w-6xl flex flex-col md:flex-row gap-6 lg:gap-16 items-center border-t-white/80 border-l-white/80 !bg-white/40 shadow-sm p-4 sm:p-8"}>
+            <div className="w-full max-w-6xl flex flex-col md:flex-row gap-6 lg:gap-16 items-center p-4 sm:p-8">
               <div className="flex-1 space-y-4 sm:space-y-8 relative z-10 w-full">
-                <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/60 border border-white/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group/item">
+                <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.6)] hover:border-[#3B82F6]/80 transition-all duration-300 group/item">
                   <div className="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-4">
-                    <div className="p-2.5 sm:p-3 bg-[#FF007F]/10 rounded-xl sm:rounded-2xl group-hover/item:bg-[#FF007F]/20 transition-colors">
-                      <Layout className="h-6 w-6 sm:h-8 sm:w-8 text-[#FF007F]" />
+                    <div className="p-2.5 sm:p-3 bg-[#3B82F6]/10 rounded-xl sm:rounded-2xl group-hover/item:bg-[#3B82F6]/20 transition-colors border border-[#1E2E4A]">
+                      <Layout className="h-6 w-6 sm:h-8 sm:w-8 text-[#3B82F6]" />
                     </div>
-                    <div className="text-xl sm:text-3xl font-black text-zinc-900 tracking-tight">UI/UX Excellence</div>
+                    <div className="text-xl sm:text-3xl font-black text-[#F8FAFC] tracking-tight">UI/UX Excellence</div>
                   </div>
-                  <p className="text-zinc-600 font-medium text-xs sm:text-lg leading-relaxed">Pixel-perfect aesthetics and seamless user journeys that drive massive engagement.</p>
+                  <p className="text-[#94A3B8] font-medium text-xs sm:text-lg leading-relaxed">Pixel-perfect aesthetics and seamless user journeys that drive massive engagement.</p>
                 </div>
-                <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/60 border border-white/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group/item">
+                <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.6)] hover:border-[#3B82F6]/80 transition-all duration-300 group/item">
                   <div className="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-4">
-                    <div className="p-2.5 sm:p-3 bg-zinc-900 rounded-xl sm:rounded-2xl group-hover/item:bg-[#00F0FF] transition-colors">
-                      <Code className="h-6 w-6 sm:h-8 sm:w-8 text-white group-hover/item:text-zinc-900" />
+                    <div className="p-2.5 sm:p-3 bg-[#3B82F6]/10 rounded-xl sm:rounded-2xl group-hover/item:bg-[#3B82F6]/20 transition-colors border border-[#1E2E4A]">
+                      <Code className="h-6 w-6 sm:h-8 sm:w-8 text-[#3B82F6]" />
                     </div>
-                    <div className="text-xl sm:text-3xl font-black text-zinc-900 tracking-tight">Custom Web Dev</div>
+                    <div className="text-xl sm:text-3xl font-black text-[#F8FAFC] tracking-tight">Custom Web Dev</div>
                   </div>
-                  <p className="text-zinc-600 font-medium text-xs sm:text-lg leading-relaxed">Robust web applications built from scratch to perfectly align with your brand's unique needs.</p>
+                  <p className="text-[#94A3B8] font-medium text-xs sm:text-lg leading-relaxed">Robust web applications built from scratch to perfectly align with your brand's unique needs.</p>
                 </div>
               </div>
               
-              <div className="flex-1 h-[220px] sm:h-[350px] lg:h-[600px] w-full rounded-2xl sm:rounded-[2.5rem] overflow-hidden border-2 sm:border-4 lg:border-8 border-white shadow-xl relative group">
-                <div className="w-[110%] h-[110%] -left-[5%] -top-[5%] relative transition-transform duration-1000 group-hover:scale-105 group-hover:-translate-x-4">
-                  <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80" alt="Design workflow" className="object-cover w-full h-full" />
+              <div className="flex-1 h-[220px] sm:h-[350px] lg:h-[600px] w-full rounded-2xl sm:rounded-[2.5rem] overflow-hidden border border-[#1E2E4A] border-t-white/15 shadow-2xl relative group bg-[#070D18]">
+                <div className="w-[110%] h-[110%] -left-[5%] -top-[5%] relative transition-transform duration-1000 group-hover:scale-105">
+                  <img src="/images/web_dev.jpg" alt="Design workflow" className="object-cover w-full h-full opacity-80" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050A14] via-[#050A14]/40 to-transparent" />
                 <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8">
-                  <div className="font-mono text-[10px] text-white/70 tracking-widest mb-1 border-b border-white/20 pb-1 inline-block">DESIGN & ENG.</div>
-                  <div className="text-white text-base sm:text-2xl font-light">Crafting immersive digital products.</div>
+                  <div className="font-mono text-[10px] text-[#3B82F6] tracking-widest mb-1 border-b border-[#1E2E4A] pb-1 inline-block font-bold uppercase">DESIGN & ENG.</div>
+                  <div className="text-[#F8FAFC] text-base sm:text-2xl font-light">Crafting immersive digital products.</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Panel 2.3: ARCHITECTURE */}
-          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden">
-            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500">03 // ECOSYSTEM</div>
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-[#1E2E4A] overflow-hidden">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-[#94A3B8]">03 // ECOSYSTEM</div>
             
-            <DataPulse top="top-[30%]" left="left-[20%]" delay={0.1} color="#FF007F" />
-            <DataPulse top="top-[70%]" left="left-[80%]" delay={1.2} color="#00F0FF" />
+            <DataPulse top="top-[30%]" left="left-[20%]" delay={0.1} color="#3B82F6" />
             
             <div className="w-full max-w-7xl flex flex-col items-center relative z-10">
-              <h2 className="text-3xl sm:text-6xl md:text-8xl font-black text-zinc-900 tracking-tight mb-8 sm:mb-16 text-center">Comprehensive<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF007F] to-[#00F0FF]">Digital Growth.</span></h2>
+              <h2 className="text-3xl sm:text-6xl md:text-8xl font-black text-[#F8FAFC] tracking-tight mb-8 sm:mb-16 text-center">Comprehensive<br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] to-cyan-400">Digital Growth.</span></h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 w-full">
-                <Link href="/services/custom-web-development" className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-black/5 shadow-md group hover:-translate-y-2 transition-transform block">
-                  <Database className="w-8 h-8 sm:w-12 sm:h-12 text-[#FF007F] mb-4 sm:mb-6 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-4 text-zinc-900">CRM & Software</h3>
-                  <p className="text-zinc-600 text-xs sm:text-base leading-relaxed">Tailored customer relationship management tools and internal software that scales with your business.</p>
+                <Link href="/services/custom-web-development" className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.6)] hover:border-[#3B82F6] group hover:-translate-y-2 transition-all block">
+                  <Database className="w-8 h-8 sm:w-12 sm:h-12 text-[#3B82F6] mb-4 sm:mb-6 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-4 text-[#F8FAFC]">CRM & Software</h3>
+                  <p className="text-[#94A3B8] text-xs sm:text-base leading-relaxed">Tailored customer relationship management tools and internal software that scales with your business.</p>
                 </Link>
-                <Link href="/services" className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-black/5 shadow-md group hover:-translate-y-2 transition-transform block">
-                  <PenTool className="w-12 h-12 text-[#7000FF] mb-6 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold mb-4 text-zinc-900">Graphic Design</h3>
-                  <p className="text-zinc-600 leading-relaxed">Iconic logos, brand identities, and stunning visual assets that leave a lasting mark on the industry.</p>
+                <Link href="/services" className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.6)] hover:border-[#3B82F6] group hover:-translate-y-2 transition-all block">
+                  <PenTool className="w-12 h-12 text-[#3B82F6] mb-6 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-2xl font-bold mb-4 text-[#F8FAFC]">Graphic Design</h3>
+                  <p className="text-[#94A3B8] leading-relaxed">Iconic logos, brand identities, and stunning visual assets that leave a lasting mark on the industry.</p>
                 </Link>
-                <Link href="/services" className="p-8 rounded-3xl bg-white border border-black/5 shadow-lg group hover:-translate-y-2 transition-transform block">
-                  <TrendingUp className="w-12 h-12 text-[#00F0FF] mb-6 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-2xl font-bold mb-4 text-zinc-900">SEO Mastery</h3>
-                  <p className="text-zinc-600 leading-relaxed">Data-driven search engine optimization to ensure your brand always claims the top spot.</p>
+                <Link href="/services" className="p-8 rounded-3xl bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.6)] hover:border-[#3B82F6] group hover:-translate-y-2 transition-all block">
+                  <TrendingUp className="w-12 h-12 text-[#3B82F6] mb-6 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-2xl font-bold mb-4 text-[#F8FAFC]">SEO Mastery</h3>
+                  <p className="text-[#94A3B8] leading-relaxed">Data-driven search engine optimization to ensure your brand always claims the top spot.</p>
                 </Link>
               </div>
             </div>
           </div>
 
           {/* Panel 2.4: VALIDATION */}
-          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden bg-[#F0EDE6]">
-            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500">04 // VALIDATION</div>
-            <div className="absolute right-[-20%] bottom-[-20%] text-[40vw] font-black text-black/[0.02] parallax-bg pointer-events-none">PROVEN</div>
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-[#1E2E4A] overflow-hidden bg-[#0B1220]">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-[#94A3B8]">04 // VALIDATION</div>
             
             <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-20 items-center mx-auto relative z-10">
-              <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/60 border border-black/5 shadow-sm">
-                <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-zinc-900 tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">
+              <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
+                <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-[#F8FAFC] tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">
                   Numbers<br/>Don't Lie.
                 </h2>
-                <p className="text-xs sm:text-lg text-zinc-600 leading-relaxed mb-6">
+                <p className="text-xs sm:text-lg text-[#94A3B8] leading-relaxed mb-6">
                   We measure success strictly by the value we deliver. High-performance teams demand high-performance outputs.
                 </p>
-                <Link href="/work" className="inline-flex items-center gap-2 text-[#0F52BA] font-bold text-xs uppercase tracking-widest hover:gap-4 transition-all">
+                <Link href="/work" className="inline-flex items-center gap-2 text-[#3B82F6] font-bold text-xs uppercase tracking-widest hover:gap-4 transition-all">
                   View Case Studies <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
               
-              <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white/60 border border-black/5 shadow-sm">
-                <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-zinc-900 tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">
-                  Impenetrable.<br/><span className="text-[#0F52BA]">Period.</span>
+              <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
+                <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-[#F8FAFC] tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">
+                  Impenetrable.<br/><span className="text-[#3B82F6]">Period.</span>
                 </h2>
-                <p className="text-xs sm:text-lg text-zinc-600 leading-relaxed mb-6">
+                <p className="text-xs sm:text-lg text-[#94A3B8] leading-relaxed mb-6">
                   Security isn't a plugin. It's the foundation. We build zero-trust networks, biometric authentication layers, and real-time AI threat mitigation systems.
                 </p>
                 <ul className="space-y-3">
-                  <li className="flex items-center gap-3 text-zinc-800 font-medium text-xs sm:text-base"><Shield className="text-[#0F52BA] w-5 h-5" /> Biometric & Hardware Auth</li>
-                  <li className="flex items-center gap-3 text-zinc-800 font-medium text-xs sm:text-base"><Shield className="text-[#0F52BA] w-5 h-5" /> Enterprise Grade WAF</li>
-                  <li className="flex items-center gap-3 text-zinc-800 font-medium text-xs sm:text-base"><Shield className="text-[#0F52BA] w-5 h-5" /> SOC2 Compliance Ready</li>
+                  <li className="flex items-center gap-3 text-[#F8FAFC] font-medium text-xs sm:text-base"><Shield className="text-[#3B82F6] w-5 h-5" /> Biometric & Hardware Auth</li>
+                  <li className="flex items-center gap-3 text-[#F8FAFC] font-medium text-xs sm:text-base"><Shield className="text-[#3B82F6] w-5 h-5" /> Enterprise Grade WAF</li>
+                  <li className="flex items-center gap-3 text-[#F8FAFC] font-medium text-xs sm:text-base"><Shield className="text-[#3B82F6] w-5 h-5" /> SOC2 Compliance Ready</li>
                 </ul>
               </div>
             </div>
           </div>
 
           {/* Panel 2.5: PIPELINE */}
-          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center items-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative overflow-hidden bg-[#F0EDE6]">
-            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500">05 // PIPELINE</div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] border border-[#0F52BA]/10 rounded-full animate-spin-slow pointer-events-none" style={{animationDuration: '40s'}} />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] border border-[#FF007F]/10 rounded-full animate-spin-slow pointer-events-none" style={{animationDuration: '30s', animationDirection: 'reverse'}} />
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center items-center px-4 sm:px-8 md:px-20 py-12 lg:py-0 relative overflow-hidden bg-[#0B1220]">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-[#94A3B8]">05 // PIPELINE</div>
             
             <div className="max-w-4xl z-10 relative text-center">
-              <div className="w-14 h-14 lg:w-20 lg:h-20 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-6 lg:mb-10 shadow-xl">
-                <Hexagon className="w-7 h-7 lg:w-10 lg:h-10" />
+              <div className="w-14 h-14 lg:w-20 lg:h-20 bg-[#3B82F6] text-white rounded-2xl flex items-center justify-center mx-auto mb-6 lg:mb-10 shadow-xl">
+                <Hexagon className="w-7 h-7 lg:w-10 lg:h-10 text-white" />
               </div>
-              <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-zinc-900 tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">Rapid Iteration.<br/>Zero Downtime.</h2>
-              <p className="text-xs sm:text-lg md:text-2xl text-zinc-600 font-light leading-relaxed mb-6 sm:mb-12">
+              <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-[#F8FAFC] tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">Rapid Iteration.<br/>Zero Downtime.</h2>
+              <p className="text-xs sm:text-lg md:text-2xl text-[#94A3B8] font-light leading-relaxed mb-6 sm:mb-12">
                 Our CI/CD pipelines automate everything from unit testing to container orchestration. We ship updates 50x a day without dropping a single user connection.
               </p>
               <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
-                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white text-zinc-800 rounded-full font-mono text-[10px] sm:text-sm border border-zinc-200">GitHub Actions</span>
-                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white text-zinc-800 rounded-full font-mono text-[10px] sm:text-sm border border-zinc-200">Terraform</span>
-                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white text-zinc-800 rounded-full font-mono text-[10px] sm:text-sm border border-zinc-200">ArgoCD</span>
-                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white text-zinc-800 rounded-full font-mono text-[10px] sm:text-sm border border-zinc-200">Vercel</span>
+                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#070D18] text-[#F8FAFC] rounded-full font-mono text-[10px] sm:text-sm border border-[#1E2E4A] shadow-sm font-bold">GitHub Actions</span>
+                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#070D18] text-[#F8FAFC] rounded-full font-mono text-[10px] sm:text-sm border border-[#1E2E4A] shadow-sm font-bold">Terraform</span>
+                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#070D18] text-[#F8FAFC] rounded-full font-mono text-[10px] sm:text-sm border border-[#1E2E4A] shadow-sm font-bold">ArgoCD</span>
+                <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-[#070D18] text-[#F8FAFC] rounded-full font-mono text-[10px] sm:text-sm border border-[#1E2E4A] shadow-sm font-bold">Vercel</span>
               </div>
             </div>
           </div>
@@ -604,26 +596,24 @@ export default function MarketingPage() {
       {/* ========================================= */}
       {/* PAGE 3: ABOUT US (Vertical Down) */}
       {/* ========================================= */}
-      <section className="min-h-[70vh] w-full flex items-center justify-center bg-[#F0EDE6] text-zinc-900 relative overflow-hidden py-12 lg:py-32 px-4 sm:px-8">
-        {/* Intricate Micro-grid Dark */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)] pointer-events-none" />
-        <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">03 // VISION_STATEMENT</div>
+      <section className="min-h-[70vh] w-full flex items-center justify-center bg-[#0B1220] text-[#F8FAFC] relative overflow-hidden py-12 lg:py-32 px-4 sm:px-8 border-t border-[#1E2E4A]">
+        <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-[#94A3B8] uppercase">03 // VISION_STATEMENT</div>
         
         <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
         
         <div className="container px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center border border-black/10 bg-white/[0.4] backdrop-blur-md p-6 sm:p-12 md:p-20 rounded-2xl sm:rounded-[3rem] shadow-xl relative">
+          <div className="max-w-4xl mx-auto text-center border border-[#1E2E4A] border-t-white/15 bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] p-6 sm:p-12 md:p-20 rounded-2xl sm:rounded-[3rem] shadow-2xl relative">
             {/* Corner Accents on Card */}
-            <div className="absolute top-0 left-0 w-6 sm:w-8 h-6 sm:h-8 border-l-2 border-t-2 border-[#0F52BA] rounded-tl-2xl sm:rounded-tl-[3rem]" />
-            <div className="absolute bottom-0 right-0 w-6 sm:w-8 h-6 sm:h-8 border-r-2 border-b-2 border-[#0F52BA] rounded-br-2xl sm:rounded-br-[3rem]" />
+            <div className="absolute top-0 left-0 w-6 sm:w-8 h-6 sm:h-8 border-l-2 border-t-2 border-[#3B82F6] rounded-tl-2xl sm:rounded-tl-[3rem]" />
+            <div className="absolute bottom-0 right-0 w-6 sm:w-8 h-6 sm:h-8 border-r-2 border-b-2 border-[#3B82F6] rounded-br-2xl sm:rounded-br-[3rem]" />
             
             {/* Floating Metric Badge */}
-            <motion.div animate={{ y: [-5, 5] }} transition={{ repeat: Infinity, duration: 3, repeatType: "mirror", ease: "easeInOut" }} className="absolute -right-2 -bottom-4 lg:-right-10 lg:-bottom-10 -rotate-6 lg:-rotate-12 bg-[#0F52BA] text-white px-3 py-1.5 lg:px-6 lg:py-3 font-mono text-[10px] lg:text-sm font-bold tracking-widest shadow-xl border border-white/20 z-20 whitespace-nowrap">
+            <motion.div animate={{ y: [-5, 5] }} transition={{ repeat: Infinity, duration: 3, repeatType: "mirror", ease: "easeInOut" }} className="absolute -right-2 -bottom-4 lg:-right-10 lg:-bottom-10 -rotate-6 lg:-rotate-12 bg-[#3B82F6] text-white px-3 py-1.5 lg:px-6 lg:py-3 font-mono text-[10px] lg:text-sm font-bold tracking-widest shadow-xl border border-white/20 z-20 whitespace-nowrap">
               INCIDENT_RATE: 0.00%
             </motion.div>
             
-            <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-zinc-900 tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">We are not a digital agency.</h2>
-            <p className="text-xs sm:text-lg md:text-2xl text-zinc-600 font-light leading-relaxed">
+            <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-[#F8FAFC] tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">We are not a digital agency.</h2>
+            <p className="text-xs sm:text-lg md:text-2xl text-[#94A3B8] font-light leading-relaxed">
               We are an engineering strike team. We build the infrastructure that agencies can't, and scale the ideas that others abandon. 
               If it requires complex logic, massive concurrency, or bulletproof security—we are the people you call.
             </p>
@@ -634,29 +624,29 @@ export default function MarketingPage() {
       {/* ========================================= */}
       {/* PAGE 4: WHY CHOOSE US (Pinned Desktop / Vertical Mobile) */}
       {/* ========================================= */}
-      <section ref={horizontal4Ref} className="h-auto lg:h-screen w-full relative bg-[#F0EDE6] text-zinc-900 overflow-hidden">
+      <section ref={horizontal4Ref} className="h-auto lg:h-screen w-full relative bg-[#0B1220] text-[#F8FAFC] overflow-hidden">
         <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
         <FloatingShapes />
-        <DataPulse top="top-[15%]" left="left-[85%]" delay={0.5} color="#0F52BA" />
+        <DataPulse top="top-[15%]" left="left-[85%]" delay={0.5} color="#3B82F6" />
         
         <div className="scroll-content flex flex-col lg:flex-row w-full lg:w-[200vw] h-auto lg:h-full transform-gpu">
           
           {/* Panel 4.1 */}
-          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center relative border-b lg:border-b-0 lg:border-r border-black/5 py-12 lg:py-0 px-4 sm:px-8">
-            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">04 // ADVANTAGE</div>
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center relative border-b lg:border-b-0 lg:border-r border-[#1E2E4A] py-12 lg:py-0 px-4 sm:px-8">
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-[#94A3B8] uppercase">04 // ADVANTAGE</div>
             
             <div className="container px-4 md:px-10 text-center relative z-10">
-              <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-zinc-900 tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-900 to-zinc-500">Unfair</span>
+              <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black text-[#F8FAFC] tracking-tight mb-4 sm:mb-8 leading-[1.05] sm:leading-[0.9]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#F8FAFC] to-[#94A3B8]">Unfair</span>
                 <br />Advantage.
               </h2>
-              <div className="h-1 w-16 lg:w-24 bg-[#0F52BA] mx-auto mt-6 lg:mt-12 shadow-md" />
+              <div className="h-1 w-16 lg:w-24 bg-[#3B82F6] mx-auto mt-6 lg:mt-12 shadow-md" />
             </div>
           </div>
 
           {/* Panel 4.2 */}
           <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex items-center justify-center p-4 sm:p-8 md:p-20 relative py-12 lg:py-0">
-            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">04.1 // METRICS</div>
+            <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-[#94A3B8] uppercase">04.1 // METRICS</div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 w-full max-w-6xl relative z-10">
               {[
@@ -665,10 +655,10 @@ export default function MarketingPage() {
                 { title: "Zero Data Loss", desc: "Continuous replication and point-in-time recovery out of the box." },
                 { title: "Infinite Scale", desc: "Serverless and clustered architectures that grow seamlessly." }
               ].map((item, i) => (
-                <div key={i} className="group p-5 sm:p-8 rounded-2xl bg-white border border-black/10 transition-all duration-300 relative overflow-hidden shadow-sm">
-                  <div className="font-mono text-[10px] text-zinc-500 mb-2 tracking-widest">METRIC_0{i+1}</div>
-                  <h3 className="text-lg sm:text-2xl font-black mb-2 text-zinc-900">{item.title}</h3>
-                  <p className="text-xs sm:text-base text-zinc-600 font-normal leading-relaxed">{item.desc}</p>
+                <div key={i} className="group p-5 sm:p-8 rounded-2xl bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 transition-all duration-300 relative overflow-hidden shadow-md hover:border-[#3B82F6]">
+                  <div className="font-mono text-[10px] text-[#3B82F6] mb-2 tracking-widest font-bold">METRIC_0{i+1}</div>
+                  <h3 className="text-lg sm:text-2xl font-black mb-2 text-[#F8FAFC]">{item.title}</h3>
+                  <p className="text-xs sm:text-base text-[#94A3B8] font-normal leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -680,17 +670,10 @@ export default function MarketingPage() {
       {/* ========================================= */}
       {/* PAGE 5: DETAILED SERVICES (Vertical Down) */}
       {/* ========================================= */}
-      <section className="min-h-screen w-full flex items-center justify-center p-8 md:p-20 bg-[#F0EDE6] relative overflow-hidden py-32">
-        <div className="absolute inset-0 bg-grid-black/[0.02] pointer-events-none" />
-        <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">05 // EXPERTISE</div>
+      <section className="min-h-screen w-full flex items-center justify-center p-8 md:p-20 bg-[#0B1220] text-[#F8FAFC] relative overflow-hidden py-32 border-t border-[#1E2E4A]">
+        <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-[#94A3B8] uppercase">05 // EXPERTISE</div>
         
         <BackgroundDoodles opacity="opacity-[0.1]" mouseX={mouseX} mouseY={mouseY} />
-        <FloatingTerminal className="left-[2%] top-[20%] scale-[0.65] opacity-20 hover:opacity-100 z-0 drop-shadow-xl" />
-        <div className="absolute right-[-10%] top-[40%] text-[20vw] font-black text-black/[0.02] parallax-bg pointer-events-none whitespace-nowrap tracking-tighter z-0">CAPABILITIES</div>
-        
-        {/* Massive Background Glows to fill empty space */}
-        <div className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-[#0F52BA]/10 blur-[120px] rounded-full pointer-events-none mix-blend-multiply" />
-        <div className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] bg-[#FF007F]/5 blur-[150px] rounded-full pointer-events-none mix-blend-multiply" />
         
         <div className="w-full max-w-7xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -759,38 +742,32 @@ export default function MarketingPage() {
               >
                 <Link 
                   href={i === 0 ? "/services/custom-web-development" : i === 1 ? "/services" : i === 2 ? "/services" : "/services"}
-                  className="group p-10 rounded-[2.5rem] bg-white/80 backdrop-blur-md border border-black/5 shadow-xl hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 relative overflow-hidden flex flex-col justify-between min-h-[420px] block"
+                  className="group p-10 rounded-[2.5rem] bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 shadow-xl hover:border-[#3B82F6] hover:-translate-y-2 transition-all duration-500 relative overflow-hidden flex flex-col justify-between min-h-[420px] block"
                 >
-                  {/* Tech Grid Background Pattern inside each card */}
-                  <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute -right-4 -top-4 text-black/5 opacity-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-150 group-hover:rotate-12 pointer-events-none">
-                    {srv.icon}
-                  </div>
-                  
                   <div>
-                    <div className="flex items-center justify-between w-full border-b border-black/5 pb-4 mb-6">
-                      <div className="font-mono text-[10px] tracking-widest text-zinc-500">{srv.tag}</div>
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                    <div className="flex items-center justify-between w-full border-b border-[#1E2E4A] pb-4 mb-6">
+                      <div className="font-mono text-[10px] tracking-widest text-[#94A3B8]">{srv.tag}</div>
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
                     </div>
-                    <div className="text-[#0F52BA] mb-4 [&>svg]:w-9 [&>svg]:h-9 relative z-10 group-hover:scale-110 group-hover:-rotate-6 transition-transform">{srv.icon}</div>
-                    <h3 className="text-2xl font-black mb-3 relative z-10 text-zinc-900 transition-colors">{srv.title}</h3>
-                    <p className="text-zinc-600 font-normal text-sm leading-relaxed relative z-10">{srv.desc}</p>
+                    <div className="text-[#3B82F6] mb-4 [&>svg]:w-9 [&>svg]:h-9 relative z-10 group-hover:scale-110 transition-transform">{srv.icon}</div>
+                    <h3 className="text-2xl font-black mb-3 relative z-10 text-[#F8FAFC] transition-colors">{srv.title}</h3>
+                    <p className="text-[#94A3B8] font-normal text-sm leading-relaxed relative z-10">{srv.desc}</p>
                   </div>
                   
                   <div>
                     {/* Tech stack badges */}
                     <div className="flex flex-wrap gap-1.5 mt-6 relative z-10">
                       {srv.techs.map((tech, idx) => (
-                        <span key={idx} className="text-[9px] font-mono px-2 py-0.5 bg-white/50 border border-black/10 rounded text-zinc-600 shadow-sm group-hover:border-[#0F52BA]/40 group-hover:text-zinc-900 transition-all">
+                        <span key={idx} className="text-[9px] font-mono px-2 py-0.5 bg-[#070D18] border border-[#1E2E4A] rounded text-[#94A3B8] group-hover:text-[#F8FAFC] transition-all font-bold">
                           {tech}
                         </span>
                       ))}
                     </div>
                     
                     {/* Metric Status Bar */}
-                    <div className="mt-6 pt-4 border-t border-black/5 flex items-center justify-between font-mono text-[9px] text-zinc-500 relative z-10">
-                      <span className="text-[9px] tracking-tighter uppercase font-semibold text-[#00F0FF]/90">{srv.status}</span>
-                      <span className="font-bold text-zinc-600 bg-white/80 px-2 py-0.5 rounded border border-black/5">{srv.metric}</span>
+                    <div className="mt-6 pt-4 border-t border-[#1E2E4A] flex items-center justify-between font-mono text-[9px] text-[#94A3B8] relative z-10">
+                      <span className="text-[9px] tracking-tighter uppercase font-semibold text-[#3B82F6]">{srv.status}</span>
+                      <span className="font-bold text-[#F8FAFC] bg-[#070D18] px-2 py-0.5 rounded border border-[#1E2E4A]">{srv.metric}</span>
                     </div>
                   </div>
                 </Link>
@@ -803,24 +780,21 @@ export default function MarketingPage() {
       {/* ========================================= */}
       {/* PAGE 6: YOU CHOOSE (Pinned Desktop / Vertical Mobile) */}
       {/* ========================================= */}
-      <section ref={horizontal6Ref} className="h-auto lg:h-screen w-full relative bg-[#F0EDE6] text-zinc-900 overflow-hidden">
+      <section ref={horizontal6Ref} className="h-auto lg:h-screen w-full relative bg-[#0B1220] text-[#F8FAFC] overflow-hidden">
         <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(15,82,186,0.15)_0%,rgba(0,0,0,0)_70%)] pointer-events-none mix-blend-multiply" />
         <FloatingShapes />
         
         <div className="scroll-content flex flex-col lg:flex-row w-full lg:w-[200vw] h-auto lg:h-full transform-gpu">
           
           {/* Panel 6.1 */}
-          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center px-6 md:px-20 py-16 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-black/5 overflow-hidden">
-            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase">06 // DECISION</div>
-            <FloatingTerminal className="right-[5%] top-[15%] scale-90" />
-            <div className="absolute bottom-10 right-10 text-[30vw] font-black text-black/5 pointer-events-none leading-none -mb-12 tracking-tighter">CHOOSE</div>
+          <div className="w-full lg:w-[100vw] min-h-[70vh] lg:h-full flex flex-col justify-center px-6 md:px-20 py-16 lg:py-0 relative border-b lg:border-b-0 lg:border-r border-[#1E2E4A] overflow-hidden">
+            <div className="absolute top-10 left-10 font-mono text-[10px] tracking-widest text-[#94A3B8] uppercase">06 // DECISION</div>
             
             <div className="max-w-4xl relative z-10">
-              <h2 className="text-4xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
-                The choice is <br /><span className="text-[#0F52BA]">yours.</span>
+              <h2 className="text-4xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter text-[#F8FAFC]">
+                The choice is <br /><span className="text-[#3B82F6]">yours.</span>
               </h2>
-              <p className="text-xl md:text-3xl text-zinc-600 font-light max-w-2xl border-l-2 border-[#0F52BA] pl-6 leading-relaxed">
+              <p className="text-xl md:text-3xl text-[#94A3B8] font-light max-w-2xl border-l-2 border-[#3B82F6] pl-6 leading-relaxed">
                 Stay comfortable with mediocrity, or partner with us to engineer a system that dominates your industry.
               </p>
             </div>
@@ -828,16 +802,11 @@ export default function MarketingPage() {
 
           {/* Panel 6.2 (CTA Button) */}
           <div className="w-full lg:w-[100vw] min-h-[60vh] lg:h-full flex items-center justify-center p-6 md:p-10 relative py-16 lg:py-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0F52BA]/10 to-transparent opacity-50" />
-            <div className="z-10 text-center relative">
-              {/* Target lock micro-ui around button */}
-              <div className="absolute -top-6 -left-6 lg:-top-12 lg:-left-12 w-6 h-6 border-t-2 border-l-2 border-[#0F52BA] opacity-50" />
-              <div className="absolute -bottom-6 -right-6 lg:-bottom-12 lg:-right-12 w-6 h-6 border-b-2 border-r-2 border-[#0F52BA] opacity-50" />
-              
-              <Hexagon className="h-16 w-16 lg:h-24 lg:w-24 text-[#0F52BA] mx-auto mb-8 lg:mb-12 opacity-80" />
-              <Link href="/contact" className="px-10 py-5 lg:px-16 lg:py-8 bg-zinc-900 text-white rounded-full font-black text-xl lg:text-3xl hover:scale-105 hover:bg-[#0F52BA] hover:text-white transition-all shadow-[0_0_50px_rgba(0,0,0,0.1)] hover:shadow-[0_0_80px_rgba(15,82,186,0.8)] flex items-center mx-auto gap-4 lg:gap-6 group relative overflow-hidden">
+            <div className="z-10 text-center relative w-full px-4">
+              <Hexagon className="h-12 w-12 sm:h-20 sm:w-20 text-[#3B82F6] mx-auto mb-6 sm:mb-10 opacity-80" />
+              <Link href="/contact" className="w-full sm:w-auto px-8 py-4 sm:px-16 sm:py-6 bg-[#3B82F6] text-white rounded-full font-black text-base sm:text-2xl hover:bg-white hover:text-[#0B1220] transition-all shadow-[0_0_50px_rgba(59,130,246,0.45)] flex items-center justify-center mx-auto gap-3 sm:gap-6 group">
                 <span className="relative z-10">Initiate Project</span>
-                <ArrowRight className="h-6 w-6 lg:h-8 lg:w-8 group-hover:translate-x-2 transition-transform relative z-10" />
+                <ArrowRight className="h-5 w-5 sm:h-7 sm:w-7 group-hover:translate-x-2 transition-transform relative z-10" />
               </Link>
             </div>
           </div>
@@ -848,66 +817,53 @@ export default function MarketingPage() {
       {/* ========================================= */}
       {/* PAGE 7: HOME PAGE & FOOTER (Vertical Down) */}
       {/* ========================================= */}
-      <section className="min-h-[70vh] lg:min-h-screen w-full flex flex-col bg-[#F0EDE6] text-zinc-900 relative overflow-hidden">
+      <section className="min-h-[70vh] lg:min-h-screen w-full flex flex-col bg-[#0B1220] text-[#F8FAFC] relative overflow-hidden">
         <BackgroundDoodles opacity="opacity-[0.05]" mouseX={mouseX} mouseY={mouseY} />
-        <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-zinc-500 uppercase z-10">07 // TERMINAL</div>
+        <div className="absolute top-6 sm:top-10 left-4 sm:left-10 font-mono text-[10px] tracking-widest text-[#94A3B8] uppercase z-10">07 // TERMINAL</div>
         
         {/* Summary Section */}
         <div className="flex-1 flex items-center justify-center p-6 sm:p-12 md:p-20 relative py-12 lg:py-20">
-          <div className="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80" alt="Abstract tech" className="w-full h-full object-cover opacity-10 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#F0EDE6] via-[#F0EDE6]/80 to-transparent" />
-          </div>
           <div className="relative z-10 text-center max-w-5xl px-4">
-            <div className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-6 sm:mb-10 bg-white rounded-full flex items-center justify-center border border-black/10 shadow-lg backdrop-blur-md">
-              <Zap className="h-8 w-8 sm:h-12 sm:w-12 text-[#0F52BA]" />
+            <div className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-6 sm:mb-10 bg-[#070D18] border border-[#1E2E4A] rounded-full flex items-center justify-center shadow-xl">
+              <Zap className="h-8 w-8 sm:h-12 sm:w-12 text-[#3B82F6]" />
             </div>
-            <h1 className="text-4xl sm:text-7xl lg:text-[12rem] font-black mb-3 sm:mb-6 tracking-tight drop-shadow-sm text-zinc-900 leading-none">NOVAMAC</h1>
-            <p className="text-sm sm:text-2xl md:text-5xl font-light text-zinc-600">Welcome to the new standard.</p>
+            <h1 className="text-4xl sm:text-7xl lg:text-[12rem] font-black mb-3 sm:mb-6 tracking-tight text-[#F8FAFC] leading-none">NOVAMAC</h1>
+            <p className="text-sm sm:text-2xl md:text-5xl font-light text-[#94A3B8]">Welcome to the new standard.</p>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="w-full bg-zinc-900 text-white flex flex-col justify-between p-5 sm:p-12 md:p-20 border-t border-black/10 relative z-10 footer-trigger">
+        <div className="w-full bg-[#050A14] text-[#F8FAFC] flex flex-col justify-between p-5 sm:p-12 md:p-20 border-t border-[#1E2E4A] relative z-10 footer-trigger">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-16 w-full max-w-7xl mx-auto relative">
-            {/* Scanline effect on footer */}
-            <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[size:100%_4px] pointer-events-none opacity-20" />
-            
             <div className="col-span-1 sm:col-span-2">
-              <div className="text-3xl sm:text-5xl font-black mb-3 sm:mb-6 tracking-tight text-[#0F52BA]">NOVAMAC.</div>
-              <p className="text-zinc-400 max-w-md text-xs sm:text-base font-normal leading-relaxed">
+              <div className="text-3xl sm:text-5xl font-black mb-3 sm:mb-6 tracking-tight text-[#3B82F6]">NOVAMAC.</div>
+              <p className="text-[#94A3B8] max-w-md text-xs sm:text-base font-normal leading-relaxed">
                 Engineering hyper-scalable, zero-trust architectures for the modern web. We build what others say is impossible.
               </p>
             </div>
             <div>
-              <div className="font-bold mb-4 sm:mb-8 text-base sm:text-xl tracking-tight">Explore</div>
-              <ul className="space-y-3 text-zinc-400 font-light text-xs sm:text-sm">
-                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-2 group"><ArrowRight className="h-3.5 w-3.5 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Services</li>
-                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-2 group"><ArrowRight className="h-3.5 w-3.5 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Case Studies</li>
-                <li className="hover:text-white cursor-pointer transition-colors flex items-center gap-2 group"><ArrowRight className="h-3.5 w-3.5 text-[#0F52BA] group-hover:translate-x-2 transition-transform" /> Company</li>
+              <div className="font-bold mb-4 sm:mb-8 text-base sm:text-xl tracking-tight text-[#F8FAFC]">Explore</div>
+              <ul className="space-y-3 text-[#94A3B8] font-light text-xs sm:text-sm">
+                <li><Link href="/services" className="hover:text-[#3B82F6] cursor-pointer transition-colors flex items-center gap-2 group"><ArrowRight className="h-3.5 w-3.5 text-[#3B82F6] group-hover:translate-x-2 transition-transform" /> Services</Link></li>
+                <li><Link href="/work" className="hover:text-[#3B82F6] cursor-pointer transition-colors flex items-center gap-2 group"><ArrowRight className="h-3.5 w-3.5 text-[#3B82F6] group-hover:translate-x-2 transition-transform" /> Case Studies</Link></li>
+                <li><Link href="/about" className="hover:text-[#3B82F6] cursor-pointer transition-colors flex items-center gap-2 group"><ArrowRight className="h-3.5 w-3.5 text-[#3B82F6] group-hover:translate-x-2 transition-transform" /> Company</Link></li>
               </ul>
             </div>
             <div>
-              <div className="font-bold mb-4 sm:mb-8 text-base sm:text-xl tracking-tight">Connect</div>
-              <ul className="space-y-3 text-zinc-400 font-light font-mono text-xs uppercase">
-                <li className="hover:text-[#0F52BA] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-zinc-600 inline-block" /> Twitter_X</li>
-                <li className="hover:text-[#0F52BA] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-zinc-600 inline-block" /> LinkedIn</li>
-                <li className="hover:text-[#0F52BA] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-zinc-600 inline-block" /> GitHub</li>
+              <div className="font-bold mb-4 sm:mb-8 text-base sm:text-xl tracking-tight text-[#F8FAFC]">Connect</div>
+              <ul className="space-y-3 text-[#94A3B8] font-light font-mono text-xs uppercase">
+                <li className="hover:text-[#3B82F6] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-[#3B82F6] inline-block" /> Twitter_X</li>
+                <li className="hover:text-[#3B82F6] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-[#3B82F6] inline-block" /> LinkedIn</li>
+                <li className="hover:text-[#3B82F6] cursor-pointer transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-[#3B82F6] inline-block" /> GitHub</li>
               </ul>
             </div>
           </div>
-          <div className="w-full max-w-7xl mx-auto border-t border-white/10 pt-6 sm:pt-10 flex flex-col sm:flex-row justify-between text-zinc-500 font-mono text-[10px] uppercase tracking-widest mt-10 sm:mt-20 gap-3">
-            <div>© 2026 NovaMac Systems. All rights reserved.</div>
+          <div className="w-full max-w-7xl mx-auto border-t border-[#1E2E4A] pt-6 sm:pt-10 flex flex-col sm:flex-row justify-between text-[#94A3B8] font-mono text-[10px] uppercase tracking-widest mt-10 sm:mt-20 gap-3">
+            <div>© {new Date().getFullYear()} NovaMac Systems. All rights reserved.</div>
             <div className="flex gap-6 sm:gap-10">
-              <span className="hover:text-white cursor-pointer transition-colors">Privacy_Policy</span>
-              <span className="hover:text-white cursor-pointer transition-colors">Terms_of_Service</span>
+              <Link href="/privacy" className="hover:text-[#3B82F6] cursor-pointer transition-colors">Privacy_Policy</Link>
+              <Link href="/terms" className="hover:text-[#3B82F6] cursor-pointer transition-colors">Terms_of_Service</Link>
             </div>
-          </div>
-          
-          {/* Animated Console Dump */}
-          <div className="absolute bottom-8 right-8 text-[10px] font-mono text-green-500 opacity-40 pointer-events-none hidden md:block text-right leading-relaxed tracking-widest mix-blend-screen">
-            <motion.div animate={{ y: [0, -5], opacity: [0.2, 0.8, 0.2] }} transition={{ repeat: Infinity, duration: 2 }}>0x0F52BA: SYSTEM KERNEL ONLINE</motion.div>
-            <motion.div animate={{ y: [0, -5], opacity: [0.2, 0.8, 0.2] }} transition={{ repeat: Infinity, duration: 2, delay: 0.5 }}>0x0F52BB: AWAITING COMMAND_</motion.div>
           </div>
         </div>
       </section>

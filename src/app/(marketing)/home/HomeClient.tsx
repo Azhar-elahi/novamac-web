@@ -113,10 +113,10 @@ export default function HomeClient() {
   const activeService = SERVICE_SLIDES[currentSlide];
 
   return (
-    <div className="bg-[#F0EDE6] text-[#1C1917] min-h-screen pt-4 overflow-hidden relative font-sans">
+    <div className="bg-[#0B1220] text-[#F8FAFC] min-h-screen pt-4 overflow-hidden relative font-sans">
       
       {/* ── 1. HERO SECTION WITH RICH BACKGROUND ART ── */}
-      <section className="px-6 md:px-12 xl:px-20 pt-6 pb-16 max-w-[1400px] mx-auto relative z-10 border-b border-[#D6D1C8]">
+      <section className="px-6 md:px-12 xl:px-20 pt-6 pb-16 max-w-[1400px] mx-auto relative z-10 border-b border-[#1E2E4A]">
         <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} />
         
         <div className="grid lg:grid-cols-12 gap-10 items-center relative z-10">
@@ -128,38 +128,38 @@ export default function HomeClient() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-6"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 backdrop-blur-md border border-[#0F52BA]/30 rounded-full text-[10px] sm:text-xs font-mono tracking-widest text-[#0F52BA] uppercase font-bold shadow-sm mb-4 sm:mb-6">
-              <Zap className="w-3.5 h-3.5 text-[#0F52BA] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-[#0F1C33] to-[#091222] border border-[#1E2E4A] border-t-white/10 rounded-full text-xs sm:text-sm font-mono tracking-widest text-[#3B82F6] uppercase font-bold shadow-[0_10px_25px_rgba(0,0,0,0.4)] mb-4 sm:mb-6">
+              <Zap className="w-4 h-4 text-[#3B82F6] animate-pulse" />
               NOVAMAC DIGITAL STUDIO
             </div>
             
-            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-[1.05] sm:leading-[0.9] text-[#1C1917] mb-4 sm:mb-6 relative">
+            <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black tracking-tight leading-[1.05] sm:leading-[0.9] text-[#F8FAFC] mb-4 sm:mb-6 relative">
               Next-Gen<br />
               Digital<br />
-              <span className="relative inline-block text-[#0F52BA]">
+              <span className="relative inline-block text-[#3B82F6]">
                 Studio.
                 <DoodleUnderline />
               </span>
             </h1>
             
-            <p className="text-xs sm:text-base md:text-lg text-[#57534E] leading-relaxed mb-6 sm:mb-8 font-normal max-w-xl bg-white/80 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-white/90 shadow-sm">
+            <p className="text-sm sm:text-lg md:text-xl text-[#94A3B8] leading-relaxed mb-6 sm:mb-8 font-normal max-w-xl bg-gradient-to-b from-[#0F1C33]/90 via-[#091222]/95 to-[#050A14] backdrop-blur-md p-5 sm:p-7 rounded-2xl border border-[#1E2E4A] border-t-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
               We engineer pixel-perfect websites, custom web applications, and intelligent business automations built for speed, conversion, and global scale.
             </p>
             
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <Link href="/work"
-                className="inline-flex items-center justify-center gap-3 bg-[#1C1917] text-white px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-xs tracking-widest uppercase hover:bg-[#0F52BA] transition-all duration-300 rounded-full group shadow-lg text-center">
+                className="inline-flex items-center justify-center gap-3 bg-[#3B82F6] text-white px-7 sm:px-9 py-4 sm:py-4.5 font-black text-xs sm:text-sm tracking-widest uppercase hover:bg-white hover:text-[#0B1220] transition-all duration-300 rounded-full group shadow-[0_10px_30px_rgba(59,130,246,0.35)] text-center">
                 Explore Platform
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
               </Link>
               <Link href="/contact"
-                className="inline-flex items-center justify-center gap-3 bg-white text-[#1C1917] border border-[#D6D1C8] px-6 sm:px-8 py-3.5 sm:py-4 font-bold text-xs tracking-widest uppercase hover:border-[#0F52BA] hover:text-[#0F52BA] transition-all duration-300 rounded-full shadow-sm text-center">
+                className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#0F1C33] to-[#091222] text-[#F8FAFC] border border-[#1E2E4A] border-t-white/10 px-7 sm:px-9 py-4 sm:py-4.5 font-bold text-xs sm:text-sm tracking-widest uppercase hover:border-[#3B82F6] hover:text-[#3B82F6] hover:shadow-[0_0_25px_rgba(59,130,246,0.25)] transition-all duration-300 rounded-full shadow-md text-center">
                 Book Strategy Call
               </Link>
             </div>
           </motion.div>
 
-          {/* RIGHT COLUMN: AUTO-PLAYING SERVICE SLIDESHOW CARD */}
+          {/* RIGHT COLUMN: AUTO-PLAYING SERVICE SLIDESHOW CARD (GRADIENT LOOK) */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -168,32 +168,32 @@ export default function HomeClient() {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            <div className="bg-white border-2 border-[#D6D1C8] rounded-3xl p-6 shadow-2xl relative overflow-hidden group hover:border-[#0F52BA] transition-all duration-500 transform-gpu backdrop-blur-xl">
+            <div className="bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 rounded-3xl p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.75),0_0_30px_rgba(59,130,246,0.15)] relative overflow-hidden group hover:border-[#3B82F6]/70 hover:shadow-[0_30px_70px_rgba(0,0,0,0.85),0_0_45px_rgba(59,130,246,0.35)] transition-all duration-500 transform-gpu">
               
               {/* Slideshow Top Control Bar */}
-              <div className="flex items-center justify-between border-b border-[#D6D1C8] pb-4 mb-4 font-mono text-xs">
+              <div className="flex items-center justify-between border-b border-[#1E2E4A] pb-4 mb-4 font-mono text-xs sm:text-sm">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#0F52BA] animate-pulse" />
-                  <span className="font-bold text-[#1C1917] tracking-wider uppercase">{activeService.tag}</span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#3B82F6] animate-pulse" />
+                  <span className="font-extrabold text-[#F8FAFC] tracking-wider uppercase">{activeService.tag}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-[10px] text-[#78716C]">
+                  <span className="text-xs text-[#94A3B8] font-bold">
                     0{currentSlide + 1} / 0{SERVICE_SLIDES.length}
                   </span>
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1.5">
                     <button 
                       onClick={() => setCurrentSlide((prev) => (prev === 0 ? SERVICE_SLIDES.length - 1 : prev - 1))}
-                      className="p-1 rounded-full hover:bg-[#FAF8F4] border border-[#D6D1C8] text-[#1C1917]"
+                      className="p-1.5 rounded-full hover:bg-[#0B1220] border border-[#1E2E4A] text-[#F8FAFC]"
                       aria-label="Previous service"
                     >
-                      <ChevronLeft className="w-3.5 h-3.5" />
+                      <ChevronLeft className="w-4 h-4" />
                     </button>
                     <button 
                       onClick={() => setCurrentSlide((prev) => (prev + 1) % SERVICE_SLIDES.length)}
-                      className="p-1 rounded-full hover:bg-[#FAF8F4] border border-[#D6D1C8] text-[#1C1917]"
+                      className="p-1.5 rounded-full hover:bg-[#0B1220] border border-[#1E2E4A] text-[#F8FAFC]"
                       aria-label="Next service"
                     >
-                      <ChevronRight className="w-3.5 h-3.5" />
+                      <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
@@ -210,35 +210,35 @@ export default function HomeClient() {
                   className="space-y-4"
                 >
                   <Link href={activeService.href} className="block group/img">
-                    <div className="h-56 w-full rounded-2xl overflow-hidden relative bg-[#1C1917]">
+                    <div className="h-60 w-full rounded-2xl overflow-hidden relative bg-[#040810] shadow-inner">
                       <img 
                         src={activeService.img} 
                         alt={activeService.title} 
-                        className="w-full h-full object-cover opacity-90 group-hover/img:scale-105 transition-transform duration-700" 
+                        className="w-full h-full object-cover opacity-85 group-hover/img:scale-105 transition-transform duration-700" 
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end justify-between p-4">
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#050A14] via-transparent to-transparent flex items-end justify-between p-5">
                         <div>
-                          <div className="text-[10px] font-mono text-[#0F52BA] font-bold uppercase bg-white/95 px-2.5 py-0.5 rounded-full inline-block mb-1 shadow-sm">
+                          <div className="text-xs font-mono text-white font-black uppercase bg-[#3B82F6] px-3 py-1 rounded-full inline-block mb-1.5 shadow-md">
                             {activeService.subtitle}
                           </div>
-                          <div className="text-white font-bold text-lg leading-tight">{activeService.title}</div>
+                          <div className="text-white font-extrabold text-xl sm:text-2xl leading-tight">{activeService.title}</div>
                         </div>
-                        <div className="w-8 h-8 rounded-full bg-[#0F52BA] text-white flex items-center justify-center group-hover/img:scale-110 transition-transform">
-                          <ArrowRight className="w-4 h-4" />
+                        <div className="w-9 h-9 rounded-full bg-[#3B82F6] text-white flex items-center justify-center group-hover/img:scale-110 transition-transform shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+                          <ArrowRight className="w-5 h-5" />
                         </div>
                       </div>
                     </div>
                   </Link>
 
-                  <p className="text-xs text-[#78716C] leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed font-normal">
                     {activeService.desc}
                   </p>
 
-                  <div className="grid grid-cols-3 gap-2 font-mono text-[11px] pt-2 border-t border-[#D6D1C8]">
+                  <div className="grid grid-cols-3 gap-2 font-mono text-[11px] sm:text-xs pt-2 border-t border-[#1E2E4A]">
                     {activeService.stats.map((stat, idx) => (
-                      <div key={idx} className="p-2.5 bg-[#FAF8F4] border border-[#D6D1C8] rounded-xl text-center">
-                        <div className="text-[9px] text-[#78716C] uppercase font-bold">{stat.label}</div>
-                        <div className="font-bold text-[#1C1917] mt-0.5">{stat.val}</div>
+                      <div key={idx} className="p-3 bg-gradient-to-b from-[#0B1426] to-[#040810] border border-[#1E2E4A] border-t-white/10 rounded-xl text-center shadow-inner">
+                        <div className="text-[10px] text-[#94A3B8] uppercase font-bold">{stat.label}</div>
+                        <div className="font-extrabold text-sm text-[#F8FAFC] mt-0.5">{stat.val}</div>
                       </div>
                     ))}
                   </div>
@@ -246,12 +246,12 @@ export default function HomeClient() {
               </AnimatePresence>
 
               {/* Indicator Dots */}
-              <div className="flex items-center justify-center gap-2 mt-4 pt-3 border-t border-[#D6D1C8]">
+              <div className="flex items-center justify-center gap-2 mt-4 pt-3 border-t border-[#1E2E4A]">
                 {SERVICE_SLIDES.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentSlide(idx)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentSlide ? "w-8 bg-[#0F52BA]" : "w-2 bg-[#D6D1C8]"}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentSlide ? "w-8 bg-[#3B82F6] shadow-[0_0_10px_#3B82F6]" : "w-2 bg-[#1E2E4A]"}`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}
@@ -266,8 +266,8 @@ export default function HomeClient() {
       {/* ── 2. INFINITE MARQUEE BELT ── */}
       <TechMarqueeBelt />
 
-      {/* ── 3. REALISTIC VALUE STATS BAR ── */}
-      <section className="px-4 sm:px-6 md:px-12 xl:px-20 py-8 sm:py-12 bg-white/90 backdrop-blur-xl border-b border-[#D6D1C8] relative overflow-hidden z-10 shadow-sm">
+      {/* ── 3. REALISTIC VALUE STATS BAR (GRADIENT CONTAINER) ── */}
+      <section className="px-4 sm:px-6 md:px-12 xl:px-20 py-8 sm:py-14 bg-gradient-to-r from-[#0F1C33] via-[#091222] to-[#0F1C33] border-y border-[#1E2E4A] border-t-white/15 relative overflow-hidden z-10 shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
         <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 relative z-10">
           {[
             { label: "100% Custom Code", val: "ZERO", desc: "No Page Builders" },
@@ -275,35 +275,35 @@ export default function HomeClient() {
             { label: "Direct Technical Access", val: "SENIOR", desc: "Senior Dev Team" },
             { label: "On-Time Guarantee", val: "99.4%", desc: "Agile Production" },
           ].map((stat) => (
-            <div key={stat.label} className="border-l-2 sm:border-l-3 border-[#0F52BA] pl-3 sm:pl-6">
-              <div className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1C1917] tracking-tight">{stat.val}</div>
-              <div className="text-[10px] sm:text-xs font-mono font-bold text-[#0F52BA] uppercase mt-1 tracking-wider">{stat.label}</div>
-              <div className="text-[10px] sm:text-xs text-[#78716C] mt-0.5 font-light">{stat.desc}</div>
+            <div key={stat.label} className="border-l-3 sm:border-l-4 border-[#3B82F6] pl-4 sm:pl-7">
+              <div className="text-3xl sm:text-5xl md:text-6xl font-black text-[#F8FAFC] tracking-tight">{stat.val}</div>
+              <div className="text-xs sm:text-sm font-mono font-bold text-[#3B82F6] uppercase mt-1 tracking-wider">{stat.label}</div>
+              <div className="text-xs text-[#94A3B8] mt-0.5 font-medium">{stat.desc}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── 4. EXPERTISE & CAPABILITIES GRID ── */}
-      <section className="px-4 sm:px-6 md:px-12 xl:px-20 py-12 sm:py-24 max-w-[1400px] mx-auto relative z-10 overflow-hidden border-b border-[#D6D1C8]">
+      {/* ── 4. EXPERTISE & CAPABILITIES GRID (GRADIENT LOOK CARDS) ── */}
+      <section className="px-4 sm:px-6 md:px-12 xl:px-20 py-16 sm:py-28 max-w-[1400px] mx-auto relative z-10 overflow-hidden border-b border-[#1E2E4A]">
         <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-90" />
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 mb-10 sm:mb-16 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 sm:gap-6 mb-12 sm:mb-20 relative z-10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#0F52BA]/30 rounded-full text-[10px] font-mono font-bold text-[#0F52BA] uppercase tracking-widest mb-3 shadow-sm">
-              <Sparkles className="w-3 h-3 text-[#0F52BA]" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-[#0F1C33] to-[#091222] border border-[#1E2E4A] border-t-white/10 rounded-full text-xs sm:text-sm font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4 shadow-md">
+              <Sparkles className="w-4 h-4 text-[#3B82F6]" />
               SYSTEM CAPABILITIES
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tighter text-[#1C1917]">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-[#F8FAFC]">
               Deep Technical Expertise.
             </h2>
           </div>
-          <Link href="/services" className="text-xs font-bold tracking-widest uppercase text-[#0F52BA] hover:text-[#1C1917] flex items-center gap-2 transition-colors bg-white px-5 py-2.5 rounded-full border border-[#D6D1C8] shadow-sm">
+          <Link href="/services" className="text-xs sm:text-sm font-black tracking-widest uppercase text-[#3B82F6] hover:text-white flex items-center gap-2 transition-colors bg-gradient-to-r from-[#0F1C33] to-[#091222] px-6 py-3 rounded-full border border-[#1E2E4A] border-t-white/10 shadow-md">
             View All Services <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 relative z-10">
           {[
             { title: "Custom Web Development", desc: "Hand-coded Next.js & React websites built for sub-second speeds, SEO dominance, and scale.", img: "/images/web_dev.jpg", href: "/services/custom-web-development", tags: ["Next.js", "React", "SEO"] },
             { title: "UI/UX Design Studio", desc: "Pixel-perfect interfaces and design systems crafted for high conversion.", img: "/images/ui_ux.jpg", href: "/services", tags: ["Figma", "Prototypes"] },
@@ -320,20 +320,20 @@ export default function HomeClient() {
               transition={{ duration: 0.6, delay: i * 0.05 }}
               whileHover={{ y: -6, scale: 1.01 }}
             >
-              <Link href={s.href} className="block border border-[#D6D1C8] bg-white/95 backdrop-blur-md hover:border-[#0F52BA] transition-all duration-300 rounded-3xl group h-full shadow-md hover:shadow-2xl overflow-hidden flex flex-col justify-between transform-gpu">
-                <div className="h-44 w-full relative overflow-hidden bg-[#1C1917]">
-                  <img src={s.img} alt={s.title} className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
-                  <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/90 text-[#1C1917] group-hover:bg-[#0F52BA] group-hover:text-white flex items-center justify-center transition-all shadow-sm">
-                    <ArrowUpRight className="w-4 h-4" />
+              <Link href={s.href} className="block border border-[#1E2E4A] border-t-white/15 bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] hover:border-[#3B82F6]/80 shadow-[0_20px_50px_rgba(0,0,0,0.65),0_0_20px_rgba(59,130,246,0.08)] hover:shadow-[0_25px_65px_rgba(0,0,0,0.85),0_0_45px_rgba(59,130,246,0.3)] transition-all duration-300 rounded-3xl group h-full overflow-hidden flex flex-col justify-between transform-gpu">
+                <div className="h-48 w-full relative overflow-hidden bg-[#040810]">
+                  <img src={s.img} alt={s.title} className="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#091222] via-transparent to-transparent" />
+                  <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#040810] border border-[#1E2E4A] text-[#F8FAFC] group-hover:bg-[#3B82F6] group-hover:border-[#3B82F6] group-hover:text-white flex items-center justify-center transition-all shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                    <ArrowUpRight className="w-5 h-5" />
                   </div>
                 </div>
-                <div className="p-7">
-                  <h3 className="font-bold text-xl text-[#1C1917] mb-2 group-hover:text-[#0F52BA] transition-colors">{s.title}</h3>
-                  <p className="text-[#78716C] text-xs leading-relaxed mb-5">{s.desc}</p>
-                  <div className="flex flex-wrap gap-2 pt-4 border-t border-[#D6D1C8]">
+                <div className="p-8">
+                  <h3 className="font-extrabold text-2xl text-[#F8FAFC] mb-2.5 group-hover:text-[#3B82F6] transition-colors">{s.title}</h3>
+                  <p className="text-[#94A3B8] text-xs sm:text-sm leading-relaxed mb-6 font-normal">{s.desc}</p>
+                  <div className="flex flex-wrap gap-2 pt-4 border-t border-[#1E2E4A]">
                     {s.tags.map((tag, idx) => (
-                      <span key={idx} className="text-[10px] font-mono px-2.5 py-1 bg-[#FAF8F4] border border-[#D6D1C8] rounded-full text-[#57534E]">
+                      <span key={idx} className="text-[11px] font-mono px-3 py-1 bg-gradient-to-r from-[#0B1426] to-[#040810] border border-[#1E2E4A] border-t-white/10 rounded-full text-[#94A3B8] font-bold">
                         {tag}
                       </span>
                     ))}
@@ -345,18 +345,18 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ── 5. OUR 4-STEP PROCESS ── */}
-      <section className="px-6 md:px-12 xl:px-20 py-24 bg-[#FAF8F4] border-b border-[#D6D1C8] relative overflow-hidden z-10">
+      {/* ── 5. OUR 4-STEP PROCESS (GRADIENT LOOK CARDS) ── */}
+      <section className="px-6 md:px-12 xl:px-20 py-28 bg-[#0B1220] border-b border-[#1E2E4A] relative overflow-hidden z-10">
         <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-80" />
 
         <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#0F52BA]/30 rounded-full text-[10px] font-mono font-bold text-[#0F52BA] uppercase tracking-widest mb-3 shadow-sm">
-              <Zap className="w-3 h-3 text-[#0F52BA]" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-[#0F1C33] to-[#091222] border border-[#1E2E4A] border-t-white/10 rounded-full text-xs sm:text-sm font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4 shadow-md">
+              <Zap className="w-4 h-4 text-[#3B82F6]" />
               HOW WE DELIVER
             </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[#1C1917] mb-4">Our 4-Step Process.</h2>
-            <p className="text-[#78716C] text-lg font-light">Predictable, fast, and transparent engineering.</p>
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-[#F8FAFC] mb-4">Our 4-Step Process.</h2>
+            <p className="text-[#94A3B8] text-lg sm:text-xl font-light">Predictable, fast, and transparent engineering.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -373,11 +373,11 @@ export default function HomeClient() {
                 viewport={{ once: true }} 
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -6 }}
-                className="bg-white/95 backdrop-blur-md p-8 rounded-3xl border border-[#D6D1C8] shadow-md relative group hover:border-[#0F52BA] transition-all"
+                className="bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] p-8 sm:p-9 rounded-3xl border border-[#1E2E4A] border-t-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.65),0_0_20px_rgba(59,130,246,0.08)] hover:shadow-[0_25px_65px_rgba(0,0,0,0.85),0_0_45px_rgba(59,130,246,0.3)] hover:border-[#3B82F6]/80 transition-all relative group"
               >
-                <div className="text-5xl font-black text-[#0F52BA] mb-4 font-mono">{step.num}</div>
-                <h3 className="text-xl font-bold text-[#1C1917] mb-3">{step.title}</h3>
-                <p className="text-[#78716C] text-xs font-normal leading-relaxed">{step.desc}</p>
+                <div className="text-6xl font-black text-[#3B82F6] mb-5 font-mono">{step.num}</div>
+                <h3 className="text-2xl font-extrabold text-[#F8FAFC] mb-3">{step.title}</h3>
+                <p className="text-[#94A3B8] text-xs sm:text-sm font-normal leading-relaxed">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -388,19 +388,19 @@ export default function HomeClient() {
       <GoogleReviewsSection />
 
       {/* ── 7. FINAL CALL TO ACTION ── */}
-      <section className="px-6 md:px-12 xl:px-20 py-36 text-center relative overflow-hidden bg-[#FAF8F4]">
+      <section className="px-6 md:px-12 xl:px-20 py-40 text-center relative overflow-hidden bg-[#0B1220]">
         <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-100" />
         
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-[#1C1917] mb-6 leading-[0.9]">
+          <h2 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter text-[#F8FAFC] mb-6 leading-[0.9]">
             Ready to build something<br />extraordinary?
           </h2>
-          <p className="text-lg text-[#78716C] mb-8 max-w-xl mx-auto font-light">
+          <p className="text-lg sm:text-2xl text-[#94A3B8] mb-10 max-w-2xl mx-auto font-light">
             Let's talk. We reply within 24 hours with a clear, honest architectural assessment.
           </p>
-          <Link href="/contact" className="inline-flex items-center gap-3 bg-[#0F52BA] text-white px-10 py-5 font-black text-xs tracking-widest uppercase hover:bg-[#1C1917] transition-all duration-300 rounded-full shadow-2xl hover:scale-105 transform-gpu">
+          <Link href="/contact" className="inline-flex items-center gap-3 bg-[#3B82F6] text-white px-10 sm:px-12 py-5 sm:py-6 font-black text-xs sm:text-sm tracking-widest uppercase hover:bg-white hover:text-[#0B1220] transition-all duration-300 rounded-full shadow-[0_15px_40px_rgba(59,130,246,0.4)] hover:scale-105 transform-gpu">
             Book a Strategy Call
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-5 h-5" />
           </Link>
         </motion.div>
       </section>

@@ -7,39 +7,39 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-heading: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   
-  /* Warm Cream-Grey Light Palette */
-  --color-background: #F0EDE6; /* Warm Cream Grey */
-  --color-foreground: #1C1917; /* Warm Charcoal */
+  /* Logo-Aligned Theme: Midnight Navy & Electric Royal Blue */
+  --color-background: #0B1220; /* Midnight Deep Navy Blue */
+  --color-foreground: #F8FAFC; /* Crisp Ice White */
   
-  --color-card: #FAF8F4;
-  --color-card-foreground: #1C1917;
+  --color-card: #0F172A; /* Sleek Obsidian Midnight Navy Card */
+  --color-card-foreground: #F8FAFC;
   
-  --color-popover: #FAF8F4;
-  --color-popover-foreground: #1C1917;
+  --color-popover: #0F172A;
+  --color-popover-foreground: #F8FAFC;
   
-  --color-primary: #1C1917;
-  --color-primary-foreground: #F0EDE6;
+  --color-primary: #F8FAFC;
+  --color-primary-foreground: #0B1220;
   
-  --color-secondary: #E8E4DC;
-  --color-secondary-foreground: #1C1917;
+  --color-secondary: #1E293B;
+  --color-secondary-foreground: #F8FAFC;
   
-  --color-muted: #E8E4DC;
-  --color-muted-foreground: #78716C;
+  --color-muted: #1E293B;
+  --color-muted-foreground: #94A3B8;
   
-  --color-accent: #0F52BA; /* Sapphire Blue Brand */
+  --color-accent: #3B82F6; /* Electric Royal Blue (Matches NM Logo Brand Accent) */
   --color-accent-foreground: #FFFFFF;
   
-  --color-brand: #0F52BA;
+  --color-brand: #3B82F6;
   --color-brand-foreground: #FFFFFF;
   
   --color-destructive: oklch(0.577 0.245 27.325);
   --color-destructive-foreground: #FFFFFF;
   
-  --color-border: #D6D1C8;
-  --color-input: #E8E4DC;
-  --color-ring: #0F52BA;
+  --color-border: #1E2E4A; /* Steel Navy Border */
+  --color-input: #162032;
+  --color-ring: #3B82F6;
   
-  --radius-lg: 0px; /* Swiss Style: sharp corners */
+  --radius-lg: 0px;
   --radius-md: 0px;
   --radius-sm: 0px;
 }
@@ -68,13 +68,31 @@
 
 /* Custom Selection */
 ::selection {
-  background-color: #0F52BA;
-  color: #FFFFFF;
+  background-color: #C68B59;
+  color: #0D0C0A;
 }
 
 /* Hide scrollbar for a cleaner Awwwards look */
 ::-webkit-scrollbar {
   display: none;
+}
+
+/* Enable custom scrollbar for modal windows */
+.modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #3B82F6 #070D18;
+}
+.modal-scroll::-webkit-scrollbar {
+  display: block !important;
+  width: 6px !important;
+}
+.modal-scroll::-webkit-scrollbar-track {
+  background: #070D18 !important;
+  border-radius: 9999px !important;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: #3B82F6 !important;
+  border-radius: 9999px !important;
 }
 
 /* Custom utilities for glassmorphism in light mode */

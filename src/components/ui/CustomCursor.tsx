@@ -56,7 +56,7 @@ export default function CustomCursor() {
   return (
     <motion.div 
       ref={cursorRef}
-      className="fixed top-0 left-0 w-5 h-5 bg-white rounded-full pointer-events-none z-[10000] hidden md:block mix-blend-difference transition-transform duration-200 ease-out"
+      className="fixed top-0 left-0 w-5 h-5 bg-white rounded-full pointer-events-none z-[99999999] hidden md:block mix-blend-difference transition-transform duration-200 ease-out"
       style={{ x: springX, y: springY }} 
     />
   );

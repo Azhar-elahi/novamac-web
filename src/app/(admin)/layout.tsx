@@ -22,16 +22,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const pathname = usePathname();
 
   return (
-    <div className="flex min-h-screen bg-background">
+    <div className="flex min-h-screen bg-[#0B1220] text-[#F8FAFC] font-sans">
       {/* Admin Sidebar */}
-      <aside className="w-64 border-r border-border bg-card hidden md:flex flex-col">
-        <div className="h-16 flex items-center px-6 border-b border-border bg-red-500/10">
-          <Link href="/7222-@dm1nl0g1n" className="flex items-center gap-2 font-heading font-bold text-xl text-red-500">
-            <ShieldAlert className="w-5 h-5" />
-            NovaMac Admin
+      <aside className="w-64 border-r border-[#1E2E4A] bg-[#0F172A] hidden md:flex flex-col">
+        <div className="h-16 flex items-center px-6 border-b border-[#1E2E4A] bg-[#0B1220]">
+          <Link href="/7222-@dm1nl0g1n" className="flex items-center gap-2 font-black text-lg tracking-wider text-[#3B82F6] uppercase">
+            <ShieldAlert className="w-5 h-5 text-[#3B82F6]" />
+            NOVAMAC ADMIN
           </Link>
         </div>
-        <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+        <nav className="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto">
           {adminNavItems.map((item) => {
             const isActive = pathname === item.href || (item.href !== "/7222-@dm1nl0g1n" && pathname.startsWith(item.href));
             return (
@@ -39,22 +39,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                  "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all",
                   isActive 
-                    ? "bg-red-500/10 text-red-500" 
-                    : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
+                    ? "bg-[#0B1220] text-[#3B82F6] border border-[#1E2E4A] shadow-sm" 
+                    : "text-[#94A3B8] hover:bg-[#0B1220]/50 hover:text-[#F8FAFC]"
                 )}
               >
-                <item.icon className="w-4 h-4" />
+                <item.icon className={cn("w-4 h-4", isActive ? "text-[#3B82F6]" : "text-[#94A3B8]")} />
                 {item.name}
               </Link>
             );
           })}
         </nav>
-        <div className="p-4 border-t border-border">
+        <div className="p-4 border-t border-[#1E2E4A]">
           <button
             onClick={() => signOut({ callbackUrl: '/' })}
-            className="flex items-center gap-3 px-3 py-2.5 w-full rounded-lg text-sm font-medium text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-colors"
+            className="flex items-center gap-3 px-3 py-2.5 w-full rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-[#94A3B8] hover:bg-red-950/40 hover:text-red-400 transition-colors"
           >
             <LogOut className="w-4 h-4" />
             Log Out
@@ -63,11 +63,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col min-w-0">
-        <header className="h-16 flex items-center px-6 border-b border-border bg-card md:hidden">
-          <Link href="/7222-@dm1nl0g1n" className="flex items-center gap-2 font-heading font-bold text-xl text-red-500">
-            <ShieldAlert className="w-5 h-5" />
-            Admin
+      <main className="flex-1 flex flex-col min-w-0 bg-[#0B1220]">
+        <header className="h-16 flex items-center px-6 border-b border-[#1E2E4A] bg-[#0F172A] md:hidden">
+          <Link href="/7222-@dm1nl0g1n" className="flex items-center gap-2 font-black text-lg text-[#3B82F6] uppercase tracking-wider">
+            <ShieldAlert className="w-5 h-5 text-[#3B82F6]" />
+            NOVAMAC ADMIN
           </Link>
         </header>
         <div className="flex-1 overflow-auto p-6 md:p-8">
