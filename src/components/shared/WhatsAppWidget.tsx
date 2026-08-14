@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { MessageSquare, Phone, X, ExternalLink, Sparkles } from "lucide-react";
+import { MessageSquare, PhoneCall, X, ArrowUpRight, ShieldCheck, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function WhatsAppWidget() {
@@ -21,20 +21,26 @@ export function WhatsAppWidget() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  const numbers = [
+  const channels = [
     {
-      label: "US Direct Line",
+      title: "United States HQ",
       phone: "+1 (510) 585-4258",
       raw: "15105854258",
-      badge: "USA",
-      desc: "Client Strategy & Support",
+      tag: "USA OFFICE",
+      desc: "Direct Executive & Strategy Line",
+      hoverBorder: "hover:border-[#3B82F6] hover:bg-[#3B82F6]/10",
+      accentColor: "text-[#3B82F6]",
+      bgAccent: "bg-[#3B82F6]/15 border-[#3B82F6]/30",
     },
     {
-      label: "Global Instant WhatsApp",
+      title: "Global WhatsApp Desk",
       phone: "+92 317 4723510",
       raw: "923174723510",
-      badge: "24/7",
-      desc: "Fast Technical & Sales Chat",
+      tag: "24/7 SUPPORT",
+      desc: "Instant Technical & Project Consult",
+      hoverBorder: "hover:border-[#25D366] hover:bg-[#25D366]/10",
+      accentColor: "text-[#25D366]",
+      bgAccent: "bg-[#25D366]/15 border-[#25D366]/30",
     },
   ];
 
@@ -43,84 +49,92 @@ export function WhatsAppWidget() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 15, scale: 0.95 }}
+            initial={{ opacity: 0, y: 15, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 15, scale: 0.95 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="mb-3 w-80 sm:w-88 bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#25D366]/40 rounded-3xl p-5 shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_30px_rgba(37,211,102,0.2)] relative text-[#F8FAFC] backdrop-blur-xl"
+            exit={{ opacity: 0, y: 15, scale: 0.96 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="mb-3 w-80 sm:w-96 bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 rounded-3xl p-5 sm:p-6 shadow-[0_30px_90px_rgba(0,0,0,0.9),0_0_40px_rgba(59,130,246,0.15)] relative text-[#F8FAFC] backdrop-blur-xl"
           >
-            {/* Header */}
-            <div className="flex items-center justify-between border-b border-[#1E2E4A] pb-3 mb-4">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-[#25D366]/20 border border-[#25D366]/40 text-[#25D366] flex items-center justify-center font-bold">
-                  <MessageSquare className="w-4 h-4" />
+            {/* Executive Header */}
+            <div className="flex items-center justify-between border-b border-[#1E2E4A] pb-4 mb-4">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse" />
+                  <span className="font-mono text-[10px] font-bold text-[#25D366] uppercase tracking-widest">
+                    DIRECT WHATSAPP CONNECT
+                  </span>
                 </div>
-                <div>
-                  <h4 className="font-extrabold text-sm text-[#F8FAFC] flex items-center gap-1.5">
-                    Start WhatsApp Chat
-                    <Sparkles className="w-3.5 h-3.5 text-[#25D366]" />
-                  </h4>
-                  <p className="text-[10px] font-mono text-[#94A3B8]">Select number to open chat</p>
-                </div>
+                <h3 className="font-black text-base text-[#F8FAFC]">NovaMac Engineering Desk</h3>
+                <p className="text-xs text-[#94A3B8] font-normal mt-0.5">
+                  Select a direct line to start instant WhatsApp chat.
+                </p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-7 h-7 rounded-full bg-[#070D18] text-[#94A3B8] hover:text-white flex items-center justify-center border border-[#1E2E4A] transition-colors"
-                title="Close menu"
+                className="w-8 h-8 rounded-full bg-[#070D18] text-[#94A3B8] hover:text-white flex items-center justify-center border border-[#1E2E4A] transition-colors shrink-0"
+                title="Close"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            {/* Options List */}
+            {/* Channels */}
             <div className="space-y-3">
-              {numbers.map((item) => (
+              {channels.map((ch) => (
                 <a
-                  key={item.raw}
-                  href={`https://wa.me/${item.raw}?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20discuss%20a%20project.`}
+                  key={ch.raw}
+                  href={`https://wa.me/${ch.raw}?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20discuss%20a%20project.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="group flex items-center justify-between p-3.5 rounded-2xl bg-[#070D18] border border-[#1E2E4A] hover:border-[#25D366] hover:bg-[#25D366]/10 transition-all duration-300 relative overflow-hidden"
+                  className={`group flex items-center justify-between p-4 rounded-2xl bg-[#070D18] border border-[#1E2E4A] ${ch.hoverBorder} transition-all duration-300 relative overflow-hidden`}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                      <Phone className="w-4 h-4" />
+                  <div className="flex items-center gap-3.5">
+                    <div className={`w-10 h-10 rounded-xl ${ch.bgAccent} border ${ch.accentColor} flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform`}>
+                      <PhoneCall className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-mono text-[10px] font-bold text-[#94A3B8] uppercase tracking-wider">{item.label}</span>
-                        <span className="text-[9px] font-mono font-extrabold px-1.5 py-0.5 rounded bg-[#25D366] text-black uppercase">
-                          {item.badge}
+                      <div className="flex items-center gap-2 mb-0.5">
+                        <span className="font-mono text-[9px] font-bold text-[#94A3B8] uppercase tracking-wider">{ch.title}</span>
+                        <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#1E2E4A] text-[#F8FAFC] uppercase">
+                          {ch.tag}
                         </span>
                       </div>
-                      <div className="font-extrabold text-sm text-[#F8FAFC] group-hover:text-[#25D366] transition-colors">
-                        {item.phone}
+                      <div className="font-black text-base text-[#F8FAFC] group-hover:text-white transition-colors">
+                        {ch.phone}
                       </div>
-                      <div className="text-[10px] text-[#94A3B8]/80 font-normal">{item.desc}</div>
+                      <div className="text-[11px] text-[#94A3B8] font-normal">{ch.desc}</div>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-[#94A3B8] group-hover:text-[#25D366] group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                  <ArrowUpRight className={`w-5 h-5 ${ch.accentColor} group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 ml-2`} />
                 </a>
               ))}
             </div>
 
-            <div className="mt-4 pt-3 border-t border-[#1E2E4A] text-center font-mono text-[10px] text-[#94A3B8]">
-              ⚡ Typical response time: &lt; 15 mins
+            {/* Footer Trust Indicator */}
+            <div className="mt-4 pt-3 border-t border-[#1E2E4A] flex items-center justify-between font-mono text-[10px] text-[#94A3B8]">
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#3B82F6]" /> Verified Studio Channels
+              </span>
+              <span className="flex items-center gap-1 text-[#F8FAFC] font-bold">
+                <Globe className="w-3 h-3 text-[#3B82F6]" /> Worldwide
+              </span>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Trigger Button */}
+      {/* Floating Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-[#25D366] hover:bg-[#20ba5a] text-black font-black px-4 py-3 rounded-full shadow-[0_10px_35px_rgba(37,211,102,0.45)] flex items-center gap-2.5 hover:scale-105 transition-all duration-300 border border-white/30 text-xs sm:text-sm cursor-pointer group"
-        title="Chat on WhatsApp"
+        className="bg-gradient-to-r from-[#0F1C33] via-[#091222] to-[#050A14] hover:from-[#132442] hover:to-[#091222] border border-[#1E2E4A] border-t-white/15 text-[#F8FAFC] font-extrabold px-5 py-3.5 rounded-full shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(37,211,102,0.25)] flex items-center gap-3 hover:scale-105 transition-all duration-300 text-xs sm:text-sm cursor-pointer group"
+        title="Open WhatsApp Contacts"
       >
-        <span className="w-2.5 h-2.5 rounded-full bg-black animate-pulse" />
-        <MessageSquare className="w-4 h-4 text-black group-hover:rotate-12 transition-transform" />
-        <span>WhatsApp</span>
+        <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse" />
+        <div className="w-6 h-6 rounded-full bg-[#25D366] text-black flex items-center justify-center font-bold shrink-0 shadow-sm group-hover:rotate-12 transition-transform">
+          <MessageSquare className="w-3.5 h-3.5 fill-black" />
+        </div>
+        <span className="font-mono tracking-wider text-xs font-bold uppercase">WhatsApp Connect</span>
       </button>
     </div>
   );
