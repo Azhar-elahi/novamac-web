@@ -158,8 +158,23 @@ export default function ContactClient() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-mono text-[#94A3B8] font-bold uppercase">DIRECT PHONE</div>
-                  <a href="tel:+14154804281" className="font-bold text-base text-[#F8FAFC] hover:text-[#3B82F6]">415 480 4281</a>
+                  <div className="text-[10px] font-mono text-[#94A3B8] font-bold uppercase">US DIRECT PHONE</div>
+                  <a href="https://wa.me/15105854258?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" className="font-bold text-base text-[#F8FAFC] hover:text-[#3B82F6] transition-colors block">
+                    +1 (510) 585-4258
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <div className="w-11 h-11 rounded-full bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center shrink-0 shadow-inner">
+                  <Phone className="w-5 h-5 text-[#25D366]" />
+                </div>
+                <div>
+                  <div className="text-[10px] font-mono text-[#25D366] font-bold uppercase">WHATSAPP CHAT DIRECT</div>
+                  <a href="https://wa.me/923174723510?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" className="font-bold text-base text-[#F8FAFC] hover:text-[#25D366] transition-colors flex items-center gap-2">
+                    +92 317 4723510
+                    <span className="text-[10px] bg-[#25D366] text-black font-extrabold font-mono px-2 py-0.5 rounded-full uppercase tracking-wider">Chat Now</span>
+                  </a>
                 </div>
               </div>
 

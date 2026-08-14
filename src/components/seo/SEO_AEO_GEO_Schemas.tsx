@@ -11,7 +11,7 @@ export function SEO_AEO_GEO_Schemas() {
     "logo": "https://novamacsolutions.com/logo.png",
     "image": "https://novamacsolutions.com/og-image.png",
     "description": "NovaMac Solutions is a software engineering and UI/UX design studio specializing in custom Next.js web applications, AI automation, custom CRMs, and headless e-commerce platforms.",
-    "telephone": "+1-415-480-4281",
+    "telephone": "+1-510-585-4258",
     "email": "hello@novamacsolutions.com",
     "priceRange": "$$",
     "address": {

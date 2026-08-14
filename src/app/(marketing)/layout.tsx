@@ -177,6 +177,18 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
       {/* ── GLOBAL INTERACTIVE FLOATING AI CHAT WIDGET & BOOKING MODAL ── */}
       <ChatWidget />
       <BookingModal />
+
+      {/* ── FLOATING DIRECT WHATSAPP ACTION BUTTON ── */}
+      <a
+        href="https://wa.me/923174723510?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20discuss%20a%20project."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 left-6 z-[9999] bg-[#25D366] text-black font-extrabold px-4 py-3 rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.4)] flex items-center gap-2 hover:scale-105 transition-all duration-300 border border-white/20 text-xs sm:text-sm cursor-pointer"
+        title="Chat with NovaMac on WhatsApp"
+      >
+        <span className="w-2.5 h-2.5 rounded-full bg-black animate-pulse" />
+        WhatsApp Us (+92 317 4723510)
+      </a>
     </div>
   );
 }
