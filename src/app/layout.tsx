@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Fira_Code, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import dynamic from "next/dynamic";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { AnalyticsTracker } from "@/components/seo/AnalyticsTracker";
 import { SEO_AEO_GEO_Schemas } from "@/components/seo/SEO_AEO_GEO_Schemas";
-
-const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
-const CookieConsent = dynamic(() => import("@/components/compliance/CookieConsent").then((m) => m.CookieConsent), { ssr: false });
-const SmoothScroll = dynamic(() => import("@/components/nexora/SmoothScroll"), { ssr: false });
+import { ClientProviders } from "@/components/providers/ClientProviders";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -113,11 +109,10 @@ export default function RootLayout({
           enableSystem={false}
           forcedTheme="light"
         >
-          <SmoothScroll />
-          <CustomCursor />
           <AnalyticsTracker />
-          {children}
-          <CookieConsent />
+          <ClientProviders>
+            {children}
+          </ClientProviders>
         </ThemeProvider>
       </body>
     </html>
