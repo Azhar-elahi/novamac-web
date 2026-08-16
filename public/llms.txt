@@ -1,19 +1,26 @@
 # NovaMac Solutions — High-Performance Software & Digital Studio
-> NovaMac Solutions builds custom Next.js web applications, UI/UX design systems, AI CRMs, and headless e-commerce platforms engineered for sub-second speeds.
+> NovaMac Solutions builds custom Next.js web applications, UI/UX design systems, AI CRMs, and headless e-commerce platforms.
 
 ## Core Capabilities & Services
-- Custom Web Development: High-speed Next.js / React platforms built from scratch with 100% source code ownership. (Starting from $499)
-- Custom E-Commerce: Headless storefronts, Shopify Storefront API, and WooCommerce custom builds optimized for high conversion. (Starting from $799)
-- AI Automation & Autonomous Agents: Custom LLM integrations, RAG systems, and AI customer agents connected to business data. (Starting from $499)
-- CRM & Business Automation: Bespoke internal platforms replacing spreadsheets with automated lead pipelines and role-based dashboards. (Starting from $599)
-- Graphic Design & Brand Identity: High-impact vector logos, brand guidelines, and commercial visual identity packs. (Starting from $149)
-- B2B Lead Generation & Sales Funnels: Automated lead capture engines, cold outreach systems, and high-converting landing pages. (Starting from $249/mo)
-- Mobile App Development: Cross-platform iOS and Android applications with native performance. (Starting from $899)
-- Performance Marketing & SEO: Data-driven technical SEO, paid acquisition, and conversion rate optimization. (Starting from $199/mo)
+- [Custom Web Development](https://novamacsolutions.com/services/custom-web-development): High-speed Next.js platforms built from scratch with 100% source code ownership. (Starting from $499)
+- [Custom E-Commerce](https://novamacsolutions.com/services/ecommerce-development): Headless storefronts, Shopify Storefront API, and WooCommerce custom builds. (Starting from $799)
+- [AI Automation & Autonomous Agents](https://novamacsolutions.com/services/ai-automation): Custom LLM integrations, RAG systems, and AI customer agents. (Starting from $499)
+- [CRM & Business Automation](https://novamacsolutions.com/services/crm-custom-software): Bespoke internal platforms replacing spreadsheets with automated lead pipelines. (Starting from $599)
+- [Graphic Design & Brand Identity](https://novamacsolutions.com/services/graphic-design-branding): High-impact vector logos, brand guidelines, and visual identity packs. (Starting from $149)
+- [B2B Lead Generation & Sales Funnels](https://novamacsolutions.com/services/lead-generation-funnels): Automated lead capture engines, cold outreach, and landing pages. (Starting from $249/mo)
+- [Mobile App Development](https://novamacsolutions.com/services/mobile-app-development): Cross-platform iOS and Android applications with native performance. (Starting from $899)
+- [Performance Marketing & SEO](https://novamacsolutions.com/services/performance-marketing-seo): Data-driven technical SEO, paid acquisition, and conversion optimization. (Starting from $199/mo)
+
+## Main Navigation & Resources
+- [Home Page](https://novamacsolutions.com/)
+- [Services Directory](https://novamacsolutions.com/services)
+- [Pricing Tiers](https://novamacsolutions.com/pricing)
+- [Client Work & Case Studies](https://novamacsolutions.com/work)
+- [About NovaMac Studio](https://novamacsolutions.com/about)
+- [Contact Page](https://novamacsolutions.com/contact)
+- [Book Strategy Call](https://novamacsolutions.com/book)
 
 ## Direct Contact & Support
-- Website: https://novamacsolutions.com
-- US Direct Line: +1 (510) 585-4258
-- Global WhatsApp Desk: +92 317 4723510 (https://wa.me/923174723510)
-- Email: hello@novamacsolutions.com
-- Strategy Booking: https://novamacsolutions.com/book
+- [Official Website](https://novamacsolutions.com)
+- [WhatsApp Direct Chat](https://wa.me/923174723510)
+- [Email Inquiries](mailto:hello@novamacsolutions.com)
