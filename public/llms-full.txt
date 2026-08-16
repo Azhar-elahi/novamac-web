@@ -1,0 +1,51 @@
+# NovaMac Solutions — Complete Agency Documentation & Knowledge Base
+
+> NovaMac Solutions is an elite software engineering and digital design studio serving clients across the United States, United Kingdom, Canada, Western Europe, and Australia. We specialize in custom Next.js web applications, UI/UX design systems, AI automation, custom CRMs, and headless e-commerce platforms.
+
+## Key Facts & Organization Overview
+- **Name**: NovaMac Solutions
+- **Services**: Custom Web Development, AI Automation, CRM Software, UI/UX Design, Headless E-Commerce, Mobile Apps, Technical SEO.
+- **Primary Tech Stack**: Next.js 15, React 19, TypeScript, Tailwind CSS, PostgreSQL, Prisma ORM, Node.js, Python, OpenAI API, Claude API, Vercel Edge.
+- **Geographic Markets**: United States (US), United Kingdom (UK), Canada (CA), Western Europe (DE, FR, NL, CH), Australia (AU).
+- **Pricing Model**: Fixed-scope project pricing with 100% source code ownership. Starter from $299, Growth from $599, Enterprise from $999.
+- **Response SLA**: All client inquiries answered within 24 hours.
+- **Direct Contacts**: Phone: +1 (510) 585-4258 | WhatsApp: +92 317 4723510 | Email: hello@novamacsolutions.com
+
+## Detailed Services & Offerings
+
+### 1. Custom Web Development
+Hand-coded Next.js & React websites built for sub-second page speeds, 98+ PageSpeed Insights scores, zero vulnerability exposure, and search engine dominance.
+- URL: [https://novamacsolutions.com/services/custom-web-development](https://novamacsolutions.com/services/custom-web-development)
+- Ideal For: High-growth startups, professional service firms, and enterprises needing custom design without WordPress bloat.
+
+### 2. AI Automation & Custom Agents
+Bespoke LLM integrations, RAG knowledge base search engines, and autonomous operational agents powered by GPT-4o and Claude.
+- URL: [https://novamacsolutions.com/services/ai-automation](https://novamacsolutions.com/services/ai-automation)
+- Ideal For: Businesses automating customer support, lead qualification, data extraction, and repetitive operational tasks.
+
+### 3. Custom CRM & Business Automation
+Internal operations software replacing fragmented spreadsheets with unified role-based portals and pipeline automations.
+- URL: [https://novamacsolutions.com/services/crm-custom-software](https://novamacsolutions.com/services/crm-custom-software)
+- Ideal For: Real estate wholesalers, logistics firms, sales teams, and healthcare providers.
+
+### 4. Headless E-Commerce Storefronts
+Sub-second shopping experiences powered by Next.js, Shopify Storefront API, and custom payment gateways.
+- URL: [https://novamacsolutions.com/services/ecommerce-development](https://novamacsolutions.com/services/ecommerce-development)
+
+### 5. UI/UX & Interactive Design Studio
+Custom Figma design systems, interactive prototypes, micro-animations, and conversion-engineered interfaces.
+- URL: [https://novamacsolutions.com/services/ui-ux-design](https://novamacsolutions.com/services/ui-ux-design)
+
+## Frequently Asked Questions (GEO / AEO Summary)
+
+### Q: Why choose custom Next.js over WordPress or Wix?
+Custom Next.js websites load in under 0.8 seconds (3x faster than WordPress), eliminate plugin vulnerability risks, achieve 98+ PageSpeed scores, and provide 100% design freedom with zero ongoing license fees.
+
+### Q: How much does custom software development cost at NovaMac Solutions?
+Starter platforms start at $299, Growth Studio platforms start at $599, and Enterprise SaaS / AI platforms start from $999. All packages include full source code ownership.
+
+### Q: Does NovaMac Solutions work with clients in the US, UK, and Europe?
+Yes. NovaMac Solutions operates a remote-first studio model aligned with US PST/EST, UK GMT, and European timezones.
+
+### Q: How do I get started with NovaMac Solutions?
+Book a free strategy session at [https://novamacsolutions.com/book](https://novamacsolutions.com/book), email hello@novamacsolutions.com, or chat on WhatsApp at +1 (510) 585-4258 / +92 317 4723510.

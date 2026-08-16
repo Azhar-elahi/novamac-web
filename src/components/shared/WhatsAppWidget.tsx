@@ -73,6 +73,7 @@ export function WhatsAppWidget() {
                 onClick={() => setIsOpen(false)}
                 className="w-8 h-8 rounded-full bg-[#070D18] text-[#94A3B8] hover:text-white flex items-center justify-center border border-[#1E2E4A] transition-colors shrink-0"
                 title="Close"
+                aria-label="Close WhatsApp menu"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -129,6 +130,7 @@ export function WhatsAppWidget() {
         onClick={() => setIsOpen(!isOpen)}
         className="bg-gradient-to-r from-[#0F1C33] via-[#091222] to-[#050A14] hover:from-[#132442] hover:to-[#091222] border border-[#1E2E4A] border-t-white/15 text-[#F8FAFC] font-extrabold px-5 py-3.5 rounded-full shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(37,211,102,0.25)] flex items-center gap-3 hover:scale-105 transition-all duration-300 text-xs sm:text-sm cursor-pointer group"
         title="Open WhatsApp Contacts"
+        aria-label="Open WhatsApp direct chat options"
       >
         <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse" />
         <div className="w-6 h-6 rounded-full bg-[#25D366] text-black flex items-center justify-center font-bold shrink-0 shadow-sm group-hover:rotate-12 transition-transform">
