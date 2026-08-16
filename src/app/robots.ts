@@ -9,18 +9,26 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/7222-@dm1nl0g1n/', '/api/auth/'],
       },
       {
-        // Explicitly welcome AI Answer & Generative Search Engine crawlers (AEO / GEO)
+        // Explicitly grant full permission to all Anthropic / Claude, OpenAI, and Generative Search bots
         userAgent: [
-          'GPTBot',
-          'PerplexityBot',
           'ClaudeBot',
-          'Applebot-Extended',
+          'Claude-Web',
+          'anthropic-ai',
+          'GPTBot',
+          'ChatGPT-User',
+          'PerplexityBot',
           'Google-Extended',
-          'ChatGPT-User'
+          'Applebot-Extended',
+          'CCBot',
+          'Diffbot',
+          'Bytespider',
+          'FacebookExternalHit',
+          'Twitterbot',
+          'LinkedInBot',
         ],
         allow: '/',
         disallow: ['/7222-@dm1nl0g1n/', '/api/auth/'],
-      }
+      },
     ],
     sitemap: 'https://novamacsolutions.com/sitemap.xml',
   };
