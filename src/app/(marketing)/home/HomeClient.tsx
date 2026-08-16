@@ -44,7 +44,7 @@ const SERVICE_SLIDES = [
     title: "Web Applications & SaaS",
     subtitle: "Full-Stack Enterprise Portals",
     desc: "Scalable cloud applications powered by React, Node.js, PostgreSQL, and real-time data streaming.",
-    img: "/images/web_app.jpg",
+    img: "/images/web_app.webp",
     href: "/services",
     tag: "SAAS ARCHITECTURE",
     stats: [
@@ -58,7 +58,7 @@ const SERVICE_SLIDES = [
     title: "AI & CRM Automation",
     subtitle: "Autonomous Operations & LLMs",
     desc: "Bespoke CRMs and autonomous AI workflows that eliminate 90% of manual operational tasks.",
-    img: "/images/ai_automation.jpg",
+    img: "/images/ai_automation.webp",
     href: "/services",
     tag: "AI AUTOMATION",
     stats: [
@@ -305,12 +305,12 @@ export default function HomeClient() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 relative z-10">
           {[
-            { title: "Custom Web Development", desc: "Hand-coded Next.js & React websites built for sub-second speeds, SEO dominance, and scale.", img: "/images/web_dev.jpg", href: "/services/custom-web-development", tags: ["Next.js", "React", "SEO"] },
-            { title: "UI/UX Design Studio", desc: "Pixel-perfect interfaces and design systems crafted for high conversion.", img: "/images/ui_ux.jpg", href: "/services", tags: ["Figma", "Prototypes"] },
-            { title: "Web Applications & SaaS", desc: "Scalable full-stack SaaS platforms, portals, and dashboards.", img: "/images/web_app.jpg", href: "/services", tags: ["PostgreSQL", "Prisma"] },
-            { title: "AI & CRM Automation", desc: "Bespoke CRMs and autonomous AI workflows that eliminate manual operational tasks.", img: "/images/ai_automation.jpg", href: "/services", tags: ["OpenAI", "Claude"] },
-            { title: "E-Commerce Storefronts", desc: "Headless e-commerce platforms engineered for speed and seamless checkout.", img: "/images/ecommerce.jpg", href: "/services/ecommerce-development", tags: ["Shopify", "Stripe"] },
-            { title: "SEO & Digital Growth", desc: "Technical SEO audits and keyword dominance to get you found organically.", img: "/images/web_dev.jpg", href: "/services", tags: ["Technical SEO", "Growth"] },
+            { title: "Custom Web Development", desc: "Hand-coded Next.js & React websites built for sub-second speeds, SEO dominance, and scale.", img: "/images/web_dev.webp", href: "/services/custom-web-development", tags: ["Next.js", "React", "SEO"] },
+            { title: "UI/UX Design Studio", desc: "Pixel-perfect interfaces and design systems crafted for high conversion.", img: "/images/ui_ux.webp", href: "/services", tags: ["Figma", "Prototypes"] },
+            { title: "Web Applications & SaaS", desc: "Scalable full-stack SaaS platforms, portals, and dashboards.", img: "/images/web_app.webp", href: "/services", tags: ["PostgreSQL", "Prisma"] },
+            { title: "AI & CRM Automation", desc: "Bespoke CRMs and autonomous AI workflows that eliminate manual operational tasks.", img: "/images/ai_automation.webp", href: "/services", tags: ["OpenAI", "Claude"] },
+            { title: "E-Commerce Storefronts", desc: "Headless e-commerce platforms engineered for speed and seamless checkout.", img: "/images/ecommerce.webp", href: "/services/ecommerce-development", tags: ["Shopify", "Stripe"] },
+            { title: "SEO & Digital Growth", desc: "Technical SEO audits and keyword dominance to get you found organically.", img: "/images/web_dev.webp", href: "/services", tags: ["Technical SEO", "Growth"] },
           ].map((s, i) => (
             <motion.div 
               key={s.title} 

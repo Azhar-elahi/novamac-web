@@ -9,12 +9,12 @@ import { DoodleUnderline } from "@/components/immersive/Doodles";
 import { RichBackgroundArt } from "@/components/immersive/RichBackgroundArt";
 
 const NDA_PROJECTS = [
-  { title: "Global FinTech SaaS Platform", category: "Web Apps", desc: "High-frequency dashboard & trading platform architecture built under strict NDA.", img: "/images/web_app.jpg" },
-  { title: "Automated Logistics CRM", category: "AI & Automation", desc: "Autonomous AI dispatching system managing 500+ daily transport pipelines.", img: "/images/ai_automation.jpg" },
-  { title: "Luxury Retail E-Commerce", category: "E-Commerce", desc: "Headless Shopify storefront with custom 3D web configurator.", img: "/images/ecommerce.jpg" },
-  { title: "HealthTech Patient Portal", category: "Web Apps", desc: "HIPAA compliant web application with real-time biometric telemetry.", img: "/images/web_dev.jpg" },
-  { title: "Enterprise Design System", category: "Design", desc: "Comprehensive UI/UX design system for Fortune 500 tech enterprise.", img: "/images/ui_ux.jpg" },
-  { title: "Real Estate Wholesale Hub", category: "Web Dev", desc: "Lead generation & contract pipeline automation web platform.", img: "/images/web_dev.jpg" },
+  { title: "Global FinTech SaaS Platform", category: "Web Apps", desc: "High-frequency dashboard & trading platform architecture built under strict NDA.", img: "/images/web_app.webp" },
+  { title: "Automated Logistics CRM", category: "AI & Automation", desc: "Autonomous AI dispatching system managing 500+ daily transport pipelines.", img: "/images/ai_automation.webp" },
+  { title: "Luxury Retail E-Commerce", category: "E-Commerce", desc: "Headless Shopify storefront with custom 3D web configurator.", img: "/images/ecommerce.webp" },
+  { title: "HealthTech Patient Portal", category: "Web Apps", desc: "HIPAA compliant web application with real-time biometric telemetry.", img: "/images/web_dev.webp" },
+  { title: "Enterprise Design System", category: "Design", desc: "Comprehensive UI/UX design system for Fortune 500 tech enterprise.", img: "/images/ui_ux.webp" },
+  { title: "Real Estate Wholesale Hub", category: "Web Dev", desc: "Lead generation & contract pipeline automation web platform.", img: "/images/web_dev.webp" },
 ];
 
 export default function WorkClient({ projects }: { projects: Project[] }) {

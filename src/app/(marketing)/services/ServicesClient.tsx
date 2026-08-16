@@ -9,22 +9,22 @@ import { DoodleUnderline } from "@/components/immersive/Doodles";
 import { RichBackgroundArt } from "@/components/immersive/RichBackgroundArt";
 
 const serviceImages: Record<string, string> = {
-  "custom-web-development": "/images/web_dev.jpg",
-  "ecommerce-development": "/images/ecommerce.jpg",
-  "shopify-development": "/images/ecommerce.jpg",
-  "woocommerce-development": "/images/ecommerce.jpg",
-  "wordpress-development": "/images/web_dev.jpg",
-  "ai-automation": "/images/ai_automation.jpg",
-  "crm-business-automation": "/images/ai_automation.jpg",
-  "performance-marketing": "/images/marketing_seo.jpg",
-  "social-media-marketing": "/images/marketing_seo.jpg",
-  "seo-technical-audits": "/images/marketing_seo.jpg",
-  "mobile-app-development": "/images/mobile_app.jpg",
-  "ui-ux-design": "/images/ui_ux.jpg",
-  "graphic-design-branding": "/images/graphic_branding.jpg",
-  "lead-generation-funnels": "/images/lead_gen.jpg",
-  "cloud-devops": "/images/cloud_devops.jpg",
-  "maintenance-support": "/images/cloud_devops.jpg",
+  "custom-web-development": "/images/web_dev.webp",
+  "ecommerce-development": "/images/ecommerce.webp",
+  "shopify-development": "/images/ecommerce.webp",
+  "woocommerce-development": "/images/ecommerce.webp",
+  "wordpress-development": "/images/web_dev.webp",
+  "ai-automation": "/images/ai_automation.webp",
+  "crm-business-automation": "/images/ai_automation.webp",
+  "performance-marketing": "/images/marketing_seo.webp",
+  "social-media-marketing": "/images/marketing_seo.webp",
+  "seo-technical-audits": "/images/marketing_seo.webp",
+  "mobile-app-development": "/images/mobile_app.webp",
+  "ui-ux-design": "/images/ui_ux.webp",
+  "graphic-design-branding": "/images/graphic_branding.webp",
+  "lead-generation-funnels": "/images/lead_gen.webp",
+  "cloud-devops": "/images/cloud_devops.webp",
+  "maintenance-support": "/images/cloud_devops.webp",
 };
 
 export default function ServicesClient() {
