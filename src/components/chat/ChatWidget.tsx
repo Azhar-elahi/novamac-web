@@ -102,6 +102,7 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
     <>
       <button
         onClick={() => setIsOpen(true)}
+        aria-label="Open AI Assistant"
         className={cn(
           "fixed bottom-6 right-6 p-4 rounded-full shadow-xl shadow-brand/20 text-slate-800 transition-all hover:scale-110 z-50",
           isOpen ? "scale-0 opacity-0 pointer-events-none" : "scale-100 opacity-100",
@@ -126,7 +127,7 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
               {isPortal ? "Ask about your orders or tickets" : "How can we help you today?"}
             </p>
           </div>
-          <button onClick={() => setIsOpen(false)} className="p-1 rounded-md hover:bg-secondary transition-colors text-muted-foreground">
+          <button onClick={() => setIsOpen(false)} aria-label="Close Chat" className="p-1 rounded-md hover:bg-secondary transition-colors text-muted-foreground">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -183,6 +184,7 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
           />
           <button
             type="submit"
+            aria-label="Send message"
             disabled={!input.trim() || isLoading}
             className="p-2 rounded-full bg-brand text-slate-800 disabled:opacity-50 transition-colors"
           >

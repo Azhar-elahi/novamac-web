@@ -496,7 +496,7 @@ export default function MarketingPage() {
               
               <div className="flex-1 h-[220px] sm:h-[350px] lg:h-[600px] w-full rounded-2xl sm:rounded-[2.5rem] overflow-hidden border border-[#1E2E4A] border-t-white/15 shadow-2xl relative group bg-[#070D18]">
                 <div className="w-[110%] h-[110%] -left-[5%] -top-[5%] relative transition-transform duration-1000 group-hover:scale-105">
-                  <img src="/images/web_dev.jpg" alt="Design workflow" className="object-cover w-full h-full opacity-80" />
+                  <img src="/images/web_dev.webp" alt="Design workflow" width={800} height={450} loading="lazy" className="object-cover w-full h-full opacity-80" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050A14] via-[#050A14]/40 to-transparent" />
                 <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8">

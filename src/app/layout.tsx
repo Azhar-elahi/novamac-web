@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Inter, Fira_Code, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import dynamic from "next/dynamic";
 import { ThemeProvider } from "@/components/shared/theme-provider";
-import { CookieConsent } from "@/components/compliance/CookieConsent";
-import CustomCursor from "@/components/ui/CustomCursor";
 import { AnalyticsTracker } from "@/components/seo/AnalyticsTracker";
-import SmoothScroll from "@/components/nexora/SmoothScroll";
 import { SEO_AEO_GEO_Schemas } from "@/components/seo/SEO_AEO_GEO_Schemas";
+
+const CustomCursor = dynamic(() => import("@/components/ui/CustomCursor"), { ssr: false });
+const CookieConsent = dynamic(() => import("@/components/compliance/CookieConsent").then((m) => m.CookieConsent), { ssr: false });
+const SmoothScroll = dynamic(() => import("@/components/nexora/SmoothScroll"), { ssr: false });
 
 const inter = Inter({
   variable: "--font-sans",

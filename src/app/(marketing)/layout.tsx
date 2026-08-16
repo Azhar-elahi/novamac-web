@@ -4,11 +4,13 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { ChatWidget } from "@/components/chat/ChatWidget";
+import dynamic from "next/dynamic";
 import { useUIStore } from "@/store/useUIStore";
 import { BookingProvider, useBookingModal } from "@/components/booking/BookingContext";
-import { BookingModal } from "@/components/booking/BookingModal";
-import { WhatsAppWidget } from "@/components/shared/WhatsAppWidget";
+
+const ChatWidget = dynamic(() => import("@/components/chat/ChatWidget").then((m) => m.ChatWidget), { ssr: false });
+const BookingModal = dynamic(() => import("@/components/booking/BookingModal").then((m) => m.BookingModal), { ssr: false });
+const WhatsAppWidget = dynamic(() => import("@/components/shared/WhatsAppWidget").then((m) => m.WhatsAppWidget), { ssr: false });
 
 function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
   const { isLandingMode } = useUIStore();
