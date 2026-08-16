@@ -61,7 +61,7 @@ export default function CustomCursor() {
   return (
     <div 
       ref={cursorRef}
-      className="fixed top-0 left-0 w-4 h-4 bg-[#3B82F6] rounded-full pointer-events-none z-[99999999] hidden md:block opacity-90 shadow-[0_0_12px_rgba(59,130,246,0.8)] will-change-transform transform-gpu"
+      className="fixed top-0 left-0 w-5 h-5 bg-white rounded-full pointer-events-none z-[99999999] hidden md:block mix-blend-difference will-change-transform transform-gpu transition-transform duration-150 ease-out"
       style={{
         transform: "translate3d(-100px, -100px, 0px)",
       }}
