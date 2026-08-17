@@ -125,7 +125,7 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
       {/* ── FOOTER ── */}
       <footer className={`bg-[#070B14] text-[#F8FAFC] border-t border-[#1E2E4A] pt-20 pb-10 transition-opacity duration-500 relative z-10 ${showNav ? "opacity-100" : "opacity-0 pointer-events-none hidden"}`}>
         <div className="px-6 md:px-12 xl:px-20 max-w-[1400px] mx-auto relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16">
             <div className="col-span-2 space-y-4">
               <Link href="/" className="flex items-center gap-3">
                 <img src="/logo.png" alt="NovaMac Logo" className="w-10 h-10 object-contain rounded-xl border border-[#1E2E4A]" />
@@ -134,37 +134,45 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
                 </span>
               </Link>
               <p className="text-xs text-[#94A3B8] leading-relaxed max-w-sm font-normal">
-                NovaMac Solutions is a remote-first software engineering collective building sub-second Next.js web platforms, UI/UX design systems, and AI automation.
+                NovaMac Solutions is a remote-first software engineering studio building sub-second Next.js web platforms, custom CRMs, and autonomous AI agent workflows for clients across the US, UK, Canada, and Europe.
               </p>
+              <div className="flex items-center gap-2 pt-2">
+                <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+                <span className="font-mono text-[10px] text-[#94A3B8] font-bold uppercase tracking-wider">Accepting New Q3/Q4 Projects</span>
+              </div>
             </div>
 
             <div>
               <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">NAVIGATION</div>
-              <ul className="space-y-2.5 text-xs text-[#94A3B8]">
-                <li><Link href="/home" className="hover:text-[#3B82F6] transition-colors">Home</Link></li>
-                <li><Link href="/services" className="hover:text-[#3B82F6] transition-colors">Services</Link></li>
-                <li><Link href="/pricing" className="hover:text-[#3B82F6] transition-colors">Pricing</Link></li>
-                <li><Link href="/work" className="hover:text-[#3B82F6] transition-colors">Work</Link></li>
-                <li><Link href="/about" className="hover:text-[#3B82F6] transition-colors">About</Link></li>
-                <li><Link href="/contact" className="hover:text-[#3B82F6] transition-colors">Contact</Link></li>
+              <ul className="space-y-2 text-xs text-[#94A3B8]">
+                <li><Link href="/home" className="hover:text-[#3B82F6] transition-colors">Home Studio</Link></li>
+                <li><Link href="/services" className="hover:text-[#3B82F6] transition-colors">Services Directory</Link></li>
+                <li><Link href="/pricing" className="hover:text-[#3B82F6] transition-colors">Pricing & Plans</Link></li>
+                <li><Link href="/work" className="hover:text-[#3B82F6] transition-colors">Client Case Studies</Link></li>
+                <li><Link href="/about" className="hover:text-[#3B82F6] transition-colors">About NovaMac</Link></li>
+                <li><Link href="/contact" className="hover:text-[#3B82F6] transition-colors">Contact Engineering</Link></li>
               </ul>
             </div>
 
             <div>
-              <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">CAPABILITIES</div>
-              <ul className="space-y-2.5 text-xs text-[#94A3B8]">
-                <li><Link href="/services/custom-web-development" className="hover:text-[#3B82F6] transition-colors">Web Engineering</Link></li>
-                <li><Link href="/services" className="hover:text-[#3B82F6] transition-colors">UI/UX Studio</Link></li>
-                <li><Link href="/services" className="hover:text-[#3B82F6] transition-colors">SaaS Applications</Link></li>
-                <li><Link href="/services" className="hover:text-[#3B82F6] transition-colors">AI & CRM Automation</Link></li>
+              <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">SERVICES</div>
+              <ul className="space-y-2 text-xs text-[#94A3B8]">
+                <li><Link href="/services/custom-web-development" className="hover:text-[#3B82F6] transition-colors">Custom Web Development</Link></li>
+                <li><Link href="/services/ai-automation" className="hover:text-[#3B82F6] transition-colors">AI & Autonomous Agents</Link></li>
+                <li><Link href="/services/crm-custom-software" className="hover:text-[#3B82F6] transition-colors">Custom CRM Software</Link></li>
                 <li><Link href="/services/ecommerce-development" className="hover:text-[#3B82F6] transition-colors">Headless E-Commerce</Link></li>
+                <li><Link href="/services/ui-ux-design" className="hover:text-[#3B82F6] transition-colors">UI/UX Design Studio</Link></li>
+                <li><Link href="/services/mobile-app-development" className="hover:text-[#3B82F6] transition-colors">Mobile App Engineering</Link></li>
               </ul>
             </div>
 
             <div>
-              <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">LEGAL</div>
-              <ul className="space-y-2.5 text-xs text-[#94A3B8]">
-                <li><Link href="/privacy" className="hover:text-[#3B82F6] transition-colors">Privacy Policy</Link></li>
+              <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">GLOBAL REGIONS</div>
+              <ul className="space-y-2 text-xs text-[#94A3B8]">
+                <li><Link href="/us" className="hover:text-[#3B82F6] transition-colors">🇺🇸 United States (PST/EST)</Link></li>
+                <li><Link href="/uk" className="hover:text-[#3B82F6] transition-colors">🇬🇧 United Kingdom (GMT)</Link></li>
+                <li><Link href="/eu" className="hover:text-[#3B82F6] transition-colors">🇪🇺 Western Europe (CET)</Link></li>
+                <li><Link href="/privacy" className="hover:text-[#3B82F6] transition-colors mt-2 block border-t border-[#1E2E4A] pt-2">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="hover:text-[#3B82F6] transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
@@ -172,7 +180,9 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
 
           <div className="pt-8 border-t border-[#1E2E4A] flex flex-col sm:flex-row items-center justify-between text-xs text-[#94A3B8]">
             <p>© {new Date().getFullYear()} NovaMac Solutions. All rights reserved.</p>
-            <p className="font-mono text-[10px] tracking-widest uppercase mt-4 sm:mt-0 text-[#3B82F6]">ENGINEERED FOR SCALE</p>
+            <p className="font-mono text-[10px] tracking-widest uppercase mt-4 sm:mt-0 text-[#3B82F6]">
+              SUB-SECOND NEXT.JS ENGINEERING · 100% SOURCE CODE OWNERSHIP
+            </p>
           </div>
         </div>
       </footer>
