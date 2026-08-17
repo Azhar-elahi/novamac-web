@@ -14,6 +14,12 @@ export function SEO_AEO_GEO_Schemas() {
     "telephone": ["+1-510-585-4258", "+92-317-4723510"],
     "email": "hello@novamacsolutions.com",
     "priceRange": "$$",
+    "sameAs": [
+      "https://github.com/Azhar-elahi/novamac-web",
+      "https://clutch.co/profile/novamac-solutions",
+      "https://www.linkedin.com/company/novamacsolutions",
+      "https://twitter.com/novamacsol"
+    ],
     "areaServed": [
       "United States",
       "United Kingdom",
