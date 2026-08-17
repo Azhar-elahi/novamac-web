@@ -45,7 +45,7 @@ export function WhatsAppWidget() {
   ];
 
   return (
-    <div ref={menuRef} className="fixed bottom-6 left-6 z-[9999]">
+    <div ref={menuRef} className="fixed bottom-6 left-4 sm:left-6 z-[9999]">
       <AnimatePresence>
         {isOpen && (
           <motion.div

@@ -30,35 +30,35 @@ export function CookieConsent() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-6 md:right-auto md:w-[400px] p-6 rounded-2xl border border-white/10 shadow-2xl bg-[#0a0c16] backdrop-blur-xl z-[100] flex flex-col gap-4 animate-in slide-in-from-bottom-5">
+    <div className="fixed bottom-24 left-4 right-4 md:bottom-6 md:left-6 md:right-auto md:w-[380px] p-5 sm:p-6 rounded-2xl border border-[#1E2E4A] border-t-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.9)] bg-[#070D18]/95 backdrop-blur-xl z-[9990] flex flex-col gap-3 text-[#F8FAFC] animate-in slide-in-from-bottom-5">
       <div className="flex items-start justify-between">
-        <div className="flex items-center gap-3 text-brand">
-          <Cookie className="w-6 h-6" />
-          <h3 className="font-heading font-semibold text-foreground">Cookie Preferences</h3>
+        <div className="flex items-center gap-2.5 text-[#3B82F6]">
+          <Cookie className="w-5 h-5" />
+          <h3 className="font-heading font-bold text-sm text-[#F8FAFC]">Cookie Preferences</h3>
         </div>
         <button
           onClick={handleDecline}
-          className="text-muted-foreground hover:text-foreground transition-colors"
+          className="text-[#94A3B8] hover:text-white transition-colors p-1"
           aria-label="Decline and dismiss"
         >
           <X className="w-4 h-4" />
         </button>
       </div>
 
-      <p className="text-sm text-muted-foreground">
-        We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
+      <p className="text-xs text-[#94A3B8] leading-relaxed">
+        We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
       </p>
 
-      <div className="flex items-center gap-3 mt-2">
+      <div className="flex items-center gap-2.5 mt-1">
         <button
           onClick={handleAccept}
-          className="flex-1 py-2 bg-[#3B82F6] text-white text-sm font-bold rounded-lg hover:bg-[#3B82F6]/90 transition-colors shadow-sm"
+          className="flex-1 py-2 bg-[#3B82F6] text-white text-xs font-bold rounded-xl hover:bg-[#2563EB] transition-colors shadow-md"
         >
           Accept All
         </button>
         <button
           onClick={handleDecline}
-          className="flex-1 py-2 bg-secondary text-foreground text-sm font-medium rounded-lg hover:bg-secondary/80 border border-border transition-colors"
+          className="flex-1 py-2 bg-[#0F1C33] text-[#F8FAFC] text-xs font-medium rounded-xl hover:bg-[#1E2E4A] border border-[#1E2E4A] transition-colors"
         >
           Decline
         </button>
