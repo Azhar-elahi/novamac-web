@@ -17,6 +17,14 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Allowed origins
   allowedDevOrigins: ['192.168.189.1'],
+  async rewrites() {
+    return [
+      {
+        source: "/demo",
+        destination: "/demo/index.html",
+      },
+    ];
+  },
   async headers() {
     return [
       {
