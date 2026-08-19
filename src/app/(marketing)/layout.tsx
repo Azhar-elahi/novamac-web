@@ -27,7 +27,6 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
     { href: "/services",   label: "Services"   },
     { href: "/pricing",    label: "Pricing"     },
     { href: "/work",       label: "Work"       },
-    { href: "/demo",       label: "ERP Demo"   },
     { href: "/about",      label: "About"      },
     { href: "/contact",    label: "Contact"    },
   ];
@@ -150,7 +149,6 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
                 <li><Link href="/services" className="hover:text-[#3B82F6] transition-colors">Services Directory</Link></li>
                 <li><Link href="/pricing" className="hover:text-[#3B82F6] transition-colors">Pricing & Plans</Link></li>
                 <li><Link href="/work" className="hover:text-[#3B82F6] transition-colors">Client Case Studies</Link></li>
-                <li><Link href="/demo" className="hover:text-[#3B82F6] transition-colors text-[#25D366] font-bold">Live ERP Demo ⚡</Link></li>
                 <li><Link href="/about" className="hover:text-[#3B82F6] transition-colors">About NovaMac</Link></li>
                 <li><Link href="/contact" className="hover:text-[#3B82F6] transition-colors">Contact Engineering</Link></li>
               </ul>
