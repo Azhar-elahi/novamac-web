@@ -38,7 +38,7 @@ function MessageContent({ text }: { text: string }) {
           href={url}
           target={isInternal ? undefined : "_blank"}
           rel={isInternal ? undefined : "noopener noreferrer"}
-          className="underline font-medium text-brand hover:opacity-80"
+          className="underline font-bold text-[#3B82F6] hover:opacity-80"
         >
           {label}
         </a>
@@ -100,50 +100,65 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
 
   return (
     <>
+      {/* Trigger Button */}
       <button
         onClick={() => setIsOpen(true)}
         aria-label="Open AI Assistant"
         className={cn(
-          "fixed bottom-6 right-6 p-4 rounded-full shadow-xl shadow-brand/20 text-slate-800 transition-all hover:scale-110 z-50",
-          isOpen ? "scale-0 opacity-0 pointer-events-none" : "scale-100 opacity-100",
-          isPortal ? "bg-primary" : "bg-brand"
+          "fixed bottom-6 right-6 p-3.5 sm:p-4 rounded-full shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(59,130,246,0.3)] bg-gradient-to-r from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 text-[#3B82F6] transition-all duration-300 hover:scale-110 cursor-pointer z-50 flex items-center gap-2",
+          isOpen ? "scale-0 opacity-0 pointer-events-none" : "scale-100 opacity-100"
         )}
       >
-        <MessageSquare className="w-6 h-6" />
+        <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+        <MessageSquare className="w-5 h-5 text-[#3B82F6]" />
+        <span className="hidden sm:inline font-mono text-xs font-bold uppercase tracking-wider text-[#F8FAFC]">AI Assistant</span>
       </button>
 
+      {/* Main Chat Box Window */}
       <div
         className={cn(
-          "fixed bottom-6 right-6 w-[350px] sm:w-[400px] h-[500px] max-h-[80vh] flex flex-col rounded-2xl border border-black/10 shadow-2xl bg-[#f6f1e7] backdrop-blur-xl transition-all origin-bottom-right z-50 overflow-hidden",
+          "fixed bottom-6 right-4 sm:right-6 w-[340px] sm:w-[420px] h-[520px] max-h-[82vh] flex flex-col rounded-3xl border border-[#1E2E4A] border-t-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.95),0_0_50px_rgba(59,130,246,0.15)] bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] backdrop-blur-2xl transition-all duration-300 origin-bottom-right z-50 overflow-hidden text-[#F8FAFC]",
           isOpen ? "scale-100 opacity-100" : "scale-50 opacity-0 pointer-events-none"
         )}
       >
-        <div className="flex items-center justify-between p-4 border-b border-black/10 bg-white/60">
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b border-[#1E2E4A] bg-[#070D18]/90">
           <div>
-            <h3 className="font-heading font-medium text-[#211f1a]">
-              {isPortal ? "NovaMac Support Agent" : "NovaMac Guide"}
+            <div className="flex items-center gap-2 mb-0.5">
+              <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+              <span className="font-mono text-[9px] font-bold text-[#3B82F6] uppercase tracking-widest">
+                SYS_AI // ONLINE
+              </span>
+            </div>
+            <h3 className="font-extrabold text-sm text-[#F8FAFC]">
+              {isPortal ? "NovaMac Support Agent" : "NovaMac Executive AI"}
             </h3>
-            <p className="text-xs text-muted-foreground">
-              {isPortal ? "Ask about your orders or tickets" : "How can we help you today?"}
+            <p className="text-[11px] text-[#94A3B8] font-normal">
+              {isPortal ? "Real-time project & ticket assistant" : "Ask about our services, tech stack & pricing"}
             </p>
           </div>
-          <button onClick={() => setIsOpen(false)} aria-label="Close Chat" className="p-1 rounded-md hover:bg-secondary transition-colors text-muted-foreground">
+          <button
+            onClick={() => setIsOpen(false)}
+            aria-label="Close Chat"
+            className="w-8 h-8 rounded-full bg-[#0F1C33] text-[#94A3B8] hover:text-white flex items-center justify-center border border-[#1E2E4A] transition-colors shrink-0"
+          >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {/* Message Log */}
+        <div className="flex-1 overflow-y-auto p-4 space-y-4 font-sans text-xs sm:text-sm">
           {messages.length === 0 && (
             <div className="space-y-4 mt-6">
-              <div className="text-center text-sm text-muted-foreground">
-                Send a message to start chatting, or pick a quick option:
+              <div className="text-center text-xs text-[#94A3B8] leading-relaxed">
+                Welcome to NovaMac Solutions. Ask a custom question or pick a quick suggestion below:
               </div>
               <div className="flex flex-wrap gap-2 justify-center">
                 {QUICK_SUGGESTIONS.map((s) => (
                   <button
                     key={s.label}
                     onClick={() => submitText(s.text)}
-                    className="text-xs font-medium px-3 py-1.5 rounded-full border border-brand/40 text-white/80 bg-brand/10 hover:bg-brand/20 transition-colors"
+                    className="text-[11px] font-mono font-medium px-3.5 py-1.5 rounded-full border border-[#1E2E4A] text-[#F8FAFC] bg-[#070D18] hover:border-[#3B82F6] hover:bg-[#3B82F6]/10 transition-all cursor-pointer shadow-sm"
                   >
                     {s.label}
                   </button>
@@ -151,11 +166,14 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
               </div>
             </div>
           )}
+
           {messages.map((m) => (
             <div key={m.id} className={cn("flex w-full", m.role === 'user' ? "justify-end" : "justify-start")}>
               <div className={cn(
-                "max-w-[80%] rounded-2xl px-4 py-2 text-sm whitespace-pre-wrap break-words",
-                m.role === 'user' ? "bg-brand text-slate-800 rounded-br-none" : "bg-secondary text-foreground rounded-bl-none"
+                "max-w-[85%] rounded-2xl px-4 py-2.5 text-xs sm:text-sm whitespace-pre-wrap break-words leading-relaxed",
+                m.role === 'user'
+                  ? "bg-[#3B82F6] text-white rounded-br-none shadow-md"
+                  : "bg-[#070D18] text-[#F8FAFC] border border-[#1E2E4A] rounded-bl-none shadow-sm"
               )}>
                 {m.parts.map((part, i) =>
                   part.type === "text" ? <MessageContent key={`${m.id}-${i}`} text={part.text} /> : null
@@ -163,32 +181,34 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
               </div>
             </div>
           ))}
+
           {isLoading && (
             <div className="flex justify-start w-full">
-              <div className="max-w-[80%] rounded-2xl px-4 py-3 bg-secondary text-foreground rounded-bl-none flex gap-1 items-center">
-                <div className="w-1.5 h-1.5 bg-muted-foreground rounded-full animate-bounce" />
-                <div className="w-1.5 h-1.5 bg-muted-foreground rounded-full animate-bounce [animation-delay:0.2s]" />
-                <div className="w-1.5 h-1.5 bg-muted-foreground rounded-full animate-bounce [animation-delay:0.4s]" />
+              <div className="max-w-[80%] rounded-2xl px-4 py-3 bg-[#070D18] border border-[#1E2E4A] text-[#F8FAFC] rounded-bl-none flex gap-1.5 items-center">
+                <div className="w-1.5 h-1.5 bg-[#3B82F6] rounded-full animate-bounce" />
+                <div className="w-1.5 h-1.5 bg-[#3B82F6] rounded-full animate-bounce [animation-delay:0.2s]" />
+                <div className="w-1.5 h-1.5 bg-[#3B82F6] rounded-full animate-bounce [animation-delay:0.4s]" />
               </div>
             </div>
           )}
           <div ref={bottomRef} />
         </div>
 
-        <form onSubmit={handleSubmit} className="p-3 border-t border-border/50 bg-background/50 flex gap-2">
+        {/* Input Form */}
+        <form onSubmit={handleSubmit} className="p-3 border-t border-[#1E2E4A] bg-[#070D18]/90 flex items-center gap-2">
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 bg-secondary border border-border rounded-full px-4 py-2 text-sm focus:outline-none focus:border-brand"
+            className="flex-1 bg-[#0F1C33] border border-[#1E2E4A] text-[#F8FAFC] placeholder-[#94A3B8] rounded-xl px-4 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#3B82F6] transition-colors"
           />
           <button
             type="submit"
             aria-label="Send message"
             disabled={!input.trim() || isLoading}
-            className="p-2 rounded-full bg-brand text-slate-800 disabled:opacity-50 transition-colors"
+            className="w-9 h-9 rounded-xl bg-[#3B82F6] text-white flex items-center justify-center disabled:opacity-40 hover:bg-[#2563EB] transition-colors shadow-md shrink-0 cursor-pointer"
           >
-            <Send className="w-4 h-4 ml-0.5" />
+            <Send className="w-4 h-4" />
           </button>
         </form>
       </div>
