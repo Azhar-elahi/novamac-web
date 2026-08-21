@@ -79,7 +79,7 @@ const DoodleSquiggle = () => (
 );
 
 const BackgroundDoodles = ({ 
-  opacity = "opacity-[0.3]",
+  opacity = "opacity-90",
   mouseX,
   mouseY
 }: { 

@@ -57,7 +57,7 @@ export default function PricingClient() {
 
   return (
     <div className="bg-[#0B1220] text-[#F8FAFC] min-h-screen pt-4 pb-32 overflow-hidden relative font-sans">
-      <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-[0.02]" />
+      <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-90" />
 
       {/* ── HERO SECTION ── */}
       <section className="px-4 sm:px-8 md:px-12 xl:px-20 pt-6 sm:pt-10 pb-10 sm:pb-16 max-w-[1400px] mx-auto relative z-10 border-b border-[#1E2E4A]">

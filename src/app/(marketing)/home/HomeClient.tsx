@@ -117,7 +117,7 @@ export default function HomeClient() {
       
       {/* ── 1. HERO SECTION WITH SUBTLE BACKGROUND ART (SUBTLE 2% OPACITY) ── */}
       <section className="px-6 md:px-12 xl:px-20 pt-6 pb-16 max-w-[1400px] mx-auto relative z-10 border-b border-[#1E2E4A]">
-        <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-[0.02]" />
+        <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-90" />
         
         <div className="grid lg:grid-cols-12 gap-10 items-center relative z-10">
           
@@ -295,7 +295,7 @@ export default function HomeClient() {
 
       {/* ── 4. EXPERTISE & CAPABILITIES GRID (ALL CARDS HAVE UNIFORM TECH TAGS & UNIQUE IMAGES) ── */}
       <section className="px-4 sm:px-6 md:px-12 xl:px-20 py-16 sm:py-24 max-w-[1400px] mx-auto relative z-10 overflow-hidden border-b border-[#1E2E4A]">
-        <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-[0.02]" />
+        <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-90" />
 
         {/* VERTICALLY CENTERED HEADING CONTAINER */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6 mb-12 sm:mb-16 relative z-10">
@@ -358,7 +358,7 @@ export default function HomeClient() {
 
       {/* ── 5. OUR 4-STEP PROCESS ── */}
       <section className="px-6 md:px-12 xl:px-20 py-20 sm:py-28 bg-[#0B1220] border-b border-[#1E2E4A] relative overflow-hidden z-10">
-        <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-[0.02]" />
+        <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-90" />
 
         <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
@@ -400,7 +400,7 @@ export default function HomeClient() {
 
       {/* ── 7. FINAL CALL TO ACTION ── */}
       <section className="px-6 md:px-12 xl:px-20 py-28 sm:py-36 text-center relative overflow-hidden bg-[#0B1220]">
-        <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-[0.02]" />
+        <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-100" />
         
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#F8FAFC] mb-6 leading-tight">
