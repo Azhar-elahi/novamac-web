@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react"; import { useRouter } from "nex
 import { motion, useMotionValue, useSpring, useTransform, MotionValue } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight, Zap, Code, Shield, Cloud, Brain, Network, Hexagon, Layout, Database, PenTool, TrendingUp, Smartphone } from "lucide-react";
+import { ArrowRight, Zap, Code, Shield, Cloud, Brain, Network, Hexagon, Layout, Database, PenTool, TrendingUp, Smartphone, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 const glassCard = "bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.65)] rounded-3xl p-8 hover:border-[#3B82F6]/80 hover:shadow-[0_25px_65px_rgba(0,0,0,0.85)] transition-all duration-500 relative overflow-hidden group";
@@ -548,7 +548,7 @@ export default function MarketingPage() {
                 <p className="text-xs sm:text-lg text-[#94A3B8] leading-relaxed mb-6">
                   We measure success strictly by the value we deliver. High-performance teams demand high-performance outputs.
                 </p>
-                <Link href="/work" className="inline-flex items-center gap-2 text-[#3B82F6] font-bold text-xs uppercase tracking-widest hover:gap-4 transition-all">
+                <Link href="/work" className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#0F1C33] to-[#091222] text-[#F8FAFC] border border-[#1E2E4A] border-t-white/10 px-6 py-3 text-xs font-mono font-bold uppercase tracking-wider rounded-full hover:border-[#3B82F6] hover:text-[#3B82F6] transition-all shadow-md mt-2">
                   View Case Studies <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -561,9 +561,9 @@ export default function MarketingPage() {
                   Security isn't a plugin. It's the foundation. We build zero-trust networks, biometric authentication layers, and real-time AI threat mitigation systems.
                 </p>
                 <ul className="space-y-3">
-                  <li className="flex items-center gap-3 text-[#F8FAFC] font-medium text-xs sm:text-base"><Shield className="text-[#3B82F6] w-5 h-5" /> Biometric & Hardware Auth</li>
-                  <li className="flex items-center gap-3 text-[#F8FAFC] font-medium text-xs sm:text-base"><Shield className="text-[#3B82F6] w-5 h-5" /> Enterprise Grade WAF</li>
-                  <li className="flex items-center gap-3 text-[#F8FAFC] font-medium text-xs sm:text-base"><Shield className="text-[#3B82F6] w-5 h-5" /> SOC2 Compliance Ready</li>
+                  <li className="flex items-center gap-3 text-[#F8FAFC] font-medium text-xs sm:text-base"><CheckCircle2 className="text-[#3B82F6] w-5 h-5 shrink-0" /> Biometric & Hardware Auth</li>
+                  <li className="flex items-center gap-3 text-[#F8FAFC] font-medium text-xs sm:text-base"><CheckCircle2 className="text-[#3B82F6] w-5 h-5 shrink-0" /> Enterprise Grade WAF</li>
+                  <li className="flex items-center gap-3 text-[#F8FAFC] font-medium text-xs sm:text-base"><CheckCircle2 className="text-[#3B82F6] w-5 h-5 shrink-0" /> SOC2 Compliance Ready</li>
                 </ul>
               </div>
             </div>
