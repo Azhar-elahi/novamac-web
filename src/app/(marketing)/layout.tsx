@@ -167,21 +167,27 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
             </div>
 
             <div>
-              <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">GLOBAL REGIONS</div>
-              <ul className="space-y-2 text-xs text-[#94A3B8]">
+              <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">Global Regions</div>
+              <ul className="space-y-2.5 text-xs text-[#94A3B8]">
                 <li><Link href="/us" className="hover:text-[#3B82F6] transition-colors">🇺🇸 United States (PST/EST)</Link></li>
                 <li><Link href="/uk" className="hover:text-[#3B82F6] transition-colors">🇬🇧 United Kingdom (GMT)</Link></li>
                 <li><Link href="/eu" className="hover:text-[#3B82F6] transition-colors">🇪🇺 Western Europe (CET)</Link></li>
-                <li><Link href="/privacy" className="hover:text-[#3B82F6] transition-colors mt-2 block border-t border-[#1E2E4A] pt-2">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="hover:text-[#3B82F6] transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
           </div>
 
-          <div className="pt-8 border-t border-[#1E2E4A] flex flex-col sm:flex-row items-center justify-between text-xs text-[#94A3B8]">
-            <p>© {new Date().getFullYear()} NovaMac Solutions. All rights reserved.</p>
-            <p className="font-mono text-[10px] tracking-widest uppercase mt-4 sm:mt-0 text-[#3B82F6]">
-              SUB-SECOND NEXT.JS ENGINEERING · 100% SOURCE CODE OWNERSHIP
+          {/* Bottom Copyright & Legal Links Row */}
+          <div className="pt-8 border-t border-[#1E2E4A] flex flex-col sm:flex-row items-center justify-between text-xs text-[#94A3B8] gap-4">
+            <div className="flex items-center gap-6">
+              <p>© {new Date().getFullYear()} NovaMac Solutions. All rights reserved.</p>
+              <div className="flex items-center gap-4 border-l border-[#1E2E4A] pl-6">
+                <Link href="/privacy" className="hover:text-[#3B82F6] transition-colors font-medium">Privacy Policy</Link>
+                <span className="text-[#1E2E4A]">•</span>
+                <Link href="/terms" className="hover:text-[#3B82F6] transition-colors font-medium">Terms of Service</Link>
+              </div>
+            </div>
+            <p className="font-mono text-xs tracking-wider uppercase text-[#3B82F6] font-bold">
+              Sub-Second Next.js Engineering · 100% Source Code Ownership
             </p>
           </div>
         </div>
