@@ -52,15 +52,18 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
 
         {/* DESKTOP NAVIGATION */}
         <nav className="hidden lg:flex items-center gap-10 relative z-10 text-base font-bold text-[#94A3B8]">
-          {NAV_LINKS.map((link) => (
-            <Link 
-              key={link.href} 
-              href={link.href}
-              className={`hover-trigger transition-colors duration-300 ${pathname === link.href ? "text-[#3B82F6] font-extrabold" : "hover:text-[#3B82F6]"}`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = link.href === "/home" ? (pathname === "/home" || pathname === "/") : pathname === link.href;
+            return (
+              <Link 
+                key={link.href} 
+                href={link.href}
+                className={`hover-trigger transition-colors duration-300 ${isActive ? "text-[#3B82F6] font-extrabold" : "hover:text-[#3B82F6]"}`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* DESKTOP CTA BUTTON (OPENS INTERACTIVE BOOKING MODAL OR GOES TO /book) */}
@@ -167,11 +170,11 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
             </div>
 
             <div>
-              <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">Global Regions</div>
+              <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">GLOBAL REGIONS</div>
               <ul className="space-y-2.5 text-xs text-[#94A3B8]">
-                <li><Link href="/us" className="hover:text-[#3B82F6] transition-colors">🇺🇸 United States (PST/EST)</Link></li>
-                <li><Link href="/uk" className="hover:text-[#3B82F6] transition-colors">🇬🇧 United Kingdom (GMT)</Link></li>
-                <li><Link href="/eu" className="hover:text-[#3B82F6] transition-colors">🇪🇺 Western Europe (CET)</Link></li>
+                <li><Link href="/us" className="hover:text-[#3B82F6] transition-colors">🇺🇸 US (PST/EST)</Link></li>
+                <li><Link href="/uk" className="hover:text-[#3B82F6] transition-colors">🇬🇧 UK (GMT)</Link></li>
+                <li><Link href="/eu" className="hover:text-[#3B82F6] transition-colors">🇪🇺 EU (CET)</Link></li>
               </ul>
             </div>
           </div>

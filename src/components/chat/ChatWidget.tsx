@@ -150,17 +150,18 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
         <div className="flex-1 overflow-y-auto p-4 space-y-4 font-sans text-xs sm:text-sm">
           {messages.length === 0 && (
             <div className="space-y-4 mt-6">
-              <div className="text-center text-xs text-[#94A3B8] leading-relaxed">
+              <div className="text-center text-xs text-[#94A3B8] leading-relaxed px-2">
                 Welcome to NovaMac Solutions. Ask a custom question or pick a quick suggestion below:
               </div>
-              <div className="flex flex-wrap gap-2 justify-center">
+              <div className="flex flex-col gap-2.5 px-2">
                 {QUICK_SUGGESTIONS.map((s) => (
                   <button
                     key={s.label}
                     onClick={() => submitText(s.text)}
-                    className="text-[11px] font-mono font-medium px-3.5 py-1.5 rounded-full border border-[#1E2E4A] text-[#F8FAFC] bg-[#070D18] hover:border-[#3B82F6] hover:bg-[#3B82F6]/10 transition-all cursor-pointer shadow-sm"
+                    className="text-xs font-mono font-bold px-4 py-2.5 rounded-xl border border-[#1E2E4A] text-[#F8FAFC] bg-[#070D18] hover:border-[#3B82F6] hover:bg-[#3B82F6]/15 hover:text-white transition-all cursor-pointer shadow-sm text-left flex items-center justify-between"
                   >
-                    {s.label}
+                    <span>{s.label}</span>
+                    <span className="text-[#3B82F6] text-xs font-normal">→</span>
                   </button>
                 ))}
               </div>
