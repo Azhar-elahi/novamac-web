@@ -73,9 +73,51 @@ export function RichBackgroundArt({
         </div>
       </motion.div>
 
-      {/* ── 4. PARALLAX LAYER 2: INTERACTIVE CODE BRACKETS ── */}
+      {/* ── 4. PARALLAX LAYER 2: INTERACTIVE DOODLE ART & CODE BRACKETS ── */}
       {!isMobile && (
         <motion.div style={{ x: layer2X, y: layer2Y }} className="absolute inset-0 hidden lg:block">
+          
+          {/* Doodle Star Top Right */}
+          <motion.svg 
+            animate={{ rotate: 360, scale: [1, 1.2, 1] }} 
+            transition={{ repeat: Infinity, duration: 16, ease: "easeInOut" }} 
+            className="absolute top-[12%] right-[15%] w-16 h-16 text-[#3B82F6] opacity-40" 
+            viewBox="0 0 40 40"
+          >
+            <path d="M 20 0 L 24 16 L 40 20 L 24 24 L 20 40 L 16 24 L 0 20 L 16 16 Z" fill="currentColor" />
+          </motion.svg>
+
+          {/* Doodle Dashed Ring Middle Left */}
+          <motion.svg 
+            animate={{ rotate: -360 }} 
+            transition={{ repeat: Infinity, duration: 24, ease: "linear" }} 
+            className="absolute top-[42%] left-[4%] w-24 h-24 text-[#3B82F6] opacity-35" 
+            viewBox="0 0 100 100"
+          >
+            <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="8 6" />
+          </motion.svg>
+
+          {/* Doodle Squiggle Bottom Left */}
+          <motion.svg 
+            animate={{ y: [0, -10, 0] }} 
+            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }} 
+            className="absolute bottom-[18%] left-[6%] w-36 h-16 text-[#3B82F6] opacity-40" 
+            viewBox="0 0 100 40"
+          >
+            <path d="M 10 20 Q 30 5 50 20 T 90 20" fill="none" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
+          </motion.svg>
+
+          {/* Doodle Arrow Middle Right */}
+          <motion.svg 
+            animate={{ x: [0, 10, 0] }} 
+            transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }} 
+            className="absolute top-[58%] right-[8%] w-28 h-20 text-[#3B82F6] opacity-35" 
+            viewBox="0 0 100 50"
+          >
+            <path d="M 10 25 Q 50 10 80 25 M 60 10 L 80 25 L 60 40" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+          </motion.svg>
+
+          {/* Interactive Code Brackets Badge */}
           <div className="absolute top-[20%] left-[8%] px-3.5 py-1.5 bg-[#0F172A]/90 backdrop-blur-md border border-[#3B82F6]/40 rounded-full font-mono text-xs font-bold text-[#3B82F6] shadow-md flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-ping" />
             <span>&lt;Next.js 15 /&gt;</span>
@@ -88,7 +130,7 @@ export function RichBackgroundArt({
         </motion.div>
       )}
 
-      {/* ── 5. PARALLAX LAYER 3: LATENCY BADGES ── */}
+      {/* ── 5. PARALLAX LAYER 3: LATENCY BADGES & PULSING NODES ── */}
       {!isMobile && (
         <motion.div style={{ x: layer3X, y: layer3Y }} className="absolute inset-0 hidden md:block">
           <div className="absolute top-[38%] right-[14%] p-3 bg-[#0F172A]/95 backdrop-blur-md border border-[#1E2E4A] rounded-2xl shadow-lg flex items-center gap-3">
