@@ -117,7 +117,7 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
       {/* Main Chat Box Window */}
       <div
         className={cn(
-          "fixed bottom-6 right-4 sm:right-6 w-[340px] sm:w-[420px] h-[520px] max-h-[82vh] flex flex-col rounded-3xl border border-[#1E2E4A] border-t-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.95),0_0_50px_rgba(59,130,246,0.15)] bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] backdrop-blur-2xl transition-all duration-300 origin-bottom-right z-50 overflow-hidden text-[#F8FAFC]",
+          "fixed bottom-4 right-3 sm:bottom-6 sm:right-6 w-[calc(100vw-1.5rem)] max-w-sm sm:w-[420px] h-[500px] max-h-[78vh] flex flex-col rounded-3xl border border-[#1E2E4A] border-t-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.95),0_0_50px_rgba(59,130,246,0.15)] bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] backdrop-blur-2xl transition-all duration-300 origin-bottom-right z-50 overflow-hidden text-[#F8FAFC]",
           isOpen ? "scale-100 opacity-100" : "scale-50 opacity-0 pointer-events-none"
         )}
       >

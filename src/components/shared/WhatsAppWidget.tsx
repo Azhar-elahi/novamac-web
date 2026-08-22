@@ -36,7 +36,7 @@ export function WhatsAppWidget() {
   ];
 
   return (
-    <div ref={menuRef} className="fixed bottom-6 left-4 sm:left-6 z-[9999]">
+    <div ref={menuRef} className="fixed bottom-4 left-3 sm:bottom-6 sm:left-6 z-[9999]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -44,7 +44,7 @@ export function WhatsAppWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.94 }}
             transition={{ type: "spring", stiffness: 380, damping: 26, mass: 0.8 }}
-            className="mb-3 w-80 sm:w-96 bg-gradient-to-b from-[#0F1C33]/95 via-[#091222]/98 to-[#050A14] border border-[#1E2E4A] border-t-white/20 rounded-3xl p-5 sm:p-6 shadow-[0_35px_90px_rgba(0,0,0,0.92),0_0_50px_rgba(37,211,102,0.22)] relative text-[#F8FAFC] backdrop-blur-2xl transform-gpu will-change-transform"
+            className="mb-3 w-[calc(100vw-1.5rem)] max-w-sm sm:w-96 bg-gradient-to-b from-[#0F1C33]/95 via-[#091222]/98 to-[#050A14] border border-[#1E2E4A] border-t-white/20 rounded-3xl p-4 sm:p-6 shadow-[0_35px_90px_rgba(0,0,0,0.92),0_0_50px_rgba(37,211,102,0.22)] relative text-[#F8FAFC] backdrop-blur-2xl transform-gpu will-change-transform"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-[#1E2E4A] pb-4 mb-4">
