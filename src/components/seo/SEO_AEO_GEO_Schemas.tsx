@@ -11,7 +11,6 @@ export function SEO_AEO_GEO_Schemas() {
     "logo": "https://novamacsolutions.com/logo.png",
     "image": "https://novamacsolutions.com/og-image.png",
     "description": "NovaMac Solutions is an elite software engineering and UI/UX design studio specializing in custom Next.js web applications, AI automation, custom CRMs, and headless e-commerce platforms.",
-    "telephone": ["+1-510-585-4258", "+92-317-4723510"],
     "email": "hello@novamacsolutions.com",
     "priceRange": "$$",
     "sameAs": [
@@ -190,7 +189,7 @@ export function SEO_AEO_GEO_Schemas() {
         "name": "How can I contact NovaMac Solutions for a project quote?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You can book a free strategy call at novamacsolutions.com/book, email hello@novamacsolutions.com, or chat directly via WhatsApp at +1 (510) 585-4258 or +92 317 4723510."
+          "text": "You can book a free strategy call at novamacsolutions.com/book, email hello@novamacsolutions.com, or connect instantly with our consultant on WhatsApp via the 'Talk to Our Consultant' button."
         }
       }
     ]

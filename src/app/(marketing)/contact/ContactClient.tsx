@@ -149,31 +149,24 @@ export default function ContactClient() {
                 </div>
                 <div>
                   <div className="text-[10px] font-mono text-[#94A3B8] font-bold uppercase">EMAIL INQUIRIES</div>
-                  <a href="mailto:hello@novamacsolutions.com" className="font-bold text-base text-[#F8FAFC] hover:text-[#3B82F6]">hello@novamacsolutions.com</a>
+                  <a href="mailto:hello@novamacsolutions.com" className="font-bold text-base text-[#F8FAFC] hover:text-[#3B82F6] transition-colors">hello@novamacsolutions.com</a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-full bg-[#040810] border border-[#1E2E4A] border-t-white/10 text-[#3B82F6] flex items-center justify-center shrink-0 shadow-inner">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-mono text-[#94A3B8] font-bold uppercase">US DIRECT PHONE</div>
-                  <a href="https://wa.me/15105854258?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" className="font-bold text-base text-[#F8FAFC] hover:text-[#3B82F6] transition-colors block">
-                    +1 (510) 585-4258
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-full bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center shrink-0 shadow-inner">
+              <div className="flex items-center gap-4 pt-2">
+                <div className="w-11 h-11 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] flex items-center justify-center shrink-0 shadow-inner">
                   <Phone className="w-5 h-5 text-[#25D366]" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-mono text-[#25D366] font-bold uppercase">WHATSAPP CHAT DIRECT</div>
-                  <a href="https://wa.me/923174723510?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" className="font-bold text-base text-[#F8FAFC] hover:text-[#25D366] transition-colors flex items-center gap-2">
-                    +92 317 4723510
-                    <span className="text-[10px] bg-[#25D366] text-black font-extrabold font-mono px-2 py-0.5 rounded-full uppercase tracking-wider">Chat Now</span>
+                  <div className="text-[10px] font-mono text-[#25D366] font-bold uppercase mb-1">INSTANT CONSULTATION</div>
+                  <a 
+                    href="https://wa.me/923174723510?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20consult%20about%20a%20project." 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-black font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-full transition-all shadow-[0_0_20px_rgba(37,211,102,0.3)] min-h-[44px]"
+                  >
+                    <span>Talk to Our Consultant</span>
+                    <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
               </div>
