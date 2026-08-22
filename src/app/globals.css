@@ -61,6 +61,13 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* Hide default browser pointer on desktop so ONLY custom circle cursor shows */
+  @media (min-width: 768px) {
+    html, body, a, button, [role="button"], input, select, textarea {
+      cursor: none !important;
+    }
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -68,7 +75,6 @@
   }
   
   a, button, [role="button"] {
-    cursor: pointer;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
