@@ -51,18 +51,26 @@
     outline-color: var(--color-ring);
   }
   
-  html, body {
-    /* Prevent layout shifts from scrollbar */
+  html {
+    scroll-behavior: smooth !important;
     scrollbar-gutter: stable;
-    /* Hide default cursor for custom cursor */
-    cursor: none;
     background-color: var(--color-background);
     color: var(--color-foreground);
-    overscroll-behavior: none; /* prevent bounce */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    overscroll-behavior-y: none;
   }
   
-  a, button {
-    cursor: none;
+  a, button, [role="button"] {
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
