@@ -170,7 +170,7 @@ export default function ContactClient() {
                       <ArrowRight className="w-3.5 h-3.5" />
                     </a>
                     <a 
-                      href="https://wa.me/92309063306?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20consult%20about%20a%20project." 
+                      href="https://wa.me/923309063306?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20consult%20about%20a%20project." 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="inline-flex items-center justify-center gap-2 bg-[#0F1C33] border border-[#25D366]/50 hover:bg-[#25D366]/20 text-[#25D366] font-extrabold text-xs px-4 py-2.5 rounded-full transition-all min-h-[44px]"

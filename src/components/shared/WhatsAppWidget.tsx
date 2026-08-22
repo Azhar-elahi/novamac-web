@@ -30,7 +30,7 @@ export function WhatsAppWidget() {
     {
       name: "Consultant Line 2",
       role: "Project Strategy & Execution",
-      link: "https://wa.me/92309063306?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20consult%20about%20a%20project.",
+      link: "https://wa.me/923309063306?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20consult%20about%20a%20project.",
       tag: "ONLINE",
     },
   ];
