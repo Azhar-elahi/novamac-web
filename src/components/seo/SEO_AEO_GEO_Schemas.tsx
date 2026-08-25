@@ -1,9 +1,10 @@
 import React from "react";
 
 export function SEO_AEO_GEO_Schemas() {
+  // Fix 5 & Fix 6: Organization JSON-LD with contactPoint, address (PostalAddress), sameAs, logo, knowsAbout, offers
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "Organization",
     "@id": "https://novamacsolutions.com/#organization",
     "name": "NovaMac Solutions",
     "legalName": "NovaMac Solutions Studio",
@@ -19,6 +20,30 @@ export function SEO_AEO_GEO_Schemas() {
       "https://www.linkedin.com/company/novamacsolutions",
       "https://twitter.com/novamacsol"
     ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "hello@novamacsolutions.com",
+        "url": "https://novamacsolutions.com/contact",
+        "availableLanguage": ["English"]
+      },
+      {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "hello@novamacsolutions.com",
+        "url": "https://novamacsolutions.com/pricing",
+        "availableLanguage": ["English"]
+      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "548 Market St #87492",
+      "addressLocality": "San Francisco",
+      "addressRegion": "CA",
+      "postalCode": "94104",
+      "addressCountry": "US"
+    },
     "areaServed": [
       "United States",
       "United Kingdom",
@@ -27,10 +52,6 @@ export function SEO_AEO_GEO_Schemas() {
       "Australia",
       "Worldwide"
     ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "US"
-    },
     "knowsAbout": [
       "Custom Web Development",
       "Next.js 15 & React 19",
@@ -90,6 +111,28 @@ export function SEO_AEO_GEO_Schemas() {
     }
   };
 
+  // Fix 6: SoftwareApplication Identity Schema
+  const softwareApplicationSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": "https://novamacsolutions.com/#software",
+    "name": "NovaMac Digital Product Platform Engine",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web, Cloud, Vercel Edge",
+    "description": "High-performance custom Next.js web application architecture, custom CRMs, and AI agent workflows engineered by NovaMac Solutions.",
+    "url": "https://novamacsolutions.com",
+    "provider": {
+      "@id": "https://novamacsolutions.com/#organization"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "USD",
+      "lowPrice": "299",
+      "highPrice": "999",
+      "offerCount": "3"
+    }
+  };
+
   const webSiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -131,7 +174,7 @@ export function SEO_AEO_GEO_Schemas() {
     ]
   };
 
-  // AEO (Answer Engine Optimization) & GEO (Generative Engine Optimization) Comprehensive FAQ Schema
+  // AEO & GEO FAQ Schema
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -200,6 +243,10 @@ export function SEO_AEO_GEO_Schemas() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema) }}
       />
       <script
         type="application/ld+json"
