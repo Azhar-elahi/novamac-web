@@ -80,7 +80,7 @@ export function HeroSection() {
   return (
     <section className="relative min-h-[92vh] flex items-center justify-center px-6 sm:px-12 xl:px-20 pt-24 pb-20 overflow-hidden font-sans text-white">
       {/* VIDEO BACKGROUND LOOP */}
-      <SeamlessVideoLoop src="/lounge-showreel.mp4" />
+      <SeamlessVideoLoop src="/videos/showreel.mp4" />
 
       {/* HERO CONTENT CONTAINER */}
       <div className="max-w-7xl w-full mx-auto relative z-30 grid lg:grid-cols-12 gap-12 items-center">
