@@ -121,8 +121,32 @@ function SeamlessVideoLoop({ src }: { src: string }) {
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("autoplay", "");
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        const enablePlay = () => {
+          if (video) {
+            video.muted = true;
+            video.play().catch(() => {});
+          }
+          window.removeEventListener("touchstart", enablePlay);
+          window.removeEventListener("click", enablePlay);
+          window.removeEventListener("scroll", enablePlay);
+        };
+        window.addEventListener("touchstart", enablePlay, { once: true, passive: true });
+        window.addEventListener("click", enablePlay, { once: true, passive: true });
+        window.addEventListener("scroll", enablePlay, { once: true, passive: true });
+      });
     }
   }, []);
 

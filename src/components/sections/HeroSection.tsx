@@ -6,66 +6,51 @@ import Link from "next/link";
 import { ArrowRight, Play, X, Sparkles, CheckCircle2 } from "lucide-react";
 
 function SeamlessVideoLoop({ src }: { src: string }) {
-  const videoARef = useRef<HTMLVideoElement>(null);
-  const videoBRef = useRef<HTMLVideoElement>(null);
-  const [activeVideo, setActiveVideo] = useState<"A" | "B">("A");
-  const fadeTime = 1.5;
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoARef.current) {
-      videoARef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("autoplay", "");
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        const enablePlay = () => {
+          if (video) {
+            video.muted = true;
+            video.play().catch(() => {});
+          }
+          window.removeEventListener("touchstart", enablePlay);
+          window.removeEventListener("click", enablePlay);
+          window.removeEventListener("scroll", enablePlay);
+        };
+        window.addEventListener("touchstart", enablePlay, { once: true, passive: true });
+        window.addEventListener("click", enablePlay, { once: true, passive: true });
+        window.addEventListener("scroll", enablePlay, { once: true, passive: true });
+      });
     }
   }, []);
-
-  useEffect(() => {
-    const videoA = videoARef.current;
-    const videoB = videoBRef.current;
-    if (!videoA || !videoB) return;
-
-    const handleTimeUpdate = () => {
-      const active = activeVideo === "A" ? videoA : videoB;
-      const inactive = activeVideo === "A" ? videoB : videoA;
-
-      if (!active.duration) return;
-      const timeLeft = active.duration - active.currentTime;
-
-      if (timeLeft <= fadeTime) {
-        if (inactive.paused || inactive.ended || inactive.currentTime === 0) {
-          inactive.currentTime = 0;
-          inactive.play().catch(() => {});
-          setActiveVideo((prev) => (prev === "A" ? "B" : "A"));
-        }
-      }
-    };
-
-    videoA.addEventListener("timeupdate", handleTimeUpdate);
-    videoB.addEventListener("timeupdate", handleTimeUpdate);
-    return () => {
-      videoA.removeEventListener("timeupdate", handleTimeUpdate);
-      videoB.removeEventListener("timeupdate", handleTimeUpdate);
-    };
-  }, [activeVideo]);
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden bg-black">
       <video
-        ref={videoARef}
-        src={src}
+        ref={videoRef}
+        autoPlay
+        loop
         muted
         playsInline
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-          activeVideo === "A" ? "opacity-95 z-10" : "opacity-0 z-0"
-        }`}
-      />
-      <video
-        ref={videoBRef}
-        src={src}
-        muted
-        playsInline
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-          activeVideo === "B" ? "opacity-95 z-10" : "opacity-0 z-0"
-        }`}
-      />
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover opacity-95 transform-gpu pointer-events-none"
+      >
+        <source src={src} type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-gradient-to-t from-[#FAF2F2] via-black/40 to-black/70 z-20 pointer-events-none" />
     </div>
   );
