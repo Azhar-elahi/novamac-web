@@ -118,90 +118,24 @@ const ACCORDION_SERVICES = [
 // video B starts playing and fades in. Zero visible cut.
 // =========================================
 function SeamlessVideoLoop({ src }: { src: string }) {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const videoARef = React.useRef<HTMLVideoElement>(null);
-  const videoBRef = React.useRef<HTMLVideoElement>(null);
-  const [activeVideo, setActiveVideo] = useState<"A" | "B">("A");
-  const fadeTime = 1.5; // seconds before end to start crossfade
-
-  // IntersectionObserver to pause video when scrolled out of view (Save Mobile GPU & Battery)
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const videoA = videoARef.current;
-          const videoB = videoBRef.current;
-          if (entry.isIntersecting) {
-            const active = activeVideo === "A" ? videoA : videoB;
-            active?.play().catch(() => {});
-          } else {
-            videoA?.pause();
-            videoB?.pause();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [activeVideo]);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const videoA = videoARef.current;
-    const videoB = videoBRef.current;
-    if (!videoA || !videoB) return;
-
-    const handleTimeUpdate = () => {
-      const active = activeVideo === "A" ? videoA : videoB;
-      const inactive = activeVideo === "A" ? videoB : videoA;
-
-      if (!active.duration) return;
-      const timeLeft = active.duration - active.currentTime;
-
-      // Start the other video when nearing the end
-      if (timeLeft <= fadeTime) {
-        if (inactive.paused || inactive.ended || inactive.currentTime === 0) {
-          inactive.currentTime = 0;
-          inactive.play().catch(() => {});
-          setActiveVideo((prev) => (prev === "A" ? "B" : "A"));
-        }
-      }
-    };
-
-    videoA.addEventListener("timeupdate", handleTimeUpdate);
-    videoB.addEventListener("timeupdate", handleTimeUpdate);
-
-    return () => {
-      videoA.removeEventListener("timeupdate", handleTimeUpdate);
-      videoB.removeEventListener("timeupdate", handleTimeUpdate);
-    };
-  }, [activeVideo]);
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 z-0 contain-content">
+    <div className="absolute inset-0 z-0 contain-content bg-black">
       <video
-        ref={videoARef}
+        ref={videoRef}
         autoPlay
+        loop
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] transform-gpu will-change-transform"
-        style={{ opacity: activeVideo === "A" ? 0.95 : 0 }}
-      >
-        <source src={src} type="video/mp4" />
-      </video>
-      <video
-        ref={videoBRef}
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] transform-gpu will-change-transform"
-        style={{ opacity: activeVideo === "B" ? 0.95 : 0 }}
+        className="absolute inset-0 w-full h-full object-cover opacity-95 transform-gpu pointer-events-none"
       >
         <source src={src} type="video/mp4" />
       </video>

@@ -6,6 +6,14 @@ import { ArrowRight, Award, Users, Globe2, Sparkles, CheckCircle2, Shield, Zap }
 import Link from "next/link";
 
 export default function AboutClient() {
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
+
   return (
     <div className="bg-[#FAF2F2] text-[#202020] min-h-screen pt-0 pb-20 overflow-hidden font-sans">
       
@@ -13,7 +21,15 @@ export default function AboutClient() {
       <section className="relative px-6 sm:px-12 lg:px-20 py-24 lg:py-32 border-b border-white/10 overflow-hidden min-h-[70vh] flex items-center bg-[#0D0D0D] text-white">
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
-          <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90">
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover opacity-90 pointer-events-none transform-gpu"
+          >
             <source src="/videos/sunset-road.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/90 via-[#0D0D0D]/50 to-transparent" />

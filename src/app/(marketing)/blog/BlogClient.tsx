@@ -35,6 +35,13 @@ const FALLBACK_ARTICLES = [
 
 export default function BlogClient({ posts }: { posts: BlogPost[] }) {
   const displayPosts = posts && posts.length > 0 ? posts : (FALLBACK_ARTICLES as any[]);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   return (
     <div className="bg-[#FAF2F2] text-[#202020] min-h-screen pt-24 pb-20 font-sans">
@@ -42,7 +49,15 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
       {/* HERO SECTION WITH VIDEO BACKGROUND */}
       <section className="relative px-6 sm:px-12 lg:px-20 py-24 border-b border-[#F0DCDC] overflow-hidden min-h-[45vh] flex items-center bg-[#0D0D0D] text-white">
         <div className="absolute inset-0 z-0">
-          <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90">
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover opacity-90 pointer-events-none transform-gpu"
+          >
             <source src="/videos/city-traffic.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/90 via-[#0D0D0D]/50 to-transparent" />
