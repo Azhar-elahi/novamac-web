@@ -39,7 +39,7 @@ export function OptimizedVideoBackground({ src, className = "", opacity = 0.9 }:
       loop
       muted
       playsInline
-      preload="metadata"
+      preload="auto"
       style={{ opacity }}
       className={`w-full h-full object-cover pointer-events-none transform-gpu contain-content will-change-transform ${className}`}
     >

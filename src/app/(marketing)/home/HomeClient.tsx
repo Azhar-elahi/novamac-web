@@ -185,9 +185,10 @@ function SeamlessVideoLoop({ src }: { src: string }) {
     <div ref={containerRef} className="absolute inset-0 z-0 contain-content">
       <video
         ref={videoARef}
+        autoPlay
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] transform-gpu will-change-transform"
         style={{ opacity: activeVideo === "A" ? 0.95 : 0 }}
       >
@@ -195,9 +196,10 @@ function SeamlessVideoLoop({ src }: { src: string }) {
       </video>
       <video
         ref={videoBRef}
+        autoPlay
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1500ms] transform-gpu will-change-transform"
         style={{ opacity: activeVideo === "B" ? 0.95 : 0 }}
       >
