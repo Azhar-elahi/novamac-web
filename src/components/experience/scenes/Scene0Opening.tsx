@@ -8,7 +8,7 @@ import { theme } from '@/styles/theme';
 
 export default function Scene0Opening() {
   const groupRef = useRef<THREE.Group>(null);
-  const textRef = useRef<any>(null);
+  const textRef = useRef<THREE.Mesh>(null);
 
   useFrame(() => {
     const progress = useScrollStore.getState().progress;
@@ -29,7 +29,7 @@ export default function Scene0Opening() {
         groupRef.current!.position.x = p * 1.5; 
         
         // Fade out slightly at the very end
-        textRef.current.material.opacity = 1 - Math.pow(p, 4);
+        (textRef.current.material as any).opacity = 1 - Math.pow(p, 4);
       }
     } else {
       if (groupRef.current) groupRef.current.visible = false;
@@ -52,3 +52,4 @@ export default function Scene0Opening() {
     </group>
   );
 }
+

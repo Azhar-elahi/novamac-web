@@ -12,11 +12,15 @@ export default function AmbientDust() {
   const particles = useMemo(() => {
     const temp = [];
     for (let i = 0; i < count; i++) {
-      const x = (Math.random() - 0.5) * 40;
-      const y = (Math.random() - 0.5) * 40;
+      const s1 = Math.sin(i * 17.1) - Math.floor(Math.sin(i * 17.1));
+      const s2 = Math.sin(i * 43.3) - Math.floor(Math.sin(i * 43.3));
+      const s3 = Math.sin(i * 81.7) - Math.floor(Math.sin(i * 81.7));
+      const s4 = Math.sin(i * 29.5) - Math.floor(Math.sin(i * 29.5));
+      const x = (s1 - 0.5) * 40;
+      const y = (s2 - 0.5) * 40;
       // Spread across the entire Z depth of the journey
-      const z = (Math.random() - 0.5) * 120 - 30;
-      const speed = 0.1 + Math.random() * 0.2;
+      const z = (s3 - 0.5) * 120 - 30;
+      const speed = 0.1 + s4 * 0.2;
       temp.push({ x, y, z, speed });
     }
     return temp;
@@ -48,3 +52,4 @@ export default function AmbientDust() {
     </instancedMesh>
   );
 }
+

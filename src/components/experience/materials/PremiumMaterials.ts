@@ -37,3 +37,4 @@ export const TechWireframeMaterial = new THREE.MeshBasicMaterial({
   opacity: 0.05,
   side: THREE.DoubleSide
 });
+

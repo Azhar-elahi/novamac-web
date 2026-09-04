@@ -1,135 +1,166 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { motion, useMotionValue } from "framer-motion";
-import { ArrowRight, CheckCircle2, Sparkles, Zap, ShieldCheck } from "lucide-react";
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2, Zap, Shield, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { DoodleUnderline } from "@/components/immersive/Doodles";
-import { RichBackgroundArt } from "@/components/immersive/RichBackgroundArt";
-import { getPricingPlans, PricingPlanItem } from "@/app/actions/pricing";
+
+const PRICING_TIERS = [
+  {
+    name: "Starter Platform",
+    price: "$299",
+    period: "Fixed Project",
+    desc: "Perfect for small businesses needing a high-speed, modern web presence built from scratch.",
+    features: [
+      "Up to 5 Custom Next.js Pages",
+      "Sub-Second Latency (<50ms)",
+      "Technical SEO & Schema Markup",
+      "Mobile-First Responsive Layout",
+      "100% Source Code Ownership",
+      "10-14 Days SLA Delivery"
+    ],
+    popular: false,
+    cta: "Select Starter Scope"
+  },
+  {
+    name: "Growth Studio",
+    price: "$599",
+    period: "Fixed Project",
+    desc: "Engineered for growing businesses needing custom Figma design, CMS integration, and CRO.",
+    features: [
+      "Up to 15 Custom Next.js Pages",
+      "Custom Vector Figma Design System",
+      "Headless CMS Integration",
+      "Advanced SEO & GEO/AEO Optimization",
+      "Google Analytics & Conversion Tracking",
+      "100% Source Code Ownership",
+      "3 Weeks SLA Delivery"
+    ],
+    popular: true,
+    cta: "Select Growth Scope"
+  },
+  {
+    name: "Enterprise SaaS & AI",
+    price: "From $999",
+    period: "Custom Architecture",
+    desc: "Full-scale custom web applications, bespoke CRM software, and autonomous AI agent workflows.",
+    features: [
+      "Full Custom SaaS / CRM Portal App",
+      "Autonomous AI Agent Workflows",
+      "PostgreSQL & Prisma ORM Architecture",
+      "Stripe & Multi-Currency Checkouts",
+      "Dedicated Senior Tech Lead & PM",
+      "Priority 24/7 SLA Support",
+      "Full Source Code Transfer"
+    ],
+    popular: false,
+    cta: "Request Enterprise Scope"
+  }
+];
 
 export default function PricingClient() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const [plans, setPlans] = useState<PricingPlanItem[]>([]);
-
-  useEffect(() => {
-    getPricingPlans().then(setPlans);
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set((e.clientX / window.innerWidth) - 0.5);
-      mouseY.set((e.clientY / window.innerHeight) - 0.5);
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
-
-  const mainTiers = plans.filter(p => ["starter", "growth", "enterprise"].includes(p.slug));
-
-  const displayTiers = mainTiers.length > 0 ? mainTiers : [
-    {
-      id: "starter",
-      slug: "starter",
-      title: "Starter Platform",
-      price: "$299",
-      subtitle: "Perfect for high-growth startups requiring a fast Next.js web presence.",
-      features: ["Up to 5 Custom Pages", "Next.js / React Stack", "Technical SEO Setup", "Sub-second Load Times (<50ms)", "2 Revision Rounds", "14 Days Post-Launch Support"],
-      popular: false
-    },
-    {
-      id: "growth",
-      slug: "growth",
-      title: "Growth Studio",
-      price: "$599",
-      subtitle: "Complete web platform with custom CMS and full digital design system.",
-      features: ["Up to 15 Custom Pages", "Custom Figma UI/UX Design", "Headless CMS Integration", "Advanced SEO & Analytics", "Google Analytics & Conversion Tracking", "30 Days Dedicated Support"],
-      popular: true
-    },
-    {
-      id: "enterprise",
-      slug: "enterprise",
-      title: "Enterprise SaaS",
-      price: "From $999",
-      subtitle: "Full-scale custom web application, bespoke CRM, and dedicated SLA support.",
-      features: ["Unlimited Custom Routes", "Custom SaaS Architecture", "OpenAI / Claude AI Integration", "PostgreSQL / Prisma Database", "Zero-Trust Security & SOC2 Compliance", "Priority 24/7 SLA Support"],
-      popular: false
-    }
-  ];
-
   return (
-    <div className="bg-[#0B1220] text-[#F8FAFC] min-h-screen pt-4 pb-32 overflow-hidden relative font-sans">
-      <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} opacity="opacity-90" />
+    <div className="bg-[#FAF2F2] text-[#202020] min-h-screen pt-0 pb-20 overflow-hidden font-sans">
+      
+      {/* HERO SECTION WITH VIDEO BACKGROUND */}
+      <section className="relative px-6 sm:px-12 lg:px-20 py-24 border-b border-white/10 overflow-hidden min-h-[50vh] flex items-center text-center bg-[#0D0D0D] text-white">
+        <div className="absolute inset-0 z-0">
+          <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90">
+            <source src="/videos/city-traffic.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/80 via-[#0D0D0D]/40 to-[#0D0D0D]/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-black/40" />
+        </div>
 
-      {/* ── HERO SECTION ── */}
-      <section className="px-4 sm:px-8 md:px-12 xl:px-20 pt-6 sm:pt-10 pb-10 sm:pb-16 max-w-[1400px] mx-auto relative z-10 border-b border-[#1E2E4A]">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl"
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl mx-auto relative z-10"
         >
-          {/* ANCHORED PERFORMANCE METRIC & TITLE CASE BADGE */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-gradient-to-r from-[#0F1C33] to-[#091222] border border-[#1E2E4A] border-t-white/10 rounded-full text-xs font-mono text-[#3B82F6] font-bold uppercase tracking-wider mb-6 shadow-md">
-            <Zap className="w-4 h-4 text-[#3B82F6] animate-pulse" />
-            <span>Transparent Architecture Pricing · Global Edge Latency &lt;50ms</span>
-          </div>
+          <span className="px-4 py-1.5 bg-[#FF5733]/10 border border-[#FF5733]/30 text-[#FF5733] font-mono text-xs font-bold uppercase tracking-widest rounded-full inline-block mb-6">
+            TRANSPARENT AGENCY PRICING
+          </span>
 
-          {/* SINGLE UNIQUE H1 HEADLINE */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] sm:leading-[0.95] text-[#F8FAFC] mb-6 sm:mb-8 relative">
-            Honest Pricing,<br />
-            <span className="relative inline-block text-[#3B82F6] pb-2">
-              Zero Surprise Fees.
-              <DoodleUnderline />
-            </span>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-tight tracking-tight mb-8">
+            Predictable Scope. Zero Vendor Lock-in.
           </h1>
 
-          <p className="text-sm sm:text-base md:text-lg text-[#94A3B8] max-w-2xl leading-relaxed font-normal bg-gradient-to-b from-[#0F1C33]/90 via-[#091222]/95 to-[#050A14] p-5 sm:p-6 rounded-2xl border border-[#1E2E4A] border-t-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
-            Fixed scope, predictable delivery timelines, and 100% full source code ownership on day one.
+          <p className="text-gray-300 text-base sm:text-xl font-light leading-relaxed mb-10">
+            Fixed project pricing with 100% full source code ownership on day one. No hidden monthly software licenses.
           </p>
         </motion.div>
       </section>
 
-      {/* ── PRICING TIERS ── */}
-      <section className="px-4 sm:px-8 md:px-12 xl:px-20 py-12 sm:py-20 max-w-[1400px] mx-auto relative z-10">
-        <div className="grid md:grid-cols-3 gap-8 sm:gap-10">
-          {displayTiers.map((tier, i) => (
+      {/* PRICING CARDS GRID */}
+      <section className="py-20 px-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8">
+          {PRICING_TIERS.map((tier, idx) => (
             <motion.div
-              key={tier.slug}
-              initial={{ opacity: 0, y: 30 }}
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -6 }}
-              className={`bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] rounded-3xl p-8 sm:p-9 border border-[#1E2E4A] border-t-white/15 flex flex-col justify-between relative shadow-[0_20px_50px_rgba(0,0,0,0.65)] hover:shadow-[0_25px_65px_rgba(0,0,0,0.85),0_0_45px_rgba(59,130,246,0.3)] transition-all duration-300 ${tier.popular ? "border-2 border-[#3B82F6]" : ""}`}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className={`rounded-3xl p-8 sm:p-10 flex flex-col justify-between relative transition-all duration-300 ${tier.popular ? "bg-[#202020] text-white border-2 border-[#FF5733] shadow-2xl scale-[1.03]" : "bg-white text-[#202020] border border-[#F0DCDC] shadow-sm hover:border-[#FF5733]"}`}
             >
               {tier.popular && (
-                <span className="absolute -top-3.5 right-8 bg-[#3B82F6] text-white px-4 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-widest shadow-[0_0_20px_rgba(59,130,246,0.5)]">
-                  Most Popular
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#FF5733] text-white font-mono text-[10px] uppercase font-bold tracking-widest rounded-full shadow-lg">
+                  MOST POPULAR AGENCY SCOPE
                 </span>
               )}
+
               <div>
-                <div className="text-xs sm:text-sm font-mono font-bold text-[#3B82F6] uppercase tracking-wider mb-2">{tier.title}</div>
-                <div className="text-4xl sm:text-5xl font-black text-[#F8FAFC] mb-4">{tier.price}</div>
-                <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed mb-6 border-b border-[#1E2E4A] pb-6 font-normal min-h-[48px]">{tier.subtitle}</p>
-                <div className="space-y-3.5 mb-8">
-                  {tier.features.map((f) => (
-                    <div key={f} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#94A3B8] leading-relaxed">
-                      <CheckCircle2 className="w-4 h-4 text-[#3B82F6] shrink-0 mt-0.5" />
-                      <span>{f}</span>
-                    </div>
-                  ))}
+                <h3 className={`text-2xl font-extrabold mb-2 ${tier.popular ? "text-white" : "text-[#202020]"}`}>{tier.name}</h3>
+                <p className={`text-xs font-light leading-relaxed mb-6 ${tier.popular ? "text-gray-300" : "text-gray-600"}`}>{tier.desc}</p>
+
+                <div className={`flex items-baseline gap-2 mb-8 border-b pb-6 ${tier.popular ? "border-white/10" : "border-[#F0DCDC]"}`}>
+                  <span className={`text-4xl sm:text-5xl font-black ${tier.popular ? "text-white" : "text-[#202020]"}`}>{tier.price}</span>
+                  <span className="text-xs font-mono text-[#FF5733] font-bold">{tier.period}</span>
                 </div>
+
+                <ul className="space-y-3 mb-10">
+                  {tier.features.map((feat, i) => (
+                    <li key={i} className={`flex items-start gap-3 text-xs sm:text-sm ${tier.popular ? "text-gray-200" : "text-slate-700 font-medium"}`}>
+                      <CheckCircle2 className="w-4 h-4 text-[#FF5733] flex-shrink-0 mt-0.5" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <Link 
-                href="/contact" 
-                className={`w-full py-4 font-extrabold text-xs sm:text-sm tracking-widest uppercase rounded-full text-center block transition-all shadow-md min-h-[44px] ${tier.popular ? "bg-[#3B82F6] text-white hover:bg-white hover:text-[#0B1220]" : "bg-gradient-to-r from-[#0B1426] to-[#040810] border border-[#1E2E4A] border-t-white/10 text-[#F8FAFC] hover:border-[#3B82F6] hover:text-[#3B82F6]"}`}
+
+              <Link
+                href="/contact"
+                className={`w-full font-extrabold text-xs uppercase tracking-widest py-4 rounded-full transition-all duration-300 text-center ${tier.popular ? "bg-[#FF5733] text-white hover:bg-white hover:text-black shadow-xl" : "bg-[#202020] text-white hover:bg-[#FF5733]"}`}
               >
-                Select {tier.title.split(' ')[0]}
+                {tier.cta}
               </Link>
+
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="py-20 px-6 bg-[#FF5733] text-white text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight mb-6">
+            Need a Custom Enterprise Quote?
+          </h2>
+          <p className="text-white/90 text-base sm:text-lg mb-8 max-w-xl mx-auto font-light">
+            Contact our strategy team to receive a tailored project scope and proposal within 24 hours.
+          </p>
+          <Link
+            href="/contact"
+            className="bg-black text-white hover:bg-white hover:text-black font-extrabold text-xs tracking-widest uppercase px-10 py-5 rounded-full transition-all duration-300 shadow-2xl inline-flex items-center gap-2"
+          >
+            <span>Request Enterprise Scope</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
 
     </div>
   );
 }
+

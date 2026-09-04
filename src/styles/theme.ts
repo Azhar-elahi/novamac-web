@@ -14,3 +14,4 @@ export const theme = {
   },
   emissiveIntensity: 1.2,
 };
+

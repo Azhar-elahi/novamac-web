@@ -124,12 +124,18 @@ function CloudSea() {
 
   const clouds = useMemo(
     () =>
-      Array.from({ length: count }).map(() => ({
-        x: (Math.random() - 0.5) * 70,
-        y: -9 - Math.random() * 7,
-        z: -30 - Math.random() * 150,
-        scale: 2.5 + Math.random() * 5,
-      })),
+      Array.from({ length: count }).map((_, i) => {
+        const s1 = Math.sin(i * 99.1) - Math.floor(Math.sin(i * 99.1));
+        const s2 = Math.sin(i * 33.7) - Math.floor(Math.sin(i * 33.7));
+        const s3 = Math.sin(i * 77.3) - Math.floor(Math.sin(i * 77.3));
+        const s4 = Math.sin(i * 55.4) - Math.floor(Math.sin(i * 55.4));
+        return {
+          x: (s1 - 0.5) * 70,
+          y: -9 - s2 * 7,
+          z: -30 - s3 * 150,
+          scale: 2.5 + s4 * 5,
+        };
+      }),
     [count]
   );
 
@@ -171,3 +177,4 @@ export default function Scene4Ride() {
     </group>
   );
 }
+

@@ -36,18 +36,18 @@ export function WhatsAppWidget() {
   ];
 
   return (
-    <div ref={menuRef} className="fixed bottom-4 left-3 sm:bottom-6 sm:left-6 z-[9999]">
+    <div ref={menuRef} className="fixed bottom-24 right-0 z-[9999]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.94 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.94 }}
+            initial={{ opacity: 0, x: 20, scale: 0.94 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 20, scale: 0.94 }}
             transition={{ type: "spring", stiffness: 380, damping: 26, mass: 0.8 }}
-            className="mb-3 w-[calc(100vw-1.5rem)] max-w-sm sm:w-96 bg-gradient-to-b from-[#0F1C33]/95 via-[#091222]/98 to-[#050A14] border border-[#1E2E4A] border-t-white/20 rounded-3xl p-4 sm:p-6 shadow-[0_35px_90px_rgba(0,0,0,0.92),0_0_50px_rgba(37,211,102,0.22)] relative text-[#F8FAFC] backdrop-blur-2xl transform-gpu will-change-transform"
+            className="absolute bottom-16 right-4 w-[calc(100vw-2rem)] max-w-sm sm:w-96 bg-[#202020]/98 border border-white/15 border-t-white/25 rounded-3xl p-4 sm:p-6 shadow-[0_35px_90px_rgba(0,0,0,0.92),0_0_50px_rgba(37,211,102,0.22)] text-white backdrop-blur-2xl origin-bottom-right"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-[#1E2E4A] pb-4 mb-4">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse" />
@@ -55,14 +55,14 @@ export function WhatsAppWidget() {
                     DIRECT CONSULTANT DESK
                   </span>
                 </div>
-                <h3 className="font-black text-base text-[#F8FAFC]">Talk to Our Consultants</h3>
-                <p className="text-xs text-[#94A3B8] font-normal mt-0.5">
-                  Select a consultant to start direct WhatsApp discussion.
+                <h3 className="font-black text-base text-white">Talk to Our Consultants</h3>
+                <p className="text-xs text-gray-400 font-normal mt-0.5">
+                  Select a consultant for a quick, friendly discussion.
                 </p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full bg-[#070D18] text-[#94A3B8] hover:text-white flex items-center justify-center border border-[#1E2E4A] transition-colors shrink-0 cursor-pointer"
+                className="w-8 h-8 rounded-full bg-white/10 text-gray-300 hover:text-white flex items-center justify-center border border-white/10 transition-colors shrink-0 cursor-pointer"
                 title="Close"
                 aria-label="Close menu"
               >
@@ -79,51 +79,52 @@ export function WhatsAppWidget() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="group flex items-center justify-between p-4 rounded-2xl bg-[#070D18] border border-[#1E2E4A] hover:border-[#25D366] hover:bg-[#25D366]/10 transition-all duration-300 relative overflow-hidden"
+                  className="group/item flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-[#25D366] hover:bg-[#25D366]/10 transition-all duration-300 relative overflow-hidden"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] flex items-center justify-center shrink-0 group-hover/item:scale-105 transition-transform">
                       <UserCheck className="w-5 h-5" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-0.5">
-                        <span className="font-mono text-[10px] font-bold text-[#F8FAFC] uppercase tracking-wider">{c.name}</span>
+                        <span className="font-mono text-[10px] font-bold text-white uppercase tracking-wider">{c.name}</span>
                         <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-[#25D366]/20 text-[#25D366] uppercase">
                           {c.tag}
                         </span>
                       </div>
-                      <div className="text-xs text-[#94A3B8] font-normal">{c.role}</div>
+                      <div className="text-xs text-gray-400 font-normal">{c.role}</div>
                     </div>
                   </div>
-                  <ArrowUpRight className="w-5 h-5 text-[#25D366] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 ml-2" />
+                  <ArrowUpRight className="w-5 h-5 text-[#25D366] group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 transition-all shrink-0 ml-2" />
                 </a>
               ))}
             </div>
 
             {/* Footer */}
-            <div className="mt-4 pt-3 border-t border-[#1E2E4A] flex items-center justify-between font-mono text-[10px] text-[#94A3B8]">
+            <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between font-mono text-[10px] text-gray-400">
               <span className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#3B82F6]" /> Direct WhatsApp Connect
+                <ShieldCheck className="w-3.5 h-3.5 text-[#FF5733]" /> Direct WhatsApp Connect
               </span>
-              <span className="text-[#25D366] font-bold">24/7 SLA</span>
+              <span className="text-[#25D366] font-bold">Fast Response</span>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Floating Trigger Button */}
+      {/* Docked Right-Edge Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-gradient-to-r from-[#0F1C33] via-[#091222] to-[#050A14] hover:from-[#132442] hover:to-[#091222] border border-[#1E2E4A] border-t-white/15 text-[#F8FAFC] font-extrabold px-5 py-3.5 rounded-full shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(37,211,102,0.25)] flex items-center gap-3 hover:scale-105 transition-all duration-300 text-xs sm:text-sm cursor-pointer group min-h-[44px]"
+        className="group flex items-center gap-3 bg-[#202020] hover:bg-[#FF5733] text-white h-12 rounded-l-full pl-3.5 pr-6 shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(37,211,102,0.25)] border-l border-y border-white/20 transition-transform duration-300 ease-out translate-x-[calc(100%-48px)] hover:translate-x-0 cursor-pointer overflow-hidden whitespace-nowrap"
         title="Talk to Our Consultant on WhatsApp"
         aria-label="Talk to Our Consultant on WhatsApp"
       >
-        <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse" />
-        <div className="w-7 h-7 rounded-full bg-[#25D366] text-black flex items-center justify-center font-bold shrink-0 shadow-sm group-hover:rotate-12 transition-transform">
-          <MessageSquare className="w-4 h-4 fill-black text-black" />
+        <div className="w-6 h-6 rounded-full bg-[#25D366] text-black flex items-center justify-center font-bold shrink-0 shadow-sm group-hover:rotate-12 transition-transform">
+          <MessageSquare className="w-3.5 h-3.5 fill-black text-black" />
         </div>
-        <span className="font-mono tracking-wider text-xs font-bold uppercase">Talk to Our Consultant</span>
-        <ArrowUpRight className="w-4 h-4 text-[#25D366] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+        <span className="font-mono text-xs font-bold uppercase tracking-wider text-white">
+          Talk to Our Consultant
+        </span>
+        <ArrowUpRight className="w-4 h-4 text-[#25D366] group-hover:text-white shrink-0" />
       </button>
     </div>
   );

@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Fira_Code, Plus_Jakarta_Sans } from "next/font/google";
+import { Fira_Code, Albert_Sans, Raleway } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { AnalyticsTracker } from "@/components/seo/AnalyticsTracker";
 import { SEO_AEO_GEO_Schemas } from "@/components/seo/SEO_AEO_GEO_Schemas";
 import { ClientProviders } from "@/components/providers/ClientProviders";
 
-const inter = Inter({
+const albertSans = Albert_Sans({
+  variable: "--font-heading",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const raleway = Raleway({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
@@ -14,12 +20,6 @@ const inter = Inter({
 
 const firaCode = Fira_Code({
   variable: "--font-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
   subsets: ["latin"],
   display: "swap",
 });
@@ -48,6 +48,13 @@ export const metadata: Metadata = {
   publisher: "NovaMac Solutions",
   alternates: {
     canonical: "https://novamacsolutions.com",
+    languages: {
+      "en-US": "https://novamacsolutions.com/us",
+      "en-GB": "https://novamacsolutions.com/uk",
+      "en-CA": "https://novamacsolutions.com/ca",
+      "en-EU": "https://novamacsolutions.com/eu",
+      "x-default": "https://novamacsolutions.com",
+    },
   },
   icons: {
     icon: "/favicon.ico",
@@ -97,12 +104,12 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${firaCode.variable} ${plusJakarta.variable} antialiased`}
+      className={`${albertSans.variable} ${raleway.variable} ${firaCode.variable} antialiased`}
     >
       <head>
         <SEO_AEO_GEO_Schemas />
       </head>
-      <body className="min-h-screen bg-[#F0EDE6] text-[#1C1917] font-sans selection:bg-[#0F52BA] selection:text-white">
+      <body className="min-h-screen bg-[#F0EDE6] text-[#1C1917] font-sans selection:bg-[#FF5733] selection:text-white">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -118,3 +125,4 @@ export default function RootLayout({
     </html>
   );
 }
+

@@ -9,3 +9,4 @@ export const useUIStore = create<UIState>((set) => ({
   isLandingMode: true,
   setLandingMode: (value) => set({ isLandingMode: value }),
 }));
+

@@ -1,6 +1,6 @@
 "use client";
 
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { ContactShadows, Sparkles } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { useEffect, useRef } from "react";
@@ -12,7 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 // This component handles moving the camera based on GSAP ScrollTrigger
 function CameraController() {
-  const { camera } = useThree();
   const progressRef = useRef(0);
 
   useEffect(() => {
@@ -32,7 +31,7 @@ function CameraController() {
     };
   }, []);
 
-  useFrame(() => {
+  useFrame((state) => {
     const p = progressRef.current;
     
     // Dynamic cinematic camera flight path
@@ -40,12 +39,12 @@ function CameraController() {
     const targetY = (Math.cos(p * Math.PI) - 1) * 2; // Arcs down
     const targetZ = 8 - p * 3;
     
-    camera.position.x += (targetX - camera.position.x) * 0.05;
-    camera.position.y += (targetY - camera.position.y) * 0.05;
-    camera.position.z += (targetZ - camera.position.z) * 0.05;
+    state.camera.position.x += (targetX - state.camera.position.x) * 0.05;
+    state.camera.position.y += (targetY - state.camera.position.y) * 0.05;
+    state.camera.position.z += (targetZ - state.camera.position.z) * 0.05;
     
     // Slight look-at drift for a handheld feel
-    camera.lookAt(
+    state.camera.lookAt(
       Math.sin(performance.now() / 2000) * 0.1, 
       Math.cos(performance.now() / 1500) * 0.1, 
       0
@@ -70,7 +69,7 @@ export default function Scene() {
           intensity={2} 
           shadow-mapSize={[1024, 1024]}
         />
-        <pointLight position={[-5, -5, -5]} intensity={1.5} color="#0F52BA" />
+        <pointLight position={[-5, -5, -5]} intensity={1.5} color="#FF5733" />
         <pointLight position={[5, 0, -5]} intensity={1} color="#ffffff" />
 
         <ElegantCore />
@@ -91,7 +90,7 @@ export default function Scene() {
           size={2.5} 
           speed={0.2} 
           opacity={0.1} 
-          color="#0F52BA" 
+          color="#FF5733" 
         />
 
         <ContactShadows 
@@ -117,3 +116,4 @@ export default function Scene() {
     </div>
   );
 }
+

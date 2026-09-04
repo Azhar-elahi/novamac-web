@@ -46,3 +46,4 @@ export const GATE = {
 export const RIDE = {
   endZ: -230,
 } as const;
+

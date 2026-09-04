@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "*.js",
+    "scripts/**",
+    "scratch/**",
+    "optimize.mjs",
+    "refine-typography.mjs",
   ]),
 ]);
 

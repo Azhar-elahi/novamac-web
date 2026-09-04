@@ -21,7 +21,7 @@ export default function Experience() {
     // Reset progress on initial mount
     useScrollStore.getState().setProgress(0);
 
-    let st: any = null;
+    let st: { kill: () => void } | null = null;
 
     const poll = setInterval(() => {
       const lenis = (window as any).lenis;
@@ -74,3 +74,4 @@ export default function Experience() {
     </>
   );
 }
+

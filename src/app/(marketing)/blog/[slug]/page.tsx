@@ -82,12 +82,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <main className="min-h-screen pt-40 pb-24 px-6 md:px-12 xl:px-20 bg-[#f6f1e7] text-[#211f1a] ">
+    <main className="min-h-screen pt-28 pb-24 px-6 md:px-12 xl:px-20 bg-[#FAF2F2] text-[#202020]">
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
       <article className="max-w-3xl mx-auto">
-        <Link href="/blog" className="hover-trigger inline-flex items-center gap-2 text-sm text-[#211f1a]/55 hover:text-[#2f6b45] transition-colors mb-10">
-          <ArrowLeft className="w-4 h-4" /> Back to Blog
+        <Link href="/blog" className="hover-trigger inline-flex items-center gap-2 text-sm text-[#FF5733] hover:text-[#202020] transition-colors mb-10 font-bold">
+          <ArrowLeft className="w-4 h-4" /> Back to Articles
         </Link>
 
         <header className="mb-14">

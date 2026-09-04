@@ -12,7 +12,9 @@ import { motion, useSpring, useMotionValue } from "framer-motion";
 export default function CustomCursor() {
   const [hovering, setHovering] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [isTouch, setIsTouch] = useState(true);
+  const [isTouch] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(pointer: coarse)").matches : false
+  );
 
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
@@ -20,9 +22,7 @@ export default function CustomCursor() {
   const springY = useSpring(y, { stiffness: 400, damping: 35, mass: 0.4 });
 
   useEffect(() => {
-    const touch = window.matchMedia("(pointer: coarse)").matches;
-    setIsTouch(touch);
-    if (touch) return;
+    if (isTouch) return;
 
     const move = (e: MouseEvent) => {
       x.set(e.clientX);
@@ -43,7 +43,7 @@ export default function CustomCursor() {
       window.removeEventListener("mouseover", over);
       document.documentElement.removeEventListener("mouseleave", leave);
     };
-  }, [x, y]);
+  }, [x, y, isTouch]);
 
   if (isTouch) return null;
 
@@ -65,3 +65,4 @@ export default function CustomCursor() {
     </motion.div>
   );
 }
+

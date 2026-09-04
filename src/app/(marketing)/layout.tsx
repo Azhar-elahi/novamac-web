@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
@@ -17,189 +17,212 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
   const { openBooking } = useBookingModal();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
-  // Header & Footer are ALWAYS visible on /home and all inner pages!
-  const isIntroPage = pathname === "/";
-  const showNav = !isIntroPage || !isLandingMode;
+  const [scrolled, setScrolled] = useState(false);
+
+  const isHomePage = pathname === "/" || pathname === "/home";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 150) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Header is hidden at top of homepage hero, and appears smoothly when scrolled down! On subpages, it is always visible.
+  const isHeaderVisible = isHomePage ? scrolled : true;
 
   const NAV_LINKS = [
-    { href: "/home",       label: "Home"       },
-    { href: "/services",   label: "Services"   },
-    { href: "/pricing",    label: "Pricing"     },
-    { href: "/work",       label: "Work"       },
-    { href: "/about",      label: "About"      },
-    { href: "/contact",    label: "Contact"    },
+    { href: "/about",       label: "About"      },
+    { href: "/services",    label: "Services"   },
+    { href: "/work",        label: "Work"       },
+    { href: "/industries",  label: "Industries" },
+    { href: "/pricing",     label: "Pricing"    },
+    { href: "/blog",        label: "Insights"   },
+    { href: "/contact",     label: "Contact"    },
   ];
 
-  // Dynamic logo link: if already on /home, go to / (landing page); otherwise go to /home
-  const logoHref = pathname === "/home" ? "/" : "/home";
-
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-[#0B1220] text-[#F8FAFC] selection:bg-[#3B82F6] selection:text-white relative overflow-x-hidden">
-      {/* Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0" />
+    <div className="min-h-screen flex flex-col font-sans bg-[#FAF2F2] text-[#0A2540] relative overflow-x-hidden">
       
-      {/* ── SINGLE UNIFIED STICKY HEADER ── */}
-      <header className={`sticky top-0 left-0 right-0 ${mobileMenuOpen ? "z-[99999]" : "z-50"} flex items-center justify-between px-4 sm:px-8 md:px-12 xl:px-20 h-[88px] bg-[#0B1220]/95 backdrop-blur-md border-b border-[#1E2E4A] transition-opacity duration-500 ${showNav ? "opacity-100" : "opacity-0 pointer-events-none hidden"}`}>
+      {/* ── LOUNGE LIZARD FLOATING TOP HEADER (Appears on scroll for home, always on inner pages) ── */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-12 md:px-16 h-20 bg-[#FAF2F2]/95 backdrop-blur-md shadow-lg border-b border-[#F0DCDC] rounded-b-3xl transition-all duration-500 transform ${
+          isHeaderVisible
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-full pointer-events-none"
+        }`}
+      >
         
-        {/* LOGO LINK: / if on /home, otherwise /home */}
-        <Link href={logoHref} onClick={() => setMobileMenuOpen(false)} className="hover-trigger flex items-center gap-3.5 group relative z-[100000]">
-          <img src="/logo.png" alt="NovaMac Logo" className="w-10 h-10 sm:w-12 sm:h-12 object-contain rounded-xl shadow-md group-hover:scale-105 transition-transform border border-[#1E2E4A]" />
-          <span className="font-heading font-black text-xl sm:text-2xl tracking-tight text-[#F8FAFC]">
-            NovaMac<br/><span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#3B82F6] leading-none block font-bold">SOLUTIONS</span>
+        {/* LOGO LINK */}
+        <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 group">
+          <img src="/logo.png" alt="NovaMac Logo" className="w-9 h-9 object-contain group-hover:scale-105 transition-transform" />
+          <span className="font-heading font-black text-2xl sm:text-3xl tracking-tight text-[#FF5733]">
+            NovaMac<span className="text-[#0A2540]">Solutions</span>
           </span>
         </Link>
 
         {/* DESKTOP NAVIGATION */}
-        <nav className="hidden lg:flex items-center gap-10 relative z-10 text-base font-bold text-[#94A3B8]">
+        <nav className="hidden lg:flex items-center gap-8 font-extrabold text-sm uppercase tracking-wider text-[#0A2540]">
           {NAV_LINKS.map((link) => {
-            const isActive = link.href === "/home" ? (pathname === "/home" || pathname === "/") : pathname === link.href;
+            const isActive = pathname === link.href;
             return (
               <Link 
-                key={link.href} 
+                key={link.label}
                 href={link.href}
-                className={`hover-trigger transition-colors duration-300 ${isActive ? "text-[#3B82F6] font-extrabold" : "hover:text-[#3B82F6]"}`}
+                className={`transition-colors py-2 relative hover:text-[#FF5733] ${isActive ? "text-[#FF5733]" : ""}`}
               >
                 {link.label}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#FF5733] rounded-full" />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* DESKTOP CTA BUTTON (OPENS INTERACTIVE BOOKING MODAL OR GOES TO /book) */}
+        {/* RIGHT CTA BUTTON */}
+        <div className="hidden lg:flex items-center gap-4">
+          <Link
+            href="/contact"
+            className="bg-[#FF5733] text-white hover:bg-[#202020] font-extrabold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-all duration-300 shadow-md"
+          >
+            Let&apos;s Talk
+          </Link>
+        </div>
+
+        {/* MOBILE MENU TOGGLE */}
         <button 
-          onClick={() => openBooking()}
-          className="hover-trigger hidden lg:flex items-center justify-center px-8 py-3 bg-[#3B82F6] text-white font-black text-xs sm:text-sm tracking-widest uppercase rounded-full hover:bg-white hover:text-[#0B1220] transition-all duration-300 relative z-10 shadow-[0_0_25px_rgba(59,130,246,0.45)] hover:scale-105"
-        >
-          BOOK A CALL
-        </button>
-
-        {/* MOBILE MENU TOGGLE BUTTON */}
-        <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden px-4 py-2.5 rounded-2xl bg-[#0F172A] text-[#F8FAFC] hover:bg-[#3B82F6] hover:text-white transition-all relative z-[100000] flex items-center justify-center gap-2 shadow-lg active:scale-95 border border-[#1E2E4A]"
-          aria-label="Toggle Navigation Menu"
+          className="lg:hidden p-2 rounded-full text-[#0A2540] hover:bg-gray-100"
         >
-          <span className="font-mono text-xs font-bold tracking-widest uppercase">
-            {mobileMenuOpen ? "CLOSE" : "MENU"}
-          </span>
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
-
-        {/* MOBILE MENU DRAWER OVERLAY */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-0 top-0 left-0 w-full h-full bg-[#0B1220] z-[99998] p-6 pt-28 flex flex-col justify-between border-t-2 border-[#1E2E4A] shadow-2xl overflow-y-auto min-h-screen">
-            <nav className="flex flex-col gap-3.5 pt-2">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`text-lg font-extrabold tracking-tight p-4.5 rounded-2xl border transition-all flex items-center justify-between shadow-sm ${pathname === link.href ? "bg-[#3B82F6] text-white border-[#3B82F6]" : "bg-[#070D18] text-[#F8FAFC] border-[#1E2E4A] hover:border-[#3B82F6]"}`}
-                >
-                  <span>{link.label}</span>
-                  <ArrowRight className={`w-5 h-5 ${pathname === link.href ? "text-white" : "text-[#3B82F6]"}`} />
-                </Link>
-              ))}
-            </nav>
-
-            <div className="pt-6 mt-6 border-t border-[#1E2E4A] space-y-4">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  openBooking();
-                }}
-                className="w-full py-4 bg-[#3B82F6] text-white font-black text-sm tracking-widest uppercase rounded-full text-center block shadow-lg hover:bg-white hover:text-[#0B1220] transition-all"
-              >
-                BOOK A STRATEGY CALL
-              </button>
-              <div className="text-center font-mono text-xs text-[#94A3B8] tracking-widest uppercase font-bold">
-                NOVAMAC SOLUTIONS // SUB-50MS EDGE SYSTEM
-              </div>
-            </div>
-          </div>
-        )}
 
       </header>
 
-      {/* ── MAIN CONTENT ── */}
-      <main className="flex-1 relative z-10">{children}</main>
-
-      {/* ── FOOTER ── */}
-      <footer className={`bg-[#070B14] text-[#F8FAFC] border-t border-[#1E2E4A] pt-20 pb-10 transition-opacity duration-500 relative z-10 ${showNav ? "opacity-100" : "opacity-0 pointer-events-none hidden"}`}>
-        <div className="px-6 md:px-12 xl:px-20 max-w-[1400px] mx-auto relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16">
-            <div className="col-span-2 space-y-4">
-              <Link href="/" className="flex items-center gap-3">
-                <img src="/logo.png" alt="NovaMac Logo" className="w-10 h-10 object-contain rounded-xl border border-[#1E2E4A]" />
-                <span className="font-heading font-bold text-2xl tracking-tight text-[#F8FAFC]">
-                  NovaMac<br/><span className="text-[10px] font-mono tracking-widest text-[#3B82F6] leading-none block">SOLUTIONS</span>
-                </span>
+      {/* MOBILE MENU OVERLAY */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-white pt-24 px-8 pb-12 flex flex-col justify-between lg:hidden">
+          <div className="flex flex-col gap-6 text-2xl font-black uppercase text-[#0A2540]">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="hover:text-[#FF5733]"
+              >
+                {link.label}
               </Link>
-              <p className="text-xs text-[#94A3B8] leading-relaxed max-w-sm font-normal">
-                NovaMac Solutions is a remote-first software engineering studio building sub-second Next.js web platforms, custom CRMs, and autonomous AI agent workflows for clients across the US, UK, Canada, and Europe.
-              </p>
-              <div className="flex items-center gap-2 pt-2">
-                <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-                <span className="font-mono text-[10px] text-[#94A3B8] font-bold uppercase tracking-wider">Accepting New Q3/Q4 Projects</span>
-              </div>
+            ))}
+          </div>
+
+          <div className="pt-8 border-t border-gray-200">
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full bg-[#FF5733] text-white font-extrabold text-center text-sm uppercase py-4 rounded-full inline-block"
+            >
+              Let&apos;s Talk
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* MAIN CONTENT (No pt-20 on homepage so hero fills edge-to-edge top bleed!) */}
+      <main className={`flex-1 w-full ${isHomePage ? "pt-0" : "pt-20"}`}>
+        {children}
+      </main>
+
+      {/* ── COMPACT LOUNGE LIZARD DARK FOOTER ── */}
+      <footer className="bg-[#0A0A0A] text-white border-t border-white/10 pt-10 pb-8 px-6 sm:px-12 lg:px-20 font-sans relative overflow-hidden">
+        
+        {/* MAIN FOOTER GRID */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+          
+          <div className="lg:col-span-2">
+            <Link href="/" className="flex items-center gap-2.5 mb-4">
+              <img src="/logo.png" alt="NovaMac Logo" className="w-9 h-9 object-contain rounded-lg shadow-md border border-white/10" />
+              <span className="font-black text-xl text-[#FF5733]">
+                NovaMac<span className="text-white">Solutions</span>
+              </span>
+            </Link>
+            <p className="text-gray-400 text-xs font-light leading-relaxed max-w-sm mb-4">
+              NovaMac Solutions is an award-winning digital design company and AI software studio building high-performance web platforms.
+            </p>
+            
+            {/* LIVE SYSTEM STATUS PILL */}
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-mono mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>All Edge Networks Operational (&lt;45ms SLA)</span>
             </div>
 
-            <div>
-              <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">NAVIGATION</div>
-              <ul className="space-y-2 text-xs text-[#94A3B8]">
-                <li><Link href="/home" className="hover:text-[#3B82F6] transition-colors">Home Studio</Link></li>
-                <li><Link href="/services" className="hover:text-[#3B82F6] transition-colors">Services Directory</Link></li>
-                <li><Link href="/pricing" className="hover:text-[#3B82F6] transition-colors">Pricing & Plans</Link></li>
-                <li><Link href="/work" className="hover:text-[#3B82F6] transition-colors">Client Case Studies</Link></li>
-                <li><Link href="/about" className="hover:text-[#3B82F6] transition-colors">About NovaMac</Link></li>
-                <li><Link href="/contact" className="hover:text-[#3B82F6] transition-colors">Contact Engineering</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">SERVICES</div>
-              <ul className="space-y-2 text-xs text-[#94A3B8]">
-                <li><Link href="/services/custom-web-development" className="hover:text-[#3B82F6] transition-colors">Custom Web Development</Link></li>
-                <li><Link href="/services/ai-automation" className="hover:text-[#3B82F6] transition-colors">AI & Autonomous Agents</Link></li>
-                <li><Link href="/services/crm-custom-software" className="hover:text-[#3B82F6] transition-colors">Custom CRM Software</Link></li>
-                <li><Link href="/services/ecommerce-development" className="hover:text-[#3B82F6] transition-colors">Headless E-Commerce</Link></li>
-                <li><Link href="/services/ui-ux-design" className="hover:text-[#3B82F6] transition-colors">UI/UX Design Studio</Link></li>
-                <li><Link href="/services/mobile-app-development" className="hover:text-[#3B82F6] transition-colors">Mobile App Engineering</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <div className="text-xs font-mono font-bold text-[#3B82F6] uppercase tracking-widest mb-4">GLOBAL REGIONS</div>
-              <ul className="space-y-2.5 text-xs text-[#94A3B8]">
-                <li><Link href="/us" className="hover:text-[#3B82F6] transition-colors">🇺🇸 US (PST/EST)</Link></li>
-                <li><Link href="/uk" className="hover:text-[#3B82F6] transition-colors">🇬🇧 UK (GMT)</Link></li>
-                <li><Link href="/eu" className="hover:text-[#3B82F6] transition-colors">🇪🇺 EU (CET)</Link></li>
-              </ul>
+            <div className="text-[11px] font-mono text-gray-500 uppercase tracking-wider block">
+              Est. 2020 • Global Web & AI Studio
             </div>
           </div>
 
-          {/* Bottom Copyright & Legal Links Row */}
-          <div className="pt-8 border-t border-[#1E2E4A] flex flex-col sm:flex-row items-center justify-between text-xs text-[#94A3B8] gap-4">
-            <div className="flex items-center gap-6">
-              <p>© {new Date().getFullYear()} NovaMac Solutions. All rights reserved.</p>
-              <div className="flex items-center gap-4 border-l border-[#1E2E4A] pl-6">
-                <Link href="/privacy" className="hover:text-[#3B82F6] transition-colors font-medium">Privacy Policy</Link>
-                <span className="text-[#1E2E4A]">•</span>
-                <Link href="/terms" className="hover:text-[#3B82F6] transition-colors font-medium">Terms of Service</Link>
-              </div>
-            </div>
-            <p className="font-mono text-xs tracking-wider uppercase text-[#3B82F6] font-bold">
-              Sub-Second Next.js Engineering · 100% Source Code Ownership
-            </p>
+          <div>
+            <h4 className="font-extrabold text-[11px] uppercase tracking-widest text-white mb-3 border-l-2 border-[#FF5733] pl-2.5">
+              Capabilities
+            </h4>
+            <ul className="space-y-2 text-xs text-gray-400 font-medium">
+              <li><Link href="/services" className="hover:text-[#FF5733] transition-colors">Custom Next.js Web Dev</Link></li>
+              <li><Link href="/services" className="hover:text-[#FF5733] transition-colors">UI/UX Figma Design Studio</Link></li>
+              <li><Link href="/services" className="hover:text-[#FF5733] transition-colors">Headless Shopify E-Commerce</Link></li>
+              <li><Link href="/services" className="hover:text-[#FF5733] transition-colors">AI & Custom CRM Portals</Link></li>
+              <li><Link href="/services" className="hover:text-[#FF5733] transition-colors">Search Everywhere GEO/SEO</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-extrabold text-[11px] uppercase tracking-widest text-white mb-3 border-l-2 border-[#FF5733] pl-2.5">
+              Company & Work
+            </h4>
+            <ul className="space-y-2 text-xs text-gray-400 font-medium">
+              <li><Link href="/about" className="hover:text-[#FF5733] transition-colors">About NovaMac</Link></li>
+              <li><Link href="/work" className="hover:text-[#FF5733] transition-colors">Client Case Studies</Link></li>
+              <li><Link href="/pricing" className="hover:text-[#FF5733] transition-colors">Pricing Architecture</Link></li>
+              <li><Link href="/contact" className="hover:text-[#FF5733] transition-colors">Contact Engineering</Link></li>
+              <li><Link href="/about" className="hover:text-[#FF5733] transition-colors">Our Methodology</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-extrabold text-[11px] uppercase tracking-widest text-white mb-3 border-l-2 border-[#FF5733] pl-2.5">
+              Global Hubs & Support
+            </h4>
+            <ul className="space-y-2 text-xs text-gray-400 font-medium">
+              <li className="text-gray-300 font-bold">New York HQ • London • Dubai</li>
+              <li><Link href="/contact" className="hover:text-[#FF5733] transition-colors">WhatsApp Consultant Desk 1</Link></li>
+              <li><Link href="/contact" className="hover:text-[#FF5733] transition-colors">WhatsApp Consultant Desk 2</Link></li>
+              <li>Email: hello@novamacsolutions.com</li>
+              <li className="pt-1 text-[#FF5733] font-mono text-[10px]">24/7 Response Guarantee</li>
+            </ul>
+          </div>
+
+        </div>
+
+        {/* BOTTOM COPYRIGHT & LEGAL BAR */}
+        <div className="max-w-7xl mx-auto pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-500 font-mono gap-3">
+          <div>© {new Date().getFullYear()} NovaMac Solutions Studio. All rights reserved.</div>
+          <div className="flex gap-5">
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/contact" className="hover:text-white transition-colors">Security & SLA</Link>
           </div>
         </div>
       </footer>
 
-      {/* ── GLOBAL INTERACTIVE FLOATING AI CHAT WIDGET, BOOKING MODAL & WHATSAPP MENU ── */}
+      {/* Floating Widgets */}
+      <WhatsAppWidget />
       <ChatWidget />
       <BookingModal />
-      <WhatsAppWidget />
     </div>
   );
 }
@@ -211,3 +234,4 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
     </BookingProvider>
   );
 }
+

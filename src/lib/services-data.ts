@@ -368,3 +368,4 @@ export const SERVICES: ServiceDetail[] = [
 export function getServiceBySlug(slug: string) {
   return SERVICES.find((s) => s.slug === slug);
 }
+

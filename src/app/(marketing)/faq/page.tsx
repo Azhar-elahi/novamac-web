@@ -50,31 +50,44 @@ const FAQS = [
   }
 ];
 
+import { OptimizedVideoBackground } from "@/components/ui/OptimizedVideoBackground";
+
 export default function FAQPage() {
   return (
-    <main className="bg-[#0B1220] text-[#F8FAFC] min-h-screen pt-12 sm:pt-20 pb-24 px-6 md:px-12 relative font-sans">
-      <div className="max-w-4xl mx-auto relative z-10">
-        <div className="mb-20 text-center">
-          <span className="px-4 py-1.5 bg-gradient-to-r from-[#0F1C33] to-[#091222] border border-[#1E2E4A] border-t-white/10 text-[#3B82F6] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest rounded-full inline-block mb-4 shadow-md">
-            COMMON QUESTIONS & ANSWERS
+    <main className="bg-[#FAF2F2] text-[#202020] min-h-screen pt-10 sm:pt-16 pb-24 font-sans relative overflow-hidden">
+      
+      {/* HERO SECTION WITH VIDEO BACKGROUND */}
+      <section className="relative min-h-[420px] sm:min-h-[480px] flex items-center justify-center overflow-hidden mb-16 mx-4 sm:mx-8 md:mx-12 rounded-3xl border border-[#F0DCDC] shadow-2xl bg-black contain-content">
+        <OptimizedVideoBackground src="/videos/tech-innovation.mp4" opacity={0.9} className="absolute inset-0 scale-105" />
+
+        {/* Ambient Gradient Overlays (Matching Home Page) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/40 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-[#FF5733]/10 to-black/60 z-0" />
+
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-6 py-16 sm:py-20">
+          <span className="px-4 py-1.5 bg-[#FF5733]/20 border border-[#FF5733]/50 text-[#FF5733] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest rounded-full inline-block mb-4 backdrop-blur-md shadow-lg">
+            COMMON QUESTIONS & KNOWLEDGEBASE
           </span>
-          <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black tracking-tight leading-[1.05] sm:leading-[0.9] text-[#F8FAFC] mb-6">
-            Everything you need<br />to <span className="text-[#3B82F6]">know.</span>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.05] sm:leading-[0.95] mb-6 drop-shadow-md">
+            Everything You Need <br />To <span className="text-[#FF5733]">Know.</span>
           </h1>
-          <p className="text-sm sm:text-lg md:text-xl text-[#94A3B8] font-normal max-w-2xl mx-auto leading-relaxed bg-gradient-to-b from-[#0F1C33]/90 via-[#091222]/95 to-[#050A14] p-5 sm:p-7 rounded-2xl border border-[#1E2E4A] border-t-white/10 shadow-md">
-            Detailed answers to the questions we get asked most about our engineering, process, and pricing.
+          <p className="text-sm sm:text-lg md:text-xl text-gray-200 font-normal max-w-2xl mx-auto leading-relaxed bg-[#202020]/60 backdrop-blur-md p-5 sm:p-7 rounded-2xl border border-white/10 shadow-xl">
+            Detailed answers to the questions we get asked most about our software engineering, agile process, retainers, and transparent pricing.
           </p>
         </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
 
         <div className="space-y-16">
           {FAQS.map((section, idx) => (
             <div key={idx}>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-8 border-b border-[#1E2E4A] pb-4 text-[#3B82F6]">{section.category}</h2>
+              <h2 className="text-2xl sm:text-3xl font-extrabold mb-8 border-b border-[#F0DCDC] pb-4 text-[#FF5733]">{section.category}</h2>
               <div className="space-y-6">
                 {section.questions.map((faq, i) => (
-                  <div key={i} className="bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] border border-[#1E2E4A] border-t-white/15 hover:border-[#3B82F6]/80 transition-all shadow-[0_20px_50px_rgba(0,0,0,0.65),0_0_20px_rgba(59,130,246,0.08)] hover:shadow-[0_25px_65px_rgba(0,0,0,0.85),0_0_45px_rgba(59,130,246,0.3)] p-7 md:p-9 rounded-3xl">
-                    <h3 className="text-xl md:text-2xl font-extrabold text-[#F8FAFC] mb-3">{faq.q}</h3>
-                    <p className="text-[#94A3B8] leading-relaxed font-normal text-xs sm:text-base">{faq.a}</p>
+                  <div key={i} className="bg-white border border-[#F0DCDC] hover:border-[#FF5733] transition-all shadow-sm p-7 md:p-9 rounded-3xl">
+                    <h3 className="text-xl md:text-2xl font-extrabold text-[#202020] mb-3">{faq.q}</h3>
+                    <p className="text-gray-600 leading-relaxed font-normal text-xs sm:text-base">{faq.a}</p>
                   </div>
                 ))}
               </div>
@@ -82,12 +95,12 @@ export default function FAQPage() {
           ))}
         </div>
 
-        <div className="mt-24 bg-gradient-to-r from-[#0F1C33] via-[#091222] to-[#0F1C33] border border-[#1E2E4A] border-t-white/15 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left shadow-[0_25px_60px_rgba(0,0,0,0.7)]">
+        <div className="mt-24 bg-[#202020] text-white border border-white/10 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left shadow-2xl">
           <div>
-            <h4 className="text-2xl sm:text-3xl font-extrabold text-[#F8FAFC] mb-3">Still have questions?</h4>
-            <p className="text-[#94A3B8] font-normal max-w-md text-xs sm:text-base">We are always happy to answer any specific questions you might have about your unique project.</p>
+            <h4 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">Still have questions?</h4>
+            <p className="text-gray-300 font-normal max-w-md text-xs sm:text-base">We are always happy to answer any specific questions you might have about your unique project.</p>
           </div>
-          <Link href="/contact" className="shrink-0 px-9 py-4.5 bg-[#3B82F6] text-white font-black text-xs sm:text-sm tracking-widest uppercase rounded-full inline-flex items-center gap-2 hover:bg-white hover:text-[#0B1220] transition-all duration-300 shadow-[0_10px_30px_rgba(59,130,246,0.35)]">
+          <Link href="/contact" className="shrink-0 px-9 py-4.5 bg-[#FF5733] text-white font-black text-xs sm:text-sm tracking-widest uppercase rounded-full inline-flex items-center gap-2 hover:bg-white hover:text-[#202020] transition-all duration-300 shadow-xl">
             Contact Us <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -95,3 +108,4 @@ export default function FAQPage() {
     </main>
   );
 }
+

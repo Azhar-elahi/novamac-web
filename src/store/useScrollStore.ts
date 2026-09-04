@@ -17,3 +17,4 @@ export const useScrollStore = create<ScrollState>((set) => ({
   setSceneIndex: (idx) => set({ sceneIndex: idx }),
   setTransitioned: (val) => set({ isTransitioned: val }),
 }));
+

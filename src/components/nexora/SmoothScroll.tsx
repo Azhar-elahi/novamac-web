@@ -3,13 +3,6 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
-/**
- * Buttery smooth scroll (Lenis) — replaces the browser's default
- * instant/native scroll with an eased, momentum-based feel used by
- * pretty much every Awwwards-tier site. window.scrollY still updates
- * normally, so StoryCanvas's scroll-progress tracking keeps working
- * without any changes.
- */
 export default function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({

@@ -3,54 +3,59 @@
 @plugin "tailwindcss-animate";
 
 @theme {
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-heading: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-heading);
   
-  /* Logo-Aligned Theme: Midnight Navy & Electric Royal Blue */
-  --color-background: #0B1220; /* Midnight Deep Navy Blue */
-  --color-foreground: #F8FAFC; /* Crisp Ice White */
+  /* EXACT LOUNGE LIZARD BRAND DESIGN TOKENS */
+  --color-background: #FAF2F2; /* Soft Premium Light Rose Canvas */
+  --color-foreground: #202020; /* Deep Charcoal Text */
   
-  --color-card: #0F172A; /* Sleek Obsidian Midnight Navy Card */
-  --color-card-foreground: #F8FAFC;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #202020;
   
-  --color-popover: #0F172A;
-  --color-popover-foreground: #F8FAFC;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #202020;
   
-  --color-primary: #F8FAFC;
-  --color-primary-foreground: #0B1220;
+  --color-primary: #FF5733; /* Signature Brand Coral Red (#FF5733) */
+  --color-primary-foreground: #FFFFFF;
   
-  --color-secondary: #1E293B;
-  --color-secondary-foreground: #F8FAFC;
+  --color-secondary: #F7E8E8; /* Light Rose Section Surface */
+  --color-secondary-foreground: #202020;
   
-  --color-muted: #1E293B;
-  --color-muted-foreground: #94A3B8;
+  --color-muted: #F5E6E6;
+  --color-muted-foreground: #626161;
   
-  --color-accent: #3B82F6; /* Electric Royal Blue (Matches NM Logo Brand Accent) */
+  --color-accent: #FF5733; /* Signature Brand Red */
   --color-accent-foreground: #FFFFFF;
   
-  --color-brand: #3B82F6;
+  --color-brand: #FF5733;
   --color-brand-foreground: #FFFFFF;
 
-  /* Lounge Lizard Agency Aesthetic Tokens */
-  --color-lounge-coral: #FF5733;
-  --color-lounge-dark: #0D0D0D;
-  --color-lounge-card: #141414;
+  /* Lounge Lizard Specific Tokens */
+  --color-lounge-red: #FF5733;
+  --color-lounge-[#FF5733]: #FF5733;
+  --color-lounge-dark: #0A2540;
+  --color-lounge-black: #0D0D0D;
+  --color-lounge-light: #FAF2F2;
+  --color-lounge-card: #FFFFFF;
   
   --color-destructive: oklch(0.577 0.245 27.325);
   --color-destructive-foreground: #FFFFFF;
   
-  --color-border: #1E2E4A; /* Steel Navy Border */
-  --color-input: #162032;
-  --color-ring: #3B82F6;
+  --color-border: #F0DCDC;
+  --color-input: #FAF2F2;
+  --color-ring: #FF5733;
   
-  --radius-lg: 0px;
-  --radius-md: 0px;
-  --radius-sm: 0px;
+  --radius-lg: 30px;
+  --radius-md: 20px;
+  --radius-sm: 10px;
 }
 
-/* Base styles for a smooth, app-like feel */
+/* Base styles for exact Lounge Lizard feel */
 @layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), sans-serif;
+  }
+
   * {
     border-color: var(--color-border);
     outline-color: var(--color-ring);
@@ -59,23 +64,16 @@
   html {
     scroll-behavior: smooth !important;
     scrollbar-gutter: stable;
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: #FAF2F2;
+    color: #202020;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
-  /* Hide default browser pointer on desktop so ONLY custom circle cursor shows */
-  @media (min-width: 768px) {
-    html, body, a, button, [role="button"], input, select, textarea {
-      cursor: none !important;
-    }
-  }
-
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: #FAF2F2;
+    color: #202020;
     overscroll-behavior-y: none;
     overflow-x: hidden;
     width: 100%;
@@ -88,72 +86,64 @@
   }
 }
 
-/* Custom Selection */
+/* Custom Selection in Coral Red */
 ::selection {
-  background-color: #C68B59;
-  color: #0D0C0A;
+  background-color: #FF5733;
+  color: #FFFFFF;
 }
 
-/* Hide scrollbar for a cleaner Awwwards look */
+/* Hide scrollbar for clean agency look */
 ::-webkit-scrollbar {
   display: none;
 }
 
-/* Enable custom scrollbar for modal windows */
-.modal-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: #3B82F6 #070D18;
+/* Lounge Lizard Custom Pill Button Utility */
+.btn-lounge-red {
+  background-color: #FF5733;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease-in-out;
 }
-.modal-scroll::-webkit-scrollbar {
-  display: block !important;
-  width: 6px !important;
-}
-.modal-scroll::-webkit-scrollbar-track {
-  background: #070D18 !important;
-  border-radius: 9999px !important;
-}
-.modal-scroll::-webkit-scrollbar-thumb {
-  background: #3B82F6 !important;
-  border-radius: 9999px !important;
+.btn-lounge-red:hover {
+  background-color: #202020;
+  color: #FFFFFF;
 }
 
-/* Custom utilities for glassmorphism in light mode */
-@layer utilities {
-  .glass-card {
-    @apply bg-white/70 backdrop-blur-xl border border-black/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.04)];
-  }
-  
-  .glass-panel {
-    @apply bg-white/50 backdrop-blur-2xl border border-white/80 shadow-[0_4px_24px_rgba(0,0,0,0.02)];
-  }
-  
-  .text-balance {
-    text-wrap: balance;
-  }
-  
-  .animate-marquee {
-    animation: marquee 32s linear infinite;
-  }
+.btn-lounge-dark {
+  background-color: #202020;
+  color: #FFFFFF;
+  border-radius: 9999px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease-in-out;
+}
+.btn-lounge-dark:hover {
+  background-color: #FFFFFF;
+  color: #202020;
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+/* Mobile & PC GPU Acceleration & Rendering Utilities */
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
-/* Lenis Scroll Overrides to ensure it doesn't break R3F */
-html.lenis, html.lenis body {
-  height: auto;
+.will-change-transform {
+  will-change: transform, opacity;
 }
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+
+.contain-content {
+  contain: content;
 }
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+
+/* Prevent layout shifts & smooth media rendering */
+img, video {
+  content-visibility: auto;
 }
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
+
+

@@ -44,7 +44,7 @@ export default async function AdminMessagesPage() {
                   </td>
                   <td className="px-6 py-4 font-medium text-slate-800">{msg.name}</td>
                   <td className="px-6 py-4">
-                    <a href={`mailto:${msg.email}`} className="text-blue-600 hover:underline">{msg.email}</a>
+                    <a href={`mailto:${msg.email}`} className="text-[#FF5733] hover:underline">{msg.email}</a>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className="px-2 py-1 bg-slate-50/10 text-slate-800 rounded text-xs">{msg.subject}</span>
@@ -68,3 +68,4 @@ export default async function AdminMessagesPage() {
     </div>
   );
 }
+

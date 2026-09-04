@@ -40,3 +40,4 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
 export function useBookingModal() {
   return useContext(BookingContext);
 }
+

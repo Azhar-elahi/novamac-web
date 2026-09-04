@@ -166,7 +166,9 @@ export async function updatePricingPlan(
     revalidatePath("/(admin)/7222-@dm1nl0g1n/pricing");
 
     return { success: true, price: newPrice };
-  } catch (error: any) {
-    return { success: false, error: error.message };
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Failed to update pricing";
+    return { success: false, error: message };
   }
 }
+

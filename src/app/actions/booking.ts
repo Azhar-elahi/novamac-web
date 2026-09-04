@@ -5,8 +5,12 @@ import { prisma } from "@/lib/prisma";
 const TEMP_EMAIL_DOMAINS = [
   "yopmail.com", "mailinator.com", "guerrillamail.com", "10minutemail.com", 
   "tempmail.com", "dropmail.me", "temp-mail.org", "throwawaymail.com",
-  "disposablemail.com", "maildrop.cc", "sharklasers.com", "getairmail.com"
+  "disposablemail.com", "maildrop.cc", "sharklasers.com", "getairmail.com",
+  "test.com", "example.com", "abc.com", "asdf.com"
 ];
+
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const PHONE_REGEX = /^\+?[0-9\s\-\(\)]{8,20}$/;
 
 export async function submitCallBooking(formData: FormData) {
   try {
@@ -19,13 +23,25 @@ export async function submitCallBooking(formData: FormData) {
     const budget = (formData.get("budget") as string || "").trim();
     const notes = (formData.get("notes") as string || "").trim();
 
-    if (!name || !email || !date || !timeSlot) {
-      return { success: false, error: "Please fill in all required booking fields." };
+    if (!name || name.length < 2) {
+      return { success: false, error: "Please enter your full name (minimum 2 characters)." };
+    }
+
+    if (!email || !EMAIL_REGEX.test(email)) {
+      return { success: false, error: "Please enter a valid email address (e.g. john@company.com)." };
     }
 
     const domain = email.split("@")[1]?.toLowerCase();
     if (domain && TEMP_EMAIL_DOMAINS.includes(domain)) {
-      return { success: false, error: "Please use a valid professional or personal email address." };
+      return { success: false, error: "Please use a valid corporate or personal email. Disposable email domains are blocked." };
+    }
+
+    if (phone && !PHONE_REGEX.test(phone)) {
+      return { success: false, error: "Please enter a valid phone number format (minimum 8 digits)." };
+    }
+
+    if (!date || !timeSlot) {
+      return { success: false, error: "Please select a preferred date and time slot for your call." };
     }
 
     const bookingMessage = `STRATEGY CALL BOOKING:
@@ -34,13 +50,13 @@ export async function submitCallBooking(formData: FormData) {
 - Preferred Service: ${service}
 - Budget Range: ${budget || "Not Specified"}
 - Phone/WhatsApp: ${phone || "Not Provided"}
-- Notes/Overview: ${notes || "None"}`;
+- Project Overview: ${notes || "None"}`;
 
     const record = await prisma.contactMessage.create({
       data: {
         name,
         email,
-        phone,
+        phone: phone || null,
         subject: `Strategy Call: ${service} (${date} @ ${timeSlot})`,
         message: bookingMessage,
         status: "UNREAD"

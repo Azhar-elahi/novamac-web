@@ -168,3 +168,4 @@ export const INDUSTRIES: Industry[] = [
     flow: ["Enquiry", "WhatsApp Reply", "Symptom Triage", "CRM Entry", "Appointment Booking"],
   },
 ];
+

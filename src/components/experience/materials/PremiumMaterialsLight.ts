@@ -45,3 +45,4 @@ export const WhiteMatteMaterial = new THREE.MeshStandardMaterial({
   metalness: 0.0,
   envMapIntensity: 0.2,
 });
+

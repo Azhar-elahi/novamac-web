@@ -66,3 +66,4 @@ export default function Scene5Climax() {
     </group>
   );
 }
+

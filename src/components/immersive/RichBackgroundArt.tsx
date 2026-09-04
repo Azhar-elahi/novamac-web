@@ -43,14 +43,14 @@ export function RichBackgroundArt({
     <div className={`absolute inset-0 pointer-events-none overflow-hidden z-0 ${opacity} transform-gpu`}>
       
       {/* ── 1. TECHNICAL RADIAL GRID & BLUEPRINT MESH ── */}
-      <div className="absolute inset-0 bg-[radial-gradient(#3B82F6_1.2px,transparent_1.2px)] [background-size:28px_28px] opacity-[0.12]" />
+      <div className="absolute inset-0 bg-[radial-gradient(#FF5733_1.2px,transparent_1.2px)] [background-size:28px_28px] opacity-[0.12]" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
       {/* ── 2. LIGHTWEIGHT GLOW MESHES (ELECTRIC BLUE BRAND ACCENT) ── */}
       <motion.div 
         animate={isMobile ? {} : { scale: [1, 1.15, 1], opacity: [0.15, 0.28, 0.15] }}
         transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
-        className="absolute top-[5%] left-[8%] w-[45vw] h-[45vw] bg-[#3B82F6]/20 blur-[40px] md:blur-[120px] rounded-full transform-gpu" 
+        className="absolute top-[5%] left-[8%] w-[45vw] h-[45vw] bg-[#FF5733]/20 blur-[40px] md:blur-[120px] rounded-full transform-gpu" 
       />
       <motion.div 
         animate={isMobile ? {} : { scale: [1, 1.2, 1], opacity: [0.12, 0.25, 0.12] }}
@@ -61,7 +61,7 @@ export function RichBackgroundArt({
       {/* ── 3. PARALLAX LAYER 1: DEEP EDITORIAL WATERMARKS ── */}
       <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute inset-0">
         <div className="absolute top-[8%] right-[2%] opacity-[0.06] select-none rotate-[-6deg]">
-          <h1 className="text-6xl md:text-[14rem] font-black text-[#3B82F6] tracking-tighter leading-none">
+          <h1 className="text-6xl md:text-[14rem] font-black text-[#FF5733] tracking-tighter leading-none">
             NovaMac
           </h1>
         </div>
@@ -81,7 +81,7 @@ export function RichBackgroundArt({
           <motion.svg 
             animate={{ rotate: 360, scale: [1, 1.2, 1] }} 
             transition={{ repeat: Infinity, duration: 16, ease: "easeInOut" }} 
-            className="absolute top-[12%] right-[15%] w-16 h-16 text-[#3B82F6] opacity-40" 
+            className="absolute top-[12%] right-[15%] w-16 h-16 text-[#FF5733] opacity-40" 
             viewBox="0 0 40 40"
           >
             <path d="M 20 0 L 24 16 L 40 20 L 24 24 L 20 40 L 16 24 L 0 20 L 16 16 Z" fill="currentColor" />
@@ -91,7 +91,7 @@ export function RichBackgroundArt({
           <motion.svg 
             animate={{ rotate: -360 }} 
             transition={{ repeat: Infinity, duration: 24, ease: "linear" }} 
-            className="absolute top-[42%] left-[4%] w-24 h-24 text-[#3B82F6] opacity-35" 
+            className="absolute top-[42%] left-[4%] w-24 h-24 text-[#FF5733] opacity-35" 
             viewBox="0 0 100 100"
           >
             <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="8 6" />
@@ -101,7 +101,7 @@ export function RichBackgroundArt({
           <motion.svg 
             animate={{ y: [0, -10, 0] }} 
             transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }} 
-            className="absolute bottom-[18%] left-[6%] w-36 h-16 text-[#3B82F6] opacity-40" 
+            className="absolute bottom-[18%] left-[6%] w-36 h-16 text-[#FF5733] opacity-40" 
             viewBox="0 0 100 40"
           >
             <path d="M 10 20 Q 30 5 50 20 T 90 20" fill="none" stroke="currentColor" strokeWidth="4.5" strokeLinecap="round" />
@@ -111,20 +111,20 @@ export function RichBackgroundArt({
           <motion.svg 
             animate={{ x: [0, 10, 0] }} 
             transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }} 
-            className="absolute top-[58%] right-[8%] w-28 h-20 text-[#3B82F6] opacity-35" 
+            className="absolute top-[58%] right-[8%] w-28 h-20 text-[#FF5733] opacity-35" 
             viewBox="0 0 100 50"
           >
             <path d="M 10 25 Q 50 10 80 25 M 60 10 L 80 25 L 60 40" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
           </motion.svg>
 
           {/* Interactive Code Brackets Badge */}
-          <div className="absolute top-[20%] left-[8%] px-3.5 py-1.5 bg-[#0F172A]/90 backdrop-blur-md border border-[#3B82F6]/40 rounded-full font-mono text-xs font-bold text-[#3B82F6] shadow-md flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-ping" />
+          <div className="absolute top-[20%] left-[8%] px-3.5 py-1.5 bg-[#0F172A]/90 backdrop-blur-md border border-[#FF5733]/40 rounded-full font-mono text-xs font-bold text-[#FF5733] shadow-md flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#FF5733] animate-ping" />
             <span>&lt;Next.js 15 /&gt;</span>
           </div>
 
-          <div className="absolute top-[68%] right-[10%] px-3.5 py-1.5 bg-[#0F172A]/90 backdrop-blur-md border border-[#3B82F6]/40 rounded-full font-mono text-xs font-bold text-[#3B82F6] shadow-md flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#3B82F6]" />
+          <div className="absolute top-[68%] right-[10%] px-3.5 py-1.5 bg-[#0F172A]/90 backdrop-blur-md border border-[#FF5733]/40 rounded-full font-mono text-xs font-bold text-[#FF5733] shadow-md flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#FF5733]" />
             <span>&lt;UI/UX Studio /&gt;</span>
           </div>
         </motion.div>
@@ -146,3 +146,4 @@ export function RichBackgroundArt({
     </div>
   );
 }
+

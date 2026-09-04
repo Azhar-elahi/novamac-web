@@ -118,3 +118,4 @@ export default function Scene1Room() {
     </group>
   );
 }
+

@@ -8,7 +8,7 @@ export const DoodleUnderline = () => (
     <motion.path 
       d="M 5 25 Q 75 5 150 20 T 295 15" 
       fill="transparent" 
-      stroke="#0F52BA" 
+      stroke="#FF5733" 
       strokeWidth="5.5"
       strokeLinecap="round"
       initial={{ pathLength: 0, opacity: 0 }}
@@ -34,7 +34,7 @@ export const DoodleCircle = ({ className = "" }: { className?: string }) => (
 );
 
 export const DoodleSquiggle = ({ className = "" }: { className?: string }) => (
-  <svg className={`w-36 h-20 text-[#0F52BA] opacity-40 pointer-events-none ${className}`} viewBox="0 0 100 40">
+  <svg className={`w-36 h-20 text-[#FF5733] opacity-40 pointer-events-none ${className}`} viewBox="0 0 100 40">
     <motion.path 
       d="M 10 20 Q 30 5 50 20 T 90 20" 
       fill="none" 
@@ -48,7 +48,7 @@ export const DoodleSquiggle = ({ className = "" }: { className?: string }) => (
 );
 
 export const DoodleStar = ({ className = "" }: { className?: string }) => (
-  <svg className={`w-14 h-14 text-[#0F52BA] opacity-50 pointer-events-none ${className}`} viewBox="0 0 40 40">
+  <svg className={`w-14 h-14 text-[#FF5733] opacity-50 pointer-events-none ${className}`} viewBox="0 0 40 40">
     <motion.path 
       d="M 20 0 L 24 16 L 40 20 L 24 24 L 20 40 L 16 24 L 0 20 L 16 16 Z" 
       fill="currentColor" 
@@ -58,7 +58,7 @@ export const DoodleStar = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-export const DataPulse = ({ top = "top-10", left = "left-10", delay = 0, color = "#0F52BA" }: { top?: string, left?: string, delay?: number, color?: string }) => (
+export const DataPulse = ({ top = "top-10", left = "left-10", delay = 0, color = "#FF5733" }: { top?: string, left?: string, delay?: number, color?: string }) => (
   <div className={`absolute ${top} ${left} pointer-events-none z-0 flex items-center gap-2 font-mono text-[10px] opacity-75`}>
     <span className="w-3 h-3 rounded-full animate-ping" style={{ backgroundColor: color }} />
     <span className="text-[#1C1917] uppercase tracking-widest font-bold bg-white/90 backdrop-blur-md px-3 py-1 rounded-full border border-[#D6D1C8] shadow-sm">
@@ -72,7 +72,7 @@ export const FloatingShapes = () => (
     <motion.div 
       animate={{ rotate: 360, y: [0, -30, 0], x: [0, 20, 0] }}
       transition={{ repeat: Infinity, duration: 20, ease: "easeInOut" }}
-      className="absolute top-[15%] left-[5%] w-20 h-20 border-2 border-[#0F52BA] rounded-3xl" 
+      className="absolute top-[15%] left-[5%] w-20 h-20 border-2 border-[#FF5733] rounded-3xl" 
     />
     <motion.div 
       animate={{ rotate: -360, y: [0, 35, 0], x: [0, -25, 0] }}
@@ -109,17 +109,17 @@ export const BackgroundDoodles = ({
     <div className={`absolute inset-0 pointer-events-none overflow-hidden z-0 ${opacity} will-change-transform`}>
       
       {/* RICH TECHNICAL BACKGROUND GRID PATTERN & DOTS */}
-      <div className="absolute inset-0 bg-[radial-gradient(#0F52BA_1px,transparent_1px)] [background-size:32px_32px] opacity-15" />
+      <div className="absolute inset-0 bg-[radial-gradient(#FF5733_1px,transparent_1px)] [background-size:32px_32px] opacity-15" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:5rem_5rem]" />
 
       {/* MULTIPLE VIBRANT GLOW BLOBS */}
-      <div className="absolute top-[5%] left-[10%] w-[45vw] h-[45vw] bg-[#0F52BA]/12 blur-[120px] rounded-full transform-gpu mix-blend-multiply" />
+      <div className="absolute top-[5%] left-[10%] w-[45vw] h-[45vw] bg-[#FF5733]/12 blur-[120px] rounded-full transform-gpu mix-blend-multiply" />
       <div className="absolute top-[40%] right-[8%] w-[40vw] h-[40vw] bg-[#FF007F]/10 blur-[130px] rounded-full transform-gpu mix-blend-multiply" />
       <div className="absolute bottom-[10%] left-[20%] w-[38vw] h-[38vw] bg-[#00F0FF]/10 blur-[140px] rounded-full transform-gpu mix-blend-multiply" />
 
       {/* LAYER 1: Deep Parallax Text Watermarks */}
       <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute top-[6%] right-[2%] opacity-25 rotate-[-5deg] select-none">
-        <h1 className="text-8xl md:text-[13rem] font-black text-[#0F52BA] tracking-tighter leading-none">
+        <h1 className="text-8xl md:text-[13rem] font-black text-[#FF5733] tracking-tighter leading-none">
           NovaMac
         </h1>
       </motion.div>
@@ -141,7 +141,7 @@ export const BackgroundDoodles = ({
         <motion.div 
           animate={{ rotate: [-6, 6, -6] }}
           transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-          className="absolute top-[32%] left-[3%] font-mono text-3xl font-black text-[#0F52BA] opacity-40 select-none bg-white/70 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-[#D6D1C8] shadow-sm"
+          className="absolute top-[32%] left-[3%] font-mono text-3xl font-black text-[#FF5733] opacity-40 select-none bg-white/70 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-[#D6D1C8] shadow-sm"
         >
           &lt; / &gt;
         </motion.div>
@@ -150,7 +150,7 @@ export const BackgroundDoodles = ({
         <motion.div 
           animate={{ y: [0, -12, 0] }}
           transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-          className="absolute bottom-[35%] right-[4%] font-mono text-xs font-bold text-[#0F52BA] opacity-60 bg-white/80 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-[#0F52BA]/30 shadow-md"
+          className="absolute bottom-[35%] right-[4%] font-mono text-xs font-bold text-[#FF5733] opacity-60 bg-white/80 backdrop-blur-md px-3.5 py-2 rounded-2xl border border-[#FF5733]/30 shadow-md"
         >
           [ ZERO-TRUST MESH // 100k REQ/S ]
         </motion.div>
@@ -167,7 +167,7 @@ export const BackgroundDoodles = ({
 
       {/* LAYER 3: Pulsing Foreground Nodes */}
       <motion.div style={{ x: layer3X, y: layer3Y }} className="absolute inset-0">
-        <div className="absolute top-[22%] right-[22%] w-4 h-4 rounded-full bg-[#0F52BA]/50 animate-ping" />
+        <div className="absolute top-[22%] right-[22%] w-4 h-4 rounded-full bg-[#FF5733]/50 animate-ping" />
         <div className="absolute bottom-[28%] left-[28%] w-4 h-4 rounded-full bg-[#FF007F]/50 animate-ping" />
         <div className="absolute top-[65%] right-[35%] w-3 h-3 rounded-full bg-green-500/50 animate-ping" />
       </motion.div>
@@ -175,3 +175,4 @@ export const BackgroundDoodles = ({
     </div>
   );
 };
+

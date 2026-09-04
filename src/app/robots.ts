@@ -20,6 +20,8 @@ export default function robots(): MetadataRoute.Robots {
           'PerplexityBot',
           'Google-Extended',
           'Applebot-Extended',
+          'CopilotBot',
+          'Amazonbot',
           'CCBot',
           'Diffbot',
           'Bytespider',
@@ -35,3 +37,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: 'https://novamacsolutions.com/sitemap.xml',
   };
 }
+

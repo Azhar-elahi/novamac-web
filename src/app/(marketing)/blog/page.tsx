@@ -16,3 +16,4 @@ export default async function BlogPage() {
 
   return <BlogClient posts={posts} />;
 }
+

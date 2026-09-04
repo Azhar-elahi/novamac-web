@@ -16,7 +16,14 @@ export async function submitGoogleReview(formData: FormData) {
 
     const rating = Math.min(5, Math.max(1, parseInt(ratingStr || "5", 10)));
 
-    await (prisma as any).review.create({
+    interface ReviewDelegate {
+      review: {
+        create: (args: unknown) => Promise<unknown>;
+        findMany: (args: unknown) => Promise<unknown[]>;
+      };
+    }
+
+    await (prisma as unknown as ReviewDelegate).review.create({
       data: {
         name,
         email: email.toLowerCase(),
@@ -37,7 +44,12 @@ export async function submitGoogleReview(formData: FormData) {
 
 export async function getApprovedReviews() {
   try {
-    const reviews = await (prisma as any).review.findMany({
+    interface ReviewDelegate {
+      review: {
+        findMany: (args: unknown) => Promise<unknown[]>;
+      };
+    }
+    const reviews = await (prisma as unknown as ReviewDelegate).review.findMany({
       where: { approved: true },
       orderBy: { createdAt: "desc" }
     });
@@ -46,3 +58,4 @@ export async function getApprovedReviews() {
     return [];
   }
 }
+

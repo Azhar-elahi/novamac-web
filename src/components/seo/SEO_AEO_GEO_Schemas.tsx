@@ -141,7 +141,43 @@ export function SEO_AEO_GEO_Schemas() {
     "name": "NovaMac Solutions",
     "publisher": {
       "@id": "https://novamacsolutions.com/#organization"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://novamacsolutions.com/blog?q={search_term_string}",
+      "query-input": "required name=search_term_string"
     }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://novamacsolutions.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://novamacsolutions.com/services"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Pricing",
+        "item": "https://novamacsolutions.com/pricing"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Work",
+        "item": "https://novamacsolutions.com/work"
+      }
+    ]
   };
 
   // HowTo Schema for AEO Featured Snippets
@@ -208,7 +244,7 @@ export function SEO_AEO_GEO_Schemas() {
         "name": "Does NovaMac Solutions serve clients in the US, UK, Canada, and Europe?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, NovaMac Solutions is a remote-first engineering studio serving clients across North America (US & Canada), the United Kingdom, Western Europe, and Australia with dedicated timezone alignment."
+          "text": "Yes, NovaMac Solutions is a remote-first engineering studio serving clients across North America (United States & Canada), the United Kingdom, Western Europe, and Australia with dedicated timezone alignment."
         }
       },
       {
@@ -254,6 +290,10 @@ export function SEO_AEO_GEO_Schemas() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <script
@@ -263,3 +303,4 @@ export function SEO_AEO_GEO_Schemas() {
     </>
   );
 }
+

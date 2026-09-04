@@ -3,7 +3,6 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, Float } from "@react-three/drei";
 import { EffectComposer, Noise, Bloom } from "@react-three/postprocessing";
-import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { useScrollStore } from "@/store/useScrollStore";
 import { 
@@ -198,7 +197,7 @@ export default function StoryExperience() {
           <div className="max-w-md bg-white/50 backdrop-blur-xl p-8 rounded-3xl shadow-xl pointer-events-auto">
             <span className="text-[#7b61ff] font-mono text-sm mb-2 block font-bold">Service 01</span>
             <h2 className="font-heading text-3xl mb-4 text-black">E-Commerce & Headless</h2>
-            <p className="text-black/70">Lightning-fast storefronts built on modern architecture. We don't use templates; we engineer conversions.</p>
+            <p className="text-black/70">Lightning-fast storefronts built on modern architecture. We don&apos;t use templates; we engineer conversions.</p>
           </div>
         </div>
 
@@ -230,3 +229,4 @@ export default function StoryExperience() {
     </div>
   );
 }
+

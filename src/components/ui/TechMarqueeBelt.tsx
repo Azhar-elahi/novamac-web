@@ -27,9 +27,9 @@ export function TechMarqueeBelt() {
         <div className="flex items-center gap-8 px-4 shrink-0 font-mono text-xs tracking-widest uppercase font-bold">
           {TECH_ITEMS.map((item, idx) => (
             <div key={idx} className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#FF5733] animate-pulse" />
               <span className="text-[#F8FAFC]">{item.label}</span>
-              <span className="text-[10px] text-[#3B82F6] bg-[#3B82F6]/20 border border-[#3B82F6]/30 px-2 py-0.5 rounded-md font-bold">
+              <span className="text-[10px] text-[#FF5733] bg-[#FF5733]/20 border border-[#FF5733]/30 px-2 py-0.5 rounded-md font-bold">
                 {item.category}
               </span>
               <span className="text-[#94A3B8]/30 ml-3">/</span>
@@ -41,9 +41,9 @@ export function TechMarqueeBelt() {
         <div className="flex items-center gap-8 px-4 shrink-0 font-mono text-xs tracking-widest uppercase font-bold">
           {TECH_ITEMS.map((item, idx) => (
             <div key={`dup-${idx}`} className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#FF5733] animate-pulse" />
               <span className="text-[#F8FAFC]">{item.label}</span>
-              <span className="text-[10px] text-[#3B82F6] bg-[#3B82F6]/20 border border-[#3B82F6]/30 px-2 py-0.5 rounded-md font-bold">
+              <span className="text-[10px] text-[#FF5733] bg-[#FF5733]/20 border border-[#FF5733]/30 px-2 py-0.5 rounded-md font-bold">
                 {item.category}
               </span>
               <span className="text-[#94A3B8]/30 ml-3">/</span>
@@ -55,3 +55,4 @@ export function TechMarqueeBelt() {
     </div>
   );
 }
+

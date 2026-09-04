@@ -14,7 +14,7 @@ export default function ScrollDoodle({
   paths, 
   viewBox = "0 0 1000 1000", 
   className = "",
-  color = "#0F52BA" 
+  color = "#FF5733" 
 }: ScrollDoodleProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -31,9 +31,8 @@ export default function ScrollDoodle({
     restDelta: 0.001
   });
 
-  // Calculate an intense glow based on scroll speed (optional, for "livingness")
-  // We'll keep it simple and just make it glow constantly
-  
+  const opacity = useTransform(pathLength, [0, 0.05], [0, 1]);
+
   return (
     <div ref={containerRef} className={`absolute pointer-events-none z-10 ${className}`}>
       <svg 
@@ -52,7 +51,7 @@ export default function ScrollDoodle({
             strokeLinejoin="round"
             style={{
               pathLength,
-              opacity: useTransform(pathLength, [0, 0.05], [0, 1]) // Fade in as it starts drawing
+              opacity,
             }}
           />
         ))}
@@ -60,3 +59,4 @@ export default function ScrollDoodle({
     </div>
   );
 }
+

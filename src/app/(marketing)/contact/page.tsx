@@ -35,8 +35,8 @@ export default function ContactPage() {
     "mainEntity": {
       "@type": "ProfessionalService",
       "name": "NovaMac Solutions",
-      "telephone": ["+1-510-585-4258", "+92-317-4723510"],
-      "email": "hello@novamacsolutions.com"
+      "email": "hello@novamacsolutions.com",
+      "url": "https://novamacsolutions.com"
     }
   };
 
@@ -47,3 +47,4 @@ export default function ContactPage() {
     </>
   );
 }
+

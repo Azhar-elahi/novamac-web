@@ -22,12 +22,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const pathname = usePathname();
 
   return (
-    <div className="flex min-h-screen bg-[#0B1220] text-[#F8FAFC] font-sans">
+    <div className="flex min-h-screen bg-[#141414] text-white font-sans">
       {/* Admin Sidebar */}
-      <aside className="w-64 border-r border-[#1E2E4A] bg-[#0F172A] hidden md:flex flex-col">
-        <div className="h-16 flex items-center px-6 border-b border-[#1E2E4A] bg-[#0B1220]">
-          <Link href="/7222-@dm1nl0g1n" className="flex items-center gap-2 font-black text-lg tracking-wider text-[#3B82F6] uppercase">
-            <ShieldAlert className="w-5 h-5 text-[#3B82F6]" />
+      <aside className="w-64 border-r border-white/10 bg-[#1f1f1f] hidden md:flex flex-col">
+        <div className="h-16 flex items-center px-6 border-b border-white/10 bg-[#141414]">
+          <Link href="/7222-@dm1nl0g1n" className="flex items-center gap-2.5 font-black text-lg tracking-wider text-[#FF5733] uppercase">
+            <ShieldAlert className="w-5 h-5 text-[#FF5733]" />
             NOVAMAC ADMIN
           </Link>
         </div>
@@ -41,20 +41,20 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 className={cn(
                   "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider transition-all",
                   isActive 
-                    ? "bg-[#0B1220] text-[#3B82F6] border border-[#1E2E4A] shadow-sm" 
-                    : "text-[#94A3B8] hover:bg-[#0B1220]/50 hover:text-[#F8FAFC]"
+                    ? "bg-[#FF5733] text-white shadow-md font-extrabold" 
+                    : "text-gray-400 hover:bg-white/5 hover:text-white"
                 )}
               >
-                <item.icon className={cn("w-4 h-4", isActive ? "text-[#3B82F6]" : "text-[#94A3B8]")} />
+                <item.icon className={cn("w-4 h-4", isActive ? "text-white" : "text-gray-400")} />
                 {item.name}
               </Link>
             );
           })}
         </nav>
-        <div className="p-4 border-t border-[#1E2E4A]">
+        <div className="p-4 border-t border-white/10">
           <button
             onClick={() => signOut({ callbackUrl: '/' })}
-            className="flex items-center gap-3 px-3 py-2.5 w-full rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-[#94A3B8] hover:bg-red-950/40 hover:text-red-400 transition-colors"
+            className="flex items-center gap-3 px-3.5 py-2.5 w-full rounded-xl text-xs font-mono font-bold uppercase tracking-wider text-gray-400 hover:bg-red-500/20 hover:text-red-400 transition-colors"
           >
             <LogOut className="w-4 h-4" />
             Log Out
@@ -63,12 +63,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col min-w-0 bg-[#0B1220]">
-        <header className="h-16 flex items-center px-6 border-b border-[#1E2E4A] bg-[#0F172A] md:hidden">
-          <Link href="/7222-@dm1nl0g1n" className="flex items-center gap-2 font-black text-lg text-[#3B82F6] uppercase tracking-wider">
-            <ShieldAlert className="w-5 h-5 text-[#3B82F6]" />
+      <main className="flex-1 flex flex-col min-w-0 bg-[#141414]">
+        <header className="h-16 flex items-center justify-between px-6 border-b border-white/10 bg-[#1f1f1f] md:hidden">
+          <Link href="/7222-@dm1nl0g1n" className="flex items-center gap-2 font-black text-lg text-[#FF5733] uppercase tracking-wider">
+            <ShieldAlert className="w-5 h-5 text-[#FF5733]" />
             NOVAMAC ADMIN
           </Link>
+          <button
+            onClick={() => signOut({ callbackUrl: '/' })}
+            className="text-xs text-red-400 font-bold uppercase font-mono"
+          >
+            Log Out
+          </button>
         </header>
         <div className="flex-1 overflow-auto p-6 md:p-8">
           {children}

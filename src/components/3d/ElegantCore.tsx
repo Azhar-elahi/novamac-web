@@ -64,7 +64,7 @@ export default function ElegantCore() {
         <mesh>
           <icosahedronGeometry args={[1.8, 2]} />
           <meshBasicMaterial 
-            color="#0F52BA" 
+            color="#FF5733" 
             wireframe
             transparent
             opacity={0.4}
@@ -74,3 +74,4 @@ export default function ElegantCore() {
     </Float>
   );
 }
+

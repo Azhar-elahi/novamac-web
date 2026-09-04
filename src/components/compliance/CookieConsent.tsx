@@ -1,21 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Cookie, X } from "lucide-react";
 
 export const COOKIE_CONSENT_KEY = "novamac_cookie_consent";
 export const COOKIE_CONSENT_EVENT = "novamac-cookie-consent-change";
 
 export function CookieConsent() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    // Check if user has already made a choice
-    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-    if (!consent) {
-      setIsVisible(true);
-    }
-  }, []);
+  const [isVisible, setIsVisible] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !localStorage.getItem(COOKIE_CONSENT_KEY);
+  });
 
   const setConsent = (value: "true" | "false") => {
     localStorage.setItem(COOKIE_CONSENT_KEY, value);
@@ -30,35 +25,35 @@ export function CookieConsent() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-24 left-4 right-4 md:bottom-6 md:left-6 md:right-auto md:w-[380px] p-5 sm:p-6 rounded-2xl border border-[#1E2E4A] border-t-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.9)] bg-[#070D18]/95 backdrop-blur-xl z-[9990] flex flex-col gap-3 text-[#F8FAFC] animate-in slide-in-from-bottom-5">
+    <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 w-[calc(100vw-2rem)] max-w-md p-5 rounded-2xl border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.9)] bg-[#202020]/95 backdrop-blur-2xl z-[99999] flex flex-col gap-3 text-white animate-in slide-in-from-bottom-5">
       <div className="flex items-start justify-between">
-        <div className="flex items-center gap-2.5 text-[#3B82F6]">
-          <Cookie className="w-5 h-5" />
-          <h3 className="font-heading font-bold text-sm text-[#F8FAFC]">Cookie Preferences</h3>
+        <div className="flex items-center gap-2.5 text-[#FF5733]">
+          <Cookie className="w-5 h-5 text-[#FF5733]" />
+          <h3 className="font-heading font-bold text-sm text-white">Cookie Preferences</h3>
         </div>
         <button
           onClick={handleDecline}
-          className="text-[#94A3B8] hover:text-white transition-colors p-1"
+          className="text-gray-400 hover:text-white transition-colors p-1"
           aria-label="Decline and dismiss"
         >
           <X className="w-4 h-4" />
         </button>
       </div>
 
-      <p className="text-xs text-[#94A3B8] leading-relaxed">
-        We use cookies to enhance your browsing experience and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
+      <p className="text-xs text-gray-300 leading-relaxed">
+        We use essential cookies to optimize your experience, analyze traffic, and personalize our site. You can accept or decline below.
       </p>
 
       <div className="flex items-center gap-2.5 mt-1">
         <button
           onClick={handleAccept}
-          className="flex-1 py-2 bg-[#3B82F6] text-white text-xs font-bold rounded-xl hover:bg-[#2563EB] transition-colors shadow-md"
+          className="flex-1 py-2.5 bg-[#FF5733] text-white text-xs font-extrabold uppercase tracking-wider rounded-xl hover:bg-white hover:text-[#202020] transition-all shadow-md"
         >
           Accept All
         </button>
         <button
           onClick={handleDecline}
-          className="flex-1 py-2 bg-[#0F1C33] text-[#F8FAFC] text-xs font-medium rounded-xl hover:bg-[#1E2E4A] border border-[#1E2E4A] transition-colors"
+          className="flex-1 py-2.5 bg-white/10 text-gray-300 text-xs font-bold uppercase tracking-wider rounded-xl hover:bg-white/20 border border-white/10 transition-colors"
         >
           Decline
         </button>

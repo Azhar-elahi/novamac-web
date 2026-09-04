@@ -57,3 +57,4 @@ void main() {
   gl_FragColor = vec4(cloudColor * (0.6 + clouds * 0.9 + rim * 0.3), alpha);
 }
 `;
+

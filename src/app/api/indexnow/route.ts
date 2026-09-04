@@ -44,10 +44,12 @@ export async function GET() {
       submittedUrlsCount: allUrls.length,
       urls: allUrls,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
-      { success: false, error: error.message },
+      { success: false, error: message },
       { status: 500 }
     );
   }
 }
+

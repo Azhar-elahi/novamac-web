@@ -6,11 +6,16 @@ gsap.registerPlugin(ScrollTrigger);
 export function initLenisScrollTriggerProxy(lenis: any) {
   if (!lenis) return;
 
-  lenis.on('scroll', ScrollTrigger.update);
+  if (typeof lenis.on === 'function') {
+    lenis.on('scroll', ScrollTrigger.update);
+  }
   
   gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
+    if (typeof lenis.raf === 'function') {
+      lenis.raf(time * 1000);
+    }
   });
   
   gsap.ticker.lagSmoothing(0);
 }
+

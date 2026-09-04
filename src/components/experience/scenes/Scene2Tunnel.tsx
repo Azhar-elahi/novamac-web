@@ -18,11 +18,15 @@ export default function Scene2Tunnel() {
   const particlesData = useMemo(() => {
     const data = [];
     for (let i = 0; i < particleCount; i++) {
+      const s1 = Math.sin(i * 12.9898) - Math.floor(Math.sin(i * 12.9898));
+      const s2 = Math.sin(i * 78.233) - Math.floor(Math.sin(i * 78.233));
+      const s3 = Math.sin(i * 45.164) - Math.floor(Math.sin(i * 45.164));
+      const s4 = Math.sin(i * 93.185) - Math.floor(Math.sin(i * 93.185));
       data.push({
-        angle: Math.random() * Math.PI * 2,
-        radius: 2.5 + Math.random() * 6.5,
-        z: (Math.random() - 0.5) * 32,
-        speed: 15 + Math.random() * 25,
+        angle: s1 * Math.PI * 2,
+        radius: 2.5 + s2 * 6.5,
+        z: (s3 - 0.5) * 32,
+        speed: 15 + s4 * 25,
       });
     }
     return data;
@@ -128,3 +132,4 @@ export default function Scene2Tunnel() {
     </group>
   );
 }
+

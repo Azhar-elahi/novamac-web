@@ -26,3 +26,4 @@ void main() {
   gl_FragColor = vec4(uColor * folds * sheer, uOpacity * 0.92);
 }
 `;
+

@@ -4,3 +4,4 @@
 // /services/[slug] route. This file is kept only as a placeholder to avoid
 // a broken import if anything referenced it; it re-exports the real data.
 export { SERVICES, getServiceBySlug } from "./services-data";
+

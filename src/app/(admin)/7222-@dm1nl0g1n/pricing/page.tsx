@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useTransition } from "react";
 import { getPricingPlans, updatePricingPlan, PricingPlanItem } from "@/app/actions/pricing";
-import { DollarSign, Save, Sparkles, CheckCircle2, AlertCircle, RefreshCw, Layers } from "lucide-react";
+import { DollarSign, Save, CheckCircle2, RefreshCw } from "lucide-react";
 
 export default function AdminPricingPage() {
   const [plans, setPlans] = useState<PricingPlanItem[]>([]);
@@ -55,34 +55,34 @@ export default function AdminPricingPage() {
 
   if (loading) {
     return (
-      <div className="p-8 text-center text-zinc-500 font-mono">
-        <RefreshCw className="w-8 h-8 animate-spin mx-auto mb-4 text-[#0F52BA]" />
-        Loading pricing & product configuration...
+      <div className="p-12 text-center text-gray-400 font-mono">
+        <RefreshCw className="w-8 h-8 animate-spin mx-auto mb-4 text-[#FF5733]" />
+        Loading pricing & package configuration...
       </div>
     );
   }
 
   return (
-    <div className="p-6 md:p-10 max-w-6xl mx-auto space-y-8 font-sans">
+    <div className="space-y-8 font-sans">
       
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-zinc-200">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-white/10">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0F52BA]/10 text-[#0F52BA] rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-2">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#FF5733]/10 text-[#FF5733] border border-[#FF5733]/30 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-2">
             <DollarSign className="w-3.5 h-3.5" />
             ADMIN MANAGEMENT
           </div>
-          <h1 className="text-3xl md:text-4xl font-black text-zinc-900 tracking-tight">
-            Product Price & Tier Management
+          <h1 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+            Package & Pricing Manager
           </h1>
-          <p className="text-zinc-500 text-sm mt-1">
-            Edit live pricing for website tiers, service packages, and add-on products in real time.
+          <p className="text-gray-400 text-sm mt-1">
+            Customize live rates, package titles, and target audience text for all agency pricing tiers.
           </p>
         </div>
 
         <button
           onClick={loadPlans}
-          className="px-4 py-2 bg-white border border-zinc-300 rounded-xl text-xs font-bold text-zinc-700 hover:bg-zinc-50 flex items-center gap-2 shadow-sm"
+          className="px-4 py-2.5 bg-white/10 border border-white/10 hover:bg-white/20 rounded-xl text-xs font-bold text-white flex items-center gap-2 transition-colors"
         >
           <RefreshCw className="w-4 h-4" /> Refresh Data
         </button>
@@ -93,33 +93,33 @@ export default function AdminPricingPage() {
         {plans.map((plan) => (
           <div
             key={plan.slug}
-            className={`p-6 rounded-2xl border bg-white shadow-md flex flex-col justify-between transition-all relative overflow-hidden ${
-              plan.popular ? "border-[#0F52BA] ring-2 ring-[#0F52BA]/20" : "border-zinc-200"
+            className={`p-6 rounded-2xl border bg-[#202020] text-white shadow-xl flex flex-col justify-between transition-all relative overflow-hidden ${
+              plan.popular ? "border-[#FF5733] ring-1 ring-[#FF5733]" : "border-white/10"
             }`}
           >
             {plan.popular && (
-              <div className="absolute top-3 right-3 px-2.5 py-0.5 bg-[#0F52BA] text-white text-[10px] font-mono font-bold rounded-full uppercase tracking-wider">
-                POPULAR
+              <div className="absolute top-3 right-3 px-2.5 py-0.5 bg-[#FF5733] text-white text-[10px] font-mono font-bold rounded-full uppercase tracking-wider shadow-sm">
+                POPULAR TIER
               </div>
             )}
 
             <div className="space-y-4">
               {/* Title input */}
               <div>
-                <label className="text-[10px] font-mono font-bold uppercase text-zinc-400 block mb-1">
-                  Plan / Product Title
+                <label className="text-[10px] font-mono font-bold uppercase text-gray-400 block mb-1">
+                  Package / Product Title
                 </label>
                 <input
                   type="text"
                   value={plan.title}
                   onChange={(e) => handleTitleChange(plan.slug, e.target.value)}
-                  className="w-full font-black text-lg text-zinc-900 bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2 focus:bg-white focus:border-[#0F52BA] outline-none"
+                  className="w-full font-black text-lg text-white bg-white/5 border border-white/10 rounded-xl px-3 py-2 focus:border-[#FF5733] outline-none transition-colors"
                 />
               </div>
 
               {/* Price input */}
               <div>
-                <label className="text-[10px] font-mono font-bold uppercase text-[#0F52BA] block mb-1">
+                <label className="text-[10px] font-mono font-bold uppercase text-[#FF5733] block mb-1">
                   Live Price (USD)
                 </label>
                 <div className="relative">
@@ -127,33 +127,33 @@ export default function AdminPricingPage() {
                     type="text"
                     value={plan.price}
                     onChange={(e) => handlePriceChange(plan.slug, e.target.value)}
-                    className="w-full font-black text-2xl text-[#0F52BA] bg-blue-50/50 border-2 border-[#0F52BA]/30 rounded-xl px-3 py-2 focus:bg-white focus:border-[#0F52BA] outline-none"
+                    className="w-full font-black text-2xl text-[#FF5733] bg-white/5 border border-[#FF5733]/40 rounded-xl px-3 py-2 focus:border-[#FF5733] outline-none transition-colors"
                   />
                 </div>
               </div>
 
               {/* Subtitle input */}
               <div>
-                <label className="text-[10px] font-mono font-bold uppercase text-zinc-400 block mb-1">
-                  Subtitle / Target Audience
+                <label className="text-[10px] font-mono font-bold uppercase text-gray-400 block mb-1">
+                  Target Business / Scope Summary
                 </label>
                 <input
                   type="text"
                   value={plan.subtitle}
                   onChange={(e) => handleSubtitleChange(plan.slug, e.target.value)}
-                  className="w-full text-xs text-zinc-600 bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2 focus:bg-white focus:border-[#0F52BA] outline-none"
+                  className="w-full text-xs text-gray-300 bg-white/5 border border-white/10 rounded-xl px-3 py-2 focus:border-[#FF5733] outline-none transition-colors"
                 />
               </div>
 
               {/* Features preview */}
               <div>
-                <label className="text-[10px] font-mono font-bold uppercase text-zinc-400 block mb-1">
+                <label className="text-[10px] font-mono font-bold uppercase text-gray-400 block mb-1">
                   Included Features ({plan.features.length})
                 </label>
-                <ul className="space-y-1 text-xs text-zinc-600 max-h-28 overflow-y-auto bg-zinc-50 p-2.5 rounded-xl border border-zinc-200">
+                <ul className="space-y-1.5 text-xs text-gray-300 max-h-32 overflow-y-auto bg-black/40 p-3 rounded-xl border border-white/10">
                   {plan.features.map((feat, idx) => (
-                    <li key={idx} className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#0F52BA]" />
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF5733] shrink-0" />
                       <span className="truncate">{feat}</span>
                     </li>
                   ))}
@@ -162,17 +162,17 @@ export default function AdminPricingPage() {
             </div>
 
             {/* Save Button */}
-            <div className="pt-6 mt-4 border-t border-zinc-100 flex items-center justify-between">
+            <div className="pt-6 mt-4 border-t border-white/10 flex items-center justify-between gap-3">
               <button
                 onClick={() => handleSave(plan)}
                 disabled={isPending}
-                className="w-full py-3 bg-zinc-900 hover:bg-[#0F52BA] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50"
+                className="flex-1 py-3 bg-[#FF5733] hover:bg-white hover:text-[#202020] text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50"
               >
-                <Save className="w-4 h-4" /> Save Price Change
+                <Save className="w-4 h-4" /> Save Pricing
               </button>
 
               {saveStatus[plan.slug] === "SAVED" && (
-                <span className="text-xs text-green-600 font-bold font-mono ml-3 flex items-center gap-1">
+                <span className="text-xs text-emerald-400 font-bold font-mono flex items-center gap-1">
                   <CheckCircle2 className="w-4 h-4" /> Saved!
                 </span>
               )}

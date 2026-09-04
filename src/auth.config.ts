@@ -11,7 +11,7 @@ export const authConfig = {
       const isAdminRoute = nextUrl.pathname.startsWith("/7222-@dm1nl0g1n") && nextUrl.pathname !== "/7222-@dm1nl0g1n/login";
 
       if (isAdminRoute) {
-        if (isLoggedIn && (auth?.user as any)?.role === "ADMIN") return true;
+        if (isLoggedIn && (auth?.user as { role?: string })?.role === "ADMIN") return true;
         return false;
       }
       
@@ -34,3 +34,4 @@ export const authConfig = {
     }
   },
 } satisfies NextAuthConfig;
+

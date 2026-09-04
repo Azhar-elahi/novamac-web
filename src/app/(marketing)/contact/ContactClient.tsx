@@ -1,197 +1,286 @@
 "use client";
 
-import React, { useEffect, useState, useTransition } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import React, { useState, useTransition } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Mail, Clock, CheckCircle2, MessageSquare, AlertCircle } from "lucide-react";
 import { submitContactForm } from "@/app/actions/contact";
-import { ArrowRight, CheckCircle2, Mail, Phone, Clock, Send, Sparkles } from "lucide-react";
-import { DoodleUnderline } from "@/components/immersive/Doodles";
-import { RichBackgroundArt } from "@/components/immersive/RichBackgroundArt";
+
+const SERVICES_OPTIONS = [
+  "Custom Next.js & React Web Engineering",
+  "UI/UX Design Systems & Figma Architecture",
+  "Headless E-Commerce & Shopify Storefronts",
+  "AI Agents, Autonomous LLM & Bespoke CRM",
+  "B2B Lead Generation & High-Converting Funnels",
+  "Graphic Design, Logos & Brand Identity",
+  "Search Everywhere Optimization (SEO / GEO / AEO)",
+  "Full-Stack Web Applications & SaaS Portals",
+  "Cross-Platform Mobile Apps (iOS & Android)",
+  "Performance Optimization & Core Web Vitals Audit",
+  "Cloud DevOps, Edge Infrastructure & Database Setup",
+  "Dedicated Maintenance & 24/7 SLA Technical Retainer"
+];
+
+const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const PHONE_REGEX = /^\+?[0-9\s\-\(\)]{8,20}$/;
 
 export default function ContactClient() {
-  const [isPending, startTransition] = useTransition();
   const [submitted, setSubmitted] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const [errorMsg, setErrorMsg] = useState("");
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set((e.clientX / window.innerWidth) - 0.5);
-      mouseY.set((e.clientY / window.innerHeight) - 0.5);
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrorMsg("");
+
     const formData = new FormData(e.currentTarget);
+    const name = (formData.get("name") as string || "").trim();
+    const email = (formData.get("email") as string || "").trim().toLowerCase();
+    const phone = (formData.get("phone") as string || "").trim();
+    const message = (formData.get("notes") as string || "").trim();
+
+    // Client-side validation
+    if (!name || name.length < 2) {
+      setErrorMsg("Please enter your full name (at least 2 characters).");
+      return;
+    }
+
+    if (!email || !EMAIL_REGEX.test(email)) {
+      setErrorMsg("Please enter a valid email address (e.g. name@company.com).");
+      return;
+    }
+
+    if (phone && !PHONE_REGEX.test(phone)) {
+      setErrorMsg("Please enter a valid phone number (minimum 8 digits).");
+      return;
+    }
+
+    if (!message || message.length < 5) {
+      setErrorMsg("Please enter your project details or requirements (at least 5 characters).");
+      return;
+    }
+
     startTransition(async () => {
-      try {
-        const res = await submitContactForm(formData);
-        if (res.success) {
-          setSubmitted(true);
-        } else {
-          setErrorMsg(res.error || "Something went wrong.");
-        }
-      } catch (err) {
+      const res = await submitContactForm(formData);
+      if (res.success) {
         setSubmitted(true);
+      } else {
+        setErrorMsg(res.error || "Failed to submit inquiry. Please try again.");
       }
     });
   };
 
   return (
-    <div className="bg-[#0B1220] text-[#F8FAFC] min-h-screen pt-4 pb-32 overflow-hidden relative font-sans">
-      <RichBackgroundArt mouseX={mouseX} mouseY={mouseY} />
+    <div className="bg-[#FAF2F2] text-[#202020] min-h-screen pt-0 pb-20 overflow-hidden font-sans">
+      
+      {/* HERO SECTION WITH VIDEO BACKGROUND */}
+      <section className="relative px-6 sm:px-12 lg:px-20 py-24 border-b border-white/10 overflow-hidden min-h-[50vh] flex items-center bg-[#0D0D0D] text-white">
+        <div className="absolute inset-0 z-0">
+          <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90">
+            <source src="/videos/girl-working.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D]/90 via-[#0D0D0D]/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-black/40" />
+        </div>
 
-      {/* ── HERO ── */}
-      <section className="px-4 sm:px-8 md:px-12 xl:px-20 pt-6 sm:pt-10 pb-10 sm:pb-16 max-w-[1400px] mx-auto relative z-10 border-b border-[#1E2E4A]">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl"
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl relative z-10"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-[#0F1C33] to-[#091222] border border-[#1E2E4A] border-t-white/10 rounded-full text-xs sm:text-sm font-mono text-[#3B82F6] font-bold uppercase tracking-widest mb-4 sm:mb-6 shadow-md">
-            <Sparkles className="w-4 h-4 text-[#3B82F6]" />
-            INITIATE SEQUENCE
-          </div>
+          <span className="px-4 py-1.5 bg-[#FF5733]/10 border border-[#FF5733]/30 text-[#FF5733] font-mono text-xs font-bold uppercase tracking-widest rounded-full inline-block mb-6">
+            START YOUR PROJECT
+          </span>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black tracking-tight leading-[1.05] sm:leading-[0.9] text-[#F8FAFC] mb-4 sm:mb-6 relative">
-            Let's Build<br />
-            <span className="relative inline-block text-[#3B82F6]">
-              Together.
-              <DoodleUnderline />
-            </span>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8">
+            Let&apos;s Build Something Extraordinary Together.
           </h1>
 
-          <p className="text-sm sm:text-lg md:text-xl text-[#94A3B8] max-w-2xl leading-relaxed mb-6 sm:mb-8 font-normal bg-gradient-to-b from-[#0F1C33]/90 via-[#091222]/95 to-[#050A14] p-5 sm:p-7 rounded-2xl border border-[#1E2E4A] border-t-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
-            Tell us about your project — we reply within 24 hours with a clear, honest architectural assessment.
+          <p className="text-gray-300 text-base sm:text-xl font-light leading-relaxed mb-10 max-w-2xl">
+            Tell us about your project — we reply within 24 hours with a clear, honest assessment and technical proposal.
           </p>
         </motion.div>
       </section>
 
-      {/* ── FORM & DETAILS ── */}
-      <section className="px-4 sm:px-8 md:px-12 xl:px-20 py-10 sm:py-20 max-w-[1400px] mx-auto relative z-10">
-        <div className="grid lg:grid-cols-12 gap-8 sm:gap-12 items-start">
+      {/* FORM & CONTACT INFO SECTION */}
+      <section className="py-20 px-6 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-12">
           
-          {/* LEFT: FORM */}
-          <div className="lg:col-span-7 bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] p-6 sm:p-9 md:p-11 rounded-3xl border border-[#1E2E4A] border-t-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.75),0_0_30px_rgba(59,130,246,0.12)]">
+          {/* LEFT: Proposal Request Form (7 Cols) */}
+          <div className="lg:col-span-7 bg-white border border-[#F0DCDC] text-[#202020] rounded-3xl p-8 sm:p-12 shadow-sm">
+            
             {submitted ? (
-              <div className="text-center py-12">
-                <CheckCircle2 className="w-16 h-16 text-[#3B82F6] mx-auto mb-4" />
-                <h3 className="text-3xl font-black text-[#F8FAFC] mb-2">Message Received</h3>
-                <p className="text-base text-[#94A3B8]">Our team will review your requirements and get back to you within 24 hours.</p>
+              <div className="text-center py-16 space-y-6">
+                <div className="w-16 h-16 rounded-full bg-[#FF5733] text-white flex items-center justify-center mx-auto shadow-md">
+                  <CheckCircle2 className="w-8 h-8" />
+                </div>
+                <h3 className="text-3xl font-extrabold text-[#202020] uppercase">Inquiry Successfully Submitted!</h3>
+                <p className="text-gray-600 text-sm sm:text-base font-normal max-w-md mx-auto leading-relaxed">
+                  Thank you! Our engineering team has received your inquiry and will respond to your email within 24 hours.
+                </p>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="bg-[#FF5733] text-white font-extrabold text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:bg-[#202020] transition-colors shadow-lg"
+                >
+                  Submit Another Inquiry
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                
+                {errorMsg && (
+                  <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-2xl flex items-center gap-3 text-xs sm:text-sm text-red-600 font-bold">
+                    <AlertCircle className="w-5 h-5 shrink-0 text-red-500" />
+                    <span>{errorMsg}</span>
+                  </div>
+                )}
+
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-mono font-bold text-[#3B82F6] uppercase mb-2">Full Name *</label>
-                    <input required name="name" type="text" placeholder="John Doe" className="w-full px-4 py-3.5 bg-[#070D18] border border-[#1E2E4A] border-t-white/10 text-[#F8FAFC] placeholder-[#94A3B8]/50 rounded-xl text-sm focus:outline-none focus:border-[#3B82F6] transition-colors" />
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">Full Name *</label>
+                    <input 
+                      required 
+                      name="name" 
+                      type="text" 
+                      placeholder="Alex Morgan" 
+                      className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
+                    />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono font-bold text-[#3B82F6] uppercase mb-2">Email Address *</label>
-                    <input required name="email" type="email" placeholder="john@company.com" className="w-full px-4 py-3.5 bg-[#070D18] border border-[#1E2E4A] border-t-white/10 text-[#F8FAFC] placeholder-[#94A3B8]/50 rounded-xl text-sm focus:outline-none focus:border-[#3B82F6] transition-colors" />
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">Work Email *</label>
+                    <input 
+                      required 
+                      name="email" 
+                      type="email" 
+                      placeholder="alex@company.com" 
+                      className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
+                    />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-mono font-bold text-[#3B82F6] uppercase mb-2">Service Needed</label>
-                    <select name="service" className="w-full px-4 py-3.5 bg-[#070D18] border border-[#1E2E4A] border-t-white/10 text-[#F8FAFC] rounded-xl text-sm focus:outline-none focus:border-[#3B82F6] transition-colors">
-                      <option className="bg-[#070D18] text-[#F8FAFC]">Custom Web Development</option>
-                      <option className="bg-[#070D18] text-[#F8FAFC]">Graphic Design & Brand Identity</option>
-                      <option className="bg-[#070D18] text-[#F8FAFC]">B2B Lead Generation & Sales Funnels</option>
-                      <option className="bg-[#070D18] text-[#F8FAFC]">UI/UX Design Studio</option>
-                      <option className="bg-[#070D18] text-[#F8FAFC]">Web Applications & SaaS</option>
-                      <option className="bg-[#070D18] text-[#F8FAFC]">AI & CRM Automation</option>
-                      <option className="bg-[#070D18] text-[#F8FAFC]">Headless E-Commerce</option>
-                    </select>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">Phone / WhatsApp (Optional)</label>
+                    <input 
+                      name="phone" 
+                      type="tel" 
+                      placeholder="+1 (510) 555-0199" 
+                      className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
+                    />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono font-bold text-[#3B82F6] uppercase mb-2">Project Budget</label>
-                    <select name="budget" className="w-full px-4 py-3.5 bg-[#070D18] border border-[#1E2E4A] border-t-white/10 text-[#F8FAFC] rounded-xl text-sm focus:outline-none focus:border-[#3B82F6] transition-colors">
-                      <option className="bg-[#070D18] text-[#F8FAFC]">$1,000 - $3,000</option>
-                      <option className="bg-[#070D18] text-[#F8FAFC]">$3,000 - $10,000</option>
-                      <option className="bg-[#070D18] text-[#F8FAFC]">$10,000 - $25,000</option>
-                      <option className="bg-[#070D18] text-[#F8FAFC]">$25,000+</option>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">Service Capability Required</label>
+                    <select 
+                      name="service" 
+                      className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium"
+                    >
+                      {SERVICES_OPTIONS.map((srv, i) => (
+                        <option key={i} value={srv}>{srv}</option>
+                      ))}
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono font-bold text-[#3B82F6] uppercase mb-2">Project Overview *</label>
-                  <textarea required name="message" rows={5} placeholder="Describe your project goals, timeline, and requirements..." className="w-full px-4 py-3.5 bg-[#070D18] border border-[#1E2E4A] border-t-white/10 text-[#F8FAFC] placeholder-[#94A3B8]/50 rounded-xl text-sm focus:outline-none focus:border-[#3B82F6] transition-colors" />
+                  <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">Project Overview / Goals *</label>
+                  <textarea 
+                    required 
+                    name="notes" 
+                    rows={5} 
+                    placeholder="Describe your project requirements, goals, budget, and estimated timeline..." 
+                    className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
+                  />
                 </div>
 
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   disabled={isPending}
-                  className="w-full py-4.5 bg-[#3B82F6] text-white font-black text-xs sm:text-sm tracking-widest uppercase rounded-full hover:bg-white hover:text-[#0B1220] transition-all duration-300 shadow-[0_10px_30px_rgba(59,130,246,0.35)] flex items-center justify-center gap-2"
+                  className="w-full bg-[#FF5733] text-white font-extrabold text-xs uppercase tracking-widest py-4.5 rounded-full hover:bg-[#202020] transition-all duration-300 shadow-xl flex items-center justify-center gap-2"
                 >
-                  {isPending ? "Sending..." : "Submit Inquiry"}
-                  <Send className="w-4 h-4" />
+                  <span>{isPending ? "Validating & Submitting..." : "Submit Proposal Request"}</span>
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
             )}
+
           </div>
 
-          {/* RIGHT: INFO CARDS */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="bg-gradient-to-b from-[#0F1C33] via-[#091222] to-[#050A14] p-8 sm:p-9 rounded-3xl border border-[#1E2E4A] border-t-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.65)] space-y-6">
-              <h3 className="font-extrabold text-2xl text-[#F8FAFC] border-b border-[#1E2E4A] pb-4">Direct Contacts</h3>
-              
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-full bg-[#040810] border border-[#1E2E4A] border-t-white/10 text-[#3B82F6] flex items-center justify-center shrink-0 shadow-inner">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-[10px] font-mono text-[#94A3B8] font-bold uppercase">EMAIL INQUIRIES</div>
-                  <a href="mailto:hello@novamacsolutions.com" className="font-bold text-base text-[#F8FAFC] hover:text-[#3B82F6] transition-colors">hello@novamacsolutions.com</a>
-                </div>
-              </div>
+          {/* RIGHT: Direct Contact Info (5 Cols) */}
+          <div className="lg:col-span-5 flex flex-col justify-between gap-8">
+            
+            <div className="bg-white border border-[#F0DCDC] text-[#202020] rounded-3xl p-8 space-y-6 shadow-sm">
+              <h3 className="text-xl font-extrabold text-[#202020] uppercase tracking-tight border-b border-[#F0DCDC] pb-4">
+                Direct Contact Lines
+              </h3>
 
-              <div className="flex items-start gap-4 pt-2">
-                <div className="w-11 h-11 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 text-[#25D366] flex items-center justify-center shrink-0 shadow-inner mt-1">
-                  <Phone className="w-5 h-5 text-[#25D366]" />
-                </div>
-                <div className="space-y-3 flex-1">
-                  <div className="text-[10px] font-mono text-[#25D366] font-bold uppercase">INSTANT CONSULTATION</div>
-                  <div className="flex flex-col sm:flex-row gap-2.5">
-                    <a 
-                      href="https://wa.me/923256611920?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20consult%20about%20a%20project." 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-black font-extrabold text-xs px-4 py-2.5 rounded-full transition-all shadow-[0_0_20px_rgba(37,211,102,0.3)] min-h-[44px]"
-                    >
-                      <span>Consultant 1</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </a>
-                    <a 
-                      href="https://wa.me/923309063306?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20consult%20about%20a%20project." 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="inline-flex items-center justify-center gap-2 bg-[#0F1C33] border border-[#25D366]/50 hover:bg-[#25D366]/20 text-[#25D366] font-extrabold text-xs px-4 py-2.5 rounded-full transition-all min-h-[44px]"
-                    >
-                      <span>Consultant 2</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+              <div className="space-y-4 text-sm text-gray-700">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#FF5733]/10 text-[#FF5733] flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-mono uppercase text-gray-500 font-bold">Email Inquiry</div>
+                    <a href="mailto:hello@novamacsolutions.com" className="font-bold text-[#202020] hover:text-[#FF5733] transition-colors">
+                      hello@novamacsolutions.com
                     </a>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-full bg-[#040810] border border-[#1E2E4A] border-t-white/10 text-[#3B82F6] flex items-center justify-center shrink-0 shadow-inner">
-                  <Clock className="w-5 h-5" />
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#25D366]/10 text-[#25D366] flex items-center justify-center flex-shrink-0">
+                    <MessageSquare className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-mono uppercase text-gray-500 font-bold">WhatsApp Direct Line 1</div>
+                    <a href="https://wa.me/923256611920?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20consult%20about%20a%20project." target="_blank" rel="noreferrer" className="font-bold text-[#FF5733] hover:text-[#202020] transition-colors flex items-center gap-1">
+                      Start WhatsApp Chat <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-[10px] font-mono text-[#94A3B8] font-bold uppercase">RESPONSE SLA</div>
-                  <div className="font-bold text-base text-[#F8FAFC]">Within 24 Hours (Mon - Fri)</div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#25D366]/10 text-[#25D366] flex items-center justify-center flex-shrink-0">
+                    <MessageSquare className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-mono uppercase text-gray-500 font-bold">WhatsApp Direct Line 2</div>
+                    <a href="https://wa.me/923309063306?text=Hi%20NovaMac%20Team%2C%20I%20would%20like%20to%20consult%20about%20a%20project." target="_blank" rel="noreferrer" className="font-bold text-[#FF5733] hover:text-[#202020] transition-colors flex items-center gap-1">
+                      Start WhatsApp Chat <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#FF5733]/10 text-[#FF5733] flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-mono uppercase text-gray-500 font-bold">Response SLA</div>
+                    <span className="font-bold text-[#202020]">Within 24 Hours (7 Days a Week)</span>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Checklist Card */}
+            <div className="bg-[#FF5733] text-white rounded-3xl p-8 shadow-md">
+              <h4 className="text-xl font-extrabold uppercase mb-4">What to Expect:</h4>
+              <ul className="space-y-3 text-sm font-medium">
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                  <span>Free Initial Technical Strategy Call</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                  <span>Honest Architectural Scope & Fixed Price</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                  <span>100% Full Source Code Ownership</span>
+                </li>
+              </ul>
+            </div>
+
           </div>
 
         </div>
