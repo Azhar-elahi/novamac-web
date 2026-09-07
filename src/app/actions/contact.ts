@@ -6,8 +6,7 @@ import { calculateLeadScore, generateAILeadBrief } from "@/lib/lead-scoring";
 const TEMP_EMAIL_DOMAINS = [
   "yopmail.com", "mailinator.com", "guerrillamail.com", "10minutemail.com", 
   "tempmail.com", "dropmail.me", "temp-mail.org", "throwawaymail.com",
-  "disposablemail.com", "maildrop.cc", "sharklasers.com", "getairmail.com",
-  "test.com", "example.com", "abc.com", "asdf.com"
+  "disposablemail.com", "maildrop.cc", "sharklasers.com", "getairmail.com"
 ];
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -15,10 +14,14 @@ const PHONE_REGEX = /^\+?[0-9\s\-\(\)]{8,20}$/;
 
 export async function submitContactForm(formData: FormData) {
   try {
+    const clientType = (formData.get("clientType") as string || "INDIVIDUAL").trim();
     const name = (formData.get("name") as string || formData.get("firstName") as string || "").trim();
     const email = (formData.get("email") as string || "").trim().toLowerCase();
     const phone = (formData.get("phone") as string || "").trim();
+    const company = (formData.get("company") as string || formData.get("companyName") as string || "").trim();
+    const website = (formData.get("website") as string || formData.get("websiteUrl") as string || "").trim();
     const service = (formData.get("service") as string || "General Inquiry").trim();
+    const timeline = (formData.get("timeline") as string || "").trim();
     const message = (formData.get("notes") as string || formData.get("message") as string || formData.get("comment") as string || "").trim();
 
     if (!name || name.length < 2) {
@@ -42,27 +45,50 @@ export async function submitContactForm(formData: FormData) {
       return { success: false, error: "Please enter your project details or inquiry (minimum 5 characters)." };
     }
 
-    const scoreResult = calculateLeadScore({ name, email, phone, subject: `Inquiry: ${service}`, message });
-    const leadBrief = generateAILeadBrief({ name, email, phone, subject: `Inquiry: ${service}`, message }, scoreResult);
+    const subject = `Inquiry: ${service}${timeline ? ` (${timeline})` : ''} [${clientType}]`;
 
-    await prisma.contactMessage.create({
-      data: {
-        name,
-        email,
-        phone: phone || null,
-        subject: `Inquiry: ${service}`,
-        message,
-        score: scoreResult.score,
-        priority: scoreResult.priority,
-        pipelineStatus: "NEW",
-        leadBrief,
-        status: "UNREAD"
-      }
-    });
+    const scoreResult = calculateLeadScore({ name, email, phone, subject, message });
+    const leadBrief = generateAILeadBrief({ name, email, phone, subject, message }, scoreResult);
+
+    try {
+      // Primary DB save with full lead intelligence fields
+      await prisma.contactMessage.create({
+        data: {
+          name,
+          email,
+          phone: phone || null,
+          companyName: company || null,
+          websiteUrl: website || null,
+          subject,
+          message,
+          score: scoreResult.score,
+          priority: scoreResult.priority,
+          pipelineStatus: "NEW",
+          leadBrief,
+          status: "UNREAD"
+        }
+      });
+    } catch (dbErr) {
+      console.warn("Primary Prisma Create Warn (Falling back to core fields):", dbErr);
+      // Resilient fallback save for legacy or non-migrated live database schemas
+      await prisma.contactMessage.create({
+        data: {
+          name,
+          email,
+          phone: phone || null,
+          subject,
+          message,
+          status: "UNREAD"
+        }
+      });
+    }
 
     return { success: true };
-  } catch (err) {
+  } catch (err: any) {
     console.error("Contact Form Action Error:", err);
-    return { success: false, error: "Unable to process your request at this time. Please try again or email hello@novamacsolutions.com." };
+    return { 
+      success: false, 
+      error: err?.message || "Unable to process your request at this time. Please try again or email hello@novamacsolutions.com." 
+    };
   }
 }

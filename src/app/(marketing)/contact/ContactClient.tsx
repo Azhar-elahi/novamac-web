@@ -2,7 +2,7 @@
 
 import React, { useState, useTransition } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, Clock, CheckCircle2, MessageSquare, AlertCircle } from "lucide-react";
+import { ArrowRight, Mail, Clock, CheckCircle2, MessageSquare, AlertCircle, User, Building2 } from "lucide-react";
 import { submitContactForm } from "@/app/actions/contact";
 
 const SERVICES_OPTIONS = [
@@ -27,6 +27,7 @@ export default function ContactClient() {
   const [submitted, setSubmitted] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [errorMsg, setErrorMsg] = useState("");
+  const [clientType, setClientType] = useState<"INDIVIDUAL" | "COMPANY">("INDIVIDUAL");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,7 +46,7 @@ export default function ContactClient() {
     }
 
     if (!email || !EMAIL_REGEX.test(email)) {
-      setErrorMsg("Please enter a valid email address (e.g. name@company.com).");
+      setErrorMsg("Please enter a valid email address (e.g. name@domain.com).");
       return;
     }
 
@@ -135,6 +136,40 @@ export default function ContactClient() {
                   </div>
                 )}
 
+                {/* CLIENT TYPE SELECTOR: INDIVIDUAL VS COMPANY */}
+                <div>
+                  <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">
+                    SELECT INQUIRY TYPE *
+                  </label>
+                  <div className="grid grid-cols-2 gap-3 p-1.5 bg-[#FAF2F2] border border-[#F0DCDC] rounded-2xl">
+                    <button
+                      type="button"
+                      onClick={() => setClientType("INDIVIDUAL")}
+                      className={`py-3 px-4 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
+                        clientType === "INDIVIDUAL"
+                          ? "bg-[#FF5733] text-white shadow-md"
+                          : "text-gray-600 hover:text-[#202020]"
+                      }`}
+                    >
+                      <User className="w-4 h-4" />
+                      <span>Individual / Startup</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setClientType("COMPANY")}
+                      className={`py-3 px-4 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
+                        clientType === "COMPANY"
+                          ? "bg-[#FF5733] text-white shadow-md"
+                          : "text-gray-600 hover:text-[#202020]"
+                      }`}
+                    >
+                      <Building2 className="w-4 h-4" />
+                      <span>Company / Enterprise</span>
+                    </button>
+                  </div>
+                  <input type="hidden" name="clientType" value={clientType} />
+                </div>
+
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
                     <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">1. Name *</label>
@@ -142,46 +177,64 @@ export default function ContactClient() {
                       required 
                       name="name" 
                       type="text" 
-                      placeholder="Alex Morgan" 
+                      placeholder="Azhar Elahi" 
                       className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">2. Business Email *</label>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">
+                      {clientType === "COMPANY" ? "2. Business Email *" : "2. Email Address *"}
+                    </label>
                     <input 
                       required 
                       name="email" 
                       type="email" 
-                      placeholder="alex@company.com" 
+                      placeholder={clientType === "COMPANY" ? "alex@company.com" : "azhar@gmail.com"} 
                       className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
                     />
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-6">
+                {/* DYNAMIC FIELDS: SHOW COMPANY & WEBSITE FOR COMPANY TYPE, OR PHONE FOR INDIVIDUAL */}
+                {clientType === "COMPANY" ? (
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">3. Company Name *</label>
+                      <input 
+                        required
+                        name="company" 
+                        type="text" 
+                        placeholder="Acme Corp" 
+                        className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">4. Company Website (Optional)</label>
+                      <input 
+                        name="website" 
+                        type="text" 
+                        placeholder="https://example.com" 
+                        className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
+                      />
+                    </div>
+                  </div>
+                ) : (
                   <div>
-                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">3. Company</label>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">3. Phone / WhatsApp Number (Optional)</label>
                     <input 
-                      name="company" 
+                      name="phone" 
                       type="text" 
-                      placeholder="Acme Corp" 
+                      placeholder="+92 300 1234567 or +1 415 555 0199" 
                       className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
                     />
                   </div>
-                  <div>
-                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">4. Website</label>
-                    <input 
-                      name="website" 
-                      type="url" 
-                      placeholder="https://example.com" 
-                      className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
-                    />
-                  </div>
-                </div>
+                )}
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">5. Service Needed</label>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">
+                      {clientType === "COMPANY" ? "5. Service Needed *" : "4. Service Needed *"}
+                    </label>
                     <select 
                       name="service" 
                       className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium"
@@ -196,7 +249,9 @@ export default function ContactClient() {
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">7. Timeline</label>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">
+                      {clientType === "COMPANY" ? "6. Timeline" : "5. Timeline"}
+                    </label>
                     <select 
                       name="timeline" 
                       className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium"
@@ -210,7 +265,9 @@ export default function ContactClient() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">6. Project Description *</label>
+                  <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">
+                    {clientType === "COMPANY" ? "7. Project Description *" : "6. Project Description *"}
+                  </label>
                   <textarea 
                     required 
                     name="notes" 
