@@ -3,27 +3,29 @@ import HomeClient from "./home/HomeClient";
 import { SEO_AEO_GEO_Schemas } from "@/components/seo/SEO_AEO_GEO_Schemas";
 
 export const metadata: Metadata = {
-  title: "NovaMac Solutions — Custom Web Development & AI Engineering Studio",
-  description: "NovaMac Solutions builds custom Next.js web applications, UI/UX design systems, AI CRMs, and headless e-commerce platforms engineered for sub-second speeds.",
+  title: "NovaMac Solutions — We Build Digital Systems That Help Businesses Grow",
+  description: "From high-performing websites to custom software, CRM, ERP, AI automation, and SaaS products — NovaMac builds technology around the way your business works.",
   keywords: [
     "NovaMac Solutions",
-    "Custom Web Development Studio",
-    "Next.js 15 Engineers",
-    "UI/UX Design Agency",
-    "AI & CRM Workflows",
-    "Headless Shopify Storefronts"
+    "Digital Systems Partner",
+    "Custom Website Development",
+    "Custom Software Engineering",
+    "CRM Development",
+    "ERP Development",
+    "AI Automation Agents",
+    "Digital Marketing & GEO Growth"
   ],
   alternates: {
     canonical: "https://novamacsolutions.com",
   },
   openGraph: {
-    title: "NovaMac Solutions — Custom Web Development & AI Engineering Studio",
-    description: "Custom web applications, UI/UX design systems, AI CRMs, and headless e-commerce platforms.",
+    title: "NovaMac Solutions — We Build Digital Systems That Help Businesses Grow",
+    description: "From high-performing websites to custom software, CRM, ERP, AI automation, and SaaS products — NovaMac builds technology around the way your business works.",
     url: "https://novamacsolutions.com",
   },
   twitter: {
-    title: "NovaMac Solutions — Custom Web Development & AI Engineering Studio",
-    description: "Custom web applications, UI/UX design systems, AI CRMs, and headless e-commerce platforms.",
+    title: "NovaMac Solutions — We Build Digital Systems That Help Businesses Grow",
+    description: "From high-performing websites to custom software, CRM, ERP, AI automation, and SaaS products — NovaMac builds technology around the way your business works.",
   },
 };
 
@@ -38,57 +40,62 @@ export default function MarketingRootPage() {
         are rendered directly in raw HTML for AI readiness compliance.
       */}
       <article className="sr-only opacity-0 h-0 overflow-hidden" aria-hidden="false">
-        <h1>Next-Gen Digital Studio — Custom Web Development & AI Engineering Studio</h1>
+        <h1>NovaMac Solutions — We Build Digital Systems That Help Businesses Grow</h1>
         
         <p>
-          NovaMac Solutions is an elite software engineering and digital design studio serving clients across the United States, United Kingdom, Canada, Western Europe, and Australia. We specialize in custom Next.js 15 web applications, bespoke UI/UX design systems, AI workflow automation, custom CRMs, and headless e-commerce storefronts engineered for sub-second page speeds (&lt;50ms edge latency).
+          NovaMac Solutions is a high-growth software engineering and digital systems studio. We specialize in building custom Next.js websites, tailored business software, CRM systems, ERP management portals, AI automations, and SaaS products engineered around the way your business operates.
         </p>
 
-        <h2>Core Engineering Capabilities & Digital Services</h2>
+        <h2>Our Core 7 Digital Systems & Services</h2>
         <ul>
           <li>
-            <h3>Custom Web Development</h3>
-            <p>Hand-coded Next.js & React platforms built from scratch for sub-second page speeds, 98+ PageSpeed Insights scores, zero vulnerability exposure, and search engine dominance.</p>
+            <h3>Website Development & Design</h3>
+            <p>Custom, high-performing websites built to convert visitors into leads and revenue without page builder bloat.</p>
+          </li>
+          <li>
+            <h3>Custom Software Development</h3>
+            <p>Tailored software solutions engineered precisely around your business logic and operational needs.</p>
+          </li>
+          <li>
+            <h3>CRM Development & Sales Pipelines</h3>
+            <p>Centralized lead, deal, and client relationship management dashboards with zero per-seat monthly fees.</p>
+          </li>
+          <li>
+            <h3>ERP Systems & Operations</h3>
+            <p>Unified enterprise systems connecting inventory, HR, purchasing, and finance into one real-time portal.</p>
           </li>
           <li>
             <h3>AI Automation & Autonomous Agents</h3>
-            <p>Custom LLM integrations powered by OpenAI GPT-4o and Claude 3.5, RAG knowledge bases, automated lead qualification, and 24/7 customer support agents.</p>
+            <p>Custom LLM agents, RAG knowledge search, and workflow automations that eliminate repetitive manual labor.</p>
           </li>
           <li>
-            <h3>Custom CRM & Operations Software</h3>
-            <p>Tailored internal operations software replacing fragmented spreadsheets with unified role-based portals and pipeline automations.</p>
+            <h3>Digital Marketing & GEO Growth</h3>
+            <p>Search engine optimization, Generative Engine Optimization (AI Search), and conversion funnels built for ROI.</p>
           </li>
           <li>
-            <h3>Headless E-Commerce Storefronts</h3>
-            <p>Sub-second shopping experiences powered by Next.js, Shopify Storefront API, and custom payment checkouts built for high conversion.</p>
-          </li>
-          <li>
-            <h3>UI/UX Design & Brand Identity</h3>
-            <p>Custom Figma design systems, interactive prototypes, micro-animations, logo design, and conversion-engineered interfaces.</p>
+            <h3>SaaS & Digital Products</h3>
+            <p>Scalable cloud applications, multi-tenant portals, and subscription billing systems.</p>
           </li>
         </ul>
 
-        <h2>Our 4-Step Engineering Methodology</h2>
+        <h2>Our 6-Step Engineering Methodology</h2>
         <ol>
-          <li><strong>Technical Discovery & Blueprinting:</strong> Mapping project scope, data architecture, user flows, and tech stack specs within 48 hours.</li>
-          <li><strong>High-Fidelity UI/UX & Design Systems:</strong> Crafting custom Figma design systems, responsive layouts, and interactive micro-animations.</li>
-          <li><strong>Hand-Coded Full-Stack Engineering:</strong> Building production code using Next.js 15, TypeScript, Tailwind CSS, PostgreSQL, and Prisma ORM.</li>
-          <li><strong>Edge Deployment & Performance Audit:</strong> Deploying on global Vercel Edge networks with 98+ PageSpeed compliance and sub-second LCP.</li>
+          <li><strong>01 Discover:</strong> Analyzing business goals, customer touchpoints, and technical bottlenecks.</li>
+          <li><strong>02 Plan:</strong> Building precise architecture blueprints, system scope, and clear timelines.</li>
+          <li><strong>03 Design:</strong> Crafting high-converting Figma UI/UX layouts focused on brand credibility.</li>
+          <li><strong>04 Build:</strong> Hand-coding Next.js, React, Node.js, and PostgreSQL solutions.</li>
+          <li><strong>05 Launch:</strong> Speed optimization, security audits, and edge network deployment.</li>
+          <li><strong>06 Grow:</strong> Continuous search optimization, performance tuning, and scaling.</li>
         </ol>
 
-        <h2>Transparent Architecture Pricing</h2>
+        <h2>Scoped Pricing & Full Source Code Ownership</h2>
         <p>
-          Fixed scope, predictable delivery timelines, and 100% full source code ownership on day one with zero monthly platform lock-in fees. Starter platforms from $299, Growth Studio platforms from $599, and Enterprise SaaS/AI CRMs from $999.
-        </p>
-
-        <h2>Verified Client Reviews & Track Record</h2>
-        <p>
-          Delivered 150+ custom web platforms with 98% client satisfaction rate across US, UK, European, and Australian markets.
+          Transparent project estimates starting from $1,500+. Every client receives 100% full source code ownership on day one with zero vendor lock-in.
         </p>
 
         <h2>Contact NovaMac Solutions</h2>
         <p>
-          Book a free strategy session at novamacsolutions.com/book, email hello@novamacsolutions.com, or chat with our consultants directly on WhatsApp at https://wa.me/923256611920 or https://wa.me/923309063306.
+          Request a free Digital Growth Review at novamacsolutions.com/book or email hello@novamacsolutions.com.
         </p>
       </article>
 
@@ -97,4 +104,5 @@ export default function MarketingRootPage() {
     </>
   );
 }
+
 

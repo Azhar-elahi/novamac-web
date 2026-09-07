@@ -137,7 +137,7 @@ export default function ContactClient() {
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">Full Name *</label>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">1. Name *</label>
                     <input 
                       required 
                       name="name" 
@@ -147,7 +147,7 @@ export default function ContactClient() {
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">Work Email *</label>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">2. Business Email *</label>
                     <input 
                       required 
                       name="email" 
@@ -160,34 +160,62 @@ export default function ContactClient() {
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">Phone / WhatsApp (Optional)</label>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">3. Company</label>
                     <input 
-                      name="phone" 
-                      type="tel" 
-                      placeholder="+1 (510) 555-0199" 
+                      name="company" 
+                      type="text" 
+                      placeholder="Acme Corp" 
                       className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">Service Capability Required</label>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">4. Website</label>
+                    <input 
+                      name="website" 
+                      type="url" 
+                      placeholder="https://example.com" 
+                      className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
+                    />
+                  </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">5. Service Needed</label>
                     <select 
                       name="service" 
                       className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium"
                     >
-                      {SERVICES_OPTIONS.map((srv, i) => (
-                        <option key={i} value={srv}>{srv}</option>
-                      ))}
+                      <option value="Website Development & Design">Website Development & Design</option>
+                      <option value="Custom Software">Custom Software</option>
+                      <option value="CRM Development">CRM Development</option>
+                      <option value="ERP Development">ERP Development</option>
+                      <option value="AI Automation">AI Automation</option>
+                      <option value="Digital Marketing">Digital Marketing</option>
+                      <option value="SaaS & Digital Products">SaaS & Digital Products</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">7. Timeline</label>
+                    <select 
+                      name="timeline" 
+                      className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium"
+                    >
+                      <option value="ASAP (< 2 weeks)">ASAP (&lt; 2 weeks)</option>
+                      <option value="1 Month">1 Month</option>
+                      <option value="2-3 Months">2-3 Months</option>
+                      <option value="Exploring Options">Exploring Options</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">Project Overview / Goals *</label>
+                  <label className="text-xs font-mono uppercase text-gray-500 font-bold block mb-2">6. Project Description *</label>
                   <textarea 
                     required 
                     name="notes" 
-                    rows={5} 
-                    placeholder="Describe your project requirements, goals, budget, and estimated timeline..." 
+                    rows={4} 
+                    placeholder="Describe what you are trying to build, improve or automate..." 
                     className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
                   />
                 </div>
@@ -197,7 +225,7 @@ export default function ContactClient() {
                   disabled={isPending}
                   className="w-full bg-[#FF5733] text-white font-extrabold text-xs uppercase tracking-widest py-4.5 rounded-full hover:bg-[#202020] transition-all duration-300 shadow-xl flex items-center justify-center gap-2"
                 >
-                  <span>{isPending ? "Validating & Submitting..." : "Submit Proposal Request"}</span>
+                  <span>{isPending ? "Validating & Submitting..." : "Start Your Project"}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </form>

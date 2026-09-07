@@ -4,7 +4,7 @@ import React, { useState, useTransition, useEffect } from "react";
 import { motion } from "framer-motion";
 import { 
   Calendar, Clock, CheckCircle2, ArrowRight, ArrowLeft, 
-  Sparkles, ShieldCheck, Code2, Layout, Bot, ShoppingCart, Send
+  ShieldCheck, Code2, Layout, ShoppingCart, Send, Cpu, Zap, Terminal
 } from "lucide-react";
 import { submitCallBooking } from "@/app/actions/booking";
 import { DoodleUnderline } from "@/components/immersive/Doodles";
@@ -16,14 +16,14 @@ const SERVICES_LIST = [
   { id: "custom-web-development", title: "Custom Next.js & React Web Dev", icon: Code2, desc: "Sub-second, high-performance Next.js 15 & React 19 web platforms" },
   { id: "ui-ux-design", title: "UI/UX Design Systems & Figma Architecture", icon: Layout, desc: "Figma design systems, interactive prototypes & CRO design" },
   { id: "ecommerce-development", title: "Headless E-Commerce & Shopify Storefronts", icon: ShoppingCart, desc: "Fast storefront with Stripe / Shopify API integration" },
-  { id: "ai-crm-automation", title: "AI Agents, Autonomous LLM & Bespoke CRM", icon: Bot, desc: "Custom GPT-4o / Claude agents, RAG vector search & unified CRM" },
-  { id: "lead-generation-funnels", title: "B2B Lead Generation & High-Converting Funnels", icon: Bot, desc: "Targeted prospect outreach & landing page funnels" },
+  { id: "ai-crm-automation", title: "AI Agents, Autonomous LLM & Bespoke CRM", icon: Cpu, desc: "Custom GPT-4o / Claude agents, RAG vector search & unified CRM" },
+  { id: "lead-generation-funnels", title: "B2B Lead Generation & High-Converting Funnels", icon: Zap, desc: "Targeted prospect outreach & landing page funnels" },
   { id: "graphic-design-branding", title: "Graphic Design, Logos & Brand Identity", icon: Layout, desc: "Brand positioning, style guides, logo & vector visual assets" },
-  { id: "seo-geo-aeo", title: "Search Everywhere Optimization (SEO / GEO / AEO)", icon: Sparkles, desc: "Generative & Answer Engine Optimization for top search visibility" },
+  { id: "seo-geo-aeo", title: "Search Everywhere Optimization (SEO / GEO / AEO)", icon: Terminal, desc: "Generative & Answer Engine Optimization for top search visibility" },
   { id: "web-application-development", title: "Full-Stack Web Applications & SaaS Portals", icon: Code2, desc: "Scalable full-stack web applications & internal team portals" },
   { id: "mobile-app-development", title: "Cross-Platform Mobile Apps (iOS & Android)", icon: Code2, desc: "Native-feel iOS and Android mobile apps" },
-  { id: "performance-optimization", title: "Performance Optimization & Core Web Vitals Audit", icon: Sparkles, desc: "Sub-50ms edge caching, bundle size reduction & security audits" },
-  { id: "cloud-devops", title: "Cloud DevOps, Edge Infrastructure & Database Setup", icon: ShieldCheck, desc: "Vercel / AWS edge deployment & PostgreSQL database setup" },
+  { id: "performance-optimization", title: "Performance Optimization & Core Web Vitals Audit", icon: Zap, desc: "Sub-50ms edge caching, bundle size reduction & security audits" },
+  { id: "cloud-devops", title: "Cloud DevOps, Edge Infrastructure & Database Setup", icon: ShieldCheck, desc: "Global cloud edge deployment & PostgreSQL database setup" },
   { id: "maintenance-sla", title: "Dedicated Maintenance & 24/7 Technical Retainer", icon: ShieldCheck, desc: "Uptime monitoring, urgent bug patches & ongoing dev team" },
 ];
 
@@ -136,7 +136,7 @@ export default function BookPageClient() {
 
         <div className="relative z-10 max-w-3xl mx-auto text-center px-6 py-12 sm:py-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FF5733]/20 border border-[#FF5733]/50 text-[#FF5733] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest rounded-full mb-4 backdrop-blur-md shadow-lg">
-            <Sparkles className="w-4 h-4 text-[#FF5733]" />
+            <Calendar className="w-4 h-4 text-[#FF5733]" />
             30-MINUTE TECHNICAL STRATEGY CALL
           </div>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.05] sm:leading-[0.95] mb-4 drop-shadow-md">

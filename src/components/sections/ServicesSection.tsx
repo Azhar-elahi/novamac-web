@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { ChevronDown, ArrowRight, CheckCircle2, Code2 } from "lucide-react";
 import { DETAILED_SERVICES_DATA } from "@/data/servicesData";
 
 export function ServicesSection() {
@@ -15,7 +15,7 @@ export function ServicesSection() {
         {/* SECTION HEADER */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF5733]/10 border border-[#FF5733]/30 text-[#FF5733] font-mono text-xs font-bold uppercase tracking-widest">
-            <Sparkles className="w-3.5 h-3.5" /> CORE ENGINEERING CAPABILITIES
+            <Code2 className="w-3.5 h-3.5" /> CORE ENGINEERING CAPABILITIES
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-[#202020] tracking-tight">
             Comprehensive Digital <span className="text-[#FF5733]">Services</span>.

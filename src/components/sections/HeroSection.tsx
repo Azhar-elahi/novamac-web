@@ -75,15 +75,15 @@ export function HeroSection() {
           
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FF5733]/20 border border-[#FF5733]/40 text-[#FF5733] font-mono text-xs font-bold uppercase tracking-widest backdrop-blur-md shadow-lg">
             <Sparkles className="w-3.5 h-3.5" />
-            AWARD-WINNING DIGITAL STUDIO & AI LAB
+            DIGITAL ENGINEERING STUDIO
           </div>
 
           <h1 className="text-4xl sm:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] text-white drop-shadow-md">
-            We Engineer <span className="text-[#FF5733]">High-Performance</span> Digital Experiences.
+            We Build Digital Systems That <span className="text-[#FF5733]">Drive Growth</span>.
           </h1>
 
           <p className="text-base sm:text-xl text-gray-200 font-normal leading-relaxed max-w-2xl drop-shadow">
-            Sub-second Next.js web applications, custom CRM portals, and autonomous AI agents engineered to accelerate sales and dominate your industry.
+            We build websites, custom software, and AI-powered systems that help businesses work smarter and grow. We connect your digital presence, business operations, and automation into a system built around how your business works.
           </p>
 
           <div className="pt-4 flex flex-wrap gap-4 items-center">

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useUIStore } from "@/store/useUIStore";
 import { BookingProvider, useBookingModal } from "@/components/booking/BookingContext";
@@ -38,19 +38,18 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
   const isHeaderVisible = isHomePage ? scrolled : true;
 
   const NAV_LINKS = [
-    { href: "/about",       label: "About"      },
-    { href: "/services",    label: "Services"   },
-    { href: "/work",        label: "Work"       },
-    { href: "/industries",  label: "Industries" },
-    { href: "/pricing",     label: "Pricing"    },
-    { href: "/blog",        label: "Insights"   },
-    { href: "/contact",     label: "Contact"    },
+    { href: "/",          label: "Home"       },
+    { href: "/services",  label: "Services"   },
+    { href: "/work",      label: "Work"       },
+    { href: "/process",   label: "Process"    },
+    { href: "/about",     label: "About"      },
+    { href: "/contact",   label: "Contact"    },
   ];
 
   return (
     <div className="min-h-screen flex flex-col font-sans bg-[#FAF2F2] text-[#0A2540] relative overflow-x-hidden">
       
-      {/* ── LOUNGE LIZARD FLOATING TOP HEADER (Appears on scroll for home, always on inner pages) ── */}
+      {/* ── FLOATING TOP HEADER (Appears on scroll for home, always on inner pages) ── */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-12 md:px-16 h-20 bg-[#FAF2F2]/95 backdrop-blur-md shadow-lg border-b border-[#F0DCDC] rounded-b-3xl transition-all duration-500 transform ${
           isHeaderVisible
@@ -88,12 +87,12 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
 
         {/* RIGHT CTA BUTTON */}
         <div className="hidden lg:flex items-center gap-4">
-          <Link
-            href="/contact"
-            className="bg-[#FF5733] text-white hover:bg-[#202020] font-extrabold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-all duration-300 shadow-md"
+          <button
+            onClick={() => openBooking()}
+            className="bg-[#FF5733] text-white hover:bg-[#202020] font-extrabold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
           >
-            Let&apos;s Talk
-          </Link>
+            Start a Project
+          </button>
         </div>
 
         {/* MOBILE MENU TOGGLE */}
@@ -123,13 +122,15 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
           </div>
 
           <div className="pt-8 border-t border-gray-200">
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full bg-[#FF5733] text-white font-extrabold text-center text-sm uppercase py-4 rounded-full inline-block"
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openBooking();
+              }}
+              className="w-full bg-[#FF5733] text-white font-extrabold text-center text-sm uppercase py-4 rounded-full inline-block shadow-lg"
             >
-              Let&apos;s Talk
-            </Link>
+              Start a Project
+            </button>
           </div>
         </div>
       )}
@@ -139,8 +140,8 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      {/* ── COMPACT LOUNGE LIZARD DARK FOOTER ── */}
-      <footer className="bg-[#0A0A0A] text-white border-t border-white/10 pt-10 pb-8 px-6 sm:px-12 lg:px-20 font-sans relative overflow-hidden">
+      {/* ── COMPACT LOUNGE LIZARD DARK FOOTER (Visual design preserved) ── */}
+      <footer className="bg-[#0A0A0A] text-white border-t border-white/10 pt-12 pb-8 px-6 sm:px-12 lg:px-20 font-sans relative overflow-hidden">
         
         {/* MAIN FOOTER GRID */}
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
@@ -153,56 +154,57 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
               </span>
             </Link>
             <p className="text-gray-400 text-xs font-light leading-relaxed max-w-sm mb-4">
-              NovaMac Solutions is an award-winning digital design company and AI software studio building high-performance web platforms.
+              NovaMac Solutions is a digital engineering studio helping businesses build custom web platforms, software, and automated systems.
             </p>
             
             {/* LIVE SYSTEM STATUS PILL */}
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-mono mb-2">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>All Edge Networks Operational (&lt;45ms SLA)</span>
+              <span>All Systems Operational</span>
             </div>
 
             <div className="text-[11px] font-mono text-gray-500 uppercase tracking-wider block">
-              Est. 2020 • Global Web & AI Studio
+              Digital Engineering Studio • Web & AI Systems
             </div>
           </div>
 
           <div>
             <h4 className="font-extrabold text-[11px] uppercase tracking-widest text-white mb-3 border-l-2 border-[#FF5733] pl-2.5">
-              Capabilities
+              Services
             </h4>
             <ul className="space-y-2 text-xs text-gray-400 font-medium">
-              <li><Link href="/services" className="hover:text-[#FF5733] transition-colors">Custom Next.js Web Dev</Link></li>
-              <li><Link href="/services" className="hover:text-[#FF5733] transition-colors">UI/UX Figma Design Studio</Link></li>
-              <li><Link href="/services" className="hover:text-[#FF5733] transition-colors">Headless Shopify E-Commerce</Link></li>
-              <li><Link href="/services" className="hover:text-[#FF5733] transition-colors">AI & Custom CRM Portals</Link></li>
-              <li><Link href="/services" className="hover:text-[#FF5733] transition-colors">Search Everywhere GEO/SEO</Link></li>
+              <li><Link href="/services/website-development" className="hover:text-[#FF5733] transition-colors">Website Development</Link></li>
+              <li><Link href="/services/custom-software" className="hover:text-[#FF5733] transition-colors">Custom Software</Link></li>
+              <li><Link href="/services/crm-development" className="hover:text-[#FF5733] transition-colors">CRM Development</Link></li>
+              <li><Link href="/services/erp-development" className="hover:text-[#FF5733] transition-colors">ERP Development</Link></li>
+              <li><Link href="/services/ai-automation" className="hover:text-[#FF5733] transition-colors">AI Automation</Link></li>
+              <li><Link href="/services/digital-marketing" className="hover:text-[#FF5733] transition-colors">Digital Marketing</Link></li>
+              <li><Link href="/services/saas-development" className="hover:text-[#FF5733] transition-colors">SaaS & Products</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-extrabold text-[11px] uppercase tracking-widest text-white mb-3 border-l-2 border-[#FF5733] pl-2.5">
-              Company & Work
+              Company
             </h4>
             <ul className="space-y-2 text-xs text-gray-400 font-medium">
               <li><Link href="/about" className="hover:text-[#FF5733] transition-colors">About NovaMac</Link></li>
-              <li><Link href="/work" className="hover:text-[#FF5733] transition-colors">Client Case Studies</Link></li>
-              <li><Link href="/pricing" className="hover:text-[#FF5733] transition-colors">Pricing Architecture</Link></li>
-              <li><Link href="/contact" className="hover:text-[#FF5733] transition-colors">Contact Engineering</Link></li>
-              <li><Link href="/about" className="hover:text-[#FF5733] transition-colors">Our Methodology</Link></li>
+              <li><Link href="/work" className="hover:text-[#FF5733] transition-colors">Our Work</Link></li>
+              <li><Link href="/process" className="hover:text-[#FF5733] transition-colors">Our Process</Link></li>
+              <li><Link href="/contact" className="hover:text-[#FF5733] transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-extrabold text-[11px] uppercase tracking-widest text-white mb-3 border-l-2 border-[#FF5733] pl-2.5">
-              Global Hubs & Support
+              Resources & Legal
             </h4>
             <ul className="space-y-2 text-xs text-gray-400 font-medium">
-              <li className="text-gray-300 font-bold">New York HQ • London • Dubai</li>
-              <li><Link href="/contact" className="hover:text-[#FF5733] transition-colors">WhatsApp Consultant Desk 1</Link></li>
-              <li><Link href="/contact" className="hover:text-[#FF5733] transition-colors">WhatsApp Consultant Desk 2</Link></li>
-              <li>Email: hello@novamacsolutions.com</li>
-              <li className="pt-1 text-[#FF5733] font-mono text-[10px]">24/7 Response Guarantee</li>
+              <li><Link href="/blog" className="hover:text-[#FF5733] transition-colors">Insights & Blog</Link></li>
+              <li><Link href="/faq" className="hover:text-[#FF5733] transition-colors">FAQ</Link></li>
+              <li><Link href="/privacy" className="hover:text-[#FF5733] transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-[#FF5733] transition-colors">Terms of Service</Link></li>
+              <li className="pt-2 text-gray-300 font-bold">Email: hello@novamacsolutions.com</li>
             </ul>
           </div>
 
@@ -210,11 +212,11 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
 
         {/* BOTTOM COPYRIGHT & LEGAL BAR */}
         <div className="max-w-7xl mx-auto pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-500 font-mono gap-3">
-          <div>© {new Date().getFullYear()} NovaMac Solutions Studio. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} NovaMac Solutions. All rights reserved.</div>
           <div className="flex gap-5">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-            <Link href="/contact" className="hover:text-white transition-colors">Security & SLA</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+            <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
           </div>
         </div>
       </footer>
@@ -234,4 +236,3 @@ export default function MarketingLayout({ children }: { children: React.ReactNod
     </BookingProvider>
   );
 }
-

@@ -10,26 +10,24 @@ import { DoodleUnderline } from "@/components/immersive/Doodles";
 import { RichBackgroundArt } from "@/components/immersive/RichBackgroundArt";
 
 const SERVICE_IMAGES_MAP: Record<string, string> = {
+  "website-development": "/images/web_dev.webp",
+  "custom-software": "/images/web_app.webp",
+  "crm-development": "/images/crm_system.png",
+  "erp-development": "/images/erp_system.png",
+  "ai-automation": "/images/ai_automation.webp",
+  "digital-marketing": "/images/marketing_seo.webp",
+  "saas-development": "/images/saas_platform.png",
+
+  // Additional & Legacy Mappings
   "custom-web-development": "/images/web_dev.webp",
   "ecommerce-development": "/images/ecommerce.webp",
-  "shopify-development": "/images/ecommerce.webp",
-  "woocommerce-development": "/images/ecommerce.webp",
-  "wordpress-development": "/images/web_dev.webp",
-  "ai-automation": "/images/ai_automation.webp",
-  "crm-business-automation": "/images/ai_automation.webp",
-  "performance-marketing": "/images/marketing_seo.webp",
-  "social-media-marketing": "/images/marketing_seo.webp",
-  "seo-technical-audits": "/images/marketing_seo.webp",
   "mobile-app-development": "/images/mobile_app.webp",
   "ui-ux-design": "/images/ui_ux.webp",
-  "graphic-design-branding": "/images/graphic_branding.webp",
-  "lead-generation-funnels": "/images/lead_gen.webp",
   "cloud-devops": "/images/cloud_devops.webp",
-  "maintenance-support": "/images/cloud_devops.webp",
 };
 
 export default function ServicePageClient({ service }: { service: ServiceDetail }) {
-  const Icon = (Icons as unknown as Record<string, LucideIcon>)[service.iconName] ?? Icons.Sparkles;
+  const Icon = (Icons as unknown as Record<string, LucideIcon>)[service.iconName] ?? Icons.Code2;
   const imageSrc = SERVICE_IMAGES_MAP[service.slug] || "/images/web_dev.jpg";
 
   const mouseX = useMotionValue(0);

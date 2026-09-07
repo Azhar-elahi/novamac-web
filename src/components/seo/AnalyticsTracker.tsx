@@ -3,6 +3,20 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
+export function trackEvent(eventName: string, data: Record<string, any> = {}) {
+  if (typeof window === "undefined") return;
+  fetch("/api/track", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      path: window.location.pathname,
+      event: eventName,
+      data,
+      referrer: document.referrer || "Direct"
+    })
+  }).catch(() => {});
+}
+
 export function AnalyticsTracker() {
   const pathname = usePathname();
 
@@ -15,6 +29,7 @@ export function AnalyticsTracker() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ 
         path: pathname,
+        event: "page_view",
         referrer: document.referrer || "Direct / Bookmark"
       })
     }).catch(() => {
@@ -24,4 +39,3 @@ export function AnalyticsTracker() {
 
   return null; // Invisible tracker
 }
-

@@ -26,10 +26,10 @@ export function CaseStudiesSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#F0DCDC] pb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FF5733]/10 border border-[#FF5733]/30 text-[#FF5733] font-mono text-xs font-bold uppercase tracking-widest mb-3">
-              <Sparkles className="w-3.5 h-3.5" /> FEATURED CASE STUDIES
+              <Sparkles className="w-3.5 h-3.5" /> NOVAMAC LABS
             </div>
             <h2 className="text-3xl sm:text-5xl font-black text-[#202020] tracking-tight">
-              Impact-Driven <span className="text-[#FF5733]">Client Work</span>.
+              Concepts, Prototypes & <span className="text-[#FF5733]">Systems Showcase</span>.
             </h2>
           </div>
 
@@ -89,7 +89,7 @@ export function CaseStudiesSection() {
             </h3>
 
             <p className="text-sm sm:text-base text-gray-600 font-normal leading-relaxed">
-              {currentProject.desc}
+              {currentProject.shortDesc}
             </p>
 
             {currentProject.techStack && (
@@ -104,10 +104,10 @@ export function CaseStudiesSection() {
 
             <div className="pt-4 border-t border-[#F0DCDC] flex items-center justify-between">
               <Link
-                href={currentProject.link}
+                href={`/work/${currentProject.slug}`}
                 className="px-6 py-3 bg-[#FF5733] text-white font-extrabold text-xs uppercase tracking-widest rounded-full hover:bg-[#202020] transition-all shadow-md inline-flex items-center gap-2"
               >
-                Read Case Study <ArrowRight className="w-4 h-4" />
+                View System Details <ArrowRight className="w-4 h-4" />
               </Link>
               <span className="text-xs font-mono text-gray-400 font-bold">
                 0{currentIndex + 1} / 0{PROJECTS_DATA.length}

@@ -51,9 +51,9 @@ export default function NotFound() {
             <span className="text-[#FF5733]">Capabilities</span>
           </Link>
 
-          <Link href="/pricing" className="p-3 bg-[#FAF2F2] border border-[#F0DCDC] hover:border-[#FF5733] rounded-xl text-[#202020] flex items-center justify-between transition-colors">
-            <span>/pricing</span>
-            <span className="text-[#FF5733]">Pricing Tiers</span>
+          <Link href="/process" className="p-3 bg-[#FAF2F2] border border-[#F0DCDC] hover:border-[#FF5733] rounded-xl text-[#202020] flex items-center justify-between transition-colors">
+            <span>/process</span>
+            <span className="text-[#FF5733]">6-Step Process</span>
           </Link>
 
           <Link href="/contact" className="p-3 bg-[#FAF2F2] border border-[#F0DCDC] hover:border-[#FF5733] rounded-xl text-[#202020] flex items-center justify-between transition-colors">

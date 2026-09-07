@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { useState, useRef, useEffect, Fragment } from "react";
-import { MessageSquare, X, Send, Sparkles, ArrowRight } from "lucide-react";
+import { MessageSquare, X, Send, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const QUICK_SUGGESTIONS = [
@@ -97,14 +97,14 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
       <div className={cn("fixed bottom-8 right-0 z-50", isOpen && "pointer-events-none opacity-0")}>
         <button
           onClick={() => setIsOpen(true)}
-          aria-label="Open AI Assistant"
+          aria-label="Open Assistant"
           className="group flex items-center gap-3 bg-[#202020] hover:bg-[#FF5733] text-white h-12 rounded-l-full pl-3.5 pr-6 shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_25px_rgba(255,87,51,0.3)] border-l border-y border-white/20 transition-transform duration-300 ease-out translate-x-[calc(100%-48px)] hover:translate-x-0 cursor-pointer overflow-hidden whitespace-nowrap"
         >
           <div className="w-6 h-6 rounded-full bg-[#FF5733]/20 border border-[#FF5733]/40 text-[#FF5733] group-hover:text-white group-hover:bg-white/20 flex items-center justify-center shrink-0 shadow-sm group-hover:rotate-12 transition-transform">
-            <Sparkles className="w-3.5 h-3.5" />
+            <MessageSquare className="w-3.5 h-3.5" />
           </div>
           <span className="font-mono text-xs font-bold uppercase tracking-wider text-white">
-            AI Assistant
+            Studio Desk
           </span>
           <ArrowRight className="w-4 h-4 text-[#FF5733] group-hover:text-white shrink-0" />
         </button>
@@ -123,11 +123,11 @@ export function ChatWidget({ isPortal = false }: { isPortal?: boolean }) {
             <div className="flex items-center gap-2 mb-0.5">
               <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
               <span className="font-mono text-[9px] font-bold text-[#FF5733] uppercase tracking-widest">
-                SYS_AI // ONLINE
+                STUDIO DESK // ONLINE
               </span>
             </div>
             <h3 className="font-extrabold text-sm text-white">
-              {isPortal ? "NovaMac Support Agent" : "NovaMac AI Assistant"}
+              {isPortal ? "NovaMac Support Desk" : "NovaMac Studio Assistant"}
             </h3>
             <p className="text-[11px] text-gray-400 font-normal">
               {isPortal ? "Real-time project & ticket assistant" : "Ask about our services, tech stack & pricing"}

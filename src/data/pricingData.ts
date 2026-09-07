@@ -2,52 +2,65 @@ import { PricingTier } from "@/types";
 
 export const PRICING_TIERS_DATA: PricingTier[] = [
   {
-    id: "starter",
-    title: "STARTER PLATFORM",
-    price: "$299",
-    subtitle: "Ideal for growing businesses needing a fast, high-converting digital presence.",
+    id: "web-platforms",
+    title: "WEB PLATFORMS",
+    price: "$1,200 – $3,500",
+    subtitle: "High-performing Next.js web applications, corporate platforms, and conversion systems.",
     features: [
-      "Custom Hand-Coded Next.js 15 Web App",
-      "Up to 5 Fully Custom Pages",
-      "Sub-Second Page Load Guarantee (<0.8s)",
-      "Mobile & Tablet Responsive Engineering",
-      "Basic On-Page SEO & Schema Markup",
-      "100% Full Source Code Ownership"
+      "Custom Next.js & React 19 UI Architecture",
+      "Sub-Second Edge Latency (<0.8s SLA)",
+      "Built-in Technical SEO & Schema Markup",
+      "Responsive Mobile & Tablet Optimization",
+      "Easy Content Management Access",
+      "100% Full Source Code & IP Ownership"
     ],
-    ctaText: "Select Starter Tier"
+    ctaText: "Request Web Scope"
   },
   {
-    id: "growth",
-    title: "GROWTH STUDIO",
-    price: "$599",
-    subtitle: "Built for scaling brands, e-commerce stores, and active lead generation.",
+    id: "business-systems",
+    title: "BUSINESS SYSTEMS & CRM",
+    price: "$2,500 – $6,000",
+    subtitle: "Custom CRM and ERP systems for lead management, customer operations, inventory, and finance.",
     popular: true,
-    badge: "MOST POPULAR",
+    badge: "MOST REQUESTED",
     features: [
-      "Everything in Starter Tier",
-      "Up to 12 Custom Pages + Dynamic Blog / CMS",
-      "Headless Shopify / Stripe Payment Gateway",
-      "Custom Lead Capture & Proposal Calculator",
-      "Generative Engine Optimization (GEO/AEO)",
-      "WhatsApp & Direct Chatbot Integration",
-      "Priority 2-Week Express Delivery"
+      "Custom Sales Pipeline & Lead Board",
+      "Role-Based Access Control (RBAC)",
+      "Real-Time Executive Analytics",
+      "Legacy Data & Spreadsheet Migration",
+      "Zero Per-Seat Monthly Licensing Fees",
+      "100% Full Code Ownership"
     ],
-    ctaText: "Start Growth Project"
+    ctaText: "Request Systems Scope"
   },
   {
-    id: "enterprise",
-    title: "ENTERPRISE SAAS & AI",
-    price: "$999+",
-    subtitle: "Bespoke full-stack platforms, custom CRMs, and autonomous AI workflow portals.",
+    id: "ai-automation",
+    title: "AI & AUTOMATION",
+    price: "$2,000 – $5,500",
+    subtitle: "Autonomous AI agents, automated lead qualification pipelines, and internal RAG knowledge bases.",
     features: [
-      "Everything in Growth Studio",
-      "Unlimited Custom Pages & Sub-Application Architecture",
-      "Custom Internal CRM & Deal Pipeline Portal",
-      "Autonomous AI Agent Integration (GPT-4o / Claude 3.5)",
-      "RAG Knowledge Base & Pinecone Vector Search",
-      "Dedicated Lead Engineer & 24/7 SLA Support",
-      "100% IP Ownership + Full Technical Handover"
+      "Custom OpenAI & Claude API Workflows",
+      "RAG Document Search & Vector Base",
+      "Automated SMS & Email Triggers",
+      "System Connectors (Email, CRM, Slack)",
+      "24/7 Inquiry Qualification SLA",
+      "Safety Guardrails & Monitoring"
     ],
-    ctaText: "Book Enterprise Consultation"
+    ctaText: "Request Automation Scope"
+  },
+  {
+    id: "saas-software",
+    title: "SAAS & CUSTOM SOFTWARE",
+    price: "$3,500 – $10,000+",
+    subtitle: "Full-stack software engineering for founders launching custom SaaS products or web apps.",
+    features: [
+      "Full-Stack Web App Engineering",
+      "Multi-Tenant SaaS Infrastructure",
+      "Stripe Subscription & Billing Portal",
+      "Scalable PostgreSQL & Cloud Schemas",
+      "100% IP & Codebase Handoff",
+      "Post-Launch Technical Support"
+    ],
+    ctaText: "Request Software Scope"
   }
 ];

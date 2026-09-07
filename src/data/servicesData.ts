@@ -12,22 +12,22 @@ export interface NovamacService {
 export const NOVAMAC_SERVICES: NovamacService[] = [
   {
     id: 1,
-    title: 'AI & Business Automation',
-    description: 'Custom AI agents and automated workflows that run your business around the clock.',
+    title: 'Custom Web Engineering',
+    description: 'Sub-second Next.js web platforms engineered for speed, conversions, and security.',
     color: '#FF5733',
     position: [0, 5.5, -62],
   },
   {
     id: 2,
-    title: 'Website Performance Audits',
-    description: 'Deep technical audits that turn a slow site into a fast, reliable growth engine.',
+    title: 'Business Systems & CRM',
+    description: 'Custom CRM and operational software replacing manual spreadsheets.',
     color: '#FF7755',
     position: [-9, 2, -92],
   },
   {
     id: 3,
-    title: 'Local SEO Outreach',
-    description: 'Dominate your local map pack and search rankings with consistent, compounding visibility.',
+    title: 'AI & Process Automation',
+    description: 'AI-powered workflows, RAG search, and automated pipelines.',
     color: '#FF9977',
     position: [10, 3, -124],
     hasOrb: true,
@@ -36,73 +36,101 @@ export const NOVAMAC_SERVICES: NovamacService[] = [
 
 export const DETAILED_SERVICES_DATA: ServiceItem[] = [
   {
-    id: "branding",
-    slug: "branding-services",
-    title: "Branding Services",
-    shortDesc: "Strategic brand positioning, logo design, and visual messaging systems.",
-    fullDesc: "We build enduring brand identities designed to stand out in saturated markets. From core messaging architecture to logo guidelines, typography systems, and high-impact visual design assets.",
+    id: "web-dev",
+    slug: "website-development",
+    title: "Website Development & Design",
+    shortDesc: "Sub-second Next.js web applications hand-coded for maximum conversions.",
+    fullDesc: "Bespoke digital platforms engineered from scratch using Next.js, TypeScript, and Tailwind CSS. Built to deliver sub-second loading speed, mobile UX perfection, and zero vulnerability exposure.",
     deliverables: [
-      "Brand Strategy & Positioning",
-      "Messaging Architecture",
-      "Brand Style Guides",
-      "Logo & Identity Design"
-    ],
-    features: ["Figma Design Token Export", "Vector Assets", "Typography Pairings", "Brand Guidelines PDF"]
-  },
-  {
-    id: "website-design",
-    slug: "custom-web-development",
-    title: "Custom Website Design",
-    shortDesc: "Sub-second Next.js 15 & React 19 web applications hand-coded for maximum conversions.",
-    fullDesc: "Bespoke digital platforms engineered from scratch using Next.js 15, TypeScript, and Tailwind CSS. Built to deliver sub-50ms edge latency, 98+ Google PageSpeed scores, and zero vulnerability exposure.",
-    deliverables: [
-      "Sub-Second Next.js 15 & React 19 Engineering",
-      "Custom Figma UI/UX Design Systems",
+      "Sub-Second Next.js & React Engineering",
+      "Custom UI/UX Design Systems",
       "Responsive & Mobile-First Architecture",
-      "Conversion Rate Optimization (CRO)"
+      "Technical SEO & Core Web Vitals SLA"
     ],
-    features: ["Sub-300ms LCP Page Speeds", "Vercel Edge Network Deployment", "Dynamic CMS Integration", "98+ PageSpeed SLA"]
+    features: ["Sub-300ms LCP Page Speeds", "Global Edge CDN Deployment", "Easy Content Management", "100% Code Ownership"]
   },
   {
-    id: "ecommerce",
-    slug: "ecommerce-development",
-    title: "Ecommerce Website Development",
-    shortDesc: "Headless Shopify Storefront API integration with instant one-click checkouts.",
-    fullDesc: "Custom high-converting e-commerce experiences engineered on headless Shopify and Stripe architectures. Featuring sub-second catalog loading, instant cart drawers, dynamic multi-currency support, and custom checkouts.",
+    id: "software-dev",
+    slug: "custom-software",
+    title: "Custom Software Development",
+    shortDesc: "Purpose-built web applications and operational tools tailored to your business rules.",
+    fullDesc: "Bespoke internal operations portals and software applications built to eliminate manual bottlenecks. Replacing fragmented tools with unified role-based workspaces.",
     deliverables: [
-      "Headless Shopify Storefront API Integration",
-      "Instant Custom Cart & One-Click Checkout",
-      "Stripe & Multi-Currency Payment Gateways",
-      "Product Catalog Search & Filter Engine"
+      "Custom Web App Engineering",
+      "Secure Database Architecture",
+      "Role-Based Access Control (RBAC)",
+      "API & Software Integrations"
     ],
-    features: ["Sub-Second Search Engine", "Shopify Plus Compatibility", "Automated Tax & Shipping", "Custom Checkout Extension"]
+    features: ["Next.js & Node.js Stack", "PostgreSQL & Prisma Database", "Role-Based ACL Security", "Full IP Transfer"]
   },
   {
-    id: "ai-crm",
-    slug: "ai-crm-automation",
-    title: "AI Automation & Custom CRMs",
-    shortDesc: "Tailored internal operations portals and autonomous AI agents replacing spreadsheets.",
-    fullDesc: "Custom enterprise operations portals and autonomous AI workflows built to eliminate manual task overhead. Replacing fragmented spreadsheets with unified role-based portals, pipeline automations, and LLM integrations.",
+    id: "crm-dev",
+    slug: "crm-development",
+    title: "CRM Development & Pipeline Systems",
+    shortDesc: "Custom systems to manage leads, sales pipelines, and customer relationships.",
+    fullDesc: "Tailored sales pipeline boards and client management dashboards. Designed around your exact sales workflow without expensive monthly per-seat licensing fees.",
     deliverables: [
-      "Bespoke Internal Business Portals",
-      "Autonomous AI Customer & Sales Agents",
-      "RAG Knowledge Search & Vector Databases",
-      "Workflow Automation Replacing Spreadsheets"
+      "Custom Sales Pipeline Boards",
+      "Automated Lead Capture & Follow-up",
+      "Client Communication Logs",
+      "Deal Analytics & Reporting"
     ],
-    features: ["OpenAI & Claude API Integration", "Pinecone Vector RAG Base", "Twilio & WhatsApp Automation", "Role-Based ACL Security"]
+    features: ["Zero Monthly Per-Seat Fees", "Automated SMS & Email Triggers", "Real-Time Pipeline Analytics", "Custom API Webhooks"]
   },
   {
-    id: "digital-marketing",
-    slug: "seo-geo-marketing",
-    title: "Search Everywhere Optimization",
-    shortDesc: "Generative Engine Optimization (GEO) and Answer Engine Optimization (AEO) dominance.",
-    fullDesc: "Modern SEO engineered for both traditional search engines (Google, Bing) and AI answer engines (ChatGPT Search, Perplexity, Gemini). Includes Core Web Vitals optimization, schema markup, and lead funnels.",
+    id: "erp-dev",
+    slug: "erp-development",
+    title: "ERP & Operations Development",
+    shortDesc: "Connected operational systems for inventory, purchasing, finance, and management.",
+    fullDesc: "Unified business management platform connecting operations, inventory, purchasing, and executive reporting into a single real-time system.",
     deliverables: [
+      "Unified Operations Modules",
+      "Real-Time Stock & Purchasing Engine",
+      "Role-Based Activity Auditing",
+      "Executive KPI Dashboard"
+    ],
+    features: ["Multi-Location Inventory", "Custom Approval Workflows", "API Connections to Logistics", "Custom Accounting Exports"]
+  },
+  {
+    id: "ai-auto",
+    slug: "ai-automation",
+    title: "AI Automation & Workflows",
+    shortDesc: "AI agents, RAG document search, and process automations that cut manual overhead.",
+    fullDesc: "Bespoke AI workflows and internal tools engineered to automate document processing, lead qualification, and customer inquiry response.",
+    deliverables: [
+      "Custom AI Agents Trained on Your Data",
+      "RAG Document Search & Knowledge Base",
+      "Automated Lead Qualification & Booking",
+      "System Integrations (CRM, Email, Slack)"
+    ],
+    features: ["OpenAI & Claude API Integrations", "Enterprise LLM Engine Architecture", "Safety Guardrails", "24/7 Inquiry Processing"]
+  },
+  {
+    id: "marketing",
+    slug: "digital-marketing",
+    title: "Digital Marketing & Growth Systems",
+    shortDesc: "Data-driven SEO, Generative Engine Optimization (GEO), and conversion funnels.",
+    fullDesc: "Modern search dominance engineered for traditional search engines (Google, Bing) and AI search platforms (Perplexity, ChatGPT Search, Gemini).",
+    deliverables: [
+      "Search Engine Optimization (SEO)",
       "Generative Engine Optimization (GEO)",
-      "Answer Engine Optimization (AEO)",
-      "Technical SEO & Core Web Vitals Dominance",
-      "Targeted Lead Generation & Sales Funnels"
+      "Landing Page Conversion Tuning",
+      "Transparent Revenue Analytics"
     ],
-    features: ["JSON-LD Schema Engineering", "Sub-50ms TTFB Audits", "Competitor Keyword Hijacking", "Monthly KPI Reporting"]
+    features: ["Structured JSON-LD Schema", "Core Web Vitals Optimization", "Lead Funnel Architecture", "Monthly Performance Review"]
+  },
+  {
+    id: "saas-dev",
+    slug: "saas-development",
+    title: "SaaS & Product Development",
+    shortDesc: "From product scoping and MVP buildout to scalable cloud SaaS platforms.",
+    fullDesc: "Full-stack product engineering for founders and businesses launching custom SaaS solutions. Complete with multi-tenant auth, subscription billing, and scalable cloud infrastructure.",
+    deliverables: [
+      "MVP Product Architecture & UI/UX",
+      "Full-Stack Web App Engineering",
+      "Stripe Subscription Billing",
+      "Scalable API & Database Schema"
+    ],
+    features: ["Multi-Tenant Authentication", "Stripe Billing Portal", "Continuous Deployment", "100% Code & IP Transfer"]
   }
 ];

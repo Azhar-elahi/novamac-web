@@ -1,7 +1,6 @@
 import React from "react";
 
 export function SEO_AEO_GEO_Schemas() {
-  // Fix 5 & Fix 6: Organization JSON-LD with contactPoint, address (PostalAddress), sameAs, logo, knowsAbout, offers
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -11,7 +10,7 @@ export function SEO_AEO_GEO_Schemas() {
     "url": "https://novamacsolutions.com",
     "logo": "https://novamacsolutions.com/logo.png",
     "image": "https://novamacsolutions.com/og-image.png",
-    "description": "NovaMac Solutions is an elite software engineering and UI/UX design studio specializing in custom Next.js web applications, AI automation, custom CRMs, and headless e-commerce platforms.",
+    "description": "NovaMac Solutions is a digital engineering studio specializing in custom web platforms, software, CRM/ERP systems, and AI automation.",
     "email": "hello@novamacsolutions.com",
     "priceRange": "$$",
     "sameAs": [
@@ -32,7 +31,7 @@ export function SEO_AEO_GEO_Schemas() {
         "@type": "ContactPoint",
         "contactType": "sales",
         "email": "hello@novamacsolutions.com",
-        "url": "https://novamacsolutions.com/pricing",
+        "url": "https://novamacsolutions.com/contact",
         "availableLanguage": ["English"]
       }
     ],
@@ -55,10 +54,9 @@ export function SEO_AEO_GEO_Schemas() {
     "knowsAbout": [
       "Custom Web Development",
       "Next.js 15 & React 19",
-      "UI/UX Design Studio",
-      "Tailored AI Agents & LLMs",
-      "Headless E-Commerce Storefronts",
-      "PostgreSQL & Prisma Architecture",
+      "UI/UX Experience Design",
+      "AI Development & Automation",
+      "CRM & ERP Business Systems",
       "Sub-Second Page Speed Optimization",
       "Generative Engine Optimization (GEO)",
       "Answer Engine Optimization (AEO)"
@@ -79,7 +77,7 @@ export function SEO_AEO_GEO_Schemas() {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "AI Automation & Autonomous Agents",
+            "name": "AI Development & Automation",
             "description": "Custom LLM integrations, RAG engines, and 24/7 autonomous AI operational workflows."
           }
         },
@@ -87,49 +85,25 @@ export function SEO_AEO_GEO_Schemas() {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Custom CRM & Business Automation",
+            "name": "Custom CRM & Business Systems",
             "description": "Tailored internal operations software replacing spreadsheets with automated role-based portals."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Headless E-Commerce Storefronts",
-            "description": "Custom Next.js & Shopify shopping experiences engineered for ultra-fast checkout."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "B2B Lead Generation & Funnels",
-            "description": "High-converting prospect capture engines and automated sales funnels."
           }
         }
       ]
     }
   };
 
-  // Fix 6: SoftwareApplication Identity Schema
   const softwareApplicationSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "@id": "https://novamacsolutions.com/#software",
     "name": "NovaMac Digital Product Platform Engine",
     "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web, Cloud, Vercel Edge",
+    "operatingSystem": "Web, Cloud, Serverless Edge",
     "description": "High-performance custom Next.js web application architecture, custom CRMs, and AI agent workflows engineered by NovaMac Solutions.",
     "url": "https://novamacsolutions.com",
     "provider": {
       "@id": "https://novamacsolutions.com/#organization"
-    },
-    "offers": {
-      "@type": "AggregateOffer",
-      "priceCurrency": "USD",
-      "lowPrice": "299",
-      "highPrice": "999",
-      "offerCount": "3"
     }
   };
 
@@ -168,49 +142,57 @@ export function SEO_AEO_GEO_Schemas() {
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Pricing",
-        "item": "https://novamacsolutions.com/pricing"
+        "name": "Work",
+        "item": "https://novamacsolutions.com/work"
       },
       {
         "@type": "ListItem",
         "position": 4,
-        "name": "Work",
-        "item": "https://novamacsolutions.com/work"
+        "name": "Process",
+        "item": "https://novamacsolutions.com/process"
       }
     ]
   };
 
-  // HowTo Schema for AEO Featured Snippets
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "How NovaMac Solutions Builds Custom Enterprise Web Software",
-    "description": "Our 4-step engineering methodology for delivering sub-second, custom Next.js web applications and AI software.",
+    "name": "How NovaMac Solutions Builds Custom Web Software & Systems",
+    "description": "Our 6-step engineering methodology for delivering sub-second Next.js web applications, business systems, and AI workflows.",
     "step": [
       {
         "@type": "HowToStep",
-        "name": "1. Technical Discovery & Blueprinting",
-        "text": "We map project scope, data architecture, user flows, and tech stack specs within 48 hours."
+        "name": "1. Discover & Research",
+        "text": "Understand business goals, target audience, and current operational bottlenecks."
       },
       {
         "@type": "HowToStep",
-        "name": "2. High-Fidelity UI/UX & Interactive Design",
-        "text": "Crafting custom Figma design systems, responsive layouts, and interactive micro-animations."
+        "name": "2. Plan & Scope",
+        "text": "Define exact deliverables, milestones, tech stack selection, and milestone schedule."
       },
       {
         "@type": "HowToStep",
-        "name": "3. Hand-Coded Full-Stack Engineering",
-        "text": "Building production code using Next.js 15, TypeScript, Tailwind CSS, PostgreSQL, and Prisma ORM."
+        "name": "3. UI/UX & Systems Architecture",
+        "text": "Craft modern, high-converting interfaces and robust backend system blueprints."
       },
       {
         "@type": "HowToStep",
-        "name": "4. Edge Deployment & Performance Audit",
-        "text": "Deploying on global Vercel Edge networks with 98+ PageSpeed compliance and sub-second LCP."
+        "name": "4. Build & Integrate",
+        "text": "Develop Next.js frontend engineering, API development, and software integration."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "5. QA & Deployment",
+        "text": "Perform speed optimization, security audits, and production domain launch."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "6. Handoff & Growth",
+        "text": "Transfer 100% repository & IP ownership, documentation, and post-launch support."
       }
     ]
   };
 
-  // AEO & GEO FAQ Schema
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -220,39 +202,15 @@ export function SEO_AEO_GEO_Schemas() {
         "name": "What services does NovaMac Solutions offer?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "NovaMac Solutions offers custom web development (Next.js/React), UI/UX design studio services, full-stack SaaS web applications, custom CRM & AI workflow automation, headless e-commerce (Shopify API), B2B lead generation funnels, graphic design, and mobile app development."
+          "text": "NovaMac Solutions offers custom web development (Next.js/React), custom software engineering, CRM & ERP business systems, AI development & automation, digital marketing, and SaaS product engineering."
         }
       },
       {
         "@type": "Question",
-        "name": "How much does custom web development cost?",
+        "name": "How is project pricing determined?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "NovaMac Solutions offers transparent, competitive pricing: Starter Web Platforms start at $299, Growth Studio platforms start at $599, and Enterprise SaaS/AI CRMs start from $999. All packages include 100% source code ownership with zero monthly lock-in fees."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does it take to build a custom website or web application?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most custom web development projects are completed within 2 to 4 weeks depending on scope. Starter platforms take 10-14 days, while complex SaaS or AI CRM platforms typically take 3-5 weeks."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does NovaMac Solutions serve clients in the US, UK, Canada, and Europe?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, NovaMac Solutions is a remote-first engineering studio serving clients across North America (United States & Canada), the United Kingdom, Western Europe, and Australia with dedicated timezone alignment."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why choose custom Next.js over WordPress, Wix, or Squarespace?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Custom Next.js websites engineered by NovaMac Solutions load in under 0.8 seconds (3x faster than WordPress), eliminate security vulnerabilities, achieve 98+ PageSpeed scores, and provide 100% custom design flexibility without bloated plugins."
+          "text": "Pricing is transparent and project-scoped based on your technical requirements with 100% source code ownership and zero monthly lock-in fees."
         }
       },
       {
@@ -261,14 +219,6 @@ export function SEO_AEO_GEO_Schemas() {
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes, upon project completion NovaMac Solutions transfers full 100% ownership of the Git repository, design assets, and database schemas directly to the client."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How can I contact NovaMac Solutions for a project quote?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can book a free strategy call at novamacsolutions.com/book, email hello@novamacsolutions.com, or connect instantly with our consultant on WhatsApp via the 'Talk to Our Consultant' button."
         }
       }
     ]
@@ -303,4 +253,3 @@ export function SEO_AEO_GEO_Schemas() {
     </>
   );
 }
-

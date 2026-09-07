@@ -117,16 +117,6 @@ export function RichBackgroundArt({
             <path d="M 10 25 Q 50 10 80 25 M 60 10 L 80 25 L 60 40" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
           </motion.svg>
 
-          {/* Interactive Code Brackets Badge */}
-          <div className="absolute top-[20%] left-[8%] px-3.5 py-1.5 bg-[#0F172A]/90 backdrop-blur-md border border-[#FF5733]/40 rounded-full font-mono text-xs font-bold text-[#FF5733] shadow-md flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#FF5733] animate-ping" />
-            <span>&lt;Next.js 15 /&gt;</span>
-          </div>
-
-          <div className="absolute top-[68%] right-[10%] px-3.5 py-1.5 bg-[#0F172A]/90 backdrop-blur-md border border-[#FF5733]/40 rounded-full font-mono text-xs font-bold text-[#FF5733] shadow-md flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#FF5733]" />
-            <span>&lt;UI/UX Studio /&gt;</span>
-          </div>
         </motion.div>
       )}
 
