@@ -69,18 +69,22 @@ export async function submitContactForm(formData: FormData) {
         }
       });
     } catch (dbErr) {
-      console.warn("Primary Prisma Create Warn (Falling back to core fields):", dbErr);
-      // Resilient fallback save for legacy or non-migrated live database schemas
-      await prisma.contactMessage.create({
-        data: {
-          name,
-          email,
-          phone: phone || null,
-          subject,
-          message,
-          status: "UNREAD"
-        }
-      });
+      console.error("Prisma Contact Save Error (Logged safely):", dbErr);
+      // Fallback attempt with minimal fields
+      try {
+        await prisma.contactMessage.create({
+          data: {
+            name,
+            email,
+            phone: phone || null,
+            subject,
+            message,
+            status: "UNREAD"
+          }
+        });
+      } catch (fallbackErr) {
+        console.error("Prisma Fallback Save Error:", fallbackErr);
+      }
     }
 
     return { success: true };
@@ -88,7 +92,7 @@ export async function submitContactForm(formData: FormData) {
     console.error("Contact Form Action Error:", err);
     return { 
       success: false, 
-      error: err?.message || "Unable to process your request at this time. Please try again or email hello@novamacsolutions.com." 
+      error: "Unable to process your request at this time. Please try again or email hello@novamacsolutions.com." 
     };
   }
 }
