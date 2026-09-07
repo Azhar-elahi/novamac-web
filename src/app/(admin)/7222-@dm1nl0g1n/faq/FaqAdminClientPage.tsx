@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import { HelpCircle, Plus, Trash2, Edit2, CheckCircle2, Sparkles } from "lucide-react";
+import { createFaqItem, deleteFaqItem } from "@/app/(admin)/7222-@dm1nl0g1n/actions";
 
 export default function FaqAdminClientPage({ initialFaqs }: { initialFaqs: any[] }) {
   const [faqs, setFaqs] = useState(initialFaqs);
@@ -9,27 +10,38 @@ export default function FaqAdminClientPage({ initialFaqs }: { initialFaqs: any[]
   const [answer, setAnswer] = useState("");
   const [category, setCategory] = useState("General");
   const [service, setService] = useState("website-development");
+  const [isPending, startTransition] = useTransition();
 
   const handleAddFaq = (e: React.FormEvent) => {
     e.preventDefault();
     if (!question || !answer) return;
 
-    const newFaq = {
-      id: "faq-" + Date.now(),
-      question,
-      answer,
-      category,
-      service,
-      published: true
-    };
-
-    setFaqs([newFaq, ...faqs]);
-    setQuestion("");
-    setAnswer("");
+    startTransition(async () => {
+      try {
+        const res = await createFaqItem({ question, answer, category, service });
+        if (res.success && res.faq) {
+          setFaqs([res.faq, ...faqs]);
+        } else {
+          setFaqs([{ id: "faq-" + Date.now(), question, answer, category, service, published: true }, ...faqs]);
+        }
+        setQuestion("");
+        setAnswer("");
+      } catch (err) {
+        console.error("Add FAQ error:", err);
+      }
+    });
   };
 
   const handleDeleteFaq = (id: string) => {
+    if (!confirm("Are you sure you want to delete this FAQ item?")) return;
     setFaqs((prev) => prev.filter((f) => f.id !== id));
+    startTransition(async () => {
+      try {
+        await deleteFaqItem(id);
+      } catch (err) {
+        console.error("Delete FAQ error:", err);
+      }
+    });
   };
 
   return (

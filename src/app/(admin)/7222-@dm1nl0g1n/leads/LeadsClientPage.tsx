@@ -2,17 +2,37 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Sparkles, CheckCircle2, AlertCircle, Phone, Globe, Building, ArrowRight, X, Clock, ShieldCheck } from "lucide-react";
-import { calculateLeadScore, generateAILeadBrief } from "@/lib/lead-scoring";
+import { Mail, Sparkles, CheckCircle2, AlertCircle, Phone, Globe, Building, ArrowRight, X, Clock, ShieldCheck, Trash2 } from "lucide-react";
+import { calculateLeadScore } from "@/lib/lead-scoring";
+import { updateLeadPipelineStatus, deleteLead } from "@/app/(admin)/7222-@dm1nl0g1n/actions";
 
 export default function LeadsClientPage({ initialLeads }: { initialLeads: any[] }) {
   const [leads, setLeads] = useState(initialLeads);
   const [selectedLead, setSelectedLead] = useState<any | null>(null);
+  const [updatingId, setUpdatingId] = useState<string | null>(null);
 
-  const updateLeadStatus = async (leadId: string, newStatus: string) => {
+  const handleUpdateStatus = async (leadId: string, newStatus: string) => {
+    setUpdatingId(leadId);
     setLeads((prev) =>
       prev.map((l) => (l.id === leadId ? { ...l, pipelineStatus: newStatus } : l))
     );
+    try {
+      await updateLeadPipelineStatus(leadId, newStatus);
+    } catch (e) {
+      console.error("Status update error:", e);
+    } finally {
+      setUpdatingId(null);
+    }
+  };
+
+  const handleDelete = async (leadId: string) => {
+    if (!confirm("Are you sure you want to delete this lead record?")) return;
+    setLeads((prev) => prev.filter((l) => l.id !== leadId));
+    try {
+      await deleteLead(leadId);
+    } catch (e) {
+      console.error("Delete lead error:", e);
+    }
   };
 
   return (
@@ -87,7 +107,8 @@ export default function LeadsClientPage({ initialLeads }: { initialLeads: any[] 
 
                   <select
                     value={lead.pipelineStatus || "NEW"}
-                    onChange={(e) => updateLeadStatus(lead.id, e.target.value)}
+                    disabled={updatingId === lead.id}
+                    onChange={(e) => handleUpdateStatus(lead.id, e.target.value)}
                     className="p-2.5 bg-[#141414] border border-white/15 text-white text-xs font-mono rounded-xl focus:outline-none focus:border-[#FF5733]"
                   >
                     <option value="NEW">NEW</option>
@@ -98,6 +119,14 @@ export default function LeadsClientPage({ initialLeads }: { initialLeads: any[] 
                     <option value="WON">WON</option>
                     <option value="LOST">LOST</option>
                   </select>
+
+                  <button
+                    onClick={() => handleDelete(lead.id)}
+                    className="p-2.5 bg-[#141414] border border-white/15 text-gray-400 hover:text-red-400 hover:border-red-500/40 rounded-xl transition-colors"
+                    title="Delete Lead"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
             );
