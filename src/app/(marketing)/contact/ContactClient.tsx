@@ -177,7 +177,7 @@ export default function ContactClient() {
                       required 
                       name="name" 
                       type="text" 
-                      placeholder="Azhar Elahi" 
+                      placeholder="Your Full Name (e.g. John Doe)" 
                       className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
                     />
                   </div>
@@ -189,7 +189,7 @@ export default function ContactClient() {
                       required 
                       name="email" 
                       type="email" 
-                      placeholder={clientType === "COMPANY" ? "alex@company.com" : "azhar@gmail.com"} 
+                      placeholder={clientType === "COMPANY" ? "e.g. alex@company.com" : "e.g. john@example.com"} 
                       className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
                     />
                   </div>
@@ -204,7 +204,7 @@ export default function ContactClient() {
                         required
                         name="company" 
                         type="text" 
-                        placeholder="Acme Corp" 
+                        placeholder="e.g. Acme Corp" 
                         className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
                       />
                     </div>
@@ -224,7 +224,7 @@ export default function ContactClient() {
                     <input 
                       name="phone" 
                       type="text" 
-                      placeholder="+92 300 1234567 or +1 415 555 0199" 
+                      placeholder="e.g. +1 415 555 0199 or WhatsApp number" 
                       className="w-full bg-[#FAF2F2] border border-[#F0DCDC] rounded-xl px-4 py-3.5 text-[#202020] focus:border-[#FF5733] outline-none transition-colors text-sm font-medium" 
                     />
                   </div>

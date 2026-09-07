@@ -108,53 +108,111 @@ export default function LeadsClientPage({ initialLeads }: { initialLeads: any[] 
       {/* AI LEAD BRIEF MODAL */}
       <AnimatePresence>
         {selectedLead && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-[#202020] border border-white/15 rounded-3xl p-8 max-w-2xl w-full shadow-2xl relative text-white space-y-6"
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              className="bg-[#1A1A1A] border border-white/15 rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden relative text-white"
             >
-              <button
-                onClick={() => setSelectedLead(null)}
-                className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 text-gray-400"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div className="border-b border-white/10 pb-4">
-                <span className="text-xs font-mono text-[#FF5733] font-bold uppercase tracking-widest block mb-1">
-                  AI DISCOVERY BRIEF GENERATOR
-                </span>
-                <h2 className="text-2xl font-black text-white">{selectedLead.name}</h2>
-                <p className="text-xs text-gray-400 font-mono mt-0.5">&lt;{selectedLead.email}&gt;</p>
+              {/* MODAL HEADER */}
+              <div className="p-6 border-b border-white/10 flex items-center justify-between bg-[#141414] shrink-0">
+                <div>
+                  <span className="text-[11px] font-mono text-[#FF5733] font-bold uppercase tracking-widest block mb-1">
+                    AI DISCOVERY BRIEF GENERATOR
+                  </span>
+                  <h2 className="text-xl sm:text-2xl font-black text-white">{selectedLead.name}</h2>
+                  <p className="text-xs text-gray-400 font-mono mt-0.5">&lt;{selectedLead.email}&gt;</p>
+                </div>
+                <button
+                  onClick={() => setSelectedLead(null)}
+                  className="p-2 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+                  aria-label="Close Modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
 
-              <div className="bg-[#141414] border border-white/10 p-6 rounded-2xl font-sans text-xs sm:text-sm whitespace-pre-wrap leading-relaxed text-gray-300">
-                {generateAILeadBrief(
-                  {
+              {/* MODAL BODY (SCROLLABLE) */}
+              <div className="p-6 sm:p-8 space-y-6 overflow-y-auto flex-1 font-sans">
+                {(() => {
+                  const scoreRes = calculateLeadScore({
                     name: selectedLead.name,
                     email: selectedLead.email,
                     phone: selectedLead.phone,
                     subject: selectedLead.subject,
                     message: selectedLead.message
-                  },
-                  calculateLeadScore({
-                    name: selectedLead.name,
-                    email: selectedLead.email,
-                    phone: selectedLead.phone,
-                    subject: selectedLead.subject,
-                    message: selectedLead.message
-                  })
-                )}
+                  });
+                  const serviceMatch = selectedLead.subject.replace(/^Inquiry:\s*/i, "").replace(/^Strategy Call:\s*/i, "");
+
+                  return (
+                    <>
+                      {/* SCORE CARD */}
+                      <div className="p-5 bg-[#242424] border border-white/10 rounded-2xl flex items-center justify-between gap-4">
+                        <div>
+                          <div className="text-xs font-mono font-bold text-gray-400 uppercase">LEAD QUALIFICATION SCORE</div>
+                          <div className="text-3xl font-black text-[#FF5733] font-mono mt-1">{scoreRes.score}/100</div>
+                        </div>
+                        <span className={`px-4 py-1.5 font-mono text-xs font-bold rounded-full uppercase border ${
+                          scoreRes.priority === "HIGH" ? "bg-red-500/20 text-red-400 border-red-500/40" :
+                          scoreRes.priority === "MEDIUM" ? "bg-[#FF5733]/20 text-[#FF5733] border-[#FF5733]/40" : "bg-gray-700 text-gray-300 border-gray-600"
+                        }`}>
+                          {scoreRes.priority} PRIORITY
+                        </span>
+                      </div>
+
+                      {/* QUALIFICATION REASONS */}
+                      <div className="space-y-2">
+                        <h4 className="text-xs font-mono font-bold uppercase text-gray-400">Key Qualification Indicators</h4>
+                        <div className="space-y-1.5">
+                          {scoreRes.reasons.map((r: string, idx: number) => (
+                            <div key={idx} className="flex items-start gap-2.5 p-3 bg-[#141414] border border-white/5 rounded-xl text-xs text-gray-200">
+                              <CheckCircle2 className="w-4 h-4 text-[#FF5733] shrink-0 mt-0.5" />
+                              <span>{r}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* PROBABLE REQUIREMENT & OPPORTUNITY */}
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="p-4 bg-[#141414] border border-white/5 rounded-xl space-y-1">
+                          <span className="text-[11px] font-mono font-bold text-gray-400 uppercase block">Probable Requirement</span>
+                          <p className="text-xs text-gray-300 font-light leading-relaxed">
+                            Prospect is inquiring about <strong className="text-white font-medium">{serviceMatch || "Custom Web & Software"}</strong>. They need engineering to address operational bottlenecks.
+                          </p>
+                        </div>
+                        <div className="p-4 bg-[#141414] border border-white/5 rounded-xl space-y-1">
+                          <span className="text-[11px] font-mono font-bold text-gray-400 uppercase block">Biggest Visible Opportunity</span>
+                          <p className="text-xs text-gray-300 font-light leading-relaxed">
+                            Connect digital presence, lead capture, and workflow automation into a unified Next.js & database system.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* RECOMMENDED PITCH QUESTIONS */}
+                      <div className="p-5 bg-[#242424] border border-white/10 rounded-2xl space-y-3">
+                        <h4 className="text-xs font-mono font-bold uppercase text-[#FF5733]">Recommended Discovery Questions</h4>
+                        <ol className="space-y-2 text-xs text-gray-300 list-decimal list-inside font-light">
+                          <li>What is the biggest operational delay or lead friction point in your current workflow?</li>
+                          <li>Are you currently tracking incoming inquiries in a central database or manual spreadsheets?</li>
+                          <li>What target timeline and technical SLA are you aiming to launch by?</li>
+                        </ol>
+                      </div>
+                    </>
+                  );
+                })()}
               </div>
 
-              <button
-                onClick={() => setSelectedLead(null)}
-                className="w-full py-3.5 bg-[#FF5733] text-white font-extrabold text-xs uppercase tracking-widest rounded-full hover:bg-white hover:text-[#202020] transition-colors"
-              >
-                Close Brief
-              </button>
+              {/* MODAL FOOTER */}
+              <div className="p-4 border-t border-white/10 bg-[#141414] shrink-0">
+                <button
+                  onClick={() => setSelectedLead(null)}
+                  className="w-full py-3.5 bg-[#FF5733] text-white font-extrabold text-xs uppercase tracking-widest rounded-xl hover:bg-white hover:text-[#202020] transition-colors"
+                >
+                  Close Brief
+                </button>
+              </div>
             </motion.div>
           </div>
         )}

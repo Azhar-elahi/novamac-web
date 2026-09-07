@@ -85,24 +85,25 @@ export function calculateLeadScore(lead: LeadDataInput): LeadScoreResult {
 export function generateAILeadBrief(lead: LeadDataInput, scoreResult: LeadScoreResult): string {
   const serviceMatch = lead.subject.replace(/^Inquiry:\s*/i, "").replace(/^Strategy Call:\s*/i, "");
   
-  return `### NOVAMAC AI LEAD BRIEF
+  return `NOVAMAC AI LEAD BRIEF
 
-**Lead Score**: ${scoreResult.score}/100 — ${scoreResult.priority} PRIORITY
-**Key Qualification Indicators**:
-${scoreResult.reasons.map((r) => `- ${r}`).join("\n")}
+Lead Score: ${scoreResult.score}/100 — ${scoreResult.priority} PRIORITY
 
-**Probable Requirement**:
+Key Qualification Indicators:
+${scoreResult.reasons.map((r) => `• ${r}`).join("\n")}
+
+Probable Requirement:
 Prospect is inquiring about ${serviceMatch || "Custom Web & Software Development"}. They need practical engineering to address current operational bottlenecks.
 
-**Biggest Visible Opportunity**:
+Biggest Visible Opportunity:
 Connect their digital presence, lead capture, and workflow automation into a unified Next.js & database system.
 
-**Suggested NovaMac Capability**:
+Suggested NovaMac Capability:
 ${serviceMatch.toLowerCase().includes("ai") ? "AI Development & Automation" : serviceMatch.toLowerCase().includes("crm") ? "CRM Development & Pipeline Systems" : "Custom Web Development & Design"}
 
-**Recommended Discovery Pitch Questions**:
-1. "What is the biggest operational delay or lead friction point in your current workflow?"
-2. "Are you currently tracking incoming inquiries in a central database or manual spreadsheets?"
-3. "What target timeline and technical SLA are you aiming to launch by?"
+Recommended Discovery Pitch Questions:
+1. What is the biggest operational delay or lead friction point in your current workflow?
+2. Are you currently tracking incoming inquiries in a central database or manual spreadsheets?
+3. What target timeline and technical SLA are you aiming to launch by?
 `;
 }
