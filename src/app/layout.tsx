@@ -57,8 +57,16 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/logo.png",
+    icon: [
+      { url: "/logo.png", type: "image/png" },
+      { url: "/logo-500x500.png", sizes: "500x500", type: "image/png" },
+      { url: "/favicon.ico" }
+    ],
+    apple: [
+      { url: "/logo-500x500.png", sizes: "500x500", type: "image/png" },
+      { url: "/apple-touch-icon.png" }
+    ],
+    shortcut: ["/logo.png"]
   },
   openGraph: {
     title: "NovaMac Solutions — Custom Web Development & AI Engineering Studio",

@@ -204,7 +204,9 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
               <li><Link href="/faq" className="hover:text-[#FF5733] transition-colors">FAQ</Link></li>
               <li><Link href="/privacy" className="hover:text-[#FF5733] transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-[#FF5733] transition-colors">Terms of Service</Link></li>
-              <li className="pt-2 text-gray-300 font-bold">Email: hello@novamacsolutions.com</li>
+              <li className="pt-2 text-gray-300 font-bold">
+                Email: <a href="mailto:hello@novamacsolutions.com" className="text-[#FF5733] hover:underline hover:text-white transition-colors">hello@novamacsolutions.com</a>
+              </li>
             </ul>
           </div>
 
