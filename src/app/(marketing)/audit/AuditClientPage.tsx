@@ -159,7 +159,8 @@ export default function AuditClientPage() {
                       <div className="flex items-center justify-between gap-4">
                         <span className={`px-3 py-1 text-[10px] font-mono font-bold rounded-full uppercase ${
                           opp.priority === "CRITICAL" ? "bg-red-100 text-red-700 border border-red-200" :
-                          opp.priority === "HIGH" ? "bg-orange-100 text-orange-700 border border-orange-200" : "bg-blue-100 text-blue-700 border border-blue-200"
+                          opp.priority === "HIGH" ? "bg-orange-100 text-orange-700 border border-orange-200" :
+                          opp.priority === "PASSED" ? "bg-emerald-100 text-emerald-700 border border-emerald-200" : "bg-blue-100 text-blue-700 border border-blue-200"
                         }`}>
                           {opp.priority} PRIORITY // {opp.category}
                         </span>
