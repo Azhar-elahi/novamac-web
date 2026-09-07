@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { calculateLeadScore, generateAILeadBrief } from "@/lib/lead-scoring";
 
 const TEMP_EMAIL_DOMAINS = [
   "yopmail.com", "mailinator.com", "guerrillamail.com", "10minutemail.com", 
@@ -41,6 +42,9 @@ export async function submitContactForm(formData: FormData) {
       return { success: false, error: "Please enter your project details or inquiry (minimum 5 characters)." };
     }
 
+    const scoreResult = calculateLeadScore({ name, email, phone, subject: `Inquiry: ${service}`, message });
+    const leadBrief = generateAILeadBrief({ name, email, phone, subject: `Inquiry: ${service}`, message }, scoreResult);
+
     await prisma.contactMessage.create({
       data: {
         name,
@@ -48,6 +52,10 @@ export async function submitContactForm(formData: FormData) {
         phone: phone || null,
         subject: `Inquiry: ${service}`,
         message,
+        score: scoreResult.score,
+        priority: scoreResult.priority,
+        pipelineStatus: "NEW",
+        leadBrief,
         status: "UNREAD"
       }
     });

@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { calculateLeadScore, generateAILeadBrief } from "@/lib/lead-scoring";
 
 const TEMP_EMAIL_DOMAINS = [
   "yopmail.com", "mailinator.com", "guerrillamail.com", "10minutemail.com", 
@@ -52,13 +53,21 @@ export async function submitCallBooking(formData: FormData) {
 - Phone/WhatsApp: ${phone || "Not Provided"}
 - Project Overview: ${notes || "None"}`;
 
+    const subjectStr = `Strategy Call: ${service} (${date} @ ${timeSlot})`;
+    const scoreResult = calculateLeadScore({ name, email, phone, subject: subjectStr, message: bookingMessage });
+    const leadBrief = generateAILeadBrief({ name, email, phone, subject: subjectStr, message: bookingMessage }, scoreResult);
+
     const record = await prisma.contactMessage.create({
       data: {
         name,
         email,
         phone: phone || null,
-        subject: `Strategy Call: ${service} (${date} @ ${timeSlot})`,
+        subject: subjectStr,
         message: bookingMessage,
+        score: scoreResult.score,
+        priority: scoreResult.priority,
+        pipelineStatus: "CALL_BOOKED",
+        leadBrief,
         status: "UNREAD"
       }
     });

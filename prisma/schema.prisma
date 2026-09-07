@@ -122,14 +122,56 @@ model BlogPost {
 }
 
 model ContactMessage {
+  id             String   @id @default(cuid())
+  name           String
+  email          String
+  phone          String?
+  companyName    String?
+  websiteUrl     String?
+  subject        String
+  message        String
+  score          Int      @default(50)
+  priority       String   @default("MEDIUM") // HIGH, MEDIUM, LOW
+  pipelineStatus String   @default("NEW") // NEW, REVIEWING, CONTACTED, QUALIFIED, CALL_BOOKED, PROPOSAL, WON, LOST
+  leadBrief      String?  @db.Text
+  status         String   @default("UNREAD") // UNREAD, READ, RESPONDED
+  createdAt      DateTime @default(now())
+}
+
+model FaqItem {
   id        String   @id @default(cuid())
-  name      String
-  email     String
-  phone     String?
-  subject   String
-  message   String
-  status    String   @default("UNREAD") // UNREAD, READ, RESPONDED
+  question  String
+  answer    String   @db.Text
+  category  String   @default("General")
+  service   String?
+  order     Int      @default(0)
+  published Boolean  @default(true)
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiteAuditResult {
+  id           String   @id @default(cuid())
+  domain       String
+  email        String?
+  overallScore Int      @default(75)
+  seoScore     Int      @default(80)
+  perfScore    Int      @default(70)
+  contentScore Int      @default(75)
+  convScore    Int      @default(70)
+  reportJson   String   @db.Text
+  createdAt    DateTime @default(now())
+}
+
+model RecommendationItem {
+  id          String   @id @default(cuid())
+  title       String
+  category    String   // SEO, AEO, GEO, UX, CRO, Performance, Security
+  priority    String   @default("MEDIUM") // CRITICAL, HIGH, MEDIUM, LOW
+  impact      String   @default("Medium Impact")
+  description String   @db.Text
+  status      String   @default("PENDING") // PENDING, ACCEPTED, REJECTED, COMPLETED
+  createdAt   DateTime @default(now())
 }
 
 model AnalyticsVisit {
