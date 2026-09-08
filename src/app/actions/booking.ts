@@ -2,12 +2,12 @@
 
 import { prisma } from "@/lib/prisma";
 import { calculateLeadScore, generateAILeadBrief } from "@/lib/lead-scoring";
+import { sendInquiryConfirmationEmail } from "@/lib/email-service";
 
 const TEMP_EMAIL_DOMAINS = [
   "yopmail.com", "mailinator.com", "guerrillamail.com", "10minutemail.com", 
   "tempmail.com", "dropmail.me", "temp-mail.org", "throwawaymail.com",
-  "disposablemail.com", "maildrop.cc", "sharklasers.com", "getairmail.com",
-  "test.com", "example.com", "abc.com", "asdf.com"
+  "disposablemail.com", "maildrop.cc", "sharklasers.com", "getairmail.com"
 ];
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -71,6 +71,16 @@ export async function submitCallBooking(formData: FormData) {
         status: "UNREAD"
       }
     });
+
+    // Trigger automated booking confirmation email dispatch
+    sendInquiryConfirmationEmail({
+      toEmail: email,
+      toName: name,
+      service: `Strategy Call — ${service}`,
+      clientType: "INDIVIDUAL",
+      message: `Strategy Call Scheduled for ${date} @ ${timeSlot} (PST)`,
+      phone
+    }).catch((emailErr) => console.warn("Booking email trigger notice:", emailErr));
 
     return { 
       success: true, 

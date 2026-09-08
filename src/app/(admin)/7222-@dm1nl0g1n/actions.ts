@@ -104,3 +104,79 @@ export async function updateClientRole(userId: string, role: "USER" | "ADMIN") {
   return { success: true };
 }
 
+// 4. PORTFOLIO PROJECTS ACTIONS
+export async function createProject(formData: FormData) {
+  await requireAdmin();
+
+  const title = formData.get("title") as string;
+  const tech = formData.get("tech") as string;
+  const category = formData.get("category") as string;
+  const year = formData.get("year") as string;
+  const desc = formData.get("desc") as string;
+  const img = formData.get("img") as string;
+  const seoTitle = (formData.get("seoTitle") as string) || null;
+  const seoDesc = (formData.get("seoDesc") as string) || null;
+
+  if (!title || !tech || !category || !img || !desc) {
+    throw new Error("Missing required project fields.");
+  }
+
+  await prisma.project.create({
+    data: { title, tech, category, year: year || new Date().getFullYear().toString(), desc, img, seoTitle, seoDesc }
+  });
+
+  revalidatePath("/7222-@dm1nl0g1n/projects");
+  revalidatePath("/work");
+  return { success: true };
+}
+
+export async function deleteProject(id: string) {
+  await requireAdmin();
+
+  await prisma.project.delete({ where: { id } });
+
+  revalidatePath("/7222-@dm1nl0g1n/projects");
+  revalidatePath("/work");
+  return { success: true };
+}
+
+// 5. BLOG CMS ACTIONS
+export async function createBlogPost(formData: FormData) {
+  await requireAdmin();
+
+  const title = formData.get("title") as string;
+  let slug = formData.get("slug") as string;
+  if (!slug && title) {
+    slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+  }
+
+  const content = formData.get("content") as string;
+  const excerpt = (formData.get("excerpt") as string) || null;
+  const coverImage = (formData.get("coverImage") as string) || null;
+  const seoTitle = (formData.get("seoTitle") as string) || null;
+  const seoDesc = (formData.get("seoDesc") as string) || null;
+
+  if (!title || !content || !slug) {
+    throw new Error("Missing required blog fields.");
+  }
+
+  await prisma.blogPost.create({
+    data: { title, slug, content, excerpt, coverImage, seoTitle, seoDesc, published: true }
+  });
+
+  revalidatePath("/7222-@dm1nl0g1n/blog");
+  revalidatePath("/blog");
+  return { success: true };
+}
+
+export async function deleteBlogPost(id: string) {
+  await requireAdmin();
+
+  await prisma.blogPost.delete({ where: { id } });
+
+  revalidatePath("/7222-@dm1nl0g1n/blog");
+  revalidatePath("/blog");
+  return { success: true };
+}
+
+

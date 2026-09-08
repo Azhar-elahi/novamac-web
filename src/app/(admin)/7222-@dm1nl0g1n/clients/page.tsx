@@ -1,61 +1,95 @@
 import { prisma } from "@/lib/prisma";
 import { updateClientRole } from "../actions";
+import { Users, Shield, User } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminClientsPage() {
-  const users = await prisma.user.findMany({
-    orderBy: { createdAt: "desc" }
-  });
+  let users: any[] = [];
+  try {
+    users = await prisma.user.findMany({
+      orderBy: { createdAt: "desc" }
+    });
+  } catch (e) {
+    console.warn("Error fetching client users:", e);
+  }
 
   return (
-    <div className="space-y-8 max-w-6xl">
-      <div>
-        <h1 className="text-3xl font-heading font-bold">Manage Clients</h1>
-        <p className="text-muted-foreground mt-2">View registered users and modify their roles.</p>
+    <div className="space-y-8 font-sans text-white">
+      {/* HEADER */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+        <div>
+          <span className="px-3.5 py-1 bg-[#FF5733]/10 border border-[#FF5733]/30 text-[#FF5733] font-mono text-xs font-bold uppercase tracking-wider rounded-full inline-block mb-2">
+            USER ACCESS & ROLE CONTROL
+          </span>
+          <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight">Manage Registered Clients</h1>
+          <p className="text-gray-400 text-sm mt-1">Review user profiles, verify email accounts, and assign administrative permissions.</p>
+        </div>
       </div>
 
-      <div className="border border-border rounded-xl glass-card overflow-hidden">
-        <table className="w-full text-sm text-left">
-          <thead className="bg-secondary/50 text-muted-foreground uppercase">
-            <tr>
-              <th className="px-6 py-4 font-medium">Name</th>
-              <th className="px-6 py-4 font-medium">Email</th>
-              <th className="px-6 py-4 font-medium">Joined Date</th>
-              <th className="px-6 py-4 font-medium">Role</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-border/50">
-            {users.map(user => (
-              <tr key={user.id} className="hover:bg-secondary/30 transition-colors">
-                <td className="px-6 py-4 font-medium">{user.name || "N/A"}</td>
-                <td className="px-6 py-4 text-muted-foreground">{user.email}</td>
-                <td className="px-6 py-4 text-muted-foreground">{new Date(user.createdAt).toLocaleDateString()}</td>
-                <td className="px-6 py-4">
-                  <form action={async (formData: FormData) => {
-                    "use server";
-                    const role = formData.get("role") as any;
-                    await updateClientRole(user.id, role);
-                  }}>
-                    <select 
-                      name="role"
-                      defaultValue={user.role}
-                      onChange={(e) => e.target.form?.requestSubmit()}
-                      className={`px-3 py-1.5 rounded-md text-xs font-semibold bg-secondary border focus:outline-none focus:ring-1 focus:ring-brand
-                        ${user.role === 'ADMIN' ? 'border-red-500 text-red-500' : 'border-border'}
-                      `}
-                    >
-                      <option value="USER">USER</option>
-                      <option value="ADMIN">ADMIN</option>
-                    </select>
-                  </form>
-                </td>
+      {/* CLIENTS TABLE CONTAINER */}
+      <div className="bg-[#202020] border border-white/10 rounded-2xl overflow-hidden shadow-xl">
+        <div className="p-6 border-b border-white/10 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 bg-[#FF5733]/10 text-[#FF5733] rounded-xl border border-[#FF5733]/20">
+              <Users className="w-5 h-5" />
+            </div>
+            <div>
+              <h2 className="font-bold text-lg text-white">User Accounts</h2>
+              <p className="text-xs text-gray-400">Total registered client profiles ({users.length})</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs text-left">
+            <thead className="bg-black/40 text-gray-400 font-mono text-[10px] uppercase tracking-wider border-b border-white/10">
+              <tr>
+                <th className="px-6 py-4 font-semibold">User Name</th>
+                <th className="px-6 py-4 font-semibold">Email Address</th>
+                <th className="px-6 py-4 font-semibold">Registration Date</th>
+                <th className="px-6 py-4 font-semibold">System Role</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-white/5 text-gray-300">
+              {users.length === 0 ? (
+                <tr>
+                  <td colSpan={4} className="px-6 py-12 text-center text-gray-400 font-mono">
+                    No registered user accounts found.
+                  </td>
+                </tr>
+              ) : (
+                users.map((user) => (
+                  <tr key={user.id} className="hover:bg-white/5 transition-colors">
+                    <td className="px-6 py-4 font-bold text-white text-sm">{user.name || "Client User"}</td>
+                    <td className="px-6 py-4 font-mono text-gray-300">{user.email}</td>
+                    <td className="px-6 py-4 text-gray-400 font-mono">{new Date(user.createdAt).toLocaleDateString()}</td>
+                    <td className="px-6 py-4">
+                      <form action={async (formData: FormData) => {
+                        "use server";
+                        const role = formData.get("role") as any;
+                        await updateClientRole(user.id, role);
+                      }}>
+                        <select 
+                          name="role"
+                          defaultValue={user.role}
+                          onChange={(e) => e.target.form?.requestSubmit()}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold bg-[#141414] text-white border outline-none focus:border-[#FF5733] transition-colors ${
+                            user.role === 'ADMIN' ? 'border-[#FF5733] text-[#FF5733]' : 'border-white/20'
+                          }`}
+                        >
+                          <option value="USER">USER</option>
+                          <option value="ADMIN">ADMIN</option>
+                        </select>
+                      </form>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
 }
-

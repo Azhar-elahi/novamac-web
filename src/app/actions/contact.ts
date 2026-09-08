@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { calculateLeadScore, generateAILeadBrief } from "@/lib/lead-scoring";
+import { sendInquiryConfirmationEmail } from "@/lib/email-service";
 
 const TEMP_EMAIL_DOMAINS = [
   "yopmail.com", "mailinator.com", "guerrillamail.com", "10minutemail.com", 
@@ -86,6 +87,16 @@ export async function submitContactForm(formData: FormData) {
         console.error("Prisma Fallback Save Error:", fallbackErr);
       }
     }
+
+    // Trigger automated inquiry confirmation email dispatch
+    sendInquiryConfirmationEmail({
+      toEmail: email,
+      toName: name,
+      service,
+      clientType,
+      message,
+      phone
+    }).catch((emailErr) => console.warn("Email confirmation trigger notice:", emailErr));
 
     return { success: true };
   } catch (err: any) {
