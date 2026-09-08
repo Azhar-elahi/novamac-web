@@ -1,36 +1,38 @@
 import { NextResponse } from "next/server";
-import { SERVICES } from "@/lib/services-data";
-
-const INDEXNOW_KEY = "9f8e7d6c5b4a39281706152433425160";
-const HOST = "novamacsolutions.com";
 
 export async function GET() {
-  const staticUrls = [
-    `https://${HOST}/`,
-    `https://${HOST}/home`,
-    `https://${HOST}/services`,
-    `https://${HOST}/pricing`,
-    `https://${HOST}/work`,
-    `https://${HOST}/about`,
-    `https://${HOST}/contact`,
-    `https://${HOST}/book`,
-    `https://${HOST}/us`,
-    `https://${HOST}/uk`,
-    `https://${HOST}/eu`,
+  const host = "novamacsolutions.com";
+  const apiKey = "novamacsolutionsindexnow2026";
+  const keyLocation = `https://${host}/${apiKey}.txt`;
+
+  const urls = [
+    `https://${host}`,
+    `https://${host}/about`,
+    `https://${host}/services`,
+    `https://${host}/work`,
+    `https://${host}/process`,
+    `https://${host}/pricing`,
+    `https://${host}/faq`,
+    `https://${host}/blog`,
+    `https://${host}/contact`,
+    `https://${host}/us`,
+    `https://${host}/uk`,
+    `https://${host}/ca`,
+    `https://${host}/eu`,
+    `https://${host}/middle-east`,
+    `https://${host}/ae`,
+    `https://${host}/pk`,
   ];
 
-  const serviceUrls = SERVICES.map((s) => `https://${HOST}/services/${s.slug}`);
-  const allUrls = [...staticUrls, ...serviceUrls];
-
-  const payload = {
-    host: HOST,
-    key: INDEXNOW_KEY,
-    keyLocation: `https://${HOST}/${INDEXNOW_KEY}.txt`,
-    urlList: allUrls,
-  };
-
   try {
-    const res = await fetch("https://api.indexnow.org/indexnow", {
+    const payload = {
+      host,
+      key: apiKey,
+      keyLocation,
+      urlList: urls,
+    };
+
+    const response = await fetch("https://www.bing.com/IndexNow", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
@@ -39,17 +41,21 @@ export async function GET() {
     });
 
     return NextResponse.json({
-      success: true,
-      status: res.status,
-      submittedUrlsCount: allUrls.length,
-      urls: allUrls,
+      success: response.ok,
+      status: response.status,
+      message: response.ok
+        ? "Successfully submitted 16 URLs to Bing IndexNow!"
+        : "IndexNow submission failed",
+      submittedUrls: urls,
     });
-  } catch (error: unknown) {
-    const message = error instanceof Error ? error.message : "Unknown error";
+  } catch (err: any) {
     return NextResponse.json(
-      { success: false, error: message },
+      { success: false, error: err.message },
       { status: 500 }
     );
   }
 }
 
+export async function POST(req: Request) {
+  return GET();
+}

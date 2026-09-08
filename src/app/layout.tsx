@@ -92,6 +92,12 @@ export const metadata: Metadata = {
     description: "Custom web applications, UI/UX design systems, AI CRMs, and headless e-commerce platforms.",
     images: ["/og-image.png"],
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
+    other: {
+      "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "3A74D4C5D6E7F8E9A0B1C2D3E4F5A6B7",
+    },
+  },
   robots: {
     index: true,
     follow: true,
