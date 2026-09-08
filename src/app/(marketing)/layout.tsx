@@ -11,6 +11,7 @@ import { BookingProvider, useBookingModal } from "@/components/booking/BookingCo
 const ChatWidget = dynamic(() => import("@/components/chat/ChatWidget").then((m) => m.ChatWidget), { ssr: false });
 const BookingModal = dynamic(() => import("@/components/booking/BookingModal").then((m) => m.BookingModal), { ssr: false });
 const WhatsAppWidget = dynamic(() => import("@/components/shared/WhatsAppWidget").then((m) => m.WhatsAppWidget), { ssr: false });
+const LeadPopupModal = dynamic(() => import("@/components/shared/LeadPopupModal").then((m) => m.LeadPopupModal), { ssr: false });
 
 function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
   const { isLandingMode } = useUIStore();
@@ -227,6 +228,7 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
       <WhatsAppWidget />
       <ChatWidget />
       <BookingModal />
+      <LeadPopupModal />
     </div>
   );
 }
