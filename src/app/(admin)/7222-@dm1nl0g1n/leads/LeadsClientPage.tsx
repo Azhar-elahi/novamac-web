@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Sparkles, CheckCircle2, AlertCircle, Phone, Globe, Building, ArrowRight, X, Clock, ShieldCheck, Trash2 } from "lucide-react";
 import { calculateLeadScore } from "@/lib/lead-scoring";
@@ -10,6 +10,17 @@ export default function LeadsClientPage({ initialLeads }: { initialLeads: any[] 
   const [leads, setLeads] = useState(initialLeads);
   const [selectedLead, setSelectedLead] = useState<any | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (selectedLead) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedLead]);
 
   const handleUpdateStatus = async (leadId: string, newStatus: string) => {
     setUpdatingId(leadId);
@@ -137,12 +148,25 @@ export default function LeadsClientPage({ initialLeads }: { initialLeads: any[] 
       {/* AI LEAD BRIEF MODAL */}
       <AnimatePresence>
         {selectedLead && (
-          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md">
+          <div 
+            className="fixed inset-0 z-[99999] overflow-y-auto flex items-center justify-center p-4 sm:p-6"
+            onWheel={(e) => e.stopPropagation()}
+          >
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedLead(null)}
+              className="fixed inset-0 bg-black/85 backdrop-blur-md z-0"
+            />
+
+            {/* Modal Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="bg-[#1A1A1A] border border-white/15 rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden relative text-white"
+              className="bg-[#1A1A1A] border border-white/15 rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl relative z-10 my-auto text-white overflow-hidden"
             >
               {/* MODAL HEADER */}
               <div className="p-6 border-b border-white/10 flex items-center justify-between bg-[#141414] shrink-0">
@@ -163,7 +187,7 @@ export default function LeadsClientPage({ initialLeads }: { initialLeads: any[] 
               </div>
 
               {/* MODAL BODY (SCROLLABLE) */}
-              <div className="p-6 sm:p-8 space-y-6 overflow-y-auto flex-1 font-sans">
+              <div className="p-6 sm:p-8 space-y-6 overflow-y-auto max-h-[calc(85vh-130px)] font-sans">
                 {(() => {
                   const scoreRes = calculateLeadScore({
                     name: selectedLead.name,
