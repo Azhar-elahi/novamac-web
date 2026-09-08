@@ -53,6 +53,8 @@ export const metadata: Metadata = {
       "en-GB": "https://novamacsolutions.com/uk",
       "en-CA": "https://novamacsolutions.com/ca",
       "en-EU": "https://novamacsolutions.com/eu",
+      "en-AE": "https://novamacsolutions.com/middle-east",
+      "en-PK": "https://novamacsolutions.com/pk",
       "x-default": "https://novamacsolutions.com",
     },
   },

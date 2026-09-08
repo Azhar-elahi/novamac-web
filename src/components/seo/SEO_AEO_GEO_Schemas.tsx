@@ -48,6 +48,10 @@ export function SEO_AEO_GEO_Schemas() {
       "United Kingdom",
       "Canada",
       "Western Europe",
+      "United Arab Emirates",
+      "Middle East",
+      "Saudi Arabia",
+      "Pakistan",
       "Australia",
       "Worldwide"
     ],
