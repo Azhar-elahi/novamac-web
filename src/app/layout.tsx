@@ -115,6 +115,10 @@ export default function RootLayout({
       className={`${albertSans.variable} ${raleway.variable} ${firaCode.variable} antialiased`}
     >
       <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo-500x500.png" />
+        <link rel="shortcut icon" href="/logo.png" />
         <SEO_AEO_GEO_Schemas />
       </head>
       <body className="min-h-screen bg-[#F0EDE6] text-[#1C1917] font-sans selection:bg-[#FF5733] selection:text-white">
