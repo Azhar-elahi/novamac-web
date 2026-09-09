@@ -7,14 +7,25 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 export const dynamic = "force-dynamic";
 
+import { MASTER_BLOG_POSTS } from "@/lib/blog-data";
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
-  const post = await prisma.blogPost.findUnique({
-    where: { slug: resolvedParams.slug }
-  });
+  let post: any = null;
+  try {
+    post = await prisma.blogPost.findUnique({
+      where: { slug: resolvedParams.slug }
+    });
+  } catch (e) {
+    // DB query notice fallback
+  }
 
   if (!post) {
-    return { title: "Post Not Found" };
+    post = MASTER_BLOG_POSTS.find((p) => p.slug === resolvedParams.slug);
+  }
+
+  if (!post) {
+    return { title: "Post Not Found | NovaMac" };
   }
 
   return {
@@ -25,9 +36,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
-  const post = await prisma.blogPost.findUnique({
-    where: { slug: resolvedParams.slug }
-  });
+  let post: any = null;
+  try {
+    post = await prisma.blogPost.findUnique({
+      where: { slug: resolvedParams.slug }
+    });
+  } catch (e) {
+    // DB query notice fallback
+  }
+
+  if (!post) {
+    post = MASTER_BLOG_POSTS.find((p) => p.slug === resolvedParams.slug);
+  }
 
   if (!post) {
     notFound();

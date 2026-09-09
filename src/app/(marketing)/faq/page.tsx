@@ -9,48 +9,57 @@ export const metadata: Metadata = {
 
 const FAQS = [
   {
-    category: "Services & Capabilities",
+    category: "1. Core Digital Engineering & Capabilities",
     questions: [
       { 
-        q: "What does NovaMac build?", 
-        a: "NovaMac designs and engineers custom high-performance websites, tailored CRM and ERP business systems, AI automations, and full-stack SaaS software applications built specifically around your operations." 
+        q: "Why choose custom Next.js web applications over WordPress or Wix?", 
+        a: "Unlike template page builders that depend on 30+ bloated plugins and slow database queries, NovaMac hand-codes Next.js 15 web systems deployed on edge networks. This guarantees sub-second response speeds, 98+ Google Core Web Vitals, zero plugin vulnerability risks, and significantly higher conversion rates for your paid and organic traffic." 
       },
       { 
-        q: "Do you work with international businesses?", 
-        a: "Yes. We work with companies, founders, and enterprises globally across North America, Europe, the Middle East, and Asia with async-friendly workflows and clear milestones." 
+        q: "How does a custom CRM or ERP replace expensive SaaS monthly fees?", 
+        a: "Off-the-shelf platforms like Salesforce or HubSpot charge per-seat monthly fees that scale into thousands of dollars per month as your team grows. NovaMac builds bespoke CRM and ERP operational portals tailored 100% around your exact business logic. You pay once for development with zero monthly seat licensing fees, saving your company over $20,000 annually." 
       },
       { 
-        q: "Can you build custom CRM and ERP systems?", 
-        a: "Yes. We build bespoke CRM pipelines, operational dashboards, inventory trackers, and internal ERP systems that streamline your business workflows without expensive monthly seat licenses." 
+        q: "How can AI Automation Agents be integrated into our business?", 
+        a: "We develop autonomous LLM agents and Retrieval-Augmented Generation (RAG) knowledge systems that connect directly into your CRM, website, or backend. They operate 24/7 to automatically qualify leads, generate project briefs, process incoming documents, and answer customer support inquiries based on your private company documentation." 
       },
       { 
-        q: "Can you integrate AI into existing systems?", 
-        a: "Yes. We integrate AI capabilities, automated customer response systems, data extraction pipelines, and smart workflow automations into existing software stacks and custom applications." 
-      },
-      { 
-        q: "Do you build SaaS products from scratch?", 
-        a: "Yes. We engineer complete SaaS platforms — from initial architecture and vector UI design to database schemas, payment processing, multi-tenant billing, and launch-ready MVPs." 
-      },
-      { 
-        q: "Can you improve an existing website?", 
-        a: "Yes. We audit, redesign, and re-engineer existing websites to fix poor speed, weak mobile conversion, outdated tech stacks, and inefficient messaging." 
+        q: "Do you build complete SaaS MVPs from scratch?", 
+        a: "Yes. We engineer production-ready SaaS platforms — from initial database schema architecture and Figma UI/UX to multi-tenant user authentication, Stripe subscription billing, and edge cloud deployment in 4 weeks." 
       }
     ]
   },
   {
-    category: "Process, Pricing & Partnership",
+    category: "2. IP Ownership, Security & Performance SLA",
     questions: [
       { 
-        q: "How does a project start?", 
-        a: "Every project starts with a Discovery & Scoping call. We analyze your requirements, identify bottlenecks, and deliver a detailed technical blueprint, timeline, and transparent quote." 
+        q: "Do clients get 100% full source code and database IP ownership?", 
+        a: "Yes. Upon project completion, NovaMac transfers full 100% intellectual property and Git repository ownership directly to your company. There are zero proprietary locks, zero vendor holdbacks, and zero recurring royalty fees. Your software belongs entirely to your business asset portfolio." 
       },
       { 
-        q: "How is project pricing determined?", 
-        a: "Pricing is transparent and project-based depending on complexity, required integrations, and system scope. Web projects start from $1,500, while custom software and business systems receive tailored proposals." 
+        q: "How do you guarantee sub-second page speed and Core Web Vitals?", 
+        a: "Every build undergoes rigorous performance optimization: automatic WebP image compression, edge CDN routing, server-side route pre-fetching, and zero render-blocking scripts. We guarantee sub-0.8s LCP and top Google PageSpeed scores on all production launches." 
       },
       { 
-        q: "Do you provide ongoing support?", 
-        a: "Yes. We offer post-launch monitoring, security updates, feature expansions, and technical retainers so your digital systems continue operating reliably as your business scales." 
+        q: "What ongoing post-launch maintenance and security support do you offer?", 
+        a: "We provide comprehensive post-launch retainer packages including 24/7 uptime monitoring, security updates, database backups, cloud hosting management, and ongoing feature enhancements so your systems scale smoothly." 
+      }
+    ]
+  },
+  {
+    category: "3. Process, Scoping & Global Collaboration",
+    questions: [
+      { 
+        q: "How do you manage projects across US, UK, Middle East, and Asia timezones?", 
+        a: "We maintain dedicated async-first communication workflows with daily Slack updates, weekly live video demos, and transparent milestone tracking. Whether your team operates in PST, EST, GMT, GST, or PKT, communication is seamless and zero friction." 
+      },
+      { 
+        q: "How is project pricing determined and do you offer fixed-scope quotes?", 
+        a: "All pricing is transparent and project-scoped based on technical requirements. Web projects start from $1,500, while custom software, CRMs, and SaaS products receive fixed-scope blueprints before coding begins — ensuring zero surprise costs." 
+      },
+      { 
+        q: "What is the exact process to start our project?", 
+        a: "Starting is simple. Book a 30-minute Discovery Call or fill out our quick intake form. Our engineering lead analyzes your goals, identifies operational bottlenecks, and delivers a complete technical blueprint and timeline estimate within 24 hours." 
       }
     ]
   }

@@ -6,35 +6,10 @@ import { ArrowRight, BookOpen, Clock } from "lucide-react";
 import Link from "next/link";
 import type { BlogPost } from "@prisma/client";
 
-const FALLBACK_ARTICLES = [
-  {
-    id: "fb-1",
-    slug: "nextjs-15-performance-guide",
-    title: "Engineering Sub-Second Next.js 15 Web Applications",
-    excerpt: "A deep dive into server components, edge caching, and image optimization strategies that consistently yield <50ms response SLA.",
-    createdAt: new Date("2026-02-15"),
-    category: "Engineering",
-  },
-  {
-    id: "fb-2",
-    slug: "figma-to-code-design-systems",
-    title: "Building Figma Component Systems That Translate 1:1 to React",
-    excerpt: "How we bridge the gap between UI/UX design and production code using structured token architecture and atomic component primitives.",
-    createdAt: new Date("2026-02-01"),
-    category: "UI/UX Design",
-  },
-  {
-    id: "fb-3",
-    slug: "ai-crm-workflow-automation",
-    title: "Architecting Autonomous AI Workflows for B2B Operations",
-    excerpt: "How custom internal portals and OpenAI API integrations eliminate repetitive manual data entry and streamline team operations.",
-    createdAt: new Date("2026-01-20"),
-    category: "AI & Automation",
-  },
-];
+import { MASTER_BLOG_POSTS } from "@/lib/blog-data";
 
 export default function BlogClient({ posts }: { posts: BlogPost[] }) {
-  const displayPosts = posts && posts.length > 0 ? posts : (FALLBACK_ARTICLES as any[]);
+  const displayPosts = posts && posts.length > 0 ? posts : (MASTER_BLOG_POSTS as any[]);
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   React.useEffect(() => {
