@@ -260,10 +260,10 @@ export default function HomeClient() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-black/30 z-0" />
 
           {/* Top Hero Nav */}
-          <div className="relative z-20 w-full px-6 sm:px-10 py-6 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <img src="/logo.png" alt="NovaMac Logo" className="w-8 h-8 object-contain rounded-lg shadow-md group-hover:scale-105 transition-transform" />
-              <span className="font-heading font-black text-lg tracking-tight text-[#FF5733]">
+          <div className="relative z-20 w-full px-4 sm:px-10 py-4 sm:py-6 flex items-center justify-between gap-2">
+            <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
+              <img src="/logo.png" alt="NovaMac Logo" className="w-7 h-7 sm:w-8 sm:h-8 object-contain rounded-lg shadow-md group-hover:scale-105 transition-transform shrink-0" />
+              <span className="font-heading font-black text-sm sm:text-lg tracking-tight text-[#FF5733]">
                 NovaMac<span className="text-white">Solutions</span>
               </span>
             </Link>
@@ -277,7 +277,7 @@ export default function HomeClient() {
             </nav>
             <button
               onClick={() => openBooking()}
-              className="bg-[#FF5733] text-white hover:bg-white hover:text-[#202020] font-extrabold text-xs uppercase tracking-widest px-5 py-2.5 rounded-full transition-all duration-300 shadow-xl"
+              className="bg-[#FF5733] text-white hover:bg-white hover:text-[#202020] font-extrabold text-[10px] sm:text-xs uppercase tracking-wider px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full transition-all duration-300 shadow-xl shrink-0 whitespace-nowrap active:scale-95"
             >
               Start a Project
             </button>

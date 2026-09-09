@@ -52,7 +52,7 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
       
       {/* ── FLOATING TOP HEADER (Appears on scroll for home, always on inner pages) ── */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-12 md:px-16 h-20 bg-[#FAF2F2]/95 backdrop-blur-md shadow-lg border-b border-[#F0DCDC] rounded-b-3xl transition-all duration-500 transform ${
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-12 md:px-16 h-16 sm:h-20 bg-[#FAF2F2]/95 backdrop-blur-md shadow-lg border-b border-[#F0DCDC] rounded-b-2xl sm:rounded-b-3xl transition-all duration-500 transform ${
           isHeaderVisible
             ? "opacity-100 translate-y-0 pointer-events-auto"
             : "opacity-0 -translate-y-full pointer-events-none"
@@ -60,9 +60,9 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
       >
         
         {/* LOGO LINK */}
-        <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 group">
-          <img src="/logo.png" alt="NovaMac Logo" className="w-9 h-9 object-contain group-hover:scale-105 transition-transform" />
-          <span className="font-heading font-black text-2xl sm:text-3xl tracking-tight text-[#FF5733]">
+        <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0">
+          <img src="/logo.png" alt="NovaMac Logo" className="w-7 h-7 sm:w-9 sm:h-9 object-contain group-hover:scale-105 transition-transform shrink-0" />
+          <span className="font-heading font-black text-xl sm:text-3xl tracking-tight text-[#FF5733] truncate">
             NovaMac<span className="text-[#0A2540]">Solutions</span>
           </span>
         </Link>
