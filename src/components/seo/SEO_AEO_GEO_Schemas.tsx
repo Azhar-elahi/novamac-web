@@ -14,10 +14,10 @@ export function SEO_AEO_GEO_Schemas() {
     "email": "hello@novamacsolutions.com",
     "priceRange": "$$",
     "sameAs": [
-      "https://github.com/Azhar-elahi/novamac-web",
-      "https://clutch.co/profile/novamac-solutions",
-      "https://www.linkedin.com/company/novamacsolutions",
-      "https://twitter.com/novamacsol"
+      "https://www.instagram.com/novamacsolutions?stkn=eHE5Yjl5ZGgxOXRj",
+      "https://www.linkedin.com/company/novamac-solutions/",
+      "https://x.com/NovamacSolution",
+      "https://github.com/Azhar-elahi/novamac-web"
     ],
     "contactPoint": [
       {
