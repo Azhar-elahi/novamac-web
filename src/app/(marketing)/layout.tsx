@@ -42,7 +42,6 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
     { href: "/",          label: "Home"       },
     { href: "/services",  label: "Services"   },
     { href: "/work",      label: "Work"       },
-    { href: "/blog",      label: "Blog"       },
     { href: "/process",   label: "Process"    },
     { href: "/about",     label: "About"      },
     { href: "/contact",   label: "Contact"    },
