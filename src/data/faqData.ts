@@ -4,7 +4,7 @@ export const FAQ_DATA: FAQItem[] = [
   {
     id: "tech-stack",
     question: "What technology stack does NovaMac Solutions build on?",
-    answer: "We engineer exclusively on Next.js 15, React 19, TypeScript, Tailwind CSS, PostgreSQL, and Node.js. For e-commerce, we utilize Headless Shopify Storefront API and Stripe. For AI automation, we integrate OpenAI GPT-4o, Claude 3.5 Sonnet, and Pinecone vector databases.",
+    answer: "We engineer exclusively on Next.js 16, React 19, TypeScript, Tailwind CSS, PostgreSQL, and Node.js. For e-commerce, we utilize Headless Shopify Storefront API and Stripe. For operations and automation, we engineer dedicated REST/WebSocket event brokers and high-speed vector data indexing.",
     category: "Technical"
   },
   {

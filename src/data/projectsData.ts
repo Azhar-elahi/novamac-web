@@ -118,13 +118,13 @@ export const PROJECTS_DATA: DetailedProjectItem[] = [
     shortDesc: "Flagship all-in-one cloud enterprise platform by NovaMac Solutions. Unifies real-time business telemetry, automated workflow engine, workforce portals, and predictive AI analytics.",
     fullDesc: "Nexora One is NovaMac Solutions' flagship enterprise SaaS platform engineered for scalable business management. It integrates AI-driven workflow automation, multi-tenant workspace security, live operational telemetry dashboards, and intelligent client portals into one cohesive ecosystem.",
     image: "/images/nexora_one_live.png",
-    techStack: ["Next.js 15", "OpenAI / Claude AI Models", "PostgreSQL / Prisma", "Tailwind CSS", "WebSockets Telemetry"],
+    techStack: ["Next.js 16", "TypeScript", "PostgreSQL / Prisma", "Tailwind CSS", "WebSockets Telemetry"],
     challenge: "Enterprise teams suffer from fragmented SaaS tools, disconnected databases, and manual data entry across department silos.",
-    approach: "Constructed an all-in-one cloud infrastructure using micro-services, real-time WebSocket data channels, and autonomous AI agents.",
+    approach: "Constructed an all-in-one cloud infrastructure using micro-services, real-time WebSocket data channels, and automated workflow workers.",
     solution: "A single-pane-of-glass enterprise portal empowering executive leadership to monitor operations, automate routine workflows, and scale team output.",
     deliverables: [
       "Multi-Tenant Cloud Telemetry Dashboard",
-      "Autonomous AI Workflow Orchestrator",
+      "Event-Driven Workflow Orchestrator",
       "Role-Based Security & Audit Trail",
       "Real-Time Executive Analytics Suite"
     ],
@@ -214,15 +214,15 @@ export const PROJECTS_DATA: DetailedProjectItem[] = [
     shortDesc: "Smart AI assistant that answers customer questions, qualifies leads, and schedules appointments automatically around the clock.",
     fullDesc: "Custom LLM orchestration system trained on internal business documentation to handle client inquiries, qualify budget fit, and schedule calls automatically.",
     image: "/images/ai_automation.webp",
-    techStack: ["OpenAI GPT-4o", "Claude 3.5 Sonnet", "Pinecone Vector DB", "LangChain"],
+    techStack: ["Next.js 16", "TypeScript", "Vector Search Index", "Node.js", "Redis Queue"],
     challenge: "Inquiries sitting unaddressed overnight or during weekends often convert with competitors before sales teams can respond.",
-    approach: "Implement RAG vector search over company knowledge bases and connect autonomous AI agents directly to appointment calendars.",
+    approach: "Implement vector search over company knowledge bases and connect automated triage queues directly to appointment calendars.",
     solution: "An intelligent 24/7 web assistant that answers technical questions accurately, captures prospect contact details, and books calls.",
     deliverables: [
-      "Custom RAG Vector Knowledge Base Search",
-      "Autonomous GPT-4o & Claude 3.5 Agent Pipeline",
+      "Custom Vector Knowledge Base Search",
+      "Automated Inquiry Qualification Pipeline",
       "Calendar Integration & Booking Automation",
-      "Safety Guardrails & Human Escalation Rules"
+      "Escalation Rules to Human Engineers"
     ],
     expectedOutcome: "Provides instant 24/7 inquiry responses, filters out unqualified spammers, and populates sales calendars effortlessly."
   },

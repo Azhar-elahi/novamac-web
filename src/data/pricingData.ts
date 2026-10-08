@@ -39,12 +39,12 @@ export const PRICING_TIERS_DATA: PricingTier[] = [
     price: "$2,000 – $5,500",
     subtitle: "Autonomous AI agents, automated lead qualification pipelines, and internal RAG knowledge bases.",
     features: [
-      "Custom OpenAI & Claude API Workflows",
-      "RAG Document Search & Vector Base",
-      "Automated SMS & Email Triggers",
-      "System Connectors (Email, CRM, Slack)",
-      "24/7 Inquiry Qualification SLA",
-      "Safety Guardrails & Monitoring"
+      "Custom Workflow & API Connectors",
+      "Internal Document Search & Query System",
+      "Automated Multi-Channel Messaging Triggers",
+      "System Connectors (Email, CRM, Operations)",
+      "24/7 Automated Inquiry Triage & Routing",
+      "Enterprise Data Privacy & Security Protocols"
     ],
     ctaText: "Request Automation Scope"
   },

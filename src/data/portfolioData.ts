@@ -143,7 +143,7 @@ export const EXECUTIVE_PORTFOLIO_DATA: ExecutiveProject[] = [
       "Role-Based Access & Audit Layer",
       "Real-Time Executive Telemetry Dashboard"
     ],
-    techStack: ["Next.js 15", "TypeScript", "PostgreSQL", "Prisma ORM", "Tailwind CSS", "OpenAI / Claude AI"]
+    techStack: ["Next.js 16", "TypeScript", "PostgreSQL", "Prisma ORM", "Tailwind CSS", "WebSockets Telemetry"]
   },
   {
     id: "erp-pos-system",

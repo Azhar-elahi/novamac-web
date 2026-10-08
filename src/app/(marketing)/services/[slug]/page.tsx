@@ -149,41 +149,41 @@ const SERVICE_META_OVERRIDES: Record<
     ]
   },
   "ai-automation": {
-    title: "Custom AI Development & Agent Automation | NovaMac Solutions",
-    description: "Bespoke AI applications, autonomous agents, RAG knowledge bases, and LLM integrations engineered to automate repetitive business workflows. US, UK, EU & UAE.",
+    title: "Intelligent Workflow Automation & Custom Engineering | NovaMac Solutions",
+    description: "Enterprise workflow automations, proprietary knowledge retrieval systems, and internal data processing pipelines engineered for business efficiency.",
     keywords: [
-      "custom AI development company",
-      "AI workflow automation agency",
-      "autonomous AI agents for business",
-      "RAG knowledge base development",
-      "hire OpenAI Claude developers",
-      "AI customer service automation"
+      "workflow automation engineering",
+      "custom automated business pipelines",
+      "proprietary document processing",
+      "internal enterprise data connectors",
+      "full stack automation engineering",
+      "inbound lead triage automation"
     ],
     faqs: [
       {
-        question: "How do custom AI agents differ from simple ChatGPT prompts?",
-        answer: "Our AI agents are integrated directly into your private business data, databases, and APIs via secure RAG architecture, allowing them to read invoices, qualify leads, trigger CRM updates, and send emails autonomously."
+        question: "How do custom automated pipelines differ from standard web forms?",
+        answer: "Our automated pipelines connect directly into your private business databases, ERP inventory, and CRM endpoints, extracting data, scoring leads, routing tickets, and executing operational actions without manual human re-entry."
       },
       {
-        question: "Is our proprietary business data protected and private?",
-        answer: "Yes. We use zero-retention enterprise API endpoints where customer and internal company data is never used to train public foundation models."
+        question: "Is our proprietary company data kept secure and confidential?",
+        answer: "Yes. All data pipelines run through private, zero-retention enterprise endpoints with strict end-to-end encryption. Your company data remains 100% confidential and is never shared or used to train external public systems."
       }
     ]
   },
   "digital-marketing": {
-    title: "Technical SEO, GEO & Digital Growth Systems | NovaMac Solutions",
-    description: "Data-driven technical SEO, Generative Engine Optimization (AI Search) & high-conversion lead generation systems built for measurable ROI.",
+    title: "Technical SEO, Core Web Vitals & Search Growth | NovaMac Solutions",
+    description: "Data-driven technical SEO, sub-second Core Web Vitals engineering, semantic schema graphs, and high-conversion landing page architecture.",
     keywords: [
-      "technical SEO agency",
-      "generative engine optimization GEO agency",
-      "AEO answer engine optimization",
+      "technical SEO engineering",
+      "core web vitals optimization",
+      "semantic structured data architecture",
       "high conversion landing page optimization",
       "B2B search engine marketing"
     ],
     faqs: [
       {
-        question: "What is GEO (Generative Engine Optimization)?",
-        answer: "GEO optimizes your digital presence to be cited and recommended by AI answer engines like ChatGPT Search, Perplexity AI, Claude, and Google AI Overviews using structured schemas, citations, and authority signals."
+        question: "How does technical web architecture improve search performance?",
+        answer: "Modern search engines reward websites with sub-second response times, zero layout shifts, clean semantic HTML5 hierarchies, and complete JSON-LD schema graphs, dramatically improving organic crawl efficiency and conversion rates."
       }
     ]
   },

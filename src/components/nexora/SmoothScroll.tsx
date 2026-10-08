@@ -5,9 +5,13 @@ import Lenis from "lenis";
 
 export default function SmoothScroll() {
   useEffect(() => {
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    // On mobile, native touch momentum is fastest and smoothest; on desktop, Lenis gives buttery silky smooth 60/120fps
+    if (isMobile) return;
+
     const lenis = new Lenis({
-      duration: 1.8,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.0,
+      easing: (t: number) => 1 - Math.pow(1 - t, 3), // natural ease-out cubic
       smoothWheel: true,
       infinite: false,
     });

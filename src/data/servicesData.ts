@@ -103,14 +103,14 @@ export const DETAILED_SERVICES_DATA: ServiceItem[] = [
       "Automated Lead Qualification & Booking",
       "System Integrations (CRM, Email, Slack)"
     ],
-    features: ["OpenAI & Claude API Integrations", "Enterprise LLM Engine Architecture", "Safety Guardrails", "24/7 Inquiry Processing"]
+    features: ["Custom Workflow Connectors", "Event-Driven Logic Engine", "Enterprise Data Guardrails", "24/7 Automated Triage Processing"]
   },
   {
     id: "marketing",
     slug: "digital-marketing",
-    title: "Digital Marketing & Growth Systems",
-    shortDesc: "Data-driven SEO, Generative Engine Optimization (GEO), and conversion funnels.",
-    fullDesc: "Modern search dominance engineered for traditional search engines (Google, Bing) and AI search platforms (Perplexity, ChatGPT Search, Gemini).",
+    title: "Technical SEO & Search Growth Systems",
+    shortDesc: "Data-driven SEO, Core Web Vitals optimization, and high-conversion landing page funnels.",
+    fullDesc: "Modern search dominance engineered for organic discovery through sub-second speeds, semantic entity modeling, and comprehensive schema graphs.",
     deliverables: [
       "Search Engine Optimization (SEO)",
       "Generative Engine Optimization (GEO)",

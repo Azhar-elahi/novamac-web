@@ -157,7 +157,7 @@ export const SERVICES: ServiceDetail[] = [
       "System integrations connecting CRM, Email, and internal tools",
       "Continuous testing and safety guardrails"
     ],
-    techStack: ["OpenAI API", "Anthropic Claude", "LLM Orchestration", "Python"]
+    techStack: ["Node.js", "Python", "Vector Search Index", "Workflow Orchestration"]
   },
   {
     slug: "digital-marketing",

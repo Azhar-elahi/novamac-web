@@ -363,8 +363,8 @@ export default function USLandingPage() {
               <ul className="space-y-3 text-xs text-gray-700 font-medium mb-8">
                 <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#FF5733]" /> Multi-Tenant SaaS Architecture</li>
                 <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#FF5733]" /> Stripe Billing & Customer Portal</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#FF5733]" /> OpenAI / Anthropic Claude API Pipelines</li>
-                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#FF5733]" /> Vector Embeddings & RAG Knowledgebase</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#FF5733]" /> Automated Data Processing & API Pipelines</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#FF5733]" /> Proprietary Knowledgebase & Search Architecture</li>
                 <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-[#FF5733]" /> 30-Day Post-Launch SLA Support</li>
               </ul>
             </div>

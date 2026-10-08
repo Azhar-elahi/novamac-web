@@ -20,10 +20,10 @@ const TECH_PILLARS = [
   },
   {
     icon: Cpu,
-    category: "AI & AUTOMATION PIPELINE",
-    title: "Custom AI & Workflow Engine",
-    desc: "Enterprise LLM integrations, autonomous task agents, vector search, and RAG knowledge retrieval.",
-    stack: ["OpenAI API", "Claude API", "Vercel AI SDK", "RAG Vector Base"]
+    category: "AUTOMATION & DATA PIPELINES",
+    title: "Workflow Automation & Logic Engine",
+    desc: "Autonomous workflow pipelines, task automation engines, and real-time operational event brokers.",
+    stack: ["Node.js", "Python", "Redis Queue", "REST / Webhooks", "Vector Search"]
   },
   {
     icon: ShieldCheck,
