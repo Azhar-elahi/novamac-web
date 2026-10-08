@@ -228,6 +228,9 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
             <ul className="space-y-2 text-xs text-gray-400 font-medium">
               <li><Link href="/about" className="hover:text-[#FF5733] transition-colors">About NovaMac</Link></li>
               <li><Link href="/work" className="hover:text-[#FF5733] transition-colors">Our Work</Link></li>
+              <li><Link href="/portfolio" className="hover:text-[#FF5733] transition-colors">Client Portfolio</Link></li>
+              <li><Link href="/pricing" className="hover:text-[#FF5733] transition-colors">Pricing & Tiers</Link></li>
+              <li><Link href="/industries" className="hover:text-[#FF5733] transition-colors">Industries</Link></li>
               <li><Link href="/process" className="hover:text-[#FF5733] transition-colors">Our Process</Link></li>
               <li><Link href="/contact" className="hover:text-[#FF5733] transition-colors">Contact Us</Link></li>
             </ul>
@@ -235,11 +238,14 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
 
           <div>
             <h4 className="font-extrabold text-[11px] uppercase tracking-widest text-white mb-3 border-l-2 border-[#FF5733] pl-2.5">
-              Resources & Legal
+              Resources & Tools
             </h4>
             <ul className="space-y-2 text-xs text-gray-400 font-medium">
+              <li><Link href="/audit" className="hover:text-[#FF5733] transition-colors">Free Website Growth Audit</Link></li>
+              <li><Link href="/book" className="hover:text-[#FF5733] transition-colors">Book Strategy Call</Link></li>
               <li><Link href="/blog" className="hover:text-[#FF5733] transition-colors">Insights & Blog</Link></li>
-              <li><Link href="/faq" className="hover:text-[#FF5733] transition-colors">FAQ</Link></li>
+              <li><Link href="/faq" className="hover:text-[#FF5733] transition-colors">FAQ & Knowledgebase</Link></li>
+              <li><Link href="/support" className="hover:text-[#FF5733] transition-colors">Help & Support</Link></li>
               <li><Link href="/privacy" className="hover:text-[#FF5733] transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-[#FF5733] transition-colors">Terms of Service</Link></li>
               <li className="pt-2 text-gray-300 font-bold">
@@ -250,10 +256,28 @@ function MarketingHeaderAndFooter({ children }: { children: React.ReactNode }) {
 
         </div>
 
+        {/* GLOBAL REGIONAL HUBS (GEO / INTERNATIONAL SEO) */}
+        <div className="max-w-7xl mx-auto pt-6 pb-6 border-t border-white/10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-400 font-mono">
+          <span className="text-gray-500 font-bold uppercase tracking-wider text-[11px]">Regional Studios:</span>
+          <Link href="/us" className="hover:text-[#FF5733] transition-colors">🇺🇸 United States</Link>
+          <span className="text-gray-700">•</span>
+          <Link href="/uk" className="hover:text-[#FF5733] transition-colors">🇬🇧 United Kingdom</Link>
+          <span className="text-gray-700">•</span>
+          <Link href="/ca" className="hover:text-[#FF5733] transition-colors">🇨🇦 Canada</Link>
+          <span className="text-gray-700">•</span>
+          <Link href="/eu" className="hover:text-[#FF5733] transition-colors">🇪🇺 Europe</Link>
+          <span className="text-gray-700">•</span>
+          <Link href="/middle-east" className="hover:text-[#FF5733] transition-colors">🇦🇪 Middle East & UAE</Link>
+          <span className="text-gray-700">•</span>
+          <Link href="/pk" className="hover:text-[#FF5733] transition-colors">🇵🇰 Pakistan</Link>
+        </div>
+
         {/* BOTTOM COPYRIGHT & LEGAL BAR */}
         <div className="max-w-7xl mx-auto pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-500 font-mono gap-3">
-          <div>© {new Date().getFullYear()} NovaMac Solutions. All rights reserved.</div>
-          <div className="flex gap-5">
+          <div className="flex items-center gap-2">
+            <span>© {new Date().getFullYear()} NovaMac Solutions. All rights reserved.</span>
+          </div>
+          <div className="flex items-center gap-5">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
             <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>

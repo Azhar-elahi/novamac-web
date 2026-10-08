@@ -43,9 +43,29 @@ export default async function WorkPage() {
     "description": "Selected case studies and web development portfolio from NovaMac Solutions."
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://novamacsolutions.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Work",
+        "item": "https://novamacsolutions.com/work",
+      },
+    ],
+  };
+
   return (
     <>
       <JsonLd data={portfolioSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <WorkClient projects={projects} />
     </>
   );

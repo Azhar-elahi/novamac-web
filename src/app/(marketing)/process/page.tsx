@@ -42,9 +42,29 @@ export default function ProcessPage() {
     ]
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://novamacsolutions.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Process",
+        "item": "https://novamacsolutions.com/process",
+      },
+    ],
+  };
+
   return (
     <>
       <JsonLd data={processSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <ProcessClient />
     </>
   );

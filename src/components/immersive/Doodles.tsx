@@ -119,15 +119,15 @@ export const BackgroundDoodles = ({
 
       {/* LAYER 1: Deep Parallax Text Watermarks */}
       <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute top-[6%] right-[2%] opacity-25 rotate-[-5deg] select-none">
-        <h1 className="text-8xl md:text-[13rem] font-black text-[#FF5733] tracking-tighter leading-none">
+        <div aria-hidden="true" className="text-8xl md:text-[13rem] font-black text-[#FF5733] tracking-tighter leading-none">
           NovaMac
-        </h1>
+        </div>
       </motion.div>
 
       <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute bottom-[10%] left-[2%] opacity-20 rotate-[4deg] select-none">
-        <h1 className="text-7xl md:text-[11rem] font-black text-[#1C1917] tracking-tighter leading-none">
+        <div aria-hidden="true" className="text-7xl md:text-[11rem] font-black text-[#1C1917] tracking-tighter leading-none">
           SOLUTIONS
-        </h1>
+        </div>
       </motion.div>
 
       {/* LAYER 2: Animated Graphic Doodles & Tech Cards */}

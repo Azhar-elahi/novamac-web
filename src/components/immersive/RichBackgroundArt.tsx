@@ -61,15 +61,15 @@ export function RichBackgroundArt({
       {/* ── 3. PARALLAX LAYER 1: DEEP EDITORIAL WATERMARKS ── */}
       <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute inset-0">
         <div className="absolute top-[8%] right-[2%] opacity-[0.06] select-none rotate-[-6deg]">
-          <h1 className="text-6xl md:text-[14rem] font-black text-[#FF5733] tracking-tighter leading-none">
+          <div aria-hidden="true" className="text-6xl md:text-[14rem] font-black text-[#FF5733] tracking-tighter leading-none">
             NovaMac
-          </h1>
+          </div>
         </div>
         
         <div className="absolute top-[55%] left-[-2%] opacity-[0.04] select-none rotate-[4deg]">
-          <h1 className="text-6xl md:text-[12rem] font-black text-[#F8FAFC] tracking-tighter leading-none">
+          <div aria-hidden="true" className="text-6xl md:text-[12rem] font-black text-[#F8FAFC] tracking-tighter leading-none">
             ENGINEERING
-          </h1>
+          </div>
         </div>
       </motion.div>
 

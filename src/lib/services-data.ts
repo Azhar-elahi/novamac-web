@@ -19,6 +19,7 @@ export const CORE_SERVICES_LIST = [
   { slug: "custom-software", label: "Custom Software", desc: "Purpose-built software for unique business workflows." },
   { slug: "crm-development", label: "CRM Development", desc: "Custom systems to manage leads, customers, sales and relationships." },
   { slug: "erp-development", label: "ERP Development", desc: "Connected systems for business operations, finance, inventory and management." },
+  { slug: "pos-development", label: "POS Systems & Retail Software", desc: "High-speed cloud POS systems, multi-branch retail & restaurant software with offline sync and zero per-terminal monthly fees." },
   { slug: "ai-automation", label: "AI Automation", desc: "AI-powered workflows, agents and automations that reduce repetitive work." },
   { slug: "digital-marketing", label: "Digital Marketing", desc: "Digital strategies designed to improve visibility, leads and conversions." },
   { slug: "saas-development", label: "SaaS & Digital Products", desc: "From product concept and MVP to scalable SaaS platforms." }
@@ -112,6 +113,29 @@ export const SERVICES: ServiceDetail[] = [
       "Custom API connections to accounting and logistics tools"
     ],
     techStack: ["Next.js", "TypeScript", "PostgreSQL", "Redis", "Docker"]
+  },
+  {
+    slug: "pos-development",
+    title: "Custom POS Software & Point of Sale Systems",
+    shortTitle: "POS Systems Development",
+    category: "Retail & Cloud Systems",
+    tagline: "High-speed cloud POS systems, multi-branch retail & restaurant software with offline sync and zero per-terminal monthly fees.",
+    startingPrice: "Custom Project Scope",
+    iconName: "Store",
+    painPoints: [
+      { title: "Expensive Per-Terminal Monthly SaaS Fees", desc: "Commercial POS platforms charge recurring fees per screen plus hefty transaction percentage markups." },
+      { title: "Offline Register Freezes", desc: "Unreliable internet connections halt checkout registers, causing long checkout queues and lost revenue." },
+      { title: "Disconnected Online & In-Store Inventory", desc: "Physical retail counters and online e-commerce stores fail to synchronize inventory levels in real time." }
+    ],
+    included: [
+      "Sub-second touch checkout terminal interface (Tablet, Desktop, Mobile Web POS)",
+      "Offline-first IndexedDB architecture with automated background cloud synchronization",
+      "Multi-store inventory management with automated barcode scanning and thermal printer drivers",
+      "Stripe Terminal, Adyen, and local EMV chip/PIN card reader integrations",
+      "Real-time cash drawer reconciliation, shift management, and gross margin analytics",
+      "100% intellectual property & source code ownership with ZERO recurring monthly per-seat licensing"
+    ],
+    techStack: ["Next.js", "React 19", "IndexedDB", "PostgreSQL", "WebSockets", "Thermal Print APIs"]
   },
   {
     slug: "ai-automation",

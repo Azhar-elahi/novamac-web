@@ -25,12 +25,40 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   if (!post) {
-    return { title: "Post Not Found | NovaMac" };
+    return { title: "Post Not Found | NovaMac Solutions" };
   }
 
+  const title = post.seoTitle || `${post.title} | NovaMac Solutions`;
+  const description = post.seoDesc || post.excerpt || "Read this article on NovaMac Solutions.";
+  const canonicalUrl = `https://novamacsolutions.com/blog/${post.slug}`;
+  const ogImage = post.coverImage ? (post.coverImage.startsWith("http") ? post.coverImage : `https://novamacsolutions.com${post.coverImage}`) : "https://novamacsolutions.com/og-image.png";
+
   return {
-    title: post.seoTitle || `${post.title} | NovaMac`,
-    description: post.seoDesc || post.excerpt || "Read this article on NovaMac.",
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      type: "article",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
   };
 }
 
@@ -53,14 +81,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
+  const datePublished = post.createdAt ? new Date(post.createdAt).toISOString() : new Date().toISOString();
+  const dateModified = post.updatedAt ? new Date(post.updatedAt).toISOString() : datePublished;
+  const postImageUrl = post.coverImage ? (post.coverImage.startsWith("http") ? post.coverImage : `https://novamacsolutions.com${post.coverImage}`) : "https://novamacsolutions.com/og-image.png";
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.seoTitle || post.title,
     "description": post.seoDesc || post.excerpt,
-    "image": post.coverImage || "https://novamacsolutions.com/og-image.png",
-    "datePublished": post.createdAt.toISOString(),
-    "dateModified": post.updatedAt.toISOString(),
+    "image": postImageUrl,
+    "datePublished": datePublished,
+    "dateModified": dateModified,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://novamacsolutions.com/blog/${post.slug}`
+    },
     "author": {
       "@type": "Organization",
       "name": "NovaMac Solutions",
@@ -71,7 +107,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       "name": "NovaMac Solutions",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://novamacsolutions.com/apple-touch-icon.png"
+        "url": "https://novamacsolutions.com/logo-500x500.png"
       }
     }
   };

@@ -1,4 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#FAF2F2",
+};
 import { Fira_Code, Albert_Sans, Raleway } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/shared/theme-provider";
@@ -27,20 +34,22 @@ const firaCode = Fira_Code({
 export const metadata: Metadata = {
   metadataBase: new URL("https://novamacsolutions.com"),
   title: {
-    default: "NovaMac Solutions — Custom Web Development & AI Engineering Studio",
+    default: "NovaMac Solutions — Custom Web, Software, ERP, POS & CRM Studio",
     template: "%s | NovaMac Solutions",
   },
-  description: "NovaMac Solutions builds custom Next.js web applications, UI/UX design systems, AI CRMs, and headless e-commerce platforms engineered for sub-second speeds.",
+  description: "Enterprise software engineering: Custom Next.js Web Development, Bespoke Software, Cloud ERP Systems, POS Terminals, and AI CRMs. Engineered for sub-second speeds.",
   keywords: [
     "NovaMac Solutions",
     "Custom Web Development",
-    "Next.js 15 Developers",
-    "UI/UX Design Studio",
+    "Custom Software Development",
+    "ERP Software Development",
+    "POS Software Development",
+    "Custom CRM Development",
+    "Next.js 16 Developers",
+    "Cloud ERP Systems",
+    "Retail POS Systems",
+    "AI Automation Studio",
     "SaaS Web Applications",
-    "Custom CRM Automation",
-    "AI Agents & LLM Integration",
-    "Headless Shopify E-Commerce",
-    "High Performance Web Engineering",
     "React 19 Developers"
   ],
   authors: [{ name: "NovaMac Engineering Team", url: "https://novamacsolutions.com" }],
@@ -79,7 +88,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://novamacsolutions.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "NovaMac Solutions — Software Engineering & Creative Studio",
@@ -90,7 +99,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "NovaMac Solutions — Custom Web Development & AI Engineering Studio",
     description: "Custom web applications, UI/UX design systems, AI CRMs, and headless e-commerce platforms.",
-    images: ["/og-image.png"],
+    images: ["https://novamacsolutions.com/og-image.png"],
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",

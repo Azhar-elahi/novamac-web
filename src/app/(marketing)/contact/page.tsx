@@ -40,9 +40,29 @@ export default function ContactPage() {
     }
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://novamacsolutions.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact",
+        "item": "https://novamacsolutions.com/contact",
+      },
+    ],
+  };
+
   return (
     <>
       <JsonLd data={contactSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <ContactClient />
     </>
   );

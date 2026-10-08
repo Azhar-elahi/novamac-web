@@ -1,45 +1,46 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PROJECTS_DATA, getProjectBySlug } from "@/data/projectsData";
-import ProjectDetailClient from "@/components/work/ProjectDetailClient";
+import { EXECUTIVE_PORTFOLIO_DATA, getExecutiveProjectById } from "@/data/portfolioData";
+import ProjectDetailClient from "./ProjectDetailClient";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
-  return PROJECTS_DATA.map((p) => ({ slug: p.slug }));
+  return EXECUTIVE_PORTFOLIO_DATA.map((p) => ({ id: p.id }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const project = getProjectBySlug(slug);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const project = getExecutiveProjectById(id);
   if (!project) return {};
 
   return {
-    title: `${project.title} | Case Study & Architecture | NovaMac`,
-    description: project.shortDesc,
+    title: `${project.clientName} Case Study & Screenshots | NovaMac Solutions`,
+    description: project.summary,
     keywords: [
       project.title,
+      project.clientName,
       project.category,
       "NovaMac Case Study",
-      "Software System Architecture"
+      "Software Architecture"
     ],
     alternates: {
-      canonical: `https://novamacsolutions.com/work/${project.slug}`,
+      canonical: `https://novamacsolutions.com/work/${project.id}`,
     },
     openGraph: {
       title: `${project.title} | NovaMac Solutions`,
-      description: project.shortDesc,
-      url: `https://novamacsolutions.com/work/${project.slug}`,
+      description: project.summary,
+      url: `https://novamacsolutions.com/portfolio/${project.id}`,
     },
     twitter: {
       title: `${project.title} | NovaMac Solutions`,
-      description: project.shortDesc,
+      description: project.summary,
     },
   };
 }
 
-export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const project = getProjectBySlug(slug);
+export default async function DedicatedProjectPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const project = getExecutiveProjectById(id);
   if (!project) notFound();
 
   const caseStudySchema = {
@@ -51,8 +52,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       "name": "NovaMac Solutions",
       "url": "https://novamacsolutions.com"
     },
-    "description": project.shortDesc,
-    "url": `https://novamacsolutions.com/work/${project.slug}`
+    "description": project.summary,
+    "url": `https://novamacsolutions.com/portfolio/${project.id}`
   };
 
   const breadcrumbSchema = {
@@ -68,14 +69,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Work",
-        "item": "https://novamacsolutions.com/work",
+        "name": "Portfolio",
+        "item": "https://novamacsolutions.com/portfolio",
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": project.title,
-        "item": `https://novamacsolutions.com/work/${project.slug}`,
+        "item": `https://novamacsolutions.com/portfolio/${project.id}`,
       },
     ],
   };

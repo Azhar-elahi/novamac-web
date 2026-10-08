@@ -35,9 +35,29 @@ export default function AboutPage() {
     "description": "Learn about NovaMac Solutions — our engineering manifesto, core values, zero-template philosophy, and global edge architecture."
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://novamacsolutions.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About Us",
+        "item": "https://novamacsolutions.com/about",
+      },
+    ],
+  };
+
   return (
     <>
       <JsonLd data={aboutSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <AboutClient />
     </>
   );

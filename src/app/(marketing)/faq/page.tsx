@@ -2,9 +2,40 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 
+import { JsonLd } from "@/components/seo/JsonLd";
+
 export const metadata: Metadata = {
-  title: "FAQ & Knowledgebase | NovaMac Solutions",
-  description: "Frequently asked questions about our custom digital systems, software engineering, code ownership, and transparent pricing model.",
+  title: "FAQ & Engineering Knowledgebase | NovaMac Solutions",
+  description: "Frequently asked questions about our custom digital systems, Next.js engineering, full code ownership, and transparent pricing model.",
+  keywords: [
+    "NovaMac FAQ",
+    "Next.js Development Questions",
+    "Custom Software Pricing FAQ",
+    "Code Ownership Guarantee",
+    "AI Automation Agency FAQ"
+  ],
+  alternates: {
+    canonical: "https://novamacsolutions.com/faq",
+  },
+  openGraph: {
+    title: "FAQ & Engineering Knowledgebase | NovaMac Solutions",
+    description: "Clear answers to your questions about our custom web platforms, software engineering, and code ownership.",
+    url: "https://novamacsolutions.com/faq",
+    images: [
+      {
+        url: "https://novamacsolutions.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "NovaMac Solutions FAQ & Knowledgebase",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ & Engineering Knowledgebase | NovaMac Solutions",
+    description: "Clear answers to your questions about our custom digital systems and engineering process.",
+    images: ["https://novamacsolutions.com/og-image.png"],
+  },
 };
 
 const FAQS = [
@@ -68,8 +99,43 @@ const FAQS = [
 import { OptimizedVideoBackground } from "@/components/ui/OptimizedVideoBackground";
 
 export default function FAQPage() {
+  const allQuestions = FAQS.flatMap((cat) => cat.questions);
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": allQuestions.map((q) => ({
+      "@type": "Question",
+      "name": q.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": q.a,
+      },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://novamacsolutions.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "FAQ",
+        "item": "https://novamacsolutions.com/faq",
+      },
+    ],
+  };
+
   return (
     <main className="bg-[#FAF2F2] text-[#0A2540] min-h-screen pt-10 sm:pt-16 pb-24 font-sans relative overflow-hidden">
+      <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
       
       {/* HERO SECTION WITH VIDEO BACKGROUND */}
       <section className="relative min-h-[420px] sm:min-h-[480px] flex items-center justify-center overflow-hidden mb-16 mx-4 sm:mx-8 md:mx-12 rounded-3xl border border-[#F0DCDC] shadow-2xl bg-[#060D17] contain-content">

@@ -2,18 +2,28 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, Globe, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { PROJECTS_DATA, DetailedProjectItem } from "@/data/projectsData";
 import { PreFooterCTASection } from "@/components/sections/PreFooterCTASection";
 
-const CATEGORIES = ["All", "Web Engineering", "E-Commerce", "CRM & Software", "AI Automation", "Enterprise SaaS"];
+const CATEGORIES = [
+  "All",
+  "E-Commerce & Retail",
+  "B2B & Industrial",
+  "CRM & Software",
+  "AI & Automation",
+  "Enterprise SaaS",
+  "Running Projects"
+];
 
 export default function WorkClient({ projects = [] }: { projects?: any[] }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filteredProjects = selectedCategory === "All"
     ? PROJECTS_DATA
+    : selectedCategory === "Running Projects"
+    ? PROJECTS_DATA.filter((p) => p.isCurrentlyRunning || (p.liveStatus || "").includes("RUNNING"))
     : PROJECTS_DATA.filter((p) => (p.category || "").toLowerCase().includes(selectedCategory.toLowerCase()));
 
   return (
@@ -35,16 +45,22 @@ export default function WorkClient({ projects = [] }: { projects?: any[] }) {
           transition={{ duration: 0.8 }}
           className="max-w-4xl relative z-10 space-y-6"
         >
-          <span className="px-4 py-1.5 bg-[#FF5733]/10 border border-[#FF5733]/30 text-[#FF5733] font-mono text-xs font-bold uppercase tracking-widest rounded-full inline-block">
-            NOVAMAC LABS & SYSTEMS
-          </span>
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="px-4 py-1.5 bg-[#FF5733]/10 border border-[#FF5733]/30 text-[#FF5733] font-mono text-xs font-bold uppercase tracking-widest rounded-full inline-block">
+              NOVAMAC SYSTEMS & PORTFOLIO
+            </span>
+            <span className="px-3.5 py-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold uppercase tracking-widest rounded-full inline-flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              Verified Client Sites & SaaS
+            </span>
+          </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight">
             Digital Solutions Built for Real Business Growth.
           </h1>
 
           <p className="text-gray-300 text-base sm:text-xl font-light leading-relaxed max-w-2xl">
-            Explore engineering prototypes and system blueprints developed by NovaMac Labs. Select any project to view technical architecture details.
+            Explore live client storefronts, B2B digital catalogs, and active enterprise running projects built and powered by NovaMac Solutions.
           </p>
 
           {/* CATEGORY FILTER TABS */}
@@ -77,29 +93,33 @@ export default function WorkClient({ projects = [] }: { projects?: any[] }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.05 }}
-              className="bg-white border border-[#F0DCDC] text-[#202020] rounded-3xl overflow-hidden group hover:border-[#FF5733] transition-all duration-500 flex flex-col justify-between shadow-sm"
+              className="bg-white border border-[#F0DCDC] text-[#202020] rounded-3xl overflow-hidden group hover:border-[#FF5733] transition-all duration-500 flex flex-col justify-between shadow-sm hover:shadow-xl"
             >
               <div>
-                <Link href={`/work/${proj.slug}`} className="block relative group">
+                <div className="relative group">
                   <div className="aspect-[16/9] overflow-hidden relative bg-zinc-900">
                     <img
                       src={proj.image}
                       alt={proj.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute top-4 left-4 px-3 py-1 bg-black/80 backdrop-blur-md text-[#FF5733] border border-[#FF5733]/40 font-mono text-[10px] uppercase font-bold rounded-full">
+                    <div className="absolute top-4 left-4 px-3 py-1 bg-black/80 backdrop-blur-md text-[#FF5733] border border-[#FF5733]/40 font-mono text-[10px] uppercase font-bold rounded-full flex items-center gap-1.5">
+                      <Sparkles className="w-3 h-3 text-[#FF5733]" />
                       {proj.badge}
                     </div>
 
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-black/60 backdrop-blur-md text-white font-mono text-[10px] uppercase font-bold rounded-full">
-                      {proj.category}
-                    </div>
+                    {proj.liveStatus && (
+                      <div className="absolute top-4 right-4 px-3 py-1 bg-black/80 backdrop-blur-md text-emerald-400 border border-emerald-500/40 font-mono text-[10px] uppercase font-bold rounded-full flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        {proj.liveStatus}
+                      </div>
+                    )}
                   </div>
-                </Link>
+                </div>
 
                 <div className="p-8">
-                  <div className="flex items-center gap-3 font-mono text-xs font-bold text-[#FF5733] mb-2 uppercase">
-                    <span>SLA RANGE: {proj.statVal}</span>
+                  <div className="flex items-center gap-3 font-mono text-xs font-bold text-[#FF5733] mb-2 uppercase flex-wrap">
+                    <span>SLA: {proj.statVal}</span>
                     <span>•</span>
                     <span className="text-gray-500">{proj.statLabel}</span>
                   </div>
@@ -124,22 +144,37 @@ export default function WorkClient({ projects = [] }: { projects?: any[] }) {
                 </div>
               </div>
 
-              <div className="p-8 pt-0 flex flex-col sm:flex-row gap-3">
-                <Link
-                  href={`/work/${proj.slug}`}
-                  className="flex-1 bg-white hover:bg-[#FAF2F2] text-[#202020] border border-[#F0DCDC] hover:border-[#FF5733] font-bold text-xs uppercase tracking-wider py-3.5 px-6 rounded-full transition-colors flex items-center justify-center gap-2 text-center shadow-sm"
-                >
-                  <span>View Case Study</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </Link>
+              <div className="p-8 pt-0 flex flex-col gap-3">
+                {proj.liveUrl && (
+                  <a
+                    href={proj.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-[#FF5733] hover:bg-[#202020] text-white font-extrabold text-xs uppercase tracking-wider py-3.5 px-6 rounded-full transition-all duration-300 flex items-center justify-center gap-2 text-center shadow-md transform hover:-translate-y-0.5"
+                  >
+                    <Globe className="w-4 h-4" />
+                    <span>Launch Live Site ({proj.clientName || "Visit Website"})</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
 
-                <Link
-                  href="/contact"
-                  className="flex-1 bg-[#202020] hover:bg-[#FF5733] text-white font-bold text-xs uppercase tracking-wider py-3.5 px-6 rounded-full transition-colors flex items-center justify-center gap-2 text-center shadow-md"
-                >
-                  <span>Start Similar Project</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href={`/work/${proj.slug}`}
+                    className="flex-1 bg-white hover:bg-[#FAF2F2] text-[#202020] border border-[#F0DCDC] hover:border-[#FF5733] font-bold text-xs uppercase tracking-wider py-3 px-5 rounded-full transition-colors flex items-center justify-center gap-2 text-center shadow-sm"
+                  >
+                    <span>System Details</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <Link
+                    href="/contact"
+                    className="flex-1 bg-[#202020] hover:bg-[#FF5733] text-white font-bold text-xs uppercase tracking-wider py-3 px-5 rounded-full transition-colors flex items-center justify-center gap-2 text-center shadow-md"
+                  >
+                    <span>Build Similar</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
               </div>
 
             </motion.div>
@@ -153,3 +188,4 @@ export default function WorkClient({ projects = [] }: { projects?: any[] }) {
     </div>
   );
 }
+

@@ -1,11 +1,56 @@
-export const metadata = {
-  title: "Terms and Conditions | NovaMac",
-  description: "Terms and conditions for using our services.",
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+
+export const metadata: Metadata = {
+  title: "Terms and Conditions | NovaMac Solutions",
+  description: "Terms and conditions, project delivery terms, and source code ownership agreements for NovaMac Solutions services.",
+  alternates: {
+    canonical: "https://novamacsolutions.com/terms",
+  },
+  openGraph: {
+    title: "Terms and Conditions | NovaMac Solutions",
+    description: "Terms and conditions, project delivery terms, and source code ownership agreements.",
+    url: "https://novamacsolutions.com/terms",
+    images: [
+      {
+        url: "https://novamacsolutions.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "NovaMac Solutions Terms and Conditions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms and Conditions | NovaMac Solutions",
+    description: "Terms and conditions, project delivery terms, and source code ownership agreements.",
+    images: ["https://novamacsolutions.com/og-image.png"],
+  },
 };
 
 export default function TermsPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://novamacsolutions.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Terms of Service",
+        "item": "https://novamacsolutions.com/terms",
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen pt-12 sm:pt-20 pb-24 px-6 md:px-12 xl:px-20 bg-[#FAF2F2] text-[#202020] relative font-sans">
+      <JsonLd data={breadcrumbSchema} />
       <div className="max-w-3xl mx-auto space-y-6">
         <span className="px-4 py-1.5 bg-[#FF5733]/10 border border-[#FF5733]/30 text-[#FF5733] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest rounded-full inline-block mb-2 shadow-sm">
           TERMS OF SERVICE

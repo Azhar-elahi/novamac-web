@@ -14,6 +14,7 @@ const SERVICE_IMAGES_MAP: Record<string, string> = {
   "custom-software": "/images/web_app.webp",
   "crm-development": "/images/crm_system.png",
   "erp-development": "/images/erp_system.png",
+  "pos-development": "/images/erp_pos_live.png",
   "ai-automation": "/images/ai_automation.webp",
   "digital-marketing": "/images/marketing_seo.webp",
   "saas-development": "/images/saas_platform.png",

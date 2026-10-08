@@ -20,40 +20,40 @@ import { useBookingModal } from "@/components/booking/BookingContext";
 // =========================================
 const LABS_PROJECTS = [
   {
-    id: "luxury-ecommerce",
-    badge: "Concept Project",
-    category: "E-COMMERCE & RETAIL",
-    title: "High-Performance Luxury Storefront Architecture",
-    desc: "Demonstrating sub-300ms checkout response, custom product visualizers, and conversion-optimized headless Next.js architecture.",
-    tech: "Next.js • Shopify API • Tailwind",
-    image: "/images/ecommerce.jpg"
+    id: "ab-collections",
+    badge: "🟢 LIVE CLIENT STOREFRONT",
+    category: "E-COMMERCE & FASHION",
+    title: "AB Collections — Headless Next.js Storefront",
+    desc: "Sub-300ms express catalog navigation, dynamic multi-currency cart drawer, and headless checkout delivering +40% sales conversion uplift.",
+    tech: "Next.js 15 • Shopify Headless • Tailwind • Stripe",
+    image: "/images/ab_collections_live.png"
   },
   {
-    id: "real-estate-crm",
-    badge: "Internal Prototype",
-    category: "REAL ESTATE & PIPELINES",
-    title: "Unified Deal & Pipeline Management System",
-    desc: "Demonstrating lead qualification, SMS notification triggers, role permissions, and central deal status tracking.",
-    tech: "React • Node.js • PostgreSQL",
-    image: "/images/web_app.webp"
+    id: "msb-acrylic",
+    badge: "🟢 LIVE B2B CATALOG",
+    category: "B2B & MANUFACTURING",
+    title: "MSB Acrylic — Custom Industrial B2B Portal",
+    desc: "Interactive B2B material configurator and quote generator replacing email bottlenecks with instant inquiry dispatch.",
+    tech: "Next.js • TypeScript • Tailwind • Edge Caching",
+    image: "/images/msb_acrylic_live.png"
   },
   {
-    id: "ai-automation",
-    badge: "Internal Prototype",
-    category: "AI & WORKFLOW AUTOMATION",
-    title: "24/7 Autonomous Customer & Lead Agents",
-    desc: "Demonstrating LLM integration with internal knowledge bases to qualify sales leads and assist user inquiries automatically.",
-    tech: "OpenAI API • RAG • Vector DB",
-    image: "/images/ai_automation.webp"
+    id: "nexora-one",
+    badge: "🟢 LIVE ENTERPRISE SAAS",
+    category: "SAAS & CLOUD SYSTEMS",
+    title: "Nexora One — Multi-Tenant Cloud Platform",
+    desc: "Enterprise user management, role-based access control, Stripe subscription engine, and real-time analytics portal.",
+    tech: "React 19 • Node.js • PostgreSQL • Stripe API",
+    image: "/images/nexora_one_live.png"
   },
   {
-    id: "b2b-saas",
-    badge: "Concept Project",
-    category: "SAAS & CLOUD SOFTWARE",
-    title: "Multi-Tenant B2B Analytics & Subscription Portal",
-    desc: "Demonstrating user onboarding flows, role-based security, Stripe recurring billing, and scalable edge deployment.",
-    tech: "Next.js • Prisma • Stripe",
-    image: "/images/web_dev.jpg"
+    id: "erp-pos-system",
+    badge: "🟢 LIVE ENTERPRISE PORTAL",
+    category: "BUSINESS OPERATIONS & POS",
+    title: "NovaMac ERP & POS — Unified Business Suite",
+    desc: "Complete operational suite connecting inventory, multi-register POS, staff commissions, and financial margins in real time.",
+    tech: "Next.js • Prisma ORM • PostgreSQL • WebSockets",
+    image: "/images/erp_pos_live.png"
   }
 ];
 
@@ -336,20 +336,41 @@ export default function HomeClient() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+          {/* Trust Guarantees */}
+          <div className="flex flex-wrap items-center gap-3 mb-6 text-xs font-mono text-white/80">
+            <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 flex items-center gap-1.5">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Guaranteed 2–4 Wk Delivery
+            </span>
+            <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 flex items-center gap-1.5">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> 100% Full Code Ownership
+            </span>
+            <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 flex items-center gap-1.5">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Zero Monthly SaaS Lock-In
+            </span>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <button
               onClick={() => openBooking()}
-              className="w-full sm:w-auto bg-[#1A1A1A] text-white hover:bg-white hover:text-black font-extrabold text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 group hover:scale-105 active:scale-95"
+              className="w-full sm:w-auto bg-[#FF5733] text-white hover:bg-white hover:text-black font-extrabold text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 group hover:scale-105 active:scale-95"
             >
-              <span>Start a Project</span>
+              <span>Book Strategy Call</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
             <Link
-              href="/services"
-              className="w-full sm:w-auto bg-white/20 text-white hover:bg-white hover:text-black font-extrabold text-xs uppercase tracking-widest px-6 py-4 rounded-full transition-all duration-300 text-center"
+              href="/audit"
+              className="w-full sm:w-auto bg-white text-[#202020] hover:bg-[#1A1A1A] hover:text-white font-extrabold text-xs uppercase tracking-widest px-6 py-4 rounded-full transition-all duration-300 text-center shadow-lg hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
             >
-              Explore Our Services
+              <Sparkles className="w-3.5 h-3.5 text-[#FF5733]" />
+              <span>Free Growth Audit</span>
+            </Link>
+
+            <Link
+              href="/services"
+              className="w-full sm:w-auto bg-white/15 text-white hover:bg-white hover:text-black font-extrabold text-xs uppercase tracking-widest px-6 py-4 rounded-full transition-all duration-300 text-center"
+            >
+              Explore Services
             </Link>
           </div>
 

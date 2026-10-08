@@ -13,6 +13,7 @@ import {
   Bot, 
   TrendingUp, 
   Cloud,
+  Store,
   ShieldCheck
 } from "lucide-react";
 import Link from "next/link";
@@ -25,6 +26,7 @@ const ICON_MAP = {
   Cpu,
   Database,
   Layers,
+  Store,
   Bot,
   TrendingUp,
   Cloud

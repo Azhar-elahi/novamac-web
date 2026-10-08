@@ -4,14 +4,64 @@ import type { Metadata } from "next";
 
 import { OptimizedVideoBackground } from "@/components/ui/OptimizedVideoBackground";
 
+import { JsonLd } from "@/components/seo/JsonLd";
+
 export const metadata: Metadata = {
   title: "Support & Help Center | NovaMac Solutions",
   description: "Get immediate technical assistance, project management support, and priority emergency help from NovaMac Solutions engineers.",
+  keywords: [
+    "NovaMac Support",
+    "Technical Help Center",
+    "Emergency Web Support",
+    "Client Ticket Dispatch"
+  ],
+  alternates: {
+    canonical: "https://novamacsolutions.com/support",
+  },
+  openGraph: {
+    title: "Support & Help Center | NovaMac Solutions",
+    description: "Get immediate technical assistance, project management support, and priority emergency help from NovaMac Solutions engineers.",
+    url: "https://novamacsolutions.com/support",
+    images: [
+      {
+        url: "https://novamacsolutions.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "NovaMac Solutions Support & Help Center",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Support & Help Center | NovaMac Solutions",
+    description: "Immediate technical assistance and priority emergency help.",
+    images: ["https://novamacsolutions.com/og-image.png"],
+  },
 };
 
 export default function SupportPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://novamacsolutions.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Support",
+        "item": "https://novamacsolutions.com/support",
+      },
+    ],
+  };
+
   return (
     <main className="bg-[#FAF2F2] text-[#202020] min-h-screen pt-10 sm:pt-16 pb-24 font-sans relative overflow-hidden">
+      <JsonLd data={breadcrumbSchema} />
       
       {/* HERO SECTION WITH VIDEO BACKGROUND */}
       <section className="relative min-h-[460px] sm:min-h-[520px] flex items-center justify-center overflow-hidden mb-16 mx-4 sm:mx-8 md:mx-12 rounded-3xl border border-[#F0DCDC] shadow-2xl bg-black contain-content">

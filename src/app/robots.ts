@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/7222-@dm1nl0g1n/', '/api/auth/'],
+        disallow: ['/7222-@dm1nl0g1n/', '/api/', '/submit-review/'],
       },
       {
         userAgent: [
@@ -31,7 +31,7 @@ export default function robots(): MetadataRoute.Robots {
           'LinkedInBot',
         ],
         allow: '/',
-        disallow: ['/7222-@dm1nl0g1n/', '/api/auth/'],
+        disallow: ['/7222-@dm1nl0g1n/', '/api/', '/submit-review/'],
       },
     ],
     sitemap: 'https://novamacsolutions.com/sitemap.xml',

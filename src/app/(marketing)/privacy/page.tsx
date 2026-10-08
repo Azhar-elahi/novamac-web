@@ -1,11 +1,55 @@
-export const metadata = {
-  title: "Privacy Policy | NovaMac",
-  description: "Learn how we handle and protect your personal information.",
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | NovaMac Solutions",
+  description: "Learn how NovaMac Solutions collects, stores, protects, and handles your personal and business data.",
+  alternates: {
+    canonical: "https://novamacsolutions.com/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy | NovaMac Solutions",
+    description: "Learn how NovaMac Solutions handles and protects your personal and business data.",
+    url: "https://novamacsolutions.com/privacy",
+    images: [
+      {
+        url: "https://novamacsolutions.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "NovaMac Solutions Privacy Policy",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | NovaMac Solutions",
+    description: "Learn how NovaMac Solutions handles and protects your personal and business data.",
+    images: ["https://novamacsolutions.com/og-image.png"],
+  },
 };
 
 export default function PrivacyPage() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://novamacsolutions.com",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Privacy Policy",
+        "item": "https://novamacsolutions.com/privacy",
+      },
+    ],
+  };
   return (
     <main className="min-h-screen pt-12 sm:pt-20 pb-24 px-6 md:px-12 xl:px-20 bg-[#FAF2F2] text-[#202020] relative font-sans">
+      <JsonLd data={breadcrumbSchema} />
       <div className="max-w-3xl mx-auto space-y-6">
         <span className="px-4 py-1.5 bg-[#FF5733]/10 border border-[#FF5733]/30 text-[#FF5733] font-mono text-xs sm:text-sm font-bold uppercase tracking-widest rounded-full inline-block mb-2 shadow-sm">
           LEGAL & COMPLIANCE

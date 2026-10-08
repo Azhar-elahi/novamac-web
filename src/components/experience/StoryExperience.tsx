@@ -187,7 +187,7 @@ export default function StoryExperience() {
         {/* Intro */}
         <div className="w-full h-screen flex items-center justify-center px-6">
           <div className="text-center pointer-events-auto">
-            <h1 className="font-heading text-5xl md:text-7xl mb-4 text-black">The Engineering Gallery</h1>
+            <h2 className="font-heading text-5xl md:text-7xl mb-4 text-black">The Engineering Gallery</h2>
             <p className="text-xl text-black/60 font-light">Scroll to explore our services.</p>
           </div>
         </div>

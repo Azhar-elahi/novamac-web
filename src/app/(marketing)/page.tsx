@@ -1,52 +1,59 @@
 import type { Metadata } from "next";
 import HomeClient from "./home/HomeClient";
-import { SEO_AEO_GEO_Schemas } from "@/components/seo/SEO_AEO_GEO_Schemas";
 
 export const metadata: Metadata = {
-  title: "NovaMac Solutions — We Build Digital Systems That Help Businesses Grow",
-  description: "From high-performing websites to custom software, CRM, ERP, AI automation, and SaaS products — NovaMac builds technology around the way your business works.",
+  title: "Custom Web, Software, ERP, POS & CRM Development | NovaMac Solutions",
+  description: "Enterprise software engineering studio: Custom Next.js Websites, Bespoke Software, Custom ERP Operations, Cloud POS Systems, and CRM Pipelines for US, UK, EU & Middle East businesses.",
   keywords: [
     "NovaMac Solutions",
-    "Digital Systems Partner",
     "Custom Website Development",
     "Custom Software Engineering",
-    "CRM Development",
-    "ERP Development",
+    "ERP Software Development",
+    "POS Software Development",
+    "Cloud Point of Sale Systems",
+    "Custom CRM Development",
     "AI Automation Agents",
     "Digital Marketing & GEO Growth"
   ],
   alternates: {
     canonical: "https://novamacsolutions.com",
+    languages: {
+      "en-US": "https://novamacsolutions.com/us",
+      "en-GB": "https://novamacsolutions.com/uk",
+      "en-CA": "https://novamacsolutions.com/ca",
+      "en-EU": "https://novamacsolutions.com/eu",
+      "en-AE": "https://novamacsolutions.com/middle-east",
+      "en-PK": "https://novamacsolutions.com/pk",
+      "x-default": "https://novamacsolutions.com",
+    },
   },
   openGraph: {
-    title: "NovaMac Solutions — We Build Digital Systems That Help Businesses Grow",
-    description: "From high-performing websites to custom software, CRM, ERP, AI automation, and SaaS products — NovaMac builds technology around the way your business works.",
+    title: "Custom Web, Software, ERP, POS & CRM Development | NovaMac Solutions",
+    description: "Enterprise software engineering studio: Custom Next.js Websites, Bespoke Software, Custom ERP Operations, Cloud POS Systems, and CRM Pipelines for US, UK, EU & Middle East businesses.",
     url: "https://novamacsolutions.com",
   },
   twitter: {
-    title: "NovaMac Solutions — We Build Digital Systems That Help Businesses Grow",
-    description: "From high-performing websites to custom software, CRM, ERP, AI automation, and SaaS products — NovaMac builds technology around the way your business works.",
+    title: "Custom Web, Software, ERP, POS & CRM Development | NovaMac Solutions",
+    description: "Enterprise software engineering studio: Custom Next.js Websites, Bespoke Software, Custom ERP Operations, Cloud POS Systems, and CRM Pipelines.",
   },
 };
 
 export default function MarketingRootPage() {
   return (
     <>
-      <SEO_AEO_GEO_Schemas />
-
       {/* 
         SERVER-SIDE RENDERED HTML BLOCK FOR AI CRAWLERS & NO-JS CLIENTS:
-        Ensures 1000+ characters of rich text, single H1, and explicit H2 heading hierarchy
+        Ensures 1000+ characters of rich text, clean heading hierarchy
         are rendered directly in raw HTML for AI readiness compliance.
       */}
-      <article className="sr-only opacity-0 h-0 overflow-hidden" aria-hidden="false">
-        <h1>NovaMac Solutions — We Build Digital Systems That Help Businesses Grow</h1>
+      <section className="sr-only opacity-0 h-0 overflow-hidden" aria-label="NovaMac Digital Systems Overview">
+        <h2 className="text-2xl font-bold">NovaMac Solutions — Custom Web, Software, ERP, POS & CRM Development</h2>
         
         <p>
-          NovaMac Solutions is a high-growth software engineering and digital systems studio. We specialize in building custom Next.js websites, tailored business software, CRM systems, ERP management portals, AI automations, and SaaS products engineered around the way your business operates.
+          NovaMac Solutions is a high-growth software engineering and digital systems studio. We specialize in building custom Next.js websites, tailored business software, CRM systems, cloud ERP management portals, retail POS systems, AI automations, and SaaS products engineered around the way your business operates.
         </p>
 
-        <h2>Our Core 7 Digital Systems & Services</h2>
+        <h2>Our Core Digital Systems & Engineering Services</h2>
         <ul>
           <li>
             <h3>Website Development & Design</h3>
@@ -63,6 +70,10 @@ export default function MarketingRootPage() {
           <li>
             <h3>ERP Systems & Operations</h3>
             <p>Unified enterprise systems connecting inventory, HR, purchasing, and finance into one real-time portal.</p>
+          </li>
+          <li>
+            <h3>POS Systems & Retail Checkouts</h3>
+            <p>High-speed cloud POS systems, multi-branch retail and restaurant software with offline sync and zero per-terminal monthly fees.</p>
           </li>
           <li>
             <h3>AI Automation & Autonomous Agents</h3>
@@ -97,7 +108,7 @@ export default function MarketingRootPage() {
         <p>
           Request a free Digital Growth Review at novamacsolutions.com/book or email hello@novamacsolutions.com.
         </p>
-      </article>
+      </section>
 
       {/* Interactive Client Component */}
       <HomeClient />
