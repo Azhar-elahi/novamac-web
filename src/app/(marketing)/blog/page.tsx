@@ -39,12 +39,40 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BlogPage() {
-  const posts = await prisma.blogPost.findMany({
-    where: { published: true },
-    orderBy: { createdAt: "desc" }
-  });
+import { MASTER_BLOG_POSTS } from "@/lib/blog-data";
 
-  return <BlogClient posts={posts} />;
+export default async function BlogPage() {
+  let dbPosts: any[] = [];
+  try {
+    dbPosts = await prisma.blogPost.findMany({
+      where: { published: true },
+      orderBy: { createdAt: "desc" }
+    });
+  } catch (err) {
+    // DB fallback
+  }
+
+  // Combine MASTER_BLOG_POSTS with any extra custom DB posts ensuring no duplicate slugs
+  const allPosts = [...MASTER_BLOG_POSTS];
+  if (dbPosts && dbPosts.length > 0) {
+    for (const dp of dbPosts) {
+      if (!allPosts.some((p) => p.slug === dp.slug)) {
+        allPosts.push({
+          id: dp.id,
+          slug: dp.slug,
+          title: dp.title,
+          excerpt: dp.excerpt,
+          content: dp.content,
+          coverImage: dp.coverImage,
+          category: dp.category || "Engineering",
+          seoTitle: dp.seoTitle,
+          seoDesc: dp.seoDesc,
+          createdAt: dp.createdAt ? dp.createdAt.toISOString() : new Date().toISOString(),
+        });
+      }
+    }
+  }
+
+  return <BlogClient posts={allPosts as any} />;
 }
 

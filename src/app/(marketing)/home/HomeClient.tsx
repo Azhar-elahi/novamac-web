@@ -927,7 +927,110 @@ export default function HomeClient() {
       </section>
 
       {/* =========================================================================
-          14. FAQ ACCORDION SECTION
+          14. FEATURED ENGINEERING INSIGHTS & ARTICLES
+         ========================================================================= */}
+      <section className="py-24 px-6 sm:px-12 max-w-7xl mx-auto border-t border-[#F0DCDC]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="space-y-4 max-w-2xl">
+            <span className="text-[#FF5733] font-mono text-xs font-bold uppercase tracking-widest block">
+              ENGINEERING INSIGHTS & CASE STUDIES
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black text-[#202020] tracking-tight">
+              Real Architecture. Honest Numbers.
+            </h2>
+            <p className="text-gray-600 text-sm sm:text-base">
+              Explore in-depth technical breakdowns on CRM economics, offline-first POS systems, and zero-downtime Next.js migrations.
+            </p>
+          </div>
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-widest text-[#FF5733] hover:text-[#202020] transition-colors"
+          >
+            <span>Explore All Articles</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <article className="bg-white border border-[#F0DCDC] rounded-3xl p-8 hover:border-[#FF5733] transition-all shadow-sm flex flex-col justify-between group">
+            <div>
+              <div className="flex items-center gap-2 mb-4 text-xs font-mono text-slate-500">
+                <span className="px-2.5 py-0.5 bg-[#FF5733]/10 text-[#FF5733] font-bold rounded-full uppercase">
+                  CRM Economics
+                </span>
+                <span>•</span>
+                <span>8 min read</span>
+              </div>
+              <h3 className="text-xl font-bold text-[#202020] group-hover:text-[#FF5733] transition-colors mb-3 leading-snug">
+                We Audited a 35-User Team's $140,000 Salesforce Invoice
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6 font-normal">
+                Enterprise SaaS doesn't just bill per user; it taxes engineering velocity. Here is an unvarnished audit of real migration logs and schemas.
+              </p>
+            </div>
+            <Link
+              href="/blog/salesforce-cost-vs-custom-crm-calculator-2026"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#FF5733] group-hover:gap-3 transition-all"
+            >
+              <span>Read Case Study</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </article>
+
+          <article className="bg-white border border-[#F0DCDC] rounded-3xl p-8 hover:border-[#FF5733] transition-all shadow-sm flex flex-col justify-between group">
+            <div>
+              <div className="flex items-center gap-2 mb-4 text-xs font-mono text-slate-500">
+                <span className="px-2.5 py-0.5 bg-[#FF5733]/10 text-[#FF5733] font-bold rounded-full uppercase">
+                  Retail Systems
+                </span>
+                <span>•</span>
+                <span>7 min read</span>
+              </div>
+              <h3 className="text-xl font-bold text-[#202020] group-hover:text-[#FF5733] transition-colors mb-3 leading-snug">
+                Why Touchscreen POS Systems Freeze on Busy Saturdays
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6 font-normal">
+                How we engineered an offline-first register in Next.js & IndexedDB with raw ESC/POS thermal printing and zero per-terminal monthly fees.
+              </p>
+            </div>
+            <Link
+              href="/blog/offline-first-cloud-pos-architecture-nextjs-case-study"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#FF5733] group-hover:gap-3 transition-all"
+            >
+              <span>Read Case Study</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </article>
+
+          <article className="bg-white border border-[#F0DCDC] rounded-3xl p-8 hover:border-[#FF5733] transition-all shadow-sm flex flex-col justify-between group">
+            <div>
+              <div className="flex items-center gap-2 mb-4 text-xs font-mono text-slate-500">
+                <span className="px-2.5 py-0.5 bg-[#FF5733]/10 text-[#FF5733] font-bold rounded-full uppercase">
+                  Performance & SEO
+                </span>
+                <span>•</span>
+                <span>9 min read</span>
+              </div>
+              <h3 className="text-xl font-bold text-[#202020] group-hover:text-[#FF5733] transition-colors mb-3 leading-snug">
+                WordPress to Next.js 16: Cutting LCP from 5.1s to 0.48s
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-6 font-normal">
+                An unedited 14-day technical migration log of moving an 80-page corporate site without dropping Google rankings or SEO traffic.
+              </p>
+            </div>
+            <Link
+              href="/blog/wordpress-to-nextjs-migration-guide-benchmarks-2026"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#FF5733] group-hover:gap-3 transition-all"
+            >
+              <span>Read Case Study</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </article>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          15. FAQ ACCORDION SECTION
          ========================================================================= */}
       <section className="py-24 px-6 sm:px-12 bg-white border-y border-[#F0DCDC]">
         <div className="max-w-4xl mx-auto space-y-12">
