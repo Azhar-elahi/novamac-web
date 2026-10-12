@@ -1,8 +1,19 @@
 import { NextResponse } from "next/server";
+import { auth } from "@/auth";
 
-export async function GET() {
+export async function GET(req: Request) {
+  // Security Lock: Block public access so nobody can abuse or spam IndexNow
+  const session = await auth();
+  const { searchParams } = new URL(req.url);
+  const token = searchParams.get("secret");
+  const expectedSecret = process.env.INDEXNOW_ADMIN_SECRET || "novamac-internal-ops-7222";
+
+  if (!session?.user && token !== expectedSecret) {
+    return new NextResponse("Not Found", { status: 404 });
+  }
+
   const host = "novamacsolutions.com";
-  const apiKey = "4273be4ed66b4f9dbd685a10a39d1db7";
+  const apiKey = process.env.INDEXNOW_API_KEY || "4273be4ed66b4f9dbd685a10a39d1db7";
   const keyLocation = `https://${host}/${apiKey}.txt`;
 
   const urls = [
@@ -60,20 +71,18 @@ export async function GET() {
     return NextResponse.json({
       success: response.ok,
       status: response.status,
-      keyLocation,
       message: response.ok
-        ? `Successfully submitted ${urls.length} URLs to IndexNow!`
-        : "IndexNow submission returned status " + response.status,
-      submittedUrls: urls,
+        ? `Submitted ${urls.length} URLs.`
+        : "Submission returned status " + response.status,
     });
   } catch (err: any) {
     return NextResponse.json(
-      { success: false, error: err.message },
+      { success: false },
       { status: 500 }
     );
   }
 }
 
 export async function POST(req: Request) {
-  return GET();
+  return GET(req);
 }
