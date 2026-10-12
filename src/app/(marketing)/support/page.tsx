@@ -7,8 +7,8 @@ import { OptimizedVideoBackground } from "@/components/ui/OptimizedVideoBackgrou
 import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Support & Help Center | NovaMac Solutions",
-  description: "Get immediate technical assistance, project management support, and priority emergency help from NovaMac Solutions engineers.",
+  title: "Technical Support & Client Help Center | NovaMac Solutions",
+  description: "Access priority technical support, 24/7 emergency system maintenance, SLA ticket dispatch, and dedicated engineering assistance from NovaMac Solutions.",
   keywords: [
     "NovaMac Support",
     "Technical Help Center",
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     canonical: "https://novamacsolutions.com/support",
   },
   openGraph: {
-    title: "Support & Help Center | NovaMac Solutions",
-    description: "Get immediate technical assistance, project management support, and priority emergency help from NovaMac Solutions engineers.",
+    title: "Technical Support & Client Help Center | NovaMac Solutions",
+    description: "Access priority technical support, 24/7 emergency system maintenance, SLA ticket dispatch, and dedicated engineering assistance from NovaMac Solutions.",
     url: "https://novamacsolutions.com/support",
     images: [
       {
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Support & Help Center | NovaMac Solutions",
-    description: "Immediate technical assistance and priority emergency help.",
+    title: "Technical Support & Client Help Center | NovaMac Solutions",
+    description: "Access priority technical support, 24/7 emergency system maintenance, SLA ticket dispatch, and dedicated engineering assistance from NovaMac Solutions.",
     images: ["https://novamacsolutions.com/og-image.png"],
   },
 };

@@ -6,20 +6,20 @@ import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "FAQ & Engineering Knowledgebase | NovaMac Solutions",
-  description: "Frequently asked questions about our custom digital systems, Next.js engineering, full code ownership, and transparent pricing model.",
+  description: "Frequently asked questions about our custom Next.js web applications, ERP and POS software, CRM pipelines, 100% source code ownership, and fixed pricing.",
   keywords: [
     "NovaMac FAQ",
     "Next.js Development Questions",
     "Custom Software Pricing FAQ",
     "Code Ownership Guarantee",
-    "AI Automation Agency FAQ"
+    "Custom ERP POS FAQ"
   ],
   alternates: {
     canonical: "https://novamacsolutions.com/faq",
   },
   openGraph: {
     title: "FAQ & Engineering Knowledgebase | NovaMac Solutions",
-    description: "Clear answers to your questions about our custom web platforms, software engineering, and code ownership.",
+    description: "Frequently asked questions about our custom Next.js web applications, ERP and POS software, CRM pipelines, 100% source code ownership, and fixed pricing.",
     url: "https://novamacsolutions.com/faq",
     images: [
       {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "FAQ & Engineering Knowledgebase | NovaMac Solutions",
-    description: "Clear answers to your questions about our custom digital systems and engineering process.",
+    description: "Frequently asked questions about our custom Next.js web applications, ERP and POS software, CRM pipelines, 100% source code ownership, and fixed pricing.",
     images: ["https://novamacsolutions.com/og-image.png"],
   },
 };

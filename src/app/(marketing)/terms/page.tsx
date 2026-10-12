@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | NovaMac Solutions",
-  description: "Terms and conditions, project delivery terms, and source code ownership agreements for NovaMac Solutions services.",
+  title: "Terms of Service & IP Ownership Agreement | NovaMac Solutions",
+  description: "Read the official NovaMac Solutions terms of service, fixed-scope project delivery milestones, SLA performance guarantees, and 100% source code IP transfer.",
   alternates: {
     canonical: "https://novamacsolutions.com/terms",
   },
   openGraph: {
-    title: "Terms and Conditions | NovaMac Solutions",
-    description: "Terms and conditions, project delivery terms, and source code ownership agreements.",
+    title: "Terms of Service & IP Ownership Agreement | NovaMac Solutions",
+    description: "Read the official NovaMac Solutions terms of service, fixed-scope project delivery milestones, SLA performance guarantees, and 100% source code IP transfer.",
     url: "https://novamacsolutions.com/terms",
     images: [
       {
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Terms and Conditions | NovaMac Solutions",
-    description: "Terms and conditions, project delivery terms, and source code ownership agreements.",
+    title: "Terms of Service & IP Ownership Agreement | NovaMac Solutions",
+    description: "Read the official NovaMac Solutions terms of service, fixed-scope project delivery milestones, SLA performance guarantees, and 100% source code IP transfer.",
     images: ["https://novamacsolutions.com/og-image.png"],
   },
 };

@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import AuditClientPage from "./AuditClientPage";
 
 export const metadata: Metadata = {
-  title: "Free Website Growth Audit & Lead Assessment | NovaMac Solutions",
-  description: "Enter your domain for a free technical SEO, mobile friction, speed target, and conversion audit by NovaMac Solutions.",
+  title: "Free Website Growth Audit & Core Web Vitals Check | NovaMac Solutions",
+  description: "Run a free technical SEO, Core Web Vitals speed test, mobile UI friction check, and conversion rate audit for your business website with NovaMac Solutions.",
   alternates: {
     canonical: "https://novamacsolutions.com/audit",
   },
   openGraph: {
-    title: "Free Website Growth Audit | NovaMac Solutions",
-    description: "Discover what's holding back your website revenue and conversion flow.",
+    title: "Free Website Growth Audit & Core Web Vitals Check | NovaMac Solutions",
+    description: "Run a free technical SEO, Core Web Vitals speed test, mobile UI friction check, and conversion rate audit for your business website with NovaMac Solutions.",
     url: "https://novamacsolutions.com/audit",
     images: [
       {
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free Website Growth Audit | NovaMac Solutions",
-    description: "Enter your domain for a free technical SEO, mobile friction, and speed audit.",
+    title: "Free Website Growth Audit & Core Web Vitals Check | NovaMac Solutions",
+    description: "Run a free technical SEO, Core Web Vitals speed test, mobile UI friction check, and conversion rate audit for your business website with NovaMac Solutions.",
     images: ["https://novamacsolutions.com/og-image.png"],
   },
 };

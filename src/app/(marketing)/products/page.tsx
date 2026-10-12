@@ -3,19 +3,19 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "NovaMac Engine | Proprietary CRM & Automation Platform",
-  description: "NovaMac Engine is our proprietary CRM and business automation platform, built to streamline client management, AI workflows, and operations.",
+  title: "NovaMac Engine | Proprietary Cloud CRM, ERP & POS Suite",
+  description: "NovaMac Engine is our proprietary cloud CRM, multi-branch ERP, and offline POS platform built to unify client pipelines, inventory, and finance operations.",
   alternates: {
     canonical: "https://novamacsolutions.com/products",
   },
   openGraph: {
-    title: "NovaMac Engine | Proprietary CRM & Business Automation Platform",
-    description: "Streamline client management, AI workflows, and operations with NovaMac Engine.",
+    title: "NovaMac Engine | Proprietary Cloud CRM, ERP & POS Suite",
+    description: "NovaMac Engine is our proprietary cloud CRM, multi-branch ERP, and offline POS platform built to unify client pipelines, inventory, and finance operations.",
     url: "https://novamacsolutions.com/products",
   },
   twitter: {
-    title: "NovaMac Engine | Proprietary CRM & Automation Platform",
-    description: "Streamline client management, AI workflows, and operations.",
+    title: "NovaMac Engine | Proprietary Cloud CRM, ERP & POS Suite",
+    description: "NovaMac Engine is our proprietary cloud CRM, multi-branch ERP, and offline POS platform built to unify client pipelines, inventory, and finance operations.",
   },
 };
 

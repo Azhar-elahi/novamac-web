@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Executive Client Portfolio & Systems Showcase | NovaMac Solutions",
-  description: "Explore live client storefronts, B2B digital catalogs, and running enterprise SaaS applications engineered by NovaMac Solutions.",
+  description: "Explore live client e-commerce storefronts, B2B industrial catalogs, custom CRM portals, cloud POS systems, and SaaS apps built by NovaMac Solutions.",
   keywords: [
     "NovaMac Executive Portfolio",
     "AB Collections Storefront",
@@ -12,20 +12,20 @@ export const metadata: Metadata = {
     "The Finery Store",
     "Nexora One Enterprise SaaS",
     "ERP POS System",
-    "Next.js 15 Web Applications",
+    "Next.js 16 Web Applications",
     "Headless E-Commerce"
   ],
   alternates: {
     canonical: "https://novamacsolutions.com/portfolio",
   },
   openGraph: {
-    title: "Executive Client Portfolio | NovaMac Solutions",
-    description: "Interactive live preview of client websites, e-commerce storefronts, B2B catalogs, and enterprise cloud software.",
+    title: "Executive Client Portfolio & Systems Showcase | NovaMac Solutions",
+    description: "Explore live client e-commerce storefronts, B2B industrial catalogs, custom CRM portals, cloud POS systems, and SaaS apps built by NovaMac Solutions.",
     url: "https://novamacsolutions.com/portfolio",
   },
   twitter: {
-    title: "Executive Client Portfolio | NovaMac Solutions",
-    description: "Interactive live preview of client websites, e-commerce storefronts, B2B catalogs, and enterprise cloud software.",
+    title: "Executive Client Portfolio & Systems Showcase | NovaMac Solutions",
+    description: "Explore live client e-commerce storefronts, B2B industrial catalogs, custom CRM portals, cloud POS systems, and SaaS apps built by NovaMac Solutions.",
   },
 };
 

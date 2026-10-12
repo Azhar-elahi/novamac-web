@@ -6,21 +6,21 @@ export const dynamic = "force-dynamic";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Engineering Blog & Software Insights | NovaMac Solutions",
-  description: "Actionable engineering insights, Next.js architecture guides, CRM ROI breakdowns, and AI automation workflows from NovaMac Solutions.",
+  title: "Engineering Blog, Architecture Case Studies & Insights | NovaMac Solutions",
+  description: "Read technical engineering case studies, Next.js 16 migration benchmarks, custom CRM cost audits, and offline cloud POS architecture guides by NovaMac Solutions.",
   keywords: [
     "NovaMac Blog",
     "Next.js vs WordPress",
     "Custom CRM ROI",
-    "AI Automation Engineering",
+    "Offline POS Architecture",
     "Headless E-Commerce Guides"
   ],
   alternates: {
     canonical: "https://novamacsolutions.com/blog",
   },
   openGraph: {
-    title: "Engineering Blog & Software Insights | NovaMac Solutions",
-    description: "Actionable engineering insights, Next.js architecture guides, CRM ROI breakdowns, and AI automation workflows.",
+    title: "Engineering Blog, Architecture Case Studies & Insights | NovaMac Solutions",
+    description: "Read technical engineering case studies, Next.js 16 migration benchmarks, custom CRM cost audits, and offline cloud POS architecture guides by NovaMac Solutions.",
     url: "https://novamacsolutions.com/blog",
     images: [
       {
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Engineering Blog & Software Insights | NovaMac Solutions",
-    description: "Actionable engineering insights, Next.js architecture guides, and AI automation workflows.",
+    title: "Engineering Blog, Architecture Case Studies & Insights | NovaMac Solutions",
+    description: "Read technical engineering case studies, Next.js 16 migration benchmarks, custom CRM cost audits, and offline cloud POS architecture guides by NovaMac Solutions.",
     images: ["https://novamacsolutions.com/og-image.png"],
   },
 };

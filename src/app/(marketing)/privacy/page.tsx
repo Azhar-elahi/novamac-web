@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | NovaMac Solutions",
-  description: "Learn how NovaMac Solutions collects, stores, protects, and handles your personal and business data.",
+  title: "Privacy Policy & Data Protection Standards | NovaMac Solutions",
+  description: "Review NovaMac Solutions' privacy policy, enterprise data protection standards, GDPR/CCPA compliance, and strict intellectual property confidentiality rules.",
   alternates: {
     canonical: "https://novamacsolutions.com/privacy",
   },
   openGraph: {
-    title: "Privacy Policy | NovaMac Solutions",
-    description: "Learn how NovaMac Solutions handles and protects your personal and business data.",
+    title: "Privacy Policy & Data Protection Standards | NovaMac Solutions",
+    description: "Review NovaMac Solutions' privacy policy, enterprise data protection standards, GDPR/CCPA compliance, and strict intellectual property confidentiality rules.",
     url: "https://novamacsolutions.com/privacy",
     images: [
       {
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Privacy Policy | NovaMac Solutions",
-    description: "Learn how NovaMac Solutions handles and protects your personal and business data.",
+    title: "Privacy Policy & Data Protection Standards | NovaMac Solutions",
+    description: "Review NovaMac Solutions' privacy policy, enterprise data protection standards, GDPR/CCPA compliance, and strict intellectual property confidentiality rules.",
     images: ["https://novamacsolutions.com/og-image.png"],
   },
 };
