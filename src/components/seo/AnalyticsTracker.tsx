@@ -24,6 +24,13 @@ export function AnalyticsTracker() {
     // Never track admin panel internal routes
     if (pathname.includes("7222-@dm1nl0g1n")) return;
 
+    // Forward SPA route changes to Google Analytics (G-VYY4J7L4M6)
+    if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+      (window as any).gtag("config", "G-VYY4J7L4M6", {
+        page_path: pathname,
+      });
+    }
+
     fetch("/api/track", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
